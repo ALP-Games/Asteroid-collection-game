@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgogh6ayhlim7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_a26ev"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xfbri"]
+
+[node name="Asteroid" type="RigidBody3D"]
+axis_lock_linear_y = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_a26ev")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_xfbri")
