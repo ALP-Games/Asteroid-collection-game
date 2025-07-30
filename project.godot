@@ -8,8 +8,23 @@
 
 config_version=5
 
+[Extension Core]
+
+"General/Generated Output"="res://addons/godot_extension_core_gdscript/Generated/"
+"Controls/Configuration/Input Configuration"=""
+
 [application]
 
 config/name="Asteroid Collection Game"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_extension_core_gdscript/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/godot_extension_core_gdscript/": "blue"
+}
