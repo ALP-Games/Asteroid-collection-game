@@ -1,17 +1,17 @@
 class_name RopeEmitter extends Node3D
 
 const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
-@onready var area_3d: Area3D = $Area3D
 
-@export var shoot_force := 2000.0
-@export var max_segment_count := 15
+@export var shoot_force := 20000.0
+@export var segment_spacing := 0.75
+@export var max_segment_count := 30
 
 var current_rope_segment := 0
 
 var first_segment: RopeSegment = null
 var last_segment: RopeSegment = null
 var rope_shot := false
-var last_segment_entered_detection := false
+#var last_segment_entered_detection := false
 
 
 func shoot_rope(target: Vector3) -> void:
@@ -24,8 +24,6 @@ func shoot_rope(target: Vector3) -> void:
 	rope_segment.apply_central_force(direction * shoot_force)
 	first_segment = rope_segment
 	last_segment = rope_segment
-	#area_3d.body_entered.connect(check_last_added)
-	area_3d.body_exited.connect(segment_exited)
 
 
 func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
@@ -36,21 +34,19 @@ func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
 	current_rope_segment += 1
 	if current_rope_segment >= max_segment_count:
 		rope_segment.attach(get_parent())
-		#area_3d.body_entered.disconnect(check_last_added)
-		area_3d.body_exited.disconnect(segment_exited)
-	else:
-		last_segment_entered_detection = false
 	return rope_segment
 
 
-#func _physics_process(delta: float) -> void:
-	#if not last_segment_entered_detection:
-		#add_segment_to_last()
+func _physics_process(delta: float) -> void:
+	_process_segment_addition()
 
 
-#func check_last_added(body: Node3D) -> void:
-	#if body == last_segment:
-		#last_segment_entered_detection = true
+func _process_segment_addition() -> void:
+	if not last_segment:
+		return
+	while last_segment.global_position.distance_to(global_position) >= segment_spacing \
+	and current_rope_segment < max_segment_count:
+		add_segment_to_last()
 
 
 func segment_exited(body: Node3D) -> void:

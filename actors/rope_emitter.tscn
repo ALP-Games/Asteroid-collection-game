@@ -1,15 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4uy7s1i45ukc"]
+[gd_scene load_steps=2 format=3 uid="uid://b4uy7s1i45ukc"]
 
 [ext_resource type="Script" uid="uid://cebfmtuwm72wr" path="res://actors/rope_emitter.gd" id="1_2p7ti"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_2p7ti"]
-
 [node name="RopeEmitter" type="Node3D"]
 script = ExtResource("1_2p7ti")
-
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_2p7ti")

@@ -18,6 +18,7 @@ func attach(other: RigidBody3D) -> void:
 	if other is RopeSegment:
 		pin_joint.global_position = (other.rope_front.global_position + rope_end.global_position) * 0.5
 	else:
+		#pin_joint.global_position = other.global_position
 		pin_joint.global_position = (other.global_position + rope_end.global_position) * 0.5
 	pin_joint.node_a = get_path()
 	pin_joint.node_b = other.get_path()
