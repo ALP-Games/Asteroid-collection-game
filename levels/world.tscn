@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=5 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
 [ext_resource type="PackedScene" uid="uid://cgogh6ayhlim7" path="res://actors/asteroid.tscn" id="2_tsgde"]
+[ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_w32yo"]
 
 [node name="World" type="Node3D"]
 
@@ -45,3 +46,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4553, 0, -7.03669)
 
 [node name="Asteroid11" parent="." instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6109, 3.8147e-06, -13.8384)
+
+[node name="RopeSegment" parent="." instance=ExtResource("4_w32yo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -2.71995)
+collision_mask = 3
+
+[node name="PinJoint3D" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -3.24614)
+node_a = NodePath("../RopeSegment")
+node_b = NodePath("../RopeSegment2")
+
+[node name="RopeSegment2" parent="." instance=ExtResource("4_w32yo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -3.77702)
+collision_mask = 3
+
+[node name="PinJoint3D2" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -4.3118)
+node_a = NodePath("../RopeSegment2")
+node_b = NodePath("../RopeSegment3")
+
+[node name="RopeSegment3" parent="." instance=ExtResource("4_w32yo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -4.85108)
+collision_mask = 3
+
+[node name="PinJoint3D3" type="PinJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.39776)
+node_a = NodePath("../RopeSegment3")
+node_b = NodePath("../RopeSegment4")
+
+[node name="RopeSegment4" parent="." instance=ExtResource("4_w32yo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.94264)
+collision_mask = 3

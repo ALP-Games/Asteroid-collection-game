@@ -1,11 +1,13 @@
-extends Camera3D
+class_name FancyCamera3D extends Camera3D
 
 @export var target: Node3D = null
 
 var on_process: Callable = process_nothing
+var ground_plane := Plane(Vector3.UP, 0.0)
 
 
 func _ready() -> void:
+	add_to_group("camera")
 	if target:
 		on_process = seek_target
 
@@ -18,6 +20,21 @@ func _process(delta: float) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+func get_mouse_world_position() -> Vector3:
+	var mouse_position := get_viewport().get_mouse_position()
+	var ray_origin := project_ray_origin(mouse_position)
+	var ray_direction := project_ray_normal(mouse_position)
+	var ray_length := 1000
+	var ray_end := ray_origin + ray_direction * ray_length
+	
+	var intersection := ground_plane.intersects_ray(ray_origin, ray_end) as Vector3
+	#print("Mouse world position: ", intersection)
+	if intersection == null:
+		return Vector3.ZERO
+	return intersection
+
 
 
 func seek_target(_delta: float) -> void:

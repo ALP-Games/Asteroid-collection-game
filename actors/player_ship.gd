@@ -8,12 +8,30 @@ extends RigidBody3D
 @export var stop_linear_amount: float = 20
 @export var stop_angular_amount: float = 10
 
+#@onready var rope_prototype: Node3D = $RopePrototype
+@onready var rope_emitter: RopeEmitter = $RopeEmitter
+
+
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.is_pressed():
+		#var mouse_button_event := event as InputEventMouseButton
+		
+
 
 func _physics_process(delta) -> void:
 	var thrust_input := Input.is_action_pressed("thrust")
 	var reverse_input := Input.is_action_pressed("reverse")
 	var stop_input := Input.is_action_pressed("stop")
 	var rotation_input := Input.get_axis("rot_left", "rot_right")
+	
+	if Input.is_action_just_pressed("action"):
+		var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
+		var mouse_world_position := camera.get_mouse_world_position()
+		rope_emitter.shoot_rope(mouse_world_position)
+	
+	#var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
+	#var mouse_world_position := camera.get_mouse_world_position()
+	#rope_prototype.look_at(mouse_world_position)
 	
 	if thrust_input:
 		var desired_direction := Vector3.FORWARD.rotated(Vector3.UP, rotation.y) 
