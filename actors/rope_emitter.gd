@@ -1,6 +1,8 @@
 class_name RopeEmitter extends Node3D
 
-const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
+#const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
+@export var first_segment: PackedScene = load("res://actors/anchor.tscn")
+@export var rope_segment_scene: PackedScene = load("res://actors/rope_segment.tscn")
 
 @export var shoot_force := 20000.0
 @export var segment_spacing := 0.75
@@ -8,7 +10,7 @@ const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
 
 var current_rope_segment := 0
 
-var first_segment: RopeSegment = null
+#var first_segment: RopeSegment = null
 var last_segment: RopeSegment = null
 var rope_shot := false
 #var last_segment_entered_detection := false
@@ -22,19 +24,23 @@ func shoot_rope(target: Vector3) -> void:
 	var rope_segment := instantiate_new_rope_segment(global_transform)
 	var direction := Vector3.FORWARD.rotated(Vector3.UP, rope_segment.rotation.y) 
 	rope_segment.apply_central_force(direction * shoot_force)
-	first_segment = rope_segment
+	#first_segment = rope_segment
 	last_segment = rope_segment
 
 
 func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
-	var rope_segment := ROPE_SEGMENT.instantiate() as RopeSegment
-	rope_segment.global_transform = new_transform
-	rope_segment.add_to_group("instantiated")
-	get_tree().get_root().add_child(rope_segment)
+	var new_segment: RopeSegment
+	if current_rope_segment == 0:
+		new_segment = first_segment.instantiate()
+	else:
+		new_segment = rope_segment_scene.instantiate()
+	new_segment.global_transform = new_transform
+	new_segment.add_to_group("instantiated")
+	get_tree().get_root().add_child(new_segment)
 	current_rope_segment += 1
 	if current_rope_segment >= max_segment_count:
-		rope_segment.attach(get_parent())
-	return rope_segment
+		new_segment.attach(get_parent(), global_position)
+	return new_segment
 
 
 func _physics_process(delta: float) -> void:
@@ -63,5 +69,5 @@ func add_segment_to_last() -> void:
 	
 	var offset := new_segment.rope_front.global_position - new_segment.global_position
 	new_segment.global_position -= offset
-	last_segment.attach(new_segment)
+	last_segment.attach(new_segment, new_segment.rope_front.global_position)
 	last_segment = new_segment

@@ -1,5 +1,7 @@
 extends RigidBody3D
 
+@export var max_velocity: float = 10
+
 @export var thrust_acceleration: float = 20
 @export var reverse_acceleration: float = 10
 @export var turn_acceleration: float = 10.0
@@ -9,7 +11,7 @@ extends RigidBody3D
 @export var stop_angular_amount: float = 10
 
 #@onready var rope_prototype: Node3D = $RopePrototype
-@onready var rope_emitter: RopeEmitter = $RopeEmitter
+@onready var rope_emitter: RopeEmitter = $AnchorRope
 
 
 #func _input(event: InputEvent) -> void:
@@ -18,7 +20,7 @@ extends RigidBody3D
 		
 
 
-func _physics_process(delta) -> void:
+func _physics_process(delta: float) -> void:
 	var thrust_input := Input.is_action_pressed("thrust")
 	var reverse_input := Input.is_action_pressed("reverse")
 	var stop_input := Input.is_action_pressed("stop")
@@ -34,9 +36,12 @@ func _physics_process(delta) -> void:
 	#rope_prototype.look_at(mouse_world_position)
 	
 	if thrust_input:
+		var acceleration_deficit := (max_velocity - linear_velocity.length()) / delta
+		
 		var desired_direction := Vector3.FORWARD.rotated(Vector3.UP, rotation.y) 
 		var negative_acceleration := -(linear_velocity.normalized() - desired_direction) * thrust_acceleration as Vector3
-		var force_to_apply := (desired_direction * thrust_acceleration * mass) + (negative_acceleration * mass)
+		var force_to_apply := (desired_direction * clampf(acceleration_deficit, 0, thrust_acceleration) \
+			* mass) + (negative_acceleration * mass)
 		apply_central_force(force_to_apply)
 	
 	if reverse_input:

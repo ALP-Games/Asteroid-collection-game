@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=7 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="PackedScene" uid="uid://b4uy7s1i45ukc" path="res://actors/rope_emitter.tscn" id="2_vnsem"]
@@ -13,11 +13,6 @@ albedo_color = Color(1, 0, 0, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_ljv35"]
 material = SubResource("StandardMaterial3D_lae80")
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_ljv35"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 60.0
-
 [node name="PlayerShip" type="RigidBody3D"]
 collision_mask = 3
 axis_lock_linear_y = true
@@ -25,6 +20,9 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 1000.0
 script = ExtResource("1_ljv35")
+max_velocity = 15.0
+thrust_acceleration = 15.0
+reverse_acceleration = 7.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -38,12 +36,7 @@ shape = SubResource("CapsuleShape3D_ljv35")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.651)
 mesh = SubResource("SphereMesh_ljv35")
 
-[node name="RopeEmitter" parent="." instance=ExtResource("2_vnsem")]
-
-[node name="RopePrototype" type="Node3D" parent="RopeEmitter"]
-visible = false
-
-[node name="RopePrototype" type="MeshInstance3D" parent="RopeEmitter/RopePrototype"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -30)
-mesh = SubResource("CylinderMesh_ljv35")
-skeleton = NodePath("../../..")
+[node name="AnchorRope" parent="." instance=ExtResource("2_vnsem")]
+shoot_force = 0.0
+segment_spacing = 0.9
+max_segment_count = 25

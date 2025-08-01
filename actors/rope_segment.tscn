@@ -5,8 +5,9 @@
 [sub_resource type="BoxMesh" id="BoxMesh_m1a7w"]
 size = Vector3(0.05, 0.05, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sx3as"]
-size = Vector3(0.05, 0.05, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx3as"]
+radius = 0.0695017
+height = 1.07813
 
 [node name="RopeSegment" type="RigidBody3D"]
 collision_layer = 4
@@ -22,7 +23,8 @@ script = ExtResource("1_sx3as")
 mesh = SubResource("BoxMesh_m1a7w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_sx3as")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_sx3as")
 
 [node name="RopeFront" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)

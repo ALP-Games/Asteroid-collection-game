@@ -12,14 +12,15 @@ func _ready() -> void:
 	#apply_central_force(direction * 100)
 
 
-func attach(other: RigidBody3D) -> void:
+func attach(other: RigidBody3D, other_pin_point: Vector3) -> void:
 	var pin_joint := PinJoint3D.new()
 	add_child(pin_joint)
-	if other is RopeSegment:
-		pin_joint.global_position = (other.rope_front.global_position + rope_end.global_position) * 0.5
-	else:
-		#pin_joint.global_position = other.global_position
-		pin_joint.global_position = (other.global_position + rope_end.global_position) * 0.5
+	#if other is RopeSegment:
+		#pin_joint.global_position = (other.rope_front.global_position + rope_end.global_position) * 0.5
+	#else:
+		##pin_joint.global_position = other.global_position
+		#pin_joint.global_position = (other.global_position + rope_end.global_position) * 0.5
+	pin_joint.global_position = (other_pin_point + rope_end.global_position) * 0.5
 	pin_joint.node_a = get_path()
 	pin_joint.node_b = other.get_path()
 	
