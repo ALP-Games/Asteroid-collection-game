@@ -1,6 +1,8 @@
 class_name RopeSegment extends RigidBody3D
 
-const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
+signal target_reached
+
+#const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
 
 @onready var rope_front: Node3D = $RopeFront
 @onready var rope_end: Node3D = $RopeEnd
@@ -13,14 +15,12 @@ func _ready() -> void:
 
 
 func attach(other: RigidBody3D, other_pin_point: Vector3) -> void:
+	_attach_at_point(other, (other_pin_point + rope_end.global_position) * 0.5)
+
+
+func _attach_at_point(other: RigidBody3D, point: Vector3) -> void:
 	var pin_joint := PinJoint3D.new()
 	add_child(pin_joint)
-	#if other is RopeSegment:
-		#pin_joint.global_position = (other.rope_front.global_position + rope_end.global_position) * 0.5
-	#else:
-		##pin_joint.global_position = other.global_position
-		#pin_joint.global_position = (other.global_position + rope_end.global_position) * 0.5
-	pin_joint.global_position = (other_pin_point + rope_end.global_position) * 0.5
+	pin_joint.global_position = point
 	pin_joint.node_a = get_path()
 	pin_joint.node_b = other.get_path()
-	

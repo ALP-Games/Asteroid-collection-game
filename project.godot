@@ -35,6 +35,7 @@ folder_colors={
 [global_group]
 
 instantiated=""
+instantiated_root="where instantiated objects should end up"
 
 [input]
 

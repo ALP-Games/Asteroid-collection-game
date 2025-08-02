@@ -16,66 +16,72 @@ target = NodePath("../PlayerShip")
 turn_acceleration = 8.0
 max_turn_speed = 3.0
 
-[node name="Asteroid" parent="." instance=ExtResource("2_tsgde")]
+[node name="RopeSegment4" parent="." instance=ExtResource("4_w32yo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.94264)
+collision_mask = 3
+
+[node name="Asteroids" type="Node3D" parent="."]
+
+[node name="Asteroid" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1092, -1.90735e-06, 5.79686)
 
-[node name="Asteroid2" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid2" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9524, -1.90735e-06, -5.20849)
 
-[node name="Asteroid3" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid3" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03564, -1.90735e-06, 5.77524)
 
-[node name="Asteroid4" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid4" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46094, -1.90735e-06, 12.7335)
 
-[node name="Asteroid5" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid5" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2392, 0, -5.3871)
 
-[node name="Asteroid6" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid6" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.59723, 0, -11.3883)
 
-[node name="Asteroid7" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid7" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92535, 0, -12.0081)
 
-[node name="Asteroid8" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid8" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42216, 0, 11.1823)
 
-[node name="Asteroid9" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid9" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8482, 0, -12.8182)
 
-[node name="Asteroid10" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid10" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4553, 0, -7.03669)
 
-[node name="Asteroid11" parent="." instance=ExtResource("2_tsgde")]
+[node name="Asteroid11" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6109, 3.8147e-06, -13.8384)
 
-[node name="RopeSegment" parent="." instance=ExtResource("4_w32yo")]
+[node name="Other" type="Node3D" parent="."]
+
+[node name="RopeSegment" parent="Other" instance=ExtResource("4_w32yo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -2.71995)
 collision_mask = 3
 
-[node name="PinJoint3D" type="PinJoint3D" parent="."]
+[node name="PinJoint3D" type="PinJoint3D" parent="Other"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -3.24614)
 node_a = NodePath("../RopeSegment")
 node_b = NodePath("../RopeSegment2")
 
-[node name="RopeSegment2" parent="." instance=ExtResource("4_w32yo")]
+[node name="RopeSegment2" parent="Other" instance=ExtResource("4_w32yo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -3.77702)
 collision_mask = 3
 
-[node name="PinJoint3D2" type="PinJoint3D" parent="."]
+[node name="PinJoint3D2" type="PinJoint3D" parent="Other"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -4.3118)
 node_a = NodePath("../RopeSegment2")
 node_b = NodePath("../RopeSegment3")
 
-[node name="RopeSegment3" parent="." instance=ExtResource("4_w32yo")]
+[node name="RopeSegment3" parent="Other" instance=ExtResource("4_w32yo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -4.85108)
 collision_mask = 3
 
-[node name="PinJoint3D3" type="PinJoint3D" parent="."]
+[node name="PinJoint3D3" type="PinJoint3D" parent="Other"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.39776)
 node_a = NodePath("../RopeSegment3")
-node_b = NodePath("../RopeSegment4")
+node_b = NodePath("../../RopeSegment4")
 
-[node name="RopeSegment4" parent="." instance=ExtResource("4_w32yo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.94264)
-collision_mask = 3
+[node name="Instantiated" type="Node3D" parent="." groups=["instantiated_root"]]

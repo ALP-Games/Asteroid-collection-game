@@ -10,10 +10,11 @@ class_name RopeEmitter extends Node3D
 
 var current_rope_segment := 0
 
-#var first_segment: RopeSegment = null
+var first_segment: RopeSegment = null
 var last_segment: RopeSegment = null
 var rope_shot := false
-#var last_segment_entered_detection := false
+
+var rope_target_reached := false
 
 
 func shoot_rope(target: Vector3) -> void:
@@ -24,8 +25,14 @@ func shoot_rope(target: Vector3) -> void:
 	var rope_segment := instantiate_new_rope_segment(global_transform)
 	var direction := Vector3.FORWARD.rotated(Vector3.UP, rope_segment.rotation.y) 
 	rope_segment.apply_central_force(direction * shoot_force)
-	#first_segment = rope_segment
+	first_segment = rope_segment
+	first_segment.target_reached.connect(on_rope_target_reached)
 	last_segment = rope_segment
+
+
+func on_rope_target_reached() -> void:
+	rope_target_reached = true
+	first_segment.target_reached.disconnect(on_rope_target_reached)
 
 
 func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
@@ -34,11 +41,10 @@ func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
 		new_segment = first_segment_scene.instantiate()
 	else:
 		new_segment = rope_segment_scene.instantiate()
+	get_tree().get_first_node_in_group("instantiated_root").add_child(new_segment)
 	new_segment.global_transform = new_transform
-	new_segment.add_to_group("instantiated")
-	get_tree().get_root().add_child(new_segment)
 	current_rope_segment += 1
-	if current_rope_segment >= max_segment_count:
+	if not should_spawn_more_rope():
 		new_segment.attach(get_parent(), global_position)
 	return new_segment
 
@@ -51,8 +57,12 @@ func _process_segment_addition() -> void:
 	if not last_segment:
 		return
 	while last_segment.global_position.distance_to(global_position) >= segment_spacing \
-	and current_rope_segment < max_segment_count:
+	and should_spawn_more_rope():
 		add_segment_to_last()
+
+
+func should_spawn_more_rope() -> bool:
+	return current_rope_segment < max_segment_count or not rope_target_reached
 
 
 func segment_exited(body: Node3D) -> void:

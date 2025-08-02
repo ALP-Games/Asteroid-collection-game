@@ -10,8 +10,8 @@ extends RigidBody3D
 @export var stop_linear_amount: float = 20
 @export var stop_angular_amount: float = 10
 
-#@onready var rope_prototype: Node3D = $RopePrototype
-@onready var rope_emitter: RopeEmitter = $AnchorRope
+@onready var rope_emitter: RopeEmitter = $HookRope
+#@onready var rope_prototype: Node3D = $AnchorRope
 
 
 #func _input(event: InputEvent) -> void:

@@ -22,7 +22,6 @@ func _process(delta: float) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
 	if Input.is_action_just_pressed("reload"):
-		get_tree().call_group("instantiated", "queue_free")
 		get_tree().reload_current_scene()
 
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=9 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="PackedScene" uid="uid://b4uy7s1i45ukc" path="res://actors/rope_emitter.tscn" id="2_vnsem"]
+[ext_resource type="PackedScene" uid="uid://cel7gr1l4orx3" path="res://actors/hook.tscn" id="3_gv0w4"]
+[ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_mfuwy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lae80"]
 
@@ -23,6 +25,7 @@ script = ExtResource("1_ljv35")
 max_velocity = 15.0
 thrust_acceleration = 15.0
 reverse_acceleration = 7.5
+turn_acceleration = 20.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -35,6 +38,13 @@ shape = SubResource("CapsuleShape3D_ljv35")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.651)
 mesh = SubResource("SphereMesh_ljv35")
+
+[node name="HookRope" parent="." instance=ExtResource("2_vnsem")]
+first_segment_scene = ExtResource("3_gv0w4")
+rope_segment_scene = ExtResource("4_mfuwy")
+shoot_force = 50000.0
+segment_spacing = 0.9
+max_segment_count = 15
 
 [node name="AnchorRope" parent="." instance=ExtResource("2_vnsem")]
 shoot_force = 0.0
