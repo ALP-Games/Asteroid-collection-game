@@ -1,7 +1,7 @@
 class_name RopeEmitter extends Node3D
 
 #const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
-@export var first_segment: PackedScene = load("res://actors/anchor.tscn")
+@export var first_segment_scene: PackedScene = load("res://actors/anchor.tscn")
 @export var rope_segment_scene: PackedScene = load("res://actors/rope_segment.tscn")
 
 @export var shoot_force := 20000.0
@@ -31,7 +31,7 @@ func shoot_rope(target: Vector3) -> void:
 func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
 	var new_segment: RopeSegment
 	if current_rope_segment == 0:
-		new_segment = first_segment.instantiate()
+		new_segment = first_segment_scene.instantiate()
 	else:
 		new_segment = rope_segment_scene.instantiate()
 	new_segment.global_transform = new_transform

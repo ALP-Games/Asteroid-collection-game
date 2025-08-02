@@ -47,4 +47,3 @@ shape = SubResource("BoxShape3D_br5ok")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.291043)
 
 [node name="RopeEnd" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.28)

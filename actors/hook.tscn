@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://cel7gr1l4orx3"]
+
+[ext_resource type="Script" uid="uid://piyisi5o6pl3" path="res://actors/rope_segment.gd" id="1_p38s4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p38s4"]
+albedo_color = Color(0.38, 0.38, 0.38, 1)
+metallic = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_p38s4"]
+material = SubResource("StandardMaterial3D_p38s4")
+size = Vector3(0.45, 0.45, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b33q5"]
+albedo_color = Color(0.38, 0.38, 0.38, 1)
+metallic = 0.7
+
+[sub_resource type="PrismMesh" id="PrismMesh_p38s4"]
+material = SubResource("StandardMaterial3D_b33q5")
+left_to_right = 0.3
+size = Vector3(0.2, 0.35, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b33q5"]
+size = Vector3(0.45, 0.45, 0.45)
+
+[node name="Hook" type="RigidBody3D"]
+script = ExtResource("1_p38s4")
+
+[node name="Graphics" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.418124, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.174098)
+mesh = SubResource("BoxMesh_p38s4")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.125, 0, -0.050193)
+mesh = SubResource("PrismMesh_p38s4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Graphics"]
+transform = Transform3D(-1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.12464, 0, -0.050193)
+mesh = SubResource("PrismMesh_p38s4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_b33q5")
+
+[node name="RopeEnd" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.82768e-08, 0.418124, 0, -1, -4.37114e-08, 0.00199103, 0, 0.1807)
+
+[node name="RopeFront" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.82768e-08, 0.418124, 0, -1, -4.37114e-08, 0.0019908, 0, 0.173003)
