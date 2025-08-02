@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dao76jaqautgm"
-path.s3tc="res://.godot/imported/BaseArmeture_Ucupaint Base Color.png-86b5c69d9ab80de0fedad525847bd357.s3tc.ctex"
+uid="uid://rvipd5x6egdo"
+path.s3tc="res://.godot/imported/Pebble_Ucupaint Icosphere.png-09b04939ffa5cb3358efc07852b10c5a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "cbffba0f9fd08c08d765d102b3533cc1"
+"md5": "014aa63800a30a88bd0db8824265a69d"
 }
 
 [deps]
 
-source_file="res://Assets/BaseArmeture_Ucupaint Base Color.png"
-dest_files=["res://.godot/imported/BaseArmeture_Ucupaint Base Color.png-86b5c69d9ab80de0fedad525847bd357.s3tc.ctex"]
+source_file="res://Assets/vfx/Pebble_Ucupaint Icosphere.png"
+dest_files=["res://.godot/imported/Pebble_Ucupaint Icosphere.png-09b04939ffa5cb3358efc07852b10c5a.s3tc.ctex"]
 
 [params]
 

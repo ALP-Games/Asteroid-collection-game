@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqy0m6tdt80xx"]
+
+[ext_resource type="Material" uid="uid://4c2khnoeaogh" path="res://Assets/vfx/Icosphere.001.tres" id="1_88jco"]
+[ext_resource type="ArrayMesh" uid="uid://3puauxpkfays" path="res://Assets/vfx/Pebble_Icosphere_002.res" id="2_tes3g"]
+
+[sub_resource type="Curve" id="Curve_b2wf7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.823529, 0.662921), -1.30171, -1.30171, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xjwlo"]
+curve = SubResource("Curve_b2wf7")
+
+[sub_resource type="Curve" id="Curve_fydgp"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oppun"]
+curve = SubResource("Curve_fydgp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i1fyu"]
+lifetime_randomness = 0.16
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+emission_shape_scale = Vector3(1, 0, 1)
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_min = -355.9
+angle_max = 405.5
+angle_curve = SubResource("CurveTexture_oppun")
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 17.24
+initial_velocity_max = 17.24
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+damping_min = 2.299
+damping_max = 2.299
+scale_min = 0.0
+alpha_curve = SubResource("CurveTexture_xjwlo")
+
+[node name="RockExplosion" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = ExtResource("1_88jco")
+emitting = false
+amount = 32
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_i1fyu")
+draw_pass_1 = ExtResource("2_tes3g")

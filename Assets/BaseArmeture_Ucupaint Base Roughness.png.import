@@ -2,14 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6r825n3o8r76"
+uid="uid://chn14ds7hk34m"
 path.s3tc="res://.godot/imported/BaseArmeture_Ucupaint Base Roughness.png-560acda996fc26f56a83e95ce40f06ed.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "498e23c82ca78a4bcd7ba88e5243b6fc"
+"md5": "cd65563cdfb61c7502858a730ab2359e"
 }
 
 [deps]

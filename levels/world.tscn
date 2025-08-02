@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=14 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
 [ext_resource type="PackedScene" uid="uid://cgogh6ayhlim7" path="res://actors/asteroid.tscn" id="2_tsgde"]
-[ext_resource type="PackedScene" uid="uid://dr3mcgsdsxxib" path="res://actors/collection_zone.tscn" id="3_712nc"]
+[ext_resource type="PackedScene" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_w32yo"]
 [ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/main_ui.tscn" id="6_i8ckm"]
+[ext_resource type="PackedScene" uid="uid://be5355utlahim" path="res://Assets/baseShreder.tscn" id="7_vons5"]
 
 [sub_resource type="Gradient" id="Gradient_w32yo"]
 offsets = PackedFloat32Array(0.974576, 1)
@@ -65,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9524, -1.90735e-06, -5.208
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.03564, -1.90735e-06, 5.77524)
 
 [node name="Asteroid4" parent="Asteroids" instance=ExtResource("2_tsgde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46094, -1.90735e-06, 12.7335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9656, -1.90735e-06, 9.84142)
 
 [node name="Asteroid5" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2392, 0, -5.3871)
@@ -145,3 +146,6 @@ light_volumetric_fog_energy = 0.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainUI" parent="CanvasLayer" instance=ExtResource("6_i8ckm")]
+
+[node name="BaseArmeture2" parent="." instance=ExtResource("7_vons5")]
+transform = Transform3D(0.705, 0, 0, 0, 0.705, 0, 0, 0, 0.705, 0, -4, 15)

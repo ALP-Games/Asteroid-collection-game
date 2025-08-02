@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://be5355utlahim"]
+
+[ext_resource type="PackedScene" uid="uid://cqrbobf85vums" path="res://Assets/BaseArmeture.glb" id="1_rekec"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rekec"]
+animation = &"Shreder"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_iax3h"]
+graph_offset = Vector2(-435, 139)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_rekec")
+nodes/Animation/position = Vector2(60, 160)
+node_connections = [&"output", 0, &"Animation"]
+
+[node name="BaseArmeture2" instance=ExtResource("1_rekec")]
+
+[node name="Skeleton3D" parent="BaseArmeture" index="0"]
+bones/0/rotation = Quaternion(0.999862, 0, 0, -0.0166347)
+bones/1/rotation = Quaternion(-0.139569, 0, 0, 0.990212)
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer" index="0"]
+root_node = NodePath("../..")
+tree_root = SubResource("AnimationNodeBlendTree_iax3h")
+anim_player = NodePath("..")
