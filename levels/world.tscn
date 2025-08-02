@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
 [ext_resource type="PackedScene" uid="uid://cgogh6ayhlim7" path="res://actors/asteroid.tscn" id="2_tsgde"]
+[ext_resource type="PackedScene" uid="uid://dr3mcgsdsxxib" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_w32yo"]
 
 [sub_resource type="Gradient" id="Gradient_w32yo"]
@@ -47,6 +48,9 @@ script = ExtResource("1_pmfem")
 target = NodePath("../PlayerShip")
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_2mgkc")]
+
+[node name="CollectionZone" parent="." instance=ExtResource("3_712nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000498533, 0, 16.2709)
 
 [node name="Asteroids" type="Node3D" parent="."]
 

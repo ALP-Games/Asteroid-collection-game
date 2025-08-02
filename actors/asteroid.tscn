@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://b1vi133l2ps3t" path="res://Assets/Icosphere_Icosphere_001.res" id="1_xfbri"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xfbri"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_xfbri"]
 
 [node name="Asteroid" type="RigidBody3D"]
 collision_layer = 2
@@ -15,4 +15,4 @@ transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, 0)
 mesh = ExtResource("1_xfbri")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_xfbri")
+shape = SubResource("SphereShape3D_xfbri")
