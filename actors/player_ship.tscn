@@ -25,7 +25,8 @@ script = ExtResource("1_ljv35")
 max_velocity = 15.0
 thrust_acceleration = 15.0
 reverse_acceleration = 7.5
-turn_acceleration = 20.0
+turn_acceleration = 8.0
+max_turn_speed = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
