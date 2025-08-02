@@ -1,29 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkmuwcjvfxtv6"]
+[gd_scene load_steps=8 format=3 uid="uid://bb87h4iblio7e"]
 
-[ext_resource type="Script" uid="uid://ku12f32d4f3k" path="res://actors/shop_zone.gd" id="1_tlytx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uden6"]
-albedo_color = Color(0.579543, 0.468908, 0.107362, 1)
-metallic = 1.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_uden6"]
-material = SubResource("StandardMaterial3D_uden6")
+[ext_resource type="Script" path="res://actors/shop_zone.gd" id="1_tlytx"]
+[ext_resource type="ArrayMesh" uid="uid://u1dcok2rm0oq" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uden6"]
 size = Vector3(7.93945, 1, 7.88184)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e1x1e"]
+radius = 0.811365
+height = 6.78798
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7rbfe"]
+resource_local_to_scene = true
+size = Vector3(10.6038, 6.91626, 10.7306)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7who5"]
+resource_local_to_scene = true
+size = Vector3(1.08976, 6.91626, 8.7915)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0b5e"]
+size = Vector3(18.856, 8.27155, 4.65637)
+
 [node name="ShopZone" type="Node3D"]
 script = ExtResource("1_tlytx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.504106, 0)
-mesh = SubResource("PlaneMesh_uden6")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_uden6")
+
+[node name="ShopCube006" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -0.0790353, 0.0428529, -2.74969)
+mesh = ExtResource("2_toxax")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ShopCube006"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04035, 0, 6.66848)
+shape = SubResource("CapsuleShape3D_e1x1e")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9016, 1.34536, 1.31469)
+shape = SubResource("BoxShape3D_7rbfe")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.71972, 1.34536, 2.30657)
+shape = SubResource("BoxShape3D_7who5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.572239, 1.64365, -2.6295)
+shape = SubResource("BoxShape3D_l0b5e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.22845, 0, 5.97097)
+shape = SubResource("CapsuleShape3D_e1x1e")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

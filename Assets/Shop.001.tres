@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bu4tedmgrp637"]
+
+[ext_resource type="Texture2D" uid="uid://cejsbnw4woscs" path="res://Assets/Shop_Ucupaint Base Color.png" id="1_it63a"]
+[ext_resource type="Texture2D" uid="uid://djunrns1atupn" path="res://Assets/Shop_Ucupaint Base.png" id="2_lvu0t"]
+[ext_resource type="Texture2D" uid="uid://6kyfmqqwuvwy" path="res://Assets/Shop_Ucupaint Base Roughness.png" id="3_d7c37"]
+
+[resource]
+resource_name = "Shop.001"
+transparency = 4
+blend_mode = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_it63a")
+metallic_texture = ExtResource("3_d7c37")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_d7c37")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_energy_multiplier = 5.33
+emission_texture = ExtResource("2_lvu0t")

@@ -1,12 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
-[ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
+[ext_resource type="PackedScene" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/main_ui.tscn" id="6_i8ckm"]
-[ext_resource type="PackedScene" uid="uid://be5355utlahim" path="res://Assets/baseShreder.tscn" id="7_vons5"]
-[ext_resource type="PackedScene" uid="uid://dkmuwcjvfxtv6" path="res://actors/shop_zone.tscn" id="8_legw5"]
+[ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
 
 [sub_resource type="Gradient" id="Gradient_w32yo"]
 offsets = PackedFloat32Array(0.974576, 1)
@@ -57,7 +56,7 @@ target = NodePath("../PlayerShip")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000498533, 0, 16.2709)
 
 [node name="ShopZone" parent="." instance=ExtResource("8_legw5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.447, 0, 16.1529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1573, 0, 19.318)
 
 [node name="Instantiated" type="Node3D" parent="." groups=["instantiated_root"]]
 
@@ -82,6 +81,3 @@ light_volumetric_fog_energy = 0.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainUI" parent="CanvasLayer" instance=ExtResource("6_i8ckm")]
-
-[node name="BaseArmeture2" parent="." instance=ExtResource("7_vons5")]
-transform = Transform3D(0.705, 0, 0, 0, 0.705, 0, 0, 0, 0.705, 0, -4, 15)
