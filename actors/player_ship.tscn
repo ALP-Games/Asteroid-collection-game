@@ -1,13 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
+[ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="2_nyvxv"]
 [ext_resource type="PackedScene" uid="uid://b4uy7s1i45ukc" path="res://actors/rope_emitter.tscn" id="2_vnsem"]
 [ext_resource type="PackedScene" uid="uid://cel7gr1l4orx3" path="res://actors/hook.tscn" id="3_gv0w4"]
 [ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_mfuwy"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_lae80"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljv35"]
+radius = 0.783509
+height = 3.11878
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lae80"]
 albedo_color = Color(1, 0, 0, 1)
@@ -29,8 +30,8 @@ turn_acceleration = 8.0
 max_turn_speed = 3.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_lae80")
+transform = Transform3D(-0.47, -7.56387e-22, 7.0968e-08, 0, 0.47, 5.00933e-15, -7.0968e-08, 5.00933e-15, -0.47, 0, 0, 0.541739)
+mesh = ExtResource("2_nyvxv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
