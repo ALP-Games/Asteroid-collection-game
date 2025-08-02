@@ -1,11 +1,13 @@
 class_name PlayerShip extends RigidBody3D
 
-@export var max_velocity: float = 15
+@export var max_velocity: float = 30
 
 @export var thrust_acceleration: float = 20
 @export var reverse_acceleration: float = 10
 @export var turn_acceleration: float = 10.0
 @export var max_turn_speed: float = 4.0
+
+@export var stabilization_warning_multiple: float = 2.0
 
 @export var stop_linear_amount: float = 20
 @export var stop_angular_amount: float = 10
@@ -36,6 +38,9 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	(get_tree().get_first_node_in_group("stabilization_warinig") as Control).visible = \
+		angular_velocity.y >= max_turn_speed * stabilization_warning_multiple
+	
 	var shop_screen: Control = get_tree().get_first_node_in_group("shop_screen")
 	
 	if (shop_screen.visible or in_shop_range) and Input.is_action_just_pressed("open_shop"):

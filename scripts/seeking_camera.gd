@@ -21,9 +21,9 @@ func _process(_delta: float) -> void:
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	
-	#if Input.is_action_just_pressed("reload"):
-		#GameManager.initialize()
-		#get_tree().reload_current_scene()
+	if Input.is_action_just_pressed("reload"):
+		GameManager.initialize()
+		get_tree().reload_current_scene()
 
 
 func _physics_process(delta: float) -> void:
