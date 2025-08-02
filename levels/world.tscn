@@ -13,6 +13,8 @@ script = ExtResource("1_pmfem")
 target = NodePath("../PlayerShip")
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_2mgkc")]
+turn_acceleration = 8.0
+max_turn_speed = 3.0
 
 [node name="Asteroid" parent="." instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1092, -1.90735e-06, 5.79686)
