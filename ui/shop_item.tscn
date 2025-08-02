@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu0l4x28nikl"]
+
+[ext_resource type="Script" uid="uid://dlemi7jy41f5g" path="res://ui/shop_item.gd" id="1_mgmnk"]
+
+[node name="ShopItem" type="PanelContainer"]
+offset_right = 104.0
+offset_bottom = 58.0
+size_flags_vertical = 0
+script = ExtResource("1_mgmnk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemName" type="Label" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Upgrade Text"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemPrice" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy"

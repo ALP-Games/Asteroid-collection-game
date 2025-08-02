@@ -1,6 +1,6 @@
 class_name MainUI extends Control
 
-@onready var credits_amount: Label = $Control/HBoxContainer/Amount
+@onready var credits_amount: Label = $LayoutsContainer/HBoxContainer/Amount
 
 
 func _ready() -> void:

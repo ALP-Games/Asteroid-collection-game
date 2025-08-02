@@ -1,4 +1,4 @@
-extends RigidBody3D
+class_name PlayerShip extends RigidBody3D
 
 @export var max_velocity: float = 10
 
@@ -11,17 +11,19 @@ extends RigidBody3D
 @export var stop_angular_amount: float = 10
 
 @onready var emitter_manager: EmitterManager = $EmitterManager
-#@onready var rope_emitter: RopeEmitter = $HookRope
-#@onready var rope_prototype: Node3D = $AnchorRope
 
-
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventMouseButton and event.is_pressed():
-		#var mouse_button_event := event as InputEventMouseButton
-		
+var in_shop_range := false
 
 
 func _physics_process(delta: float) -> void:
+	var shop_screen: Control = get_tree().get_first_node_in_group("shop_screen")
+	
+	if (shop_screen.visible or in_shop_range) and Input.is_action_just_pressed("open_shop"):
+		shop_screen.visible = !shop_screen.visible
+	
+	if shop_screen.visible:
+		return
+	
 	var thrust_input := Input.is_action_pressed("thrust")
 	var reverse_input := Input.is_action_pressed("reverse")
 	var stop_input := Input.is_action_pressed("stop")

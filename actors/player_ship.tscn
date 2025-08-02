@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="2_nyvxv"]
 [ext_resource type="PackedScene" uid="uid://p6u1dun8q8br" path="res://actors/hook_rope_emitter.tscn" id="3_gv0w4"]
 [ext_resource type="PackedScene" uid="uid://duvgvbdmebdsa" path="res://actors/anchor_rope_emitter.tscn" id="5_mfuwy"]
-[ext_resource type="Script" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
+[ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
 [ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://Assets/vfx/JetBeam.tscn" id="6_pt2uk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljv35"]

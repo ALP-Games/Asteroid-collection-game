@@ -1,6 +1,6 @@
 class_name EmitterManager extends Node3D
 
-@export var max_emitter_amount := 5
+@export var max_emitter_amount := 1
 @export var emitters: Array[PackedScene]
 
 var instanced_emitters: Array[Emitter]
@@ -8,6 +8,25 @@ var instanced_emitters: Array[Emitter]
 var index: int = 0
 
 var stopping_emitters := false
+
+func _ready() -> void:
+	GameManager.upgrade_data.upgrade_incremented.connect(_hooks_upgraded)
+
+
+func _hooks_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
+	if upgrade_id != UpgradeData.UpgradeType.HOOK_COUNT:
+		return
+	match upgrade_level:
+		0:
+			max_emitter_amount = 1
+		1:
+			max_emitter_amount = 2
+		2:
+			max_emitter_amount = 3
+		3:
+			max_emitter_amount = 4
+		4:
+			max_emitter_amount = 5
 
 
 func emit(target: Vector3) -> void:
