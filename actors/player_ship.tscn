@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=7 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="2_nyvxv"]
@@ -9,12 +9,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljv35"]
 radius = 0.783509
 height = 3.11878
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lae80"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_ljv35"]
-material = SubResource("StandardMaterial3D_lae80")
 
 [node name="PlayerShip" type="RigidBody3D"]
 collision_mask = 3
@@ -36,10 +30,6 @@ mesh = ExtResource("2_nyvxv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ljv35")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.651)
-mesh = SubResource("SphereMesh_ljv35")
 
 [node name="HookRope" parent="." instance=ExtResource("2_vnsem")]
 first_segment_scene = ExtResource("3_gv0w4")
