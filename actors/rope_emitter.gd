@@ -1,7 +1,7 @@
-class_name RopeEmitter extends Node3D
+class_name RopeEmitter extends Emitter
 
 #const MAX_TANGENTIAL_VELOCITY := 30.0
-const MAX_ROPE_STRETCH := 1.4
+const MAX_ROPE_STRETCH := 1.95
 
 #const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
 @export var first_segment_scene: PackedScene = load("res://actors/anchor.tscn")
@@ -24,13 +24,11 @@ var connected_to_parent := false
 var retracting_rope := false
 var rope_target_reached := false
 
-var _parent: RigidBody3D
-
-func _ready() -> void:
-	_parent = get_parent()
+#func _ready() -> void:
+	#_parent = get_parent()
 
 
-func shoot_rope(target: Vector3) -> void:
+func emit(target: Vector3) -> void:
 	if rope_shot:
 		return
 	rope_shot = true
@@ -44,7 +42,7 @@ func shoot_rope(target: Vector3) -> void:
 	last_segment = rope_segment
 
 
-func retract_rope() -> void:
+func stop_emit() -> void:
 	retracting_rope = true
 	if first_segment and first_segment.has_method("release_target"):
 		first_segment.release_target()
@@ -64,6 +62,7 @@ func break_rope() -> void:
 	while rope_segments.size() > 0:
 		var rope_segment := rope_segments.pop_back() as RopeSegment
 		rope_segment.queue_free()
+	emitter_done.emit()
 
 
 func on_rope_target_reached(target_object: RigidBody3D, attachment_joint: Node3D) -> void:
@@ -121,14 +120,6 @@ func _enforce_rope_length() -> void:
 		
 		rope_target.linear_velocity += correction_velocity * target_weight_ratio 
 		_parent.linear_velocity -= correction_velocity * parent_weight_ratio
-		
-		#var tangential_direction := direction.cross(Vector3.UP).normalized()
-		##print("Tangential direction - ", tangential_direction)
-		#var tangential_velocity := tangential_direction * rope_target.linear_velocity.dot(tangential_direction)
-		#if tangential_velocity.length() > MAX_TANGENTIAL_VELOCITY:
-			#var clamped_velocity := tangential_direction * MAX_TANGENTIAL_VELOCITY
-			#rope_target.linear_velocity -= tangential_velocity - clamped_velocity
-		#print("Tangential velocity - ", tangential_velocity.length())
 
 
 func _process_segment_addition() -> void:
@@ -150,6 +141,7 @@ func _process_rope_retraction() -> void:
 		connected_to_parent = false
 		retracting_rope = false
 		rope_shot = false
+		emitter_done.emit()
 		return
 	
 	if not _should_retract_last():

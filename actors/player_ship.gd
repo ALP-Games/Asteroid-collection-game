@@ -10,7 +10,8 @@ extends RigidBody3D
 @export var stop_linear_amount: float = 20
 @export var stop_angular_amount: float = 10
 
-@onready var rope_emitter: RopeEmitter = $HookRope
+@onready var emitter_manager: EmitterManager = $EmitterManager
+#@onready var rope_emitter: RopeEmitter = $HookRope
 #@onready var rope_prototype: Node3D = $AnchorRope
 
 
@@ -29,9 +30,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("action"):
 		var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
 		var mouse_world_position := camera.get_mouse_world_position()
-		rope_emitter.shoot_rope(mouse_world_position)
+		emitter_manager.emit(mouse_world_position)
 	elif Input.is_action_just_pressed("action2"):
-		rope_emitter.retract_rope()
+		emitter_manager.stop_emit()
 	
 	#var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
 	#var mouse_world_position := camera.get_mouse_world_position()

@@ -1,0 +1,1 @@
+class_name HookRopeEmitter extends RopeEmitter

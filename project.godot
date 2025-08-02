@@ -23,7 +23,7 @@ run/default_gravity=0.0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_extension_core_gdscript/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 

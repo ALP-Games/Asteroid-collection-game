@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="2_nyvxv"]
-[ext_resource type="PackedScene" uid="uid://b4uy7s1i45ukc" path="res://actors/rope_emitter.tscn" id="2_vnsem"]
-[ext_resource type="PackedScene" uid="uid://cel7gr1l4orx3" path="res://actors/hook.tscn" id="3_gv0w4"]
-[ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_mfuwy"]
+[ext_resource type="PackedScene" uid="uid://p6u1dun8q8br" path="res://actors/hook_rope_emitter.tscn" id="3_gv0w4"]
+[ext_resource type="PackedScene" uid="uid://duvgvbdmebdsa" path="res://actors/anchor_rope_emitter.tscn" id="5_mfuwy"]
+[ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljv35"]
 radius = 0.783509
@@ -31,14 +31,7 @@ mesh = ExtResource("2_nyvxv")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ljv35")
 
-[node name="HookRope" parent="." instance=ExtResource("2_vnsem")]
-first_segment_scene = ExtResource("3_gv0w4")
-rope_segment_scene = ExtResource("4_mfuwy")
-shoot_force = 50000.0
-segment_spacing = 0.9
-max_segment_count = 15
-
-[node name="AnchorRope" parent="." instance=ExtResource("2_vnsem")]
-shoot_force = 0.0
-segment_spacing = 0.9
-max_segment_count = 25
+[node name="EmitterManager" type="Node3D" parent="."]
+script = ExtResource("6_3gxbi")
+emitters = Array[PackedScene]([ExtResource("3_gv0w4"), ExtResource("5_mfuwy")])
+metadata/_custom_type_script = "uid://p5sxlq10gtdr"
