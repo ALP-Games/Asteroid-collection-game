@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bp35e0uv5wmmg"]
+
+[ext_resource type="Texture2D" uid="uid://c8m2jhseqhexg" path="res://Assets/Icosphere_Ucupaint Icosphere.png" id="1_wfw5l"]
+[ext_resource type="Texture2D" uid="uid://bnsjf1rmpi5sw" path="res://Assets/Icosphere_Ucupaint Icosphere_1.png" id="2_gv82r"]
+
+[resource]
+resource_name = "Icosphere"
+cull_mode = 2
+albedo_texture = ExtResource("1_wfw5l")
+metallic_texture = ExtResource("2_gv82r")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_gv82r")
+roughness_texture_channel = 1
+rim_tint = 0.4
+clearcoat_roughness = 0.7
+backlight = Color(1, 1, 1, 1)

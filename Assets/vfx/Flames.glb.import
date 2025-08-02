@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cd50r3py66w34"
-path="res://.godot/imported/Icosphere.glb-a7d539eeb26bc317a3ebf72f125d997c.scn"
+uid="uid://c6v835pajdsdb"
+path="res://.godot/imported/Flames.glb-cda49b71a67048a378e0d6e9297efd19.scn"
 
 [deps]
 
-source_file="res://Assets/Icosphere.glb"
-dest_files=["res://.godot/imported/Icosphere.glb-a7d539eeb26bc317a3ebf72f125d997c.scn"]
+source_file="res://Assets/vfx/Flames.glb"
+dest_files=["res://.godot/imported/Flames.glb-cda49b71a67048a378e0d6e9297efd19.scn"]
 
 [params]
 
@@ -34,19 +34,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "materials": {
-"Icosphere": {
+"Cylinder.001": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Icosphere.tres"
-}
-},
-"meshes": {
-"Icosphere_Icosphere_001": {
-"generate/lightmap_uv": 0,
-"generate/lods": 0,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"save_to_file/enabled": true,
-"save_to_file/path": "res://Assets/Icosphere_Icosphere_001.res"
+"use_external/path": "res://Assets/vfx/Cylinder.001.tres"
 }
 }
 }

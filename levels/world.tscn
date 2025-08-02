@@ -1,17 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=11 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
 [ext_resource type="PackedScene" uid="uid://cgogh6ayhlim7" path="res://actors/asteroid.tscn" id="2_tsgde"]
 [ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_w32yo"]
 
+[sub_resource type="Gradient" id="Gradient_w32yo"]
+offsets = PackedFloat32Array(0.974576, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_712nc"]
+frequency = 1.0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i8ckm"]
+width = 2048
+height = 2048
+color_ramp = SubResource("Gradient_w32yo")
+noise = SubResource("FastNoiseLite_712nc")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_712nc"]
+panorama = SubResource("NoiseTexture2D_i8ckm")
+
+[sub_resource type="Sky" id="Sky_vons5"]
+sky_material = SubResource("PanoramaSkyMaterial_712nc")
+
 [sub_resource type="Environment" id="Environment_w32yo"]
-fog_enabled = true
+background_mode = 2
+sky = SubResource("Sky_vons5")
+sky_custom_fov = 64.5
+sky_rotation = Vector3(1.5708, 0, 0)
 fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.0
 fog_sun_scatter = 0.2
 fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0302
+volumetric_fog_albedo = Color(0.510374, 0.39842, 0.523714, 1)
+volumetric_fog_ambient_inject = 0.06
 
 [node name="World" type="Node3D"]
 
@@ -43,7 +69,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2392, 0, -5.3871)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.59723, 0, -11.3883)
 
 [node name="Asteroid7" parent="Asteroids" instance=ExtResource("2_tsgde")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92535, 0, -12.0081)
+transform = Transform3D(2.915, 0, 0, 0, 2.915, 0, 0, 0, 2.915, 1.92535, 0, -12.0081)
+mass = 1000.0
 
 [node name="Asteroid8" parent="Asteroids" instance=ExtResource("2_tsgde")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.42216, 0, 11.1823)
@@ -96,6 +123,16 @@ collision_mask = 3
 environment = SubResource("Environment_w32yo")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.468557, 0.277, -0.838883, 0.109677, 0.923986, 0.366362, 0.876598, -0.263668, 0.40256, 0, 0, 0)
-light_color = Color(0.932448, 0.894994, 0.882787, 1)
+transform = Transform3D(0.793508, 0.182368, -0.580592, -0.00881344, 0.957386, 0.288677, 0.608496, -0.22395, 0.761301, 0, 0, 0)
+light_color = Color(0.834883, 0.765048, 0.929995, 1)
 light_energy = 2.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.5
+shadow_enabled = true
+
+[node name="rimLight" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.815184, 0.203001, 0.542463, 0.577692, -0.352548, -0.736194, 0.041796, 0.91351, -0.404664, 0, 0.635966, 0)
+light_color = Color(0.834883, 0.765048, 0.929995, 1)
+light_energy = 2.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
