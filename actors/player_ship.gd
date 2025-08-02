@@ -30,6 +30,8 @@ func _physics_process(delta: float) -> void:
 		var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
 		var mouse_world_position := camera.get_mouse_world_position()
 		rope_emitter.shoot_rope(mouse_world_position)
+	elif Input.is_action_just_pressed("action2"):
+		rope_emitter.retract_rope()
 	
 	#var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
 	#var mouse_world_position := camera.get_mouse_world_position()

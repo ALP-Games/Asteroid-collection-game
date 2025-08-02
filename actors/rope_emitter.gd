@@ -10,9 +10,12 @@ class_name RopeEmitter extends Node3D
 
 var current_rope_segment := 0
 
+var rope_segments: Array[RopeSegment]
 var first_segment: RopeSegment = null
 var last_segment: RopeSegment = null
 var rope_shot := false
+var connected_to_parent := false
+var retracting_rope := false
 
 var rope_target_reached := false
 
@@ -36,6 +39,13 @@ func shoot_rope(target: Vector3) -> void:
 	last_segment = rope_segment
 
 
+func retract_rope() -> void:
+	retracting_rope = true
+	if first_segment.has_method("release_target"):
+		first_segment.release_target()
+	#rope_segments
+
+
 func on_rope_target_reached() -> void:
 	rope_target_reached = true
 	first_segment.target_reached.disconnect(on_rope_target_reached)
@@ -48,29 +58,34 @@ func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
 	else:
 		new_segment = rope_segment_scene.instantiate()
 	get_tree().get_first_node_in_group("instantiated_root").add_child(new_segment)
+	rope_segments.append(new_segment)
 	new_segment.global_transform = new_transform
 	current_rope_segment += 1
 	return new_segment
 
 
 func _physics_process(delta: float) -> void:
-	_process_segment_addition()
+	if rope_shot and should_spawn_more_rope() or not connected_to_parent:
+		_process_segment_addition()
 
 
 func _process_segment_addition() -> void:
 	if not last_segment:
 		return
-	var more_rope_needed := should_spawn_more_rope()
-	while last_segment.global_position.distance_to(global_position) >= segment_spacing \
-	and more_rope_needed:
+	while last_segment.global_position.distance_to(global_position) >= segment_spacing:
 		add_segment_to_last()
 	
 	if not should_spawn_more_rope():
-		last_segment.attach(get_parent(), global_position)
+		connect_last_to_parent()
 
 
 func should_spawn_more_rope() -> bool:
 	return current_rope_segment < max_segment_count or not rope_target_reached
+
+
+func connect_last_to_parent() -> void:
+	connected_to_parent = true
+	last_segment.attach(_parent, global_position)
 
 
 func segment_exited(body: Node3D) -> void:

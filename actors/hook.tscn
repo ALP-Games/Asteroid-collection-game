@@ -56,3 +56,5 @@ transform = Transform3D(1, 0, 0, 0, -1.82768e-08, 0.418124, 0, -1, -4.37114e-08,
 
 [node name="RopeFront" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.82768e-08, 0.418124, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

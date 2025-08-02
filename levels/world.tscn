@@ -13,12 +13,6 @@ script = ExtResource("1_pmfem")
 target = NodePath("../PlayerShip")
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_2mgkc")]
-turn_acceleration = 8.0
-max_turn_speed = 3.0
-
-[node name="RopeSegment4" parent="." instance=ExtResource("4_w32yo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.94264)
-collision_mask = 3
 
 [node name="Asteroids" type="Node3D" parent="."]
 
@@ -82,6 +76,10 @@ collision_mask = 3
 [node name="PinJoint3D3" type="PinJoint3D" parent="Other"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.39776)
 node_a = NodePath("../RopeSegment3")
-node_b = NodePath("../../RopeSegment4")
+node_b = NodePath("../RopeSegment4")
+
+[node name="RopeSegment4" parent="Other" instance=ExtResource("4_w32yo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.94264)
+collision_mask = 3
 
 [node name="Instantiated" type="Node3D" parent="." groups=["instantiated_root"]]
