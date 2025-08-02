@@ -1,7 +1,7 @@
 class_name RopeEmitter extends Node3D
 
 #const MAX_TANGENTIAL_VELOCITY := 30.0
-const MAX_ROPE_STRETCH := 1.3
+const MAX_ROPE_STRETCH := 1.4
 
 #const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
 @export var first_segment_scene: PackedScene = load("res://actors/anchor.tscn")
@@ -49,6 +49,8 @@ func retract_rope() -> void:
 	if first_segment and first_segment.has_method("release_target"):
 		first_segment.release_target()
 	rope_target = null
+	for rope_segment in rope_segments:
+		rope_segment.disable_collision()
 	_accelerate_last_segment_retraction()
 
 
@@ -161,6 +163,8 @@ func _should_retract_last() -> bool:
 
 
 func _accelerate_last_segment_retraction() -> void:
+	if not last_segment:
+		return
 	var desired_direction := (global_position - last_segment.rope_end.global_position).normalized()
 	var negative_force:= -(last_segment.linear_velocity.normalized() - desired_direction) * retraction_force
 	last_segment.apply_force(desired_direction * retraction_force + negative_force, last_segment.rope_end.global_position)
