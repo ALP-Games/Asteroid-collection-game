@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=6 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
 [ext_resource type="PackedScene" uid="uid://cgogh6ayhlim7" path="res://actors/asteroid.tscn" id="2_tsgde"]
 [ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_w32yo"]
+
+[sub_resource type="Environment" id="Environment_w32yo"]
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_sun_scatter = 0.2
+fog_density = 1.0
 
 [node name="World" type="Node3D"]
 
@@ -83,3 +91,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.08685, 0, -5.94264)
 collision_mask = 3
 
 [node name="Instantiated" type="Node3D" parent="." groups=["instantiated_root"]]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w32yo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.468557, 0.277, -0.838883, 0.109677, 0.923986, 0.366362, 0.876598, -0.263668, 0.40256, 0, 0, 0)
+light_color = Color(0.932448, 0.894994, 0.882787, 1)
+light_energy = 2.0
