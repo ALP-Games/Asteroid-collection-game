@@ -21,6 +21,16 @@ config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 run/default_gravity=0.0
 
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
+
 [editor_plugins]
 
 enabled=PackedStringArray()

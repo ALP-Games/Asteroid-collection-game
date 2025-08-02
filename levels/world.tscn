@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
 [ext_resource type="PackedScene" uid="uid://cgogh6ayhlim7" path="res://actors/asteroid.tscn" id="2_tsgde"]
 [ext_resource type="PackedScene" uid="uid://dr3mcgsdsxxib" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://bwg7srbssmu0d" path="res://actors/rope_segment.tscn" id="4_w32yo"]
+[ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/main_ui.tscn" id="6_i8ckm"]
 
 [sub_resource type="Gradient" id="Gradient_w32yo"]
 offsets = PackedFloat32Array(0.974576, 1)
@@ -140,3 +141,7 @@ light_color = Color(0.834883, 0.765048, 0.929995, 1)
 light_energy = 2.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainUI" parent="CanvasLayer" instance=ExtResource("6_i8ckm")]

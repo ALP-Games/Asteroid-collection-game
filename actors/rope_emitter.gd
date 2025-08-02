@@ -38,7 +38,6 @@ func emit(target: Vector3) -> void:
 	rope_segment.linear_velocity = direction * _parent.linear_velocity.dot(direction)
 	rope_segment.apply_central_force(direction * shoot_force)
 	first_segment = rope_segment
-	first_segment.target_reached.connect(on_rope_target_reached)
 	last_segment = rope_segment
 
 
@@ -64,14 +63,6 @@ func break_rope() -> void:
 		var rope_segment := rope_segments.pop_back() as RopeSegment
 		rope_segment.queue_free()
 	emitter_done.emit()
-
-
-func on_rope_target_reached(target_object: RigidBody3D, attachment_joint: Node3D) -> void:
-	rope_target_reached = true
-	rope_target = target_object
-	target_attachment = attachment_joint
-	rope_max_length = global_position.distance_to(target_attachment.global_position)
-	first_segment.target_reached.disconnect(on_rope_target_reached)
 
 
 func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
