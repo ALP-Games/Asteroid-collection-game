@@ -16,6 +16,11 @@ var rope_shot := false
 
 var rope_target_reached := false
 
+var _parent: RigidBody3D
+
+func _ready() -> void:
+	_parent = get_parent()
+
 
 func shoot_rope(target: Vector3) -> void:
 	if rope_shot:
@@ -23,7 +28,8 @@ func shoot_rope(target: Vector3) -> void:
 	rope_shot = true
 	look_at(target)
 	var rope_segment := instantiate_new_rope_segment(global_transform)
-	var direction := Vector3.FORWARD.rotated(Vector3.UP, rope_segment.rotation.y) 
+	var direction := Vector3.FORWARD.rotated(Vector3.UP, rope_segment.rotation.y)
+	rope_segment.linear_velocity = direction * _parent.linear_velocity.dot(direction)
 	rope_segment.apply_central_force(direction * shoot_force)
 	first_segment = rope_segment
 	first_segment.target_reached.connect(on_rope_target_reached)
@@ -44,8 +50,6 @@ func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
 	get_tree().get_first_node_in_group("instantiated_root").add_child(new_segment)
 	new_segment.global_transform = new_transform
 	current_rope_segment += 1
-	if not should_spawn_more_rope():
-		new_segment.attach(get_parent(), global_position)
 	return new_segment
 
 
@@ -56,9 +60,13 @@ func _physics_process(delta: float) -> void:
 func _process_segment_addition() -> void:
 	if not last_segment:
 		return
+	var more_rope_needed := should_spawn_more_rope()
 	while last_segment.global_position.distance_to(global_position) >= segment_spacing \
-	and should_spawn_more_rope():
+	and more_rope_needed:
 		add_segment_to_last()
+	
+	if not should_spawn_more_rope():
+		last_segment.attach(get_parent(), global_position)
 
 
 func should_spawn_more_rope() -> bool:
