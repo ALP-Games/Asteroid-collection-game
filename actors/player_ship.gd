@@ -8,6 +8,8 @@ class_name PlayerShip extends RigidBody3D
 @export var max_turn_speed: float = 4.0
 
 @export var stabilization_warning_multiple: float = 2.0
+@export var destabilized_time: float = 0.25
+var destabilized_elapsed := 0.0
 
 @export var stop_linear_amount: float = 20
 @export var stop_angular_amount: float = 10
@@ -38,8 +40,14 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	(get_tree().get_first_node_in_group("stabilization_warinig") as Control).visible = \
-		angular_velocity.y >= max_turn_speed * stabilization_warning_multiple
+	if angular_velocity.y >= max_turn_speed * stabilization_warning_multiple:
+		destabilized_elapsed += delta
+		if destabilized_elapsed >= destabilized_time:
+			(get_tree().get_first_node_in_group("stabilization_warinig") as Control).visible = true
+	else:
+		if destabilized_elapsed >= destabilized_time:
+			(get_tree().get_first_node_in_group("stabilization_warinig") as Control).visible = false
+		destabilized_elapsed = 0.0
 	
 	var shop_screen: Control = get_tree().get_first_node_in_group("shop_screen")
 	

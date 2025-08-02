@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
-[ext_resource type="PackedScene" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
+[ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/main_ui.tscn" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
