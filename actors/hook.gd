@@ -14,7 +14,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var contact_position := state.get_contact_local_position(index)
 		hooked = true
 		_attach_at_point(colliding_object, contact_position)
-		target_reached.emit()
+		target_reached.emit(colliding_object, hook_joint)
 		return
 	#print("Contact count - ", contact_count)
 
@@ -26,5 +26,6 @@ func _on_child_entered_tree(node: Node) -> void:
 
 
 func release_target() -> void:
-	if hooked and hook_joint:
+	hooked = true
+	if hook_joint:
 		hook_joint.queue_free()
