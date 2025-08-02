@@ -1,6 +1,6 @@
 class_name PlayerShip extends RigidBody3D
 
-@export var max_velocity: float = 10
+@export var max_velocity: float = 15
 
 @export var thrust_acceleration: float = 20
 @export var reverse_acceleration: float = 10
@@ -10,9 +10,29 @@ class_name PlayerShip extends RigidBody3D
 @export var stop_linear_amount: float = 20
 @export var stop_angular_amount: float = 10
 
+@export var max_graphics_tilt: float = 45.0
+
+@onready var graphics: Node3D = $Graphics
 @onready var emitter_manager: EmitterManager = $EmitterManager
 
+const MAX_JET_VELOCITY := 25.0
+const JET_MIN_SCALE := 0.01
+const JET_MAX_SCALE := 1.0
+
+@onready var jet_beam: Node3D = $Graphics/JetBeam
+@onready var jet_beam_2: Node3D = $Graphics/JetBeam2
+
+
 var in_shop_range := false
+
+func _process(delta: float) -> void:
+	var turn_ratio := angular_velocity.y / max_turn_speed
+	graphics.rotation.z = deg_to_rad(max_graphics_tilt) * turn_ratio
+	
+	#var velocity_ration := linear_velocity.length() / MAX_JET_VELOCITY
+	var jet_scale := remap(linear_velocity.length(), 0, MAX_JET_VELOCITY, JET_MIN_SCALE, JET_MAX_SCALE)
+	jet_beam.scale = Vector3(jet_scale, jet_scale, jet_scale)
+	jet_beam_2.scale = Vector3(jet_scale, jet_scale, jet_scale)
 
 
 func _physics_process(delta: float) -> void:

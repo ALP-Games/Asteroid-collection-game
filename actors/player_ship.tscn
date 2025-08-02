@@ -18,15 +18,24 @@ axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 1000.0
 script = ExtResource("1_ljv35")
-max_velocity = 15.0
+max_velocity = 1000.0
 thrust_acceleration = 15.0
 reverse_acceleration = 7.5
 turn_acceleration = 8.0
 max_turn_speed = 3.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Graphics" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
 transform = Transform3D(-0.47, -7.56387e-22, 7.0968e-08, 0, 0.47, 5.00933e-15, -7.0968e-08, 5.00933e-15, -0.47, 0, 0, 0.541739)
 mesh = ExtResource("2_nyvxv")
+skeleton = NodePath("../..")
+
+[node name="JetBeam" parent="Graphics" instance=ExtResource("6_pt2uk")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.633783, 0, 1.01122)
+
+[node name="JetBeam2" parent="Graphics" instance=ExtResource("6_pt2uk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.662979, 0, 1.01122)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -35,9 +44,3 @@ shape = SubResource("CapsuleShape3D_ljv35")
 [node name="EmitterManager" type="Node3D" parent="."]
 script = ExtResource("6_3gxbi")
 emitters = Array[PackedScene]([ExtResource("3_gv0w4"), ExtResource("5_mfuwy")])
-
-[node name="JetBeam" parent="." instance=ExtResource("6_pt2uk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.633783, 0, 1.01122)
-
-[node name="JetBeam2" parent="." instance=ExtResource("6_pt2uk")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.662979, 0, 1.01122)
