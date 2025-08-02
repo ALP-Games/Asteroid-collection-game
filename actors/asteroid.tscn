@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgogh6ayhlim7"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_a26ev"]
+[ext_resource type="ArrayMesh" uid="uid://b1vi133l2ps3t" path="res://Assets/Icosphere_Icosphere_001.res" id="1_xfbri"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xfbri"]
 
@@ -11,7 +11,8 @@ axis_lock_linear_y = true
 mass = 100.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_a26ev")
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, 0)
+mesh = ExtResource("1_xfbri")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_xfbri")
