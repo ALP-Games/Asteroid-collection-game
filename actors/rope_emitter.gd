@@ -50,6 +50,7 @@ func stop_emit() -> void:
 	for rope_segment in rope_segments:
 		rope_segment.disable_collision()
 	_accelerate_last_segment_retraction()
+	emitter_stopping.emit()
 
 
 func break_rope() -> void:
@@ -88,7 +89,7 @@ func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
 func _physics_process(_delta: float) -> void:
 	if retracting_rope:
 		_process_rope_retraction()
-	elif rope_shot and (should_spawn_more_rope() or not connected_to_parent):
+	elif rope_shot and not connected_to_parent and should_spawn_more_rope():
 		_process_segment_addition()
 	
 	if rope_target:

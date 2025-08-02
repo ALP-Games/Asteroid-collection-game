@@ -1,5 +1,6 @@
 class_name Emitter extends Node3D
 
+signal emitter_stopping
 signal emitter_done
 
 var _parent: RigidBody3D
@@ -12,4 +13,5 @@ func emit(target: Vector3) -> void:
 
 
 func stop_emit() -> void:
+	emitter_stopping.emit()
 	emitter_done.emit()
