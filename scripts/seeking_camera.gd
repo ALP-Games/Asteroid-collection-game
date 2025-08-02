@@ -12,8 +12,8 @@ func _ready() -> void:
 		on_process = seek_target
 
 
-func _process(delta: float) -> void:
-	on_process.call(delta)
+func _process(_delta: float) -> void:
+	
 	if Input.is_action_just_pressed("fullscreen"):
 		var fs := DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 		if fs:
@@ -23,6 +23,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("reload"):
 		get_tree().reload_current_scene()
+
+
+func _physics_process(delta: float) -> void:
+	on_process.call(delta)
 
 
 func get_mouse_world_position() -> Vector3:

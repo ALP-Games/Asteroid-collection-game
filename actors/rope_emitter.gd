@@ -1,7 +1,7 @@
 class_name RopeEmitter extends Node3D
 
-const ROPE_STIFFNESS := 50.0
-const ROPE_DAMPING := 5.0
+#const MAX_TANGENTIAL_VELOCITY := 30.0
+const MAX_ROPE_STRETCH := 1.3
 
 #const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
 @export var first_segment_scene: PackedScene = load("res://actors/anchor.tscn")
@@ -46,10 +46,22 @@ func shoot_rope(target: Vector3) -> void:
 
 func retract_rope() -> void:
 	retracting_rope = true
-	if first_segment.has_method("release_target"):
+	if first_segment and first_segment.has_method("release_target"):
 		first_segment.release_target()
 	rope_target = null
 	_accelerate_last_segment_retraction()
+
+
+func break_rope() -> void:
+	rope_target_reached = false
+	connected_to_parent = false
+	retracting_rope = false
+	rope_shot = false
+	rope_target = null
+	
+	while rope_segments.size() > 0:
+		var rope_segment := rope_segments.pop_back() as RopeSegment
+		rope_segment.queue_free()
 
 
 func on_rope_target_reached(target_object: RigidBody3D, attachment_joint: Node3D) -> void:
@@ -72,7 +84,7 @@ func instantiate_new_rope_segment(new_transform: Transform3D) -> RopeSegment:
 	return new_segment
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if retracting_rope:
 		_process_rope_retraction()
 	elif rope_shot and (should_spawn_more_rope() or not connected_to_parent):
@@ -85,13 +97,17 @@ func _physics_process(delta: float) -> void:
 func _enforce_rope_length() -> void:
 	var current_distance := global_position.distance_to(target_attachment.global_position)
 	
+	if current_distance > MAX_ROPE_STRETCH * rope_max_length:
+		break_rope()
+		return
+	
 	if current_distance > rope_max_length:
 		var total_mass := _parent.mass + rope_target.mass
 		var parent_weight_ratio := rope_target.mass / total_mass
 		var target_weight_ratio := _parent.mass / total_mass
 		
 		var direction := (global_position - rope_target.global_position).normalized()
-		var stretch := current_distance - rope_max_length
+		#var stretch := current_distance - rope_max_length
 		
 		var relative_velocity := _parent.linear_velocity - rope_target.linear_velocity
 		var velocity_along_rope := relative_velocity.dot(direction)
@@ -103,6 +119,14 @@ func _enforce_rope_length() -> void:
 		
 		rope_target.linear_velocity += correction_velocity * target_weight_ratio 
 		_parent.linear_velocity -= correction_velocity * parent_weight_ratio
+		
+		#var tangential_direction := direction.cross(Vector3.UP).normalized()
+		##print("Tangential direction - ", tangential_direction)
+		#var tangential_velocity := tangential_direction * rope_target.linear_velocity.dot(tangential_direction)
+		#if tangential_velocity.length() > MAX_TANGENTIAL_VELOCITY:
+			#var clamped_velocity := tangential_direction * MAX_TANGENTIAL_VELOCITY
+			#rope_target.linear_velocity -= tangential_velocity - clamped_velocity
+		#print("Tangential velocity - ", tangential_velocity.length())
 
 
 func _process_segment_addition() -> void:
@@ -157,7 +181,7 @@ func connect_last_to_parent() -> void:
 	connected_to_parent = true
 	if not last_segment:
 		return
-	last_segment.attach(_parent, global_position)
+	last_segment.attach_at_point(_parent, global_position)
 
 
 func segment_exited(body: Node3D) -> void:

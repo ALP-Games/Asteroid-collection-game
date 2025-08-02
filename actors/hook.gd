@@ -13,7 +13,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var colliding_object := state.get_contact_collider_object(index)
 		var contact_position := state.get_contact_local_position(index)
 		hooked = true
-		_attach_at_point(colliding_object, contact_position)
+		attach_at_point(colliding_object, contact_position)
 		target_reached.emit(colliding_object, hook_joint)
 		return
 	#print("Contact count - ", contact_count)
