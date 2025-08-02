@@ -48,6 +48,7 @@ func retract_rope() -> void:
 	retracting_rope = true
 	if first_segment.has_method("release_target"):
 		first_segment.release_target()
+	rope_target = null
 	_accelerate_last_segment_retraction()
 
 
@@ -95,11 +96,13 @@ func _enforce_rope_length() -> void:
 		var relative_velocity := _parent.linear_velocity - rope_target.linear_velocity
 		var velocity_along_rope := relative_velocity.dot(direction)
 		
-		var force_magnitude := stretch * ROPE_STIFFNESS - velocity_along_rope * ROPE_DAMPING
-		var rope_force := direction * force_magnitude
+		if velocity_along_rope <= 0:
+			return
 		
-		rope_target.apply_central_force(rope_force * target_weight_ratio)
-		_parent.apply_central_force(-rope_force * parent_weight_ratio)
+		var correction_velocity := direction * velocity_along_rope
+		
+		rope_target.linear_velocity += correction_velocity * target_weight_ratio 
+		_parent.linear_velocity -= correction_velocity * parent_weight_ratio
 
 
 func _process_segment_addition() -> void:
