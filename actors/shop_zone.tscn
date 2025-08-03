@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bb87h4iblio7e"]
 
-[ext_resource type="Script" path="res://actors/shop_zone.gd" id="1_tlytx"]
-[ext_resource type="ArrayMesh" uid="uid://u1dcok2rm0oq" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
+[ext_resource type="Script" uid="uid://ku12f32d4f3k" path="res://actors/shop_zone.gd" id="1_tlytx"]
+[ext_resource type="ArrayMesh" uid="uid://dvaiti0k2yo4a" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uden6"]
 size = Vector3(7.93945, 1, 7.88184)
@@ -35,7 +35,6 @@ transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -0.0790353, 0.042852
 mesh = ExtResource("2_toxax")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ShopCube006"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04035, 0, 6.66848)
@@ -56,6 +55,14 @@ shape = SubResource("BoxShape3D_l0b5e")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.22845, 0, 5.97097)
 shape = SubResource("CapsuleShape3D_e1x1e")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60886, 0.234585)
+light_color = Color(0.668957, 0.896188, 3.85046e-07, 1)
+light_energy = 9.762
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 6.20894
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

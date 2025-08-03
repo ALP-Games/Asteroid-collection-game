@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=14 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/main_ui.tscn" id="6_i8ckm"]
+[ext_resource type="PackedScene" uid="uid://8c0g621o2fgi" path="res://Assets/Crystal.glb" id="7_vons5"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
 
 [sub_resource type="Gradient" id="Gradient_w32yo"]
@@ -31,6 +32,8 @@ background_mode = 2
 sky = SubResource("Sky_vons5")
 sky_custom_fov = 64.5
 sky_rotation = Vector3(1.5708, 0, 0)
+glow_enabled = true
+glow_intensity = 2.52
 fog_mode = 1
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 0.0
@@ -81,3 +84,6 @@ light_volumetric_fog_energy = 0.0
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="MainUI" parent="CanvasLayer" instance=ExtResource("6_i8ckm")]
+
+[node name="Crystal2" parent="." instance=ExtResource("7_vons5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14883, 0, 27.1563)
