@@ -1,5 +1,8 @@
 class_name UpgradeData extends RefCounted
 
+const HOOK_ICON = preload("res://Assets/Icons/HookIcon.png")
+const THRUSTER_ICON = preload("res://Assets/Icons/ThrusterIcon.png")
+
 signal upgrade_incremented(upgrade_id: UpgradeType, level: int)
 
 enum UpgradeType {
@@ -16,11 +19,16 @@ class UpgradeShopData extends RefCounted:
 		upgrade_name = _upgrade_name
 		upgrade_price = _upgrade_price
 
+var upgrade_icons: Array[Texture]
+
 var _upgrade_levels: Array[int]
 
 func _init() -> void:
 	for index in UpgradeType.UPGRADE_COUNT:
 		_upgrade_levels.append(0)
+	upgrade_icons.resize(UpgradeType.UPGRADE_COUNT)
+	upgrade_icons[UpgradeType.HOOK_COUNT] = HOOK_ICON
+	upgrade_icons[UpgradeType.ENGINE_POWER] = THRUSTER_ICON
 
 
 func increment_upgrade(type: UpgradeType) -> void:

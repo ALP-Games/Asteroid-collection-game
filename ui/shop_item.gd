@@ -1,6 +1,7 @@
 class_name ShopItem extends PanelContainer
 
-@onready var item_name: Label = $VBoxContainer/PanelContainer/ItemName
+@onready var icon: TextureRect = $VBoxContainer/NameAndIcon/Icon
+@onready var item_name: Label = $VBoxContainer/NameAndIcon/PanelContainer/ItemName
 @onready var item_price: Label = $VBoxContainer/HBoxContainer/PanelContainer/ItemPrice
 @onready var buy_button: Button = $VBoxContainer/HBoxContainer/BuyButton
 

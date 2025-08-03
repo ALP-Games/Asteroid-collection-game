@@ -20,4 +20,5 @@ func _ready() -> void:
 		new_shop_item.item_price.text = str(shop_data.upgrade_price)
 		new_shop_item.upgrade_price = shop_data.upgrade_price
 		new_shop_item.upgrade_id = index
+		new_shop_item.icon.texture = upgrade_data.upgrade_icons[index]
 	visible = false
