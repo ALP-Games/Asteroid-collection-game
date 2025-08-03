@@ -2,8 +2,15 @@ class_name FancyCamera3D extends Camera3D
 
 @export var target: Node3D = null
 
+@export var max_speed_before_zoom: float = 20
+
+@onready var default_height: float = global_position.y
+
 var on_process: Callable = process_nothing
 var ground_plane := Plane(Vector3.UP, 0.0)
+
+var previous_pos: Vector3
+var current_y_offset := 0.0
 
 
 func _ready() -> void:
@@ -43,10 +50,21 @@ func get_mouse_world_position() -> Vector3:
 		return Vector3.ZERO
 	return intersection
 
-
+@export var y_interp_speed := 10.0
 
 func seek_target(_delta: float) -> void:
 	global_position = Vector3(target.global_position.x, global_position.y, target.global_position.z)
+	
+	
+	var current_pos := Vector3(previous_pos.x, 0.0, previous_pos.z)
+	previous_pos = Vector3(global_position.x, 0.0, global_position.z)
+	var current_speed := (previous_pos - current_pos).length() / (1.0 / Engine.physics_ticks_per_second)
+	
+	var weight: float = clamp((current_speed - max_speed_before_zoom) / \
+											(100.0 - max_speed_before_zoom), 0.0, 1.0)
+	var target_y = lerp(default_height, default_height*2, weight)
+	current_y_offset = lerp(current_y_offset, target_y, _delta * y_interp_speed)
+	global_position.y = current_y_offset
 
 
 func process_nothing(_delta: float) -> void:
