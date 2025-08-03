@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b00f4bbtoewwv"]
+
+[ext_resource type="Texture2D" uid="uid://67jbv36ktuqo" path="res://Assets/Crystal_Ucupaint Icosphere.png" id="1_t6c31"]
+[ext_resource type="Texture2D" uid="uid://dwmk6hj4avc3d" path="res://Assets/Crystal_Ucupaint Icosphere_1.png" id="2_gqd38"]
+
+[resource]
+resource_name = "Crystal"
+cull_mode = 2
+albedo_texture = ExtResource("1_t6c31")
+metallic_texture = ExtResource("2_gqd38")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_gqd38")
+roughness_texture_channel = 1
