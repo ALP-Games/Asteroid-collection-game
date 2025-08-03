@@ -111,6 +111,10 @@ func _physics_process(delta: float) -> void:
 		var force_to_apply := (desired_direction * reverse_force) + negative_force
 		apply_central_force(force_to_apply)
 	
+	var linear_stop := stop_input
+	if not thrust_input and not reverse_input:
+		linear_stop = true
+	
 	if rotation_input:
 		# Maybe body direct state should be retrieved only once
 		var inverse_inertia :=  PhysicsServer3D.body_get_direct_state(get_rid()).inverse_inertia
@@ -123,10 +127,11 @@ func _physics_process(delta: float) -> void:
 			reverse_angular_acceleration = clamp(reverse_angular_acceleration, -turn_acceleration, turn_acceleration)
 			apply_torque(Vector3.UP * reverse_angular_acceleration / inverse_inertia.y)
 	
-	if stop_input:
+	if linear_stop:
 		var negative_acceleration := -linear_velocity.normalized() * stop_linear_amount
 		apply_central_force(mass * negative_acceleration)
 		
+	if stop_input:
 		var inverse_inertia = PhysicsServer3D.body_get_direct_state(get_rid()).inverse_inertia
 		var reverse_angular_acceleration := -angular_velocity.y / delta as float
 		reverse_angular_acceleration = clamp(reverse_angular_acceleration, -stop_angular_amount, stop_angular_amount)
