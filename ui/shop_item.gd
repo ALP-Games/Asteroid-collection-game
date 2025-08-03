@@ -23,6 +23,9 @@ func _try_buy_upgrade() -> void:
 		upgrade_data.increment_upgrade(upgrade_id)
 		
 		var shop_data := upgrade_data.get_shop_data(upgrade_id)
+		if shop_data == null:
+			queue_free()
+			return
 		upgrade_price = shop_data.upgrade_price
 		
 		item_name.text = shop_data.upgrade_name

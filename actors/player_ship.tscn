@@ -19,8 +19,8 @@ axis_lock_angular_z = true
 mass = 1000.0
 script = ExtResource("1_ljv35")
 max_velocity = 1000.0
-thrust_acceleration = 15.0
-reverse_acceleration = 7.5
+starting_acceleration = 15.0
+starting_reverse_acceleration = 7.5
 turn_acceleration = 8.0
 max_turn_speed = 3.0
 

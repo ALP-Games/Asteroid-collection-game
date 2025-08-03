@@ -3,7 +3,9 @@ class_name UpgradeData extends RefCounted
 signal upgrade_incremented(upgrade_id: UpgradeType, level: int)
 
 enum UpgradeType {
+	UNDEFINED = -1,
 	HOOK_COUNT,
+	ENGINE_POWER,
 	UPGRADE_COUNT
 }
 
@@ -27,9 +29,11 @@ func increment_upgrade(type: UpgradeType) -> void:
 
 # if 0, upgrade does not exist and should not be displayed
 func get_shop_data(type: UpgradeType) -> UpgradeShopData:
+	if type == UpgradeType.UNDEFINED:
+		return
+	var current_level := _upgrade_levels[type]
 	match type:
 		UpgradeType.HOOK_COUNT:
-			var current_level := _upgrade_levels[UpgradeType.HOOK_COUNT]
 			match current_level:
 				0:
 					return UpgradeShopData.new(&"More hooks", 100)
@@ -41,4 +45,12 @@ func get_shop_data(type: UpgradeType) -> UpgradeShopData:
 					return UpgradeShopData.new(&"More hooks", 10000)
 				4:
 					return UpgradeShopData.new(&"More hooks (last one)", 20000)
+		UpgradeType.ENGINE_POWER:
+			match current_level:
+				0:
+					return UpgradeShopData.new(&"Engine power", 200)
+				1:
+					return UpgradeShopData.new(&"More Engine power", 400)
+				2:
+					return UpgradeShopData.new(&"Most Engine power", 1000)
 	return null

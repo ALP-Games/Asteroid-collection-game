@@ -2,10 +2,14 @@ class_name PlayerShip extends RigidBody3D
 
 @export var max_velocity: float = 30
 
-@export var thrust_acceleration: float = 20
-@export var reverse_acceleration: float = 10
+@export var starting_acceleration: float = 20
+@export var starting_reverse_acceleration: float = 10
 @export var turn_acceleration: float = 10.0
 @export var max_turn_speed: float = 4.0
+
+@onready var starting_mass: float = mass
+@onready var thrust_force: float = starting_acceleration * starting_mass
+@onready var reverse_force: float = starting_reverse_acceleration * starting_mass
 
 @export var stabilization_warning_multiple: float = 2.0
 @export var destabilized_time: float = 0.25
@@ -28,6 +32,26 @@ const JET_MAX_SCALE := 1.0
 
 
 var in_shop_range := false
+
+
+func _ready() -> void:
+	GameManager.upgrade_data.upgrade_incremented.connect(_thrusters_upgraded)
+
+
+func _thrusters_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
+	if upgrade_id != UpgradeData.UpgradeType.ENGINE_POWER:
+		return
+	match upgrade_level:
+		0:
+			thrust_force = starting_mass * starting_acceleration
+			reverse_force = starting_mass * starting_reverse_acceleration
+		1:
+			thrust_force = starting_mass * 25.0
+			reverse_force = starting_mass * 10.0
+		2:
+			thrust_force = starting_mass * 30.0
+			reverse_force = starting_mass * 15.0
+
 
 func _process(delta: float) -> void:
 	var turn_ratio := angular_velocity.y / max_turn_speed
@@ -74,18 +98,17 @@ func _physics_process(delta: float) -> void:
 	#rope_prototype.look_at(mouse_world_position)
 	
 	if thrust_input:
-		var acceleration_deficit := (max_velocity - linear_velocity.length()) / delta
+		var force_deficit := (max_velocity - linear_velocity.length()) / delta * mass
 		
 		var desired_direction := Vector3.FORWARD.rotated(Vector3.UP, rotation.y) 
-		var negative_acceleration := -(linear_velocity.normalized() - desired_direction) * thrust_acceleration as Vector3
-		var force_to_apply := (desired_direction * clampf(acceleration_deficit, 0, thrust_acceleration) \
-			* mass) + (negative_acceleration * mass)
+		var negative_force := -(linear_velocity.normalized() - desired_direction) * thrust_force as Vector3
+		var force_to_apply := (desired_direction * clampf(force_deficit, 0, thrust_force)) + negative_force
 		apply_central_force(force_to_apply)
 	
 	if reverse_input:
 		var desired_direction := Vector3.BACK.rotated(Vector3.UP, rotation.y)
-		var negative_acceleration := -(linear_velocity.normalized() - desired_direction) * reverse_acceleration as Vector3
-		var force_to_apply := (desired_direction * reverse_acceleration * mass) + (negative_acceleration * mass)
+		var negative_force := -(linear_velocity.normalized() - desired_direction) * reverse_force as Vector3
+		var force_to_apply := (desired_direction * reverse_force) + negative_force
 		apply_central_force(force_to_apply)
 	
 	if rotation_input:
