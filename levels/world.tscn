@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
-[ext_resource type="PackedScene" uid="uid://be5mn1fxx1nf7" path="res://actors/camera_3d.tscn" id="2_vons5"]
+[ext_resource type="PackedScene" path="res://actors/camera_3d.tscn" id="2_vons5"]
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/main_ui.tscn" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://8c0g621o2fgi" path="res://Assets/Crystal.glb" id="7_vons5"]
@@ -32,6 +32,9 @@ background_mode = 2
 sky = SubResource("Sky_vons5")
 sky_custom_fov = 64.5
 sky_rotation = Vector3(1.5708, 0, 0)
+tonemap_mode = 3
+tonemap_exposure = 1.78
+tonemap_white = 3.13
 glow_enabled = true
 glow_intensity = 2.52
 fog_mode = 1
@@ -51,6 +54,8 @@ volumetric_fog_ambient_inject = 0.06
 [node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_vons5")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.3203, 0)
 target = NodePath("../PlayerShip")
+max_speed_before_zoom = 8.0
+max_zoom_multiplier = 3.0
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_2mgkc")]
 
@@ -70,15 +75,14 @@ transform = Transform3D(0.793508, 0.182368, -0.580592, -0.00881344, 0.957386, 0.
 light_color = Color(0.834883, 0.765048, 0.929995, 1)
 light_energy = 2.0
 light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.5
 shadow_enabled = true
 
 [node name="rimLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.815184, 0.203001, 0.542463, 0.577692, -0.352548, -0.736194, 0.041796, 0.91351, -0.404664, 0, 0.635966, 0)
 light_color = Color(0.834883, 0.765048, 0.929995, 1)
-light_energy = 2.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_specular = 1.476
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
