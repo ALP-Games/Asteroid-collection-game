@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
-[ext_resource type="Script" uid="uid://bqpnrlncru7ab" path="res://scripts/seeking_camera.gd" id="1_pmfem"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
+[ext_resource type="PackedScene" uid="uid://be5mn1fxx1nf7" path="res://actors/camera_3d.tscn" id="2_vons5"]
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/main_ui.tscn" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://8c0g621o2fgi" path="res://Assets/Crystal.glb" id="7_vons5"]
@@ -48,9 +48,8 @@ volumetric_fog_ambient_inject = 0.06
 
 [node name="AsteroidSpawner" parent="." instance=ExtResource("1_vons5")]
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+[node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_vons5")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.3203, 0)
-script = ExtResource("1_pmfem")
 target = NodePath("../PlayerShip")
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_2mgkc")]
