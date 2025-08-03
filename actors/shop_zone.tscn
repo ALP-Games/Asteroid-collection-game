@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bb87h4iblio7e"]
+[gd_scene load_steps=11 format=3 uid="uid://bb87h4iblio7e"]
 
 [ext_resource type="Script" uid="uid://ku12f32d4f3k" path="res://actors/shop_zone.gd" id="1_tlytx"]
 [ext_resource type="ArrayMesh" uid="uid://dvaiti0k2yo4a" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
+[ext_resource type="Texture2D" uid="uid://bqgp4mys5etv8" path="res://Assets/Icons/Eicon.png" id="3_e1x1e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uden6"]
 size = Vector3(7.93945, 1, 7.88184)
@@ -20,6 +21,15 @@ size = Vector3(1.08976, 6.91626, 8.7915)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0b5e"]
 size = Vector3(18.856, 8.27155, 4.65637)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rbfe"]
+transparency = 1
+albedo_texture = ExtResource("3_e1x1e")
+emission_enabled = true
+emission_texture = ExtResource("3_e1x1e")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7who5"]
+material = SubResource("StandardMaterial3D_7rbfe")
 
 [node name="ShopZone" type="Node3D"]
 script = ExtResource("1_tlytx")
@@ -63,6 +73,10 @@ light_energy = 9.762
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 6.20894
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168901, -4.11428, 0)
+mesh = SubResource("PlaneMesh_7who5")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

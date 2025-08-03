@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://l7qemi88vfeu"]
+
+[ext_resource type="Texture2D" uid="uid://n47r0xdxa18b" path="res://Assets/BillBoard_Ucupaint Base Color.png" id="1_gnjgj"]
+[ext_resource type="Texture2D" uid="uid://16oja76gmn3n" path="res://Assets/BillBoard_Ucupaint Base.png" id="2_dxevy"]
+[ext_resource type="Texture2D" uid="uid://c2lsn8wqykt5n" path="res://Assets/BillBoard_Ucupaint Base Roughness.png" id="3_kgvur"]
+
+[resource]
+resource_name = "BillBord"
+cull_mode = 2
+albedo_texture = ExtResource("1_gnjgj")
+metallic_texture = ExtResource("3_kgvur")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_kgvur")
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color(0.871129, 0.692889, 0.290713, 1)
+emission_energy_multiplier = 4.76
+emission_operator = 1
+emission_texture = ExtResource("2_dxevy")
