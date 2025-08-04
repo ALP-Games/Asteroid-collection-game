@@ -48,6 +48,8 @@ instantiated=""
 instantiated_root="where instantiated objects should end up"
 shop_screen=""
 stabilization_warinig=""
+collector=""
+player=""
 
 [input]
 

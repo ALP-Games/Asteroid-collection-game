@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwg7srbssmu0d"]
 
 [ext_resource type="Script" uid="uid://piyisi5o6pl3" path="res://actors/rope_segment.gd" id="1_sx3as"]
-[ext_resource type="ArrayMesh" uid="uid://dwn283snhxapw" path="res://Assets/Chain_Plane.res" id="2_83gqw"]
+[ext_resource type="ArrayMesh" uid="uid://cjl3tx4a3ak75" path="res://Assets/Chain_Plane.res" id="2_83gqw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx3as"]
 radius = 0.0695017

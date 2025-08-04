@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1kfy0mbnfej"]
+[gd_scene load_steps=5 format=3 uid="uid://b1kfy0mbnfej"]
 
-[ext_resource type="Script" uid="uid://bxdxj6711e52i" path="res://ui/main_ui.gd" id="1_v5qxn"]
-[ext_resource type="PackedScene" uid="uid://cs1vmfcrtxu06" path="res://ui/shop_screen.tscn" id="2_3lvfr"]
-[ext_resource type="PackedScene" uid="uid://dkdcvcgs2jgi1" path="res://ui/stabilization_warning.tscn" id="2_hlo7n"]
+[ext_resource type="Script" uid="uid://bxdxj6711e52i" path="res://ui/gameplay_ui/gameplay_ui.gd" id="1_v5qxn"]
+[ext_resource type="PackedScene" uid="uid://cs1vmfcrtxu06" path="res://ui/gameplay_ui/shop_screen.tscn" id="2_3lvfr"]
+[ext_resource type="PackedScene" uid="uid://dkdcvcgs2jgi1" path="res://ui/gameplay_ui/stabilization_warning.tscn" id="2_hlo7n"]
+[ext_resource type="PackedScene" uid="uid://x3e2x8oxiu8b" path="res://ui/gameplay_ui/pointer_ui.tscn" id="4_n5c7t"]
 
-[node name="MainUI" type="Control"]
+[node name="GameplayUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,3 +41,6 @@ layout_mode = 2
 [node name="ShopScreen" parent="LayoutsContainer" instance=ExtResource("2_3lvfr")]
 visible = false
 layout_mode = 2
+
+[node name="PointerUI" parent="." instance=ExtResource("4_n5c7t")]
+layout_mode = 1

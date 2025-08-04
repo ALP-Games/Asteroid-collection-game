@@ -1,6 +1,6 @@
 class_name ShopScreen extends Control
 
-const SHOP_ITEM = preload("res://ui/shop_item.tscn")
+const SHOP_ITEM = preload("res://ui/gameplay_ui/shop_item.tscn")
 
 @onready var shop_items: VBoxContainer = $HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems
 

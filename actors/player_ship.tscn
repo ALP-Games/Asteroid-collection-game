@@ -11,7 +11,7 @@
 radius = 0.783509
 height = 3.11878
 
-[node name="PlayerShip" type="RigidBody3D"]
+[node name="PlayerShip" type="RigidBody3D" groups=["player"]]
 collision_mask = 3
 axis_lock_linear_y = true
 axis_lock_angular_x = true
