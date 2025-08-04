@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=16 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
-[ext_resource type="PackedScene" uid="uid://be5mn1fxx1nf7" path="res://actors/camera_3d.tscn" id="2_vons5"]
+[ext_resource type="PackedScene" path="res://actors/camera_3d.tscn" id="2_vons5"]
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/gameplay_ui/gameplay_ui.tscn" id="6_i8ckm"]
 [ext_resource type="PackedScene" uid="uid://8c0g621o2fgi" path="res://Assets/Crystal.glb" id="7_vons5"]
 [ext_resource type="PackedScene" uid="uid://bnc1rcs2iewo1" path="res://Assets/bill_board_2.tscn" id="8_687qm"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
+[ext_resource type="ArrayMesh" uid="uid://3q7ejm0tf0ip" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
 
 [sub_resource type="Gradient" id="Gradient_w32yo"]
 offsets = PackedFloat32Array(0.974576, 1)
@@ -94,3 +95,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14883, 0, 27.1563)
 
 [node name="BillBoard2" parent="." instance=ExtResource("8_687qm")]
 transform = Transform3D(0.74825, 0.331709, -0.574536, 0, 0.866025, 0.5, 0.663417, -0.374125, 0.648003, 7.6673, 0, -7.42499)
+
+[node name="LightPad" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275543, -3.15398, -0.454553)
+
+[node name="LightPadCube004" type="MeshInstance3D" parent="LightPad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+mesh = ExtResource("9_687qm")
+skeleton = NodePath("../..")
+
+[node name="LightPadCube005" type="MeshInstance3D" parent="LightPad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = ExtResource("9_687qm")
+skeleton = NodePath("../..")
+
+[node name="LightPadCube006" type="MeshInstance3D" parent="LightPad"]
+mesh = ExtResource("9_687qm")
+skeleton = NodePath("../..")
+
+[node name="LightPadCube007" type="MeshInstance3D" parent="LightPad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33)
+mesh = ExtResource("9_687qm")
+skeleton = NodePath("../..")
+
+[node name="LightPadCube008" type="MeshInstance3D" parent="LightPad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29)
+mesh = ExtResource("9_687qm")
+skeleton = NodePath("../..")
+
+[node name="LightPadCube009" type="MeshInstance3D" parent="LightPad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+mesh = ExtResource("9_687qm")
+skeleton = NodePath("../..")
