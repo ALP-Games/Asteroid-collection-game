@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dao76jaqautgm"
-path.s3tc="res://.godot/imported/BaseArmeture_Ucupaint Base Color.png-86b5c69d9ab80de0fedad525847bd357.s3tc.ctex"
+uid="uid://cemersjoraynh"
+path.s3tc="res://.godot/imported/Chain_Ucupaint Plane Roughness.png-46ed62b616a3ec9552d55e08fcc3470f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "bc21be99a500b9a208deaf67de28cf15"
+"md5": "41f6034a0b286bd897a8e04dccd929ff"
 }
 
 [deps]
 
-source_file="res://Assets/BaseArmeture_Ucupaint Base Color.png"
-dest_files=["res://.godot/imported/BaseArmeture_Ucupaint Base Color.png-86b5c69d9ab80de0fedad525847bd357.s3tc.ctex"]
+source_file="res://Assets/Chain_Ucupaint Plane Roughness.png"
+dest_files=["res://.godot/imported/Chain_Ucupaint Plane Roughness.png-46ed62b616a3ec9552d55e08fcc3470f.s3tc.ctex"]
 
 [params]
 

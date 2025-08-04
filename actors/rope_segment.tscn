@@ -1,9 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwg7srbssmu0d"]
 
 [ext_resource type="Script" uid="uid://piyisi5o6pl3" path="res://actors/rope_segment.gd" id="1_sx3as"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_m1a7w"]
-size = Vector3(0.05, 0.05, 1)
+[ext_resource type="ArrayMesh" uid="uid://dwn283snhxapw" path="res://Assets/Chain_Plane.res" id="2_83gqw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx3as"]
 radius = 0.0695017
@@ -20,7 +18,8 @@ angular_damp = 1.0
 script = ExtResource("1_sx3as")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_m1a7w")
+transform = Transform3D(-6.83582e-09, -0.771877, -0.681987, -3.37398e-08, 0.681987, -0.771877, 1.03, 1.72172e-08, -2.98106e-08, 0, 0, -0.577365)
+mesh = ExtResource("2_83gqw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
