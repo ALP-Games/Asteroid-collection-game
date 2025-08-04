@@ -10,7 +10,6 @@ class_name FancyCamera3D extends Camera3D
 @onready var default_height: float = global_position.y
 
 var on_process: Callable = process_nothing
-var ground_plane := Plane(Vector3.UP, 0.0)
 
 var previous_pos: Vector3
 var current_y_offset := 0.0
