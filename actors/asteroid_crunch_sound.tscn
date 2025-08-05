@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg13rdf4pic7k"]
+
+[ext_resource type="AudioStream" uid="uid://bqltukh57ygg4" path="res://Sounds/Rock_Crunch.ogg" id="1_1bxt6"]
+
+[node name="AsteroidCrunchSound" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_1bxt6")
+autoplay = true

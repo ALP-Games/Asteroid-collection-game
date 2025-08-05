@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://4c2khnoeaogh"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cs8kwjaq1xphk"]
 
 [ext_resource type="Texture2D" uid="uid://rvipd5x6egdo" path="res://Assets/vfx/Pebble_Ucupaint Icosphere.png" id="1_cm8yo"]
 [ext_resource type="Texture2D" uid="uid://cfld7trcqrwss" path="res://Assets/vfx/Pebble_Ucupaint Icosphere_1.png" id="2_2rfd0"]

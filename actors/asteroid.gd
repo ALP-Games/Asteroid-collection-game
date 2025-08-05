@@ -1,6 +1,7 @@
 class_name Asteroid extends RigidBody3D
 
 const ROCK_EXPLOSION = preload("res://Assets/vfx/RockExplosion.tscn")
+const ASTEROID_CRUNCH_SOUND = preload("res://actors/asteroid_crunch_sound.tscn")
 
 const DEFAULT_SCALE := 1
 
@@ -44,4 +45,9 @@ func destroy_asteroid() -> void:
 	var particles := destroy_effect.get_child(0) as GPUParticles3D
 	particles.emitting = true
 	particles.finished.connect(func():destroy_effect.queue_free())
+	
+	var destroy_sound := ASTEROID_CRUNCH_SOUND.instantiate() as AudioStreamPlayer3D
+	get_tree().get_first_node_in_group("instantiated_root").add_child(destroy_sound)
+	destroy_sound.global_position = global_position
+	destroy_sound.finished.connect(func():destroy_sound.queue_free())
 	queue_free()

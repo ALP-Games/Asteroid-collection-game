@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7jm3ayseb7lk"]
+[gd_scene load_steps=8 format=3 uid="uid://b7jm3ayseb7lk"]
 
-[ext_resource type="Material" path="res://Assets/vfx/Icosphere.001.tres" id="1_88jco"]
+[ext_resource type="Material" uid="uid://cs8kwjaq1xphk" path="res://Assets/vfx/Icosphere.001.tres" id="1_88jco"]
 [ext_resource type="ArrayMesh" uid="uid://de0buda2q3add" path="res://Assets/vfx/Pebble_Icosphere_002.res" id="2_tes3g"]
-[ext_resource type="AudioStream" uid="uid://bqltukh57ygg4" path="res://Sounds/Rock_Crunch.ogg" id="3_tes3g"]
 
 [sub_resource type="Curve" id="Curve_b2wf7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.823529, 0.662921), -1.30171, -1.30171, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -51,7 +50,3 @@ lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_i1fyu")
 draw_pass_1 = ExtResource("2_tes3g")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("3_tes3g")
-autoplay = true
