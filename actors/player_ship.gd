@@ -33,6 +33,7 @@ const JET_MAX_SCALE := 1.0
 @onready var jet_beam: Node3D = $Graphics/JetBeam
 @onready var jet_beam_2: Node3D = $Graphics/JetBeam2
 @onready var jet_effect: AudioStreamPlayer3D = $JetEffect
+@onready var sound_default_volume: float = jet_effect.volume_db
 
 
 var in_shop_range := false
@@ -48,7 +49,7 @@ func _play_jet_effect(play: bool) -> void:
 			sound_fade_out_tween.kill()
 		elif not jet_effect.playing and not jet_effect.stream_paused:
 			jet_effect.play()
-		jet_effect.volume_db = 0.0
+		jet_effect.volume_db = sound_default_volume
 		jet_effect.stream_paused = false
 	else:
 		if jet_effect.playing and not jet_effect.stream_paused:
