@@ -20,6 +20,9 @@ var destabilized_elapsed := 0.0
 
 @export var max_graphics_tilt: float = 45.0
 
+@export var jet_sound_fade_out_duration: float = 0.2
+var sound_fade_out_tween: Tween = create_tween()
+
 @onready var graphics: Node3D = $Graphics
 @onready var emitter_manager: EmitterManager = $EmitterManager
 
@@ -29,6 +32,7 @@ const JET_MAX_SCALE := 1.0
 
 @onready var jet_beam: Node3D = $Graphics/JetBeam
 @onready var jet_beam_2: Node3D = $Graphics/JetBeam2
+@onready var jet_effect: AudioStreamPlayer3D = $JetEffect
 
 
 var in_shop_range := false
@@ -36,6 +40,27 @@ var in_shop_range := false
 
 func _ready() -> void:
 	GameManager.upgrade_data.upgrade_incremented.connect(_thrusters_upgraded)
+
+
+func _play_jet_effect(play: bool) -> void:
+	if play:
+		if sound_fade_out_tween.is_valid():
+			sound_fade_out_tween.kill()
+		elif not jet_effect.playing and not jet_effect.stream_paused:
+			jet_effect.play()
+		jet_effect.volume_db = 0.0
+		jet_effect.stream_paused = false
+	else:
+		if jet_effect.playing and not jet_effect.stream_paused:
+			fade_out_sfx()
+
+
+func fade_out_sfx() -> void:
+	if sound_fade_out_tween.is_valid():
+		return
+	sound_fade_out_tween = create_tween()
+	sound_fade_out_tween.tween_property(jet_effect, "volume_db", -80.0, jet_sound_fade_out_duration)
+	sound_fade_out_tween.tween_callback(func():jet_effect.stream_paused = true)
 
 
 func _thrusters_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
@@ -64,7 +89,7 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if angular_velocity.y >= max_turn_speed * stabilization_warning_multiple:
+	if abs(angular_velocity.y) >= max_turn_speed * stabilization_warning_multiple:
 		destabilized_elapsed += delta
 		if destabilized_elapsed >= destabilized_time:
 			(get_tree().get_first_node_in_group("stabilization_warinig") as Control).visible = true
@@ -85,6 +110,9 @@ func _physics_process(delta: float) -> void:
 	var reverse_input := Input.is_action_pressed("reverse")
 	var stop_input := Input.is_action_pressed("stop")
 	var rotation_input := Input.get_axis("rot_left", "rot_right")
+	
+	var movement_input_held := thrust_input or reverse_input or stop_input or not is_zero_approx(rotation_input)
+	_play_jet_effect(movement_input_held)
 	
 	if Input.is_action_just_pressed("action"):
 		var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
@@ -136,4 +164,5 @@ func _physics_process(delta: float) -> void:
 		var reverse_angular_acceleration := -angular_velocity.y / delta as float
 		reverse_angular_acceleration = clamp(reverse_angular_acceleration, -stop_angular_amount, stop_angular_amount)
 		apply_torque(Vector3.UP * reverse_angular_acceleration / inverse_inertia)
+	print("Angular velocity - ", angular_velocity)
 	
