@@ -21,7 +21,7 @@ var destabilized_elapsed := 0.0
 @export var max_graphics_tilt: float = 45.0
 
 @export var jet_sound_fade_out_duration: float = 0.2
-var sound_fade_out_tween: Tween = create_tween()
+var sound_fade_out_tween: Tween
 
 @onready var graphics: Node3D = $Graphics
 @onready var emitter_manager: EmitterManager = $EmitterManager
@@ -45,7 +45,7 @@ func _ready() -> void:
 
 func _play_jet_effect(play: bool) -> void:
 	if play:
-		if sound_fade_out_tween.is_valid():
+		if sound_fade_out_tween and sound_fade_out_tween.is_valid():
 			sound_fade_out_tween.kill()
 		elif not jet_effect.playing and not jet_effect.stream_paused:
 			jet_effect.play()
@@ -57,7 +57,7 @@ func _play_jet_effect(play: bool) -> void:
 
 
 func fade_out_sfx() -> void:
-	if sound_fade_out_tween.is_valid():
+	if sound_fade_out_tween and sound_fade_out_tween.is_valid():
 		return
 	sound_fade_out_tween = create_tween()
 	sound_fade_out_tween.tween_property(jet_effect, "volume_db", -80.0, jet_sound_fade_out_duration)
