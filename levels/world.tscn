@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
-[ext_resource type="PackedScene" path="res://actors/camera_3d.tscn" id="2_vons5"]
+[ext_resource type="PackedScene" uid="uid://be5mn1fxx1nf7" path="res://actors/camera_3d.tscn" id="2_vons5"]
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
-[ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/gameplay_ui/gameplay_ui.tscn" id="6_i8ckm"]
+[ext_resource type="PackedScene" uid="uid://f071xxnfd48x" path="res://ui/ui_controller.tscn" id="6_687qm"]
 [ext_resource type="PackedScene" uid="uid://8c0g621o2fgi" path="res://Assets/Crystal.glb" id="7_vons5"]
 [ext_resource type="PackedScene" uid="uid://bnc1rcs2iewo1" path="res://Assets/bill_board_2.tscn" id="8_687qm"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
-[ext_resource type="ArrayMesh" uid="uid://3q7ejm0tf0ip" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
+[ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
 
 [sub_resource type="Gradient" id="Gradient_w32yo"]
 offsets = PackedFloat32Array(0.974576, 1)
@@ -88,7 +88,7 @@ light_specular = 1.476
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MainUI" parent="CanvasLayer" instance=ExtResource("6_i8ckm")]
+[node name="UIController" parent="CanvasLayer" instance=ExtResource("6_687qm")]
 
 [node name="Crystal2" parent="." instance=ExtResource("7_vons5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14883, 0, 27.1563)

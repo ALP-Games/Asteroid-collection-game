@@ -1,5 +1,7 @@
 class_name Asteroid extends RigidBody3D
 
+const ROCK_EXPLOSION = preload("res://Assets/vfx/RockExplosion.tscn")
+
 const DEFAULT_SCALE := 1
 
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
@@ -33,3 +35,13 @@ func set_mass_with_scale(new_scale: float) -> void:
 
 func get_asteroid_value() -> int:
 	return mass * weight_value_multiplier
+
+
+func destroy_asteroid() -> void:
+	var destroy_effect := ROCK_EXPLOSION.instantiate()
+	get_tree().get_first_node_in_group("instantiated_root").add_child(destroy_effect)
+	destroy_effect.global_position = global_position
+	var particles := destroy_effect.get_child(0) as GPUParticles3D
+	particles.emitting = true
+	particles.finished.connect(func():destroy_effect.queue_free())
+	queue_free()
