@@ -14,10 +14,16 @@ var credist_amount: int = 0:
 
 
 func _init() -> void:
-	initialize()
+	_initialize()
 
 
-func initialize() -> void:
+func _initialize() -> void:
 	credist_amount = 0
 	upgrade_data = UpgradeData.new()
 	current_asteroid_count = 0
+
+
+func reload() -> void:
+	get_tree().paused = false
+	_initialize()
+	get_tree().reload_current_scene()
