@@ -23,15 +23,18 @@ func _check_victory(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> 
 	if upgrade_id != UpgradeData.UpgradeType.DEBT:
 		return
 	if upgrade_level == 5:
-		get_tree().change_scene_to_packed(VICTORY_LEVEL)
-		
+		var instantiated_root := get_tree().get_first_node_in_group("instantiated_root")
+		var timer_instance := Timer.new()
+		instantiated_root.add_child(timer_instance)
+		timer_instance.start(0.5)
+		timer_instance.timeout.connect(func():get_tree().change_scene_to_packed(VICTORY_LEVEL))
 
 func _init() -> void:
 	_initialize()
 
 
 func _initialize() -> void:
-	credist_amount = 15000
+	credist_amount = 0
 	upgrade_data = UpgradeData.new()
 	current_asteroid_count = 0
 
