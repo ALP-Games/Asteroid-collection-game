@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://duvgvbdmebdsa" path="res://actors/anchor_rope_emitter.tscn" id="5_mfuwy"]
 [ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
 [ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://Assets/vfx/JetBeam.tscn" id="6_pt2uk"]
-[ext_resource type="AudioStream" uid="uid://xxdkq8bd241g" path="res://Sounds/jet-engine.ogg" id="7_pt2uk"]
+[ext_resource type="AudioStream" uid="uid://xxdkq8bd241g" path="res://sounds/jet-engine.ogg" id="7_pt2uk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljv35"]
 radius = 0.783509

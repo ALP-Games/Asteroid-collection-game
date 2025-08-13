@@ -18,7 +18,7 @@ func _init() -> void:
 
 
 func _initialize() -> void:
-	credist_amount = 0
+	credist_amount = 10000
 	upgrade_data = UpgradeData.new()
 	current_asteroid_count = 0
 
