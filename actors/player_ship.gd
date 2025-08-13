@@ -1,39 +1,50 @@
 class_name PlayerShip extends RigidBody3D
 
+const MAX_JET_VELOCITY := 25.0
+const JET_MIN_SCALE := 0.01
+const JET_MAX_SCALE := 1.0
+
 @export var max_velocity: float = 30
 
+@export_group("Movement")
 @export var starting_acceleration: float = 20
 @export var starting_reverse_acceleration: float = 10
 @export var turn_acceleration: float = 10.0
 @export var max_turn_speed: float = 4.0
 
-@onready var starting_mass: float = mass
-@onready var thrust_force: float = starting_acceleration * starting_mass
-@onready var reverse_force: float = starting_reverse_acceleration * starting_mass
+@export var stop_linear_amount: float = 20
+@export var stop_angular_amount: float = 10
 
+@export_group("Collisions")
+@export var min_collision_force_for_sound: float = 2000
+@export var collision_sounds: Array[AudioStream]
+@export var collision_sound_curve: Curve
+
+@export_group("Stabilization Warning")
 @export var stabilization_warning_multiple: float = 2.0
 @export var destabilized_time: float = 0.25
 var destabilized_elapsed := 0.0
 
-@export var stop_linear_amount: float = 20
-@export var stop_angular_amount: float = 10
-
+@export_group("Misc")
 @export var max_graphics_tilt: float = 45.0
 
 @export var jet_sound_fade_out_duration: float = 0.2
 var sound_fade_out_tween: Tween
 
+@onready var starting_mass: float = mass
+@onready var thrust_force: float = starting_acceleration * starting_mass
+@onready var reverse_force: float = starting_reverse_acceleration * starting_mass
+
 @onready var graphics: Node3D = $Graphics
 @onready var emitter_manager: EmitterManager = $EmitterManager
-
-const MAX_JET_VELOCITY := 25.0
-const JET_MIN_SCALE := 0.01
-const JET_MAX_SCALE := 1.0
 
 @onready var jet_beam: Node3D = $Graphics/JetBeam
 @onready var jet_beam_2: Node3D = $Graphics/JetBeam2
 @onready var jet_effect: AudioStreamPlayer3D = $JetEffect
 @onready var sound_default_volume: float = jet_effect.volume_db
+
+@onready var collision_sounds_player: AudioStreamPlayer3D = $CollisionSoundsPlayer
+@onready var collision_default_volume: float = collision_sounds_player.volume_db
 
 
 var in_shop_range := false
@@ -41,6 +52,36 @@ var in_shop_range := false
 
 func _ready() -> void:
 	GameManager.upgrade_data.upgrade_incremented.connect(_thrusters_upgraded)
+
+
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	var contact_count := state.get_contact_count()
+	for contact_id in contact_count:
+		#state.get_velocity_at_local_position()
+		var vel_self := state.get_contact_local_velocity_at_position(contact_id)
+		var vel_other := state.get_contact_collider_velocity_at_position(contact_id)
+		var vel_relative := vel_self - vel_other
+		var normal := state.get_contact_local_normal(contact_id)
+		var speed_relative := vel_relative.dot(normal)
+		var other := state.get_contact_collider_object(contact_id)
+		var reduced_mass: float
+		if other is RigidBody3D:
+			var other_mass: float = other.mass
+			reduced_mass = (mass * other_mass) / (mass + other_mass)
+		else:
+			reduced_mass = mass
+		#print("Reduced mass - ", reduced_mass)
+		var impulse_magnitude: float = abs(speed_relative) * reduced_mass
+		if impulse_magnitude >= min_collision_force_for_sound:
+			var difference := impulse_magnitude / min_collision_force_for_sound
+			var volume_multiplier := collision_sound_curve.sample(difference) + 1
+			print("Difference - ", difference, "; Sampled curve value - ", volume_multiplier, ";")
+			#print("Impuls magnitude - ", impulse_magnitude)
+			var chosen_sound := randi_range(0, collision_sounds.size() - 1)
+			collision_sounds_player.stream = collision_sounds[chosen_sound]
+			collision_sounds_player.volume_db = collision_default_volume * volume_multiplier
+			#print("Chosen sound index - ", chosen_sound)
+			collision_sounds_player.play()
 
 
 func _play_jet_effect(play: bool) -> void:

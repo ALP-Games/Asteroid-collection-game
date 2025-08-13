@@ -1,11 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=12 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="PackedScene" uid="uid://ddw1ejtyob1w0" path="res://actors/actor_graphics/player_graphics.tscn" id="2_3gxbi"]
+[ext_resource type="AudioStream" uid="uid://dg780oghxkwf1" path="res://sounds/thud_02.ogg" id="3_ehe0o"]
 [ext_resource type="PackedScene" uid="uid://p6u1dun8q8br" path="res://actors/hook_rope_emitter.tscn" id="3_gv0w4"]
+[ext_resource type="AudioStream" uid="uid://cmc5t70kbtyto" path="res://sounds/thud_03.ogg" id="4_g5e8g"]
+[ext_resource type="AudioStream" uid="uid://w1y76ua0v7kf" path="res://sounds/thud_04.ogg" id="5_5tjow"]
 [ext_resource type="PackedScene" uid="uid://duvgvbdmebdsa" path="res://actors/anchor_rope_emitter.tscn" id="5_mfuwy"]
 [ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
 [ext_resource type="AudioStream" uid="uid://xxdkq8bd241g" path="res://sounds/jet-engine.ogg" id="7_pt2uk"]
+
+[sub_resource type="Curve" id="Curve_4lo07"]
+_limits = [0.0, 5.0, 1.0, 5.0]
+_data = [Vector2(1, 0), 0.0, 0.0, 0, 0, Vector2(5, 5), 4.3931, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljv35"]
 radius = 0.783509
@@ -17,12 +25,16 @@ axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 1000.0
+contact_monitor = true
+max_contacts_reported = 6
 script = ExtResource("1_ljv35")
 max_velocity = 1000.0
 starting_acceleration = 15.0
 starting_reverse_acceleration = 7.5
 turn_acceleration = 8.0
 max_turn_speed = 3.0
+collision_sounds = Array[AudioStream]([ExtResource("3_ehe0o"), ExtResource("4_g5e8g"), ExtResource("5_5tjow")])
+collision_sound_curve = SubResource("Curve_4lo07")
 
 [node name="Graphics" parent="." instance=ExtResource("2_3gxbi")]
 
@@ -37,3 +49,6 @@ emitters = Array[PackedScene]([ExtResource("3_gv0w4"), ExtResource("5_mfuwy")])
 [node name="JetEffect" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_pt2uk")
 volume_db = -5.0
+
+[node name="CollisionSoundsPlayer" type="AudioStreamPlayer3D" parent="."]
+volume_db = 2.0

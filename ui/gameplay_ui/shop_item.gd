@@ -19,6 +19,10 @@ func _ready() -> void:
 	buy_button.pressed.connect(_try_buy_upgrade)
 
 
+func _exit_tree() -> void:
+	GameManager.credits_amount_changed.disconnect(_on_credits_amount_changed)
+
+
 func _on_credits_amount_changed(_new_amount: int) -> void:
 	_check_has_enough()
 
@@ -29,6 +33,9 @@ func _try_buy_upgrade() -> void:
 		GameManager.credist_amount -= upgrade_price
 		var upgrade_data := GameManager.upgrade_data
 		upgrade_data.increment_upgrade(upgrade_id)
+		
+		if not is_inside_tree():
+			return
 		
 		var shop_data := upgrade_data.get_shop_data(upgrade_id)
 		if shop_data == null:
