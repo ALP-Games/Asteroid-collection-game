@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://btphdgvvmu41w"]
+
+[sub_resource type="Gradient" id="Gradient_w32yo"]
+offsets = PackedFloat32Array(0.974576, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_712nc"]
+frequency = 1.0
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i8ckm"]
+width = 2048
+height = 2048
+color_ramp = SubResource("Gradient_w32yo")
+noise = SubResource("FastNoiseLite_712nc")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_712nc"]
+panorama = SubResource("NoiseTexture2D_i8ckm")
+
+[sub_resource type="Sky" id="Sky_vons5"]
+sky_material = SubResource("PanoramaSkyMaterial_712nc")
+
+[sub_resource type="Environment" id="Environment_w32yo"]
+background_mode = 2
+sky = SubResource("Sky_vons5")
+sky_custom_fov = 64.5
+sky_rotation = Vector3(1.5708, 0, 0)
+tonemap_mode = 3
+tonemap_exposure = 1.78
+tonemap_white = 3.13
+glow_enabled = true
+glow_intensity = 2.52
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 0.0
+fog_sun_scatter = 0.2
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0302
+volumetric_fog_albedo = Color(0.510374, 0.39842, 0.523714, 1)
+volumetric_fog_ambient_inject = 0.06
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_w32yo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.793508, 0.182368, -0.580592, -0.00881344, 0.957386, 0.288677, 0.608496, -0.22395, 0.761301, 0, 0, 0)
+light_color = Color(0.834883, 0.765048, 0.929995, 1)
+light_energy = 2.0
+light_indirect_energy = 0.0
+shadow_enabled = true
+
+[node name="rimLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.815184, 0.203001, 0.542463, 0.577692, -0.352548, -0.736194, 0.041796, 0.91351, -0.404664, 0, 0.635966, 0)
+light_color = Color(0.834883, 0.765048, 0.929995, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 1.476

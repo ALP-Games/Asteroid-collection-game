@@ -14,8 +14,8 @@ node_connections = [&"output", 0, &"Animation"]
 [node name="BaseArmeture2" instance=ExtResource("1_rekec")]
 
 [node name="Skeleton3D" parent="BaseArmeture" index="0"]
-bones/0/rotation = Quaternion(0.931409, 0, 0, 0.363975)
-bones/1/rotation = Quaternion(0.246572, 0, 0, 0.969124)
+bones/0/rotation = Quaternion(0.966394, 0, 0, 0.257064)
+bones/1/rotation = Quaternion(0.136168, 0, 0, 0.990686)
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationPlayer" index="0"]
 root_node = NodePath("../..")

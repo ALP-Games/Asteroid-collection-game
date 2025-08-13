@@ -165,5 +165,5 @@ func _physics_process(delta: float) -> void:
 		var reverse_angular_acceleration := -angular_velocity.y / delta as float
 		reverse_angular_acceleration = clamp(reverse_angular_acceleration, -stop_angular_amount, stop_angular_amount)
 		apply_torque(Vector3.UP * reverse_angular_acceleration / inverse_inertia)
-	print("Angular velocity - ", angular_velocity)
+	#print("Angular velocity - ", angular_velocity)
 	
