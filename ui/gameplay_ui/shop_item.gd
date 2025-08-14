@@ -16,6 +16,7 @@ var upgrade_id: UpgradeData.UpgradeType
 # upgrade is some kind of data that can be looked up and we can change some kind of player related number
 func _ready() -> void:
 	GameManager.credits_amount_changed.connect(_on_credits_amount_changed)
+	buy_button.button_down.connect(func():click_sound_player.play())
 	buy_button.pressed.connect(_try_buy_upgrade)
 
 
@@ -29,7 +30,6 @@ func _on_credits_amount_changed(_new_amount: int) -> void:
 
 func _try_buy_upgrade() -> void:
 	if GameManager.credist_amount >= upgrade_price:
-		click_sound_player.play()
 		GameManager.credist_amount -= upgrade_price
 		var upgrade_data := GameManager.upgrade_data
 		upgrade_data.increment_upgrade(upgrade_id)

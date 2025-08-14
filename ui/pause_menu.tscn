@@ -87,6 +87,9 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Game by: Andrej Lapin and Paulius Pilelis"
 
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_button_down"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonRestart" to="." method="_on_button_restart_button_down"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonRestart" to="." method="_on_button_restart_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_button_down"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

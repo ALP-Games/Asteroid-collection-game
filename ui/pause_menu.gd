@@ -14,16 +14,25 @@ func _play_click_sound() -> void:
 
 
 func _on_button_resume_pressed() -> void:
-	_play_click_sound()
 	visible = false
 	get_tree().paused = false
 
 
 func _on_button_restart_pressed() -> void:
-	_play_click_sound()
 	GameManager.reload()
 
 
 func _on_button_quit_pressed() -> void:
-	_play_click_sound()
 	get_tree().quit()
+
+
+func _on_button_resume_button_down() -> void:
+	_play_click_sound()
+
+
+func _on_button_restart_button_down() -> void:
+	_play_click_sound()
+
+
+func _on_button_quit_button_down() -> void:
+	_play_click_sound()
