@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://uex2forrpmxx"]
+
+[sub_resource type="Gradient" id="Gradient_oy1se"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gbqnl"]
+gradient = SubResource("Gradient_oy1se")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gbqnl"]
+direction = Vector3(0, 0, -1)
+spread = 23.313
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_max = 1.0
+color_ramp = SubResource("GradientTexture1D_gbqnl")
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.046
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jf83g"]
+transparency = 1
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.887884, 0.634808, 1)
+emission_energy_multiplier = 4.01
+
+[sub_resource type="QuadMesh" id="QuadMesh_nirxt"]
+material = SubResource("StandardMaterial3D_jf83g")
+size = Vector2(0.05, 0.05)
+orientation = 1
+
+[node name="JetBeam" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 30
+lifetime = 0.5
+speed_scale = 1.5
+process_material = SubResource("ParticleProcessMaterial_gbqnl")
+draw_pass_1 = SubResource("QuadMesh_nirxt")
