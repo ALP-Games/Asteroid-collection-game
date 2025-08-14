@@ -1,4 +1,4 @@
-class_name FancyCamera3D extends Camera3D
+class_name FancyCameraArmature extends Node3D
 
 @export var target: Node3D = null
 
@@ -10,6 +10,8 @@ class_name FancyCamera3D extends Camera3D
 
 @export_group("First Linear Zoom")
 @export var first_linear_zoom_time: float = 2.0
+
+@onready var camera_3d: Camera3D = $Camera3D
 
 @onready var y_interp_speed_current := y_interp_speed
 
@@ -26,10 +28,10 @@ func _ready() -> void:
 	if target:
 		physics_process_funcs.append(seek_target)
 	if GameManager.first_start:
-		global_position.y = 0.0
-		physics_process_funcs.append(linear_height_change)
-	else:
-		physics_process_funcs.append(lerp_height)
+		camera_3d.position.z = -default_height
+		current_y_offset = default_height
+		physics_process_funcs.append(linear_camera_pan)
+	physics_process_funcs.append(lerp_height)
 	#set_physics_process(target != null)
 	
 	#if GameManager.first_start:
@@ -60,7 +62,7 @@ func _physics_process(delta: float) -> void:
 
 func get_mouse_world_position() -> Vector3:
 	var mouse_position := get_viewport().get_mouse_position()
-	return project_position(mouse_position, position.y)
+	return camera_3d.project_position(mouse_position, position.y)
 
 
 func seek_target(_delta: float) -> void:
@@ -79,12 +81,14 @@ func lerp_height(delta: float) -> void:
 	global_position.y = current_y_offset
 
 
-func linear_height_change(delta: float) -> void:
-	var progress := (global_position.y / (default_height - 0))
+func linear_camera_pan(delta: float) -> void:
+	var progress := (default_height + camera_3d.position.z) / default_height
 	var change_per_tick := delta / first_linear_zoom_time
-	global_position.y = lerp(0.0, default_height, progress + change_per_tick)
+	camera_3d.position.z = lerp(-default_height, 0.0, progress + change_per_tick)
 	
-	if global_position.y >= default_height:
+	if camera_3d.position.z >= 0.0:
+		camera_3d.position.z = 0.0
 		#global_position.y = default_height
-		current_y_offset = global_position.y
-		physics_process_funcs[physics_process_funcs.find(linear_height_change)] = lerp_height
+		#current_y_offset = global_position.y
+		#physics_process_funcs[physics_process_funcs.find(linear_camera_pan)] = lerp_height
+		physics_process_funcs.erase(linear_camera_pan)

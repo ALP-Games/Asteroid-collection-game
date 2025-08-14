@@ -157,7 +157,7 @@ func _physics_process(delta: float) -> void:
 	_play_jet_effect(movement_input_held)
 	
 	if Input.is_action_just_pressed("action"):
-		var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
+		var camera := get_tree().get_first_node_in_group("camera") as FancyCameraArmature
 		var mouse_world_position := camera.get_mouse_world_position()
 		emitter_manager.emit(mouse_world_position)
 	elif Input.is_action_just_pressed("action2"):
