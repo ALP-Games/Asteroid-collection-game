@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bnc1rcs2iewo1" path="res://Assets/bill_board_2.tscn" id="8_687qm"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
+[ext_resource type="Texture2D" uid="uid://2sx7e81fofnl" path="res://Assets/Icons/ui_logo.png" id="11_re8x6"]
 
 [node name="World" type="Node3D"]
 
@@ -33,7 +34,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1573, 0, 19.318)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UIController" parent="CanvasLayer" instance=ExtResource("6_687qm")]
+[node name="UIController" parent="CanvasLayer" node_paths=PackedStringArray("title_card_position_node") instance=ExtResource("6_687qm")]
+title_card_position_node = NodePath("../../TitlePosition")
 
 [node name="Crystal2" parent="." instance=ExtResource("7_vons5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14883, 0, 27.1563)
@@ -72,3 +74,17 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(6.07678, 0, 0, 0, 6.07678, 0, 0, 0, 6.07678, 1.49356, -15.0411, -6.82433)
+visible = false
+cast_shadow = 0
+gi_mode = 0
+pixel_size = 0.02
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = ExtResource("11_re8x6")
+
+[node name="TitlePosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -13.19)

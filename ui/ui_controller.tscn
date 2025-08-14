@@ -19,27 +19,18 @@ script = ExtResource("1_l5mj7")
 layout_mode = 1
 mouse_filter = 2
 
-[node name="PauseMenu" parent="." instance=ExtResource("3_6vchm")]
-layout_mode = 1
-
-[node name="Title UI" type="Control" parent="."]
+[node name="TitleCard" type="TextureRect" parent="."]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="Title UI"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -256.0
-offset_top = 101.3
+offset_top = 45.335
 offset_right = 256.0
-offset_bottom = 244.3
+offset_bottom = 188.335
 grow_horizontal = 2
 texture = ExtResource("4_owo3d")
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_6vchm")]
+layout_mode = 1

@@ -7,5 +7,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 script = ExtResource("1_gl86m")
 max_speed_before_zoom = 8.0
 max_zoom_multiplier = 3.0
+first_linear_zoom_time = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
