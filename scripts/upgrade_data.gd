@@ -85,7 +85,7 @@ func get_shop_data(type: UpgradeType) -> UpgradeShopData:
 				3:
 					return UpgradeShopData.new(&"Corporate debt pay 3/4", 3000).set_buy_text(&"Pay")
 				4:
-					return UpgradeShopData.new(&"Corporate debt pay 4/5", 6000).set_buy_text(&"Pay")
+					return UpgradeShopData.new(&"And one last one payment ;P 4/5", 6000).set_buy_text(&"Pay")
 				5:
 					return UpgradeShopData.new(&"DEBT PAID!", -1).set_buy_text(&"Pay")
 	return null
