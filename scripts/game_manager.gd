@@ -5,6 +5,8 @@ const VICTORY_LEVEL = preload("res://levels/victory_level.tscn")
 const UPPER_ASTEROID_COUNT := 100
 var current_asteroid_count := 0
 
+var first_start: bool = true
+
 signal credits_amount_changed(new_amount: int)
 
 var upgrade_data: UpgradeData = null
@@ -17,6 +19,10 @@ var credist_amount: int = 0:
 
 func _ready() -> void:
 	upgrade_data.upgrade_incremented.connect(_check_victory)
+	call_deferred("_reset_first_start")
+
+func _reset_first_start() -> void:
+	first_start = false
 
 
 func _check_victory(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
