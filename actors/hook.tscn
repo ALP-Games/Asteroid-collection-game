@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cel7gr1l4orx3"]
 
 [ext_resource type="Script" uid="uid://54oykr40l7ln" path="res://actors/hook.gd" id="1_p38s4"]
-[ext_resource type="ArrayMesh" uid="uid://rrpkab3kv68j" path="res://Assets/Hook_Cylinder_002.res" id="2_b33q5"]
+[ext_resource type="ArrayMesh" uid="uid://cd1bhk2nponvg" path="res://Assets/Hook_Cylinder_002.res" id="2_b33q5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b33q5"]
 size = Vector3(0.45, 0.45, 0.45)
@@ -18,7 +18,7 @@ max_contacts_reported = 4
 script = ExtResource("1_p38s4")
 
 [node name="Graphics" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0513561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.247709)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Graphics"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.174098)
@@ -28,7 +28,7 @@ mesh = ExtResource("2_b33q5")
 shape = SubResource("BoxShape3D_b33q5")
 
 [node name="RopeEnd" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1.82768e-08, 0.418124, 0, -1, -4.37114e-08, 0, 0, 0.221603)
+transform = Transform3D(1, 0, 0, 0, -1.82768e-08, 0.418124, 0, -1, -4.37114e-08, 0, 0, 0.511117)
 
 [node name="RopeFront" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -1.82768e-08, 0.418124, 0, -1, -4.37114e-08, 0, 0, 0)
