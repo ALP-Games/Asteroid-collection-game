@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=12 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="PackedScene" uid="uid://ddw1ejtyob1w0" path="res://actors/actor_graphics/player_graphics.tscn" id="2_3gxbi"]
@@ -9,9 +9,14 @@
 [ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
 [ext_resource type="AudioStream" uid="uid://xxdkq8bd241g" path="res://sounds/jet-engine.ogg" id="7_pt2uk"]
 
+[sub_resource type="Curve" id="Curve_5wmuu"]
+_limits = [0.2, 1.0, 1.0, 6.0]
+_data = [Vector2(1, 0.2), 0.0, 0.0532321, 0, 0, Vector2(6, 1), 0.552401, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Curve" id="Curve_4lo07"]
-_limits = [0.0, 5.0, 1.0, 5.0]
-_data = [Vector2(1, 0), 0.0, 0.0, 0, 0, Vector2(5, 5), 4.3931, 0.0, 0, 0]
+_limits = [1.0, 6.0, 1.0, 5.0]
+_data = [Vector2(1, 1), 0.0, 0.0, 0, 0, Vector2(5, 6), 4.3931, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ljv35"]
@@ -32,6 +37,7 @@ starting_acceleration = 15.0
 starting_reverse_acceleration = 7.5
 turn_acceleration = 8.0
 max_turn_speed = 3.0
+collision_stun_time_curve = SubResource("Curve_5wmuu")
 collision_sounds = Array[AudioStream]([ExtResource("3_ehe0o"), ExtResource("4_g5e8g")])
 collision_sound_curve = SubResource("Curve_4lo07")
 

@@ -16,6 +16,10 @@ const JET_MAX_SCALE := 1.0
 @export var stop_angular_amount: float = 10
 
 @export_group("Collisions")
+@export_subgroup("Stun")
+@export var min_collision_force_for_stun: float = 4000
+@export var collision_stun_time_curve: Curve
+@export_subgroup("Sound")
 @export var min_collision_force_for_sound: float = 2000
 @export var collision_sounds: Array[AudioStream]
 @export var collision_sound_curve: Curve
@@ -46,7 +50,7 @@ var sound_fade_out_tween: Tween
 @onready var collision_sounds_player: AudioStreamPlayer3D = $CollisionSoundsPlayer
 @onready var collision_default_volume: float = collision_sounds_player.volume_db
 
-
+var player_stunned := false
 var in_shop_range := false
 
 
@@ -72,16 +76,29 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			reduced_mass = mass
 		#print("Reduced mass - ", reduced_mass)
 		var impulse_magnitude: float = abs(speed_relative) * reduced_mass
-		if impulse_magnitude >= min_collision_force_for_sound:
-			var difference := impulse_magnitude / min_collision_force_for_sound
-			var volume_multiplier := collision_sound_curve.sample(difference) + 1
-			print("Difference - ", difference, "; Sampled curve value - ", volume_multiplier, ";")
-			#print("Impuls magnitude - ", impulse_magnitude)
-			var chosen_sound := randi_range(0, collision_sounds.size() - 1)
-			collision_sounds_player.stream = collision_sounds[chosen_sound]
-			collision_sounds_player.volume_db = collision_default_volume * volume_multiplier
-			#print("Chosen sound index - ", chosen_sound)
-			collision_sounds_player.play()
+		_stun_player_on_collision(impulse_magnitude)
+		_play_collision_sound(impulse_magnitude)
+
+
+func _stun_player_on_collision(impulse_magnitude: float) -> void:
+	if impulse_magnitude >= min_collision_force_for_stun:
+		player_stunned = true
+		var difference := impulse_magnitude / min_collision_force_for_stun
+		var stun_duration := collision_stun_time_curve.sample(difference)
+		get_tree().create_timer(stun_duration).timeout.connect(func():
+			player_stunned = false
+			)
+		(get_tree().get_first_node_in_group("collision_warning") as CollisionWarning).set_timer_and_show(stun_duration)
+
+
+func _play_collision_sound(impulse_magnitude: float) -> void:
+	if impulse_magnitude >= min_collision_force_for_sound:
+		var difference := impulse_magnitude / min_collision_force_for_sound
+		var volume_multiplier := collision_sound_curve.sample(difference)
+		var chosen_sound := randi_range(0, collision_sounds.size() - 1)
+		collision_sounds_player.stream = collision_sounds[chosen_sound]
+		collision_sounds_player.volume_db = collision_default_volume * volume_multiplier
+		collision_sounds_player.play()
 
 
 func _play_jet_effect(play: bool) -> void:
@@ -134,10 +151,10 @@ func _physics_process(delta: float) -> void:
 	if abs(angular_velocity.y) >= max_turn_speed * stabilization_warning_multiple:
 		destabilized_elapsed += delta
 		if destabilized_elapsed >= destabilized_time:
-			(get_tree().get_first_node_in_group("stabilization_warinig") as Control).visible = true
+			(get_tree().get_first_node_in_group("stabilization_warinig") as WarningBox).show_warning()
 	else:
 		if destabilized_elapsed >= destabilized_time:
-			(get_tree().get_first_node_in_group("stabilization_warinig") as Control).visible = false
+			(get_tree().get_first_node_in_group("stabilization_warinig") as WarningBox).hide_warning()
 		destabilized_elapsed = 0.0
 	
 	var shop_screen: Control = get_tree().get_first_node_in_group("shop_screen")
@@ -148,10 +165,16 @@ func _physics_process(delta: float) -> void:
 	if shop_screen.visible:
 		return
 	
-	var thrust_input := Input.is_action_pressed("thrust")
-	var reverse_input := Input.is_action_pressed("reverse")
-	var stop_input := Input.is_action_pressed("stop")
-	var rotation_input := Input.get_axis("rot_left", "rot_right")
+	var thrust_input: bool = false
+	var reverse_input: bool = false
+	var stop_input: bool = false
+	var rotation_input: float = 0.0
+	
+	if not player_stunned:
+		thrust_input = Input.is_action_pressed("thrust")
+		reverse_input = Input.is_action_pressed("reverse")
+		stop_input = Input.is_action_pressed("stop")
+		rotation_input = Input.get_axis("rot_left", "rot_right")
 	
 	var movement_input_held := thrust_input or reverse_input or stop_input or not is_zero_approx(rotation_input)
 	_play_jet_effect(movement_input_held)
