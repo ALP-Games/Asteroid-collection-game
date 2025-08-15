@@ -43,7 +43,7 @@ func increment_upgrade(type: UpgradeType) -> void:
 	_upgrade_levels[type] += 1
 	upgrade_incremented.emit(type, _upgrade_levels[type])
 
-# TODO: can move this into arrays
+# TODO: can move this into arrays, or even better to have it in resource
 # if 0, upgrade does not exist and should not be displayed
 func get_shop_data(type: UpgradeType) -> UpgradeShopData:
 	if type == UpgradeType.UNDEFINED:

@@ -9,8 +9,17 @@ var index: int = 0
 
 var stopping_emitters := false
 
+# this variable produces a lot of coupled code
+var hook_ui: HookUI
+
 func _ready() -> void:
+	hook_ui = get_tree().get_first_node_in_group("hook_ui")
+	call_deferred("_update_hook_ui")
 	GameManager.upgrade_data.upgrade_incremented.connect(_hooks_upgraded)
+
+
+func _update_hook_ui() -> void:
+	hook_ui.set_hook_count(instanced_emitters.size(), max_emitter_amount)
 
 
 func _hooks_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
@@ -27,6 +36,7 @@ func _hooks_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) ->
 			max_emitter_amount = 4
 		4:
 			max_emitter_amount = 5
+	_update_hook_ui()
 
 
 func emit(target: Vector3) -> void:
@@ -39,6 +49,7 @@ func emit(target: Vector3) -> void:
 	emitter_isntance.emitter_stopping.connect(remove_from_instantiated.bind(emitter_isntance), CONNECT_ONE_SHOT)
 	emitter_isntance.emitter_done.connect(de_init_emitter.bind(emitter_isntance), CONNECT_ONE_SHOT)
 	instanced_emitters.append(emitter_isntance)
+	_update_hook_ui()
 
 
 func stop_emit() -> void:
@@ -47,14 +58,14 @@ func stop_emit() -> void:
 		emitter.stop_emit()
 	instanced_emitters.clear()
 	stopping_emitters = false
+	_update_hook_ui()
 
 
 func remove_from_instantiated(emitter: Emitter) -> void:
 	if stopping_emitters:
 		return
-	var pos_in_array := instanced_emitters.find(emitter)
-	if pos_in_array != -1:
-		instanced_emitters.remove_at(pos_in_array)
+	instanced_emitters.erase(emitter)
+	_update_hook_ui()
 
 
 func de_init_emitter(emitter: Emitter) -> void:

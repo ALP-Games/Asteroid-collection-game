@@ -50,6 +50,7 @@ shop_screen=""
 stabilization_warinig=""
 collector=""
 player=""
+hook_ui=""
 
 [input]
 
