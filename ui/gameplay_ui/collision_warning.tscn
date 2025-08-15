@@ -44,7 +44,6 @@ _data = {
 }
 
 [node name="CollisionWarning" type="VBoxContainer" groups=["collision_warning"]]
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -55,7 +54,7 @@ script = ExtResource("1_g2gj0")
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.9
+size_flags_stretch_ratio = 1.01
 text = "WARING! COLLISION!"
 label_settings = SubResource("LabelSettings_3lvfr")
 horizontal_alignment = 1

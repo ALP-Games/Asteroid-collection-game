@@ -51,9 +51,9 @@ size_flags_vertical = 3
 
 [node name="CollisionWarning" parent="LayoutsContainer/MainEstate/WarningParent" instance=ExtResource("2_ht2um")]
 layout_mode = 1
+anchors_preset = 15
 
 [node name="StabilizationWarning" parent="LayoutsContainer/MainEstate/WarningParent" instance=ExtResource("2_hlo7n")]
-visible = false
 layout_mode = 1
 
 [node name="ShopScreen" parent="LayoutsContainer/MainEstate" instance=ExtResource("2_3lvfr")]
