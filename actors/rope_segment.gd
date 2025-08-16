@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			var pitch_scale := sound_pitch_curve.sample(velocity_average)
 			var offset_amount := pitch_scale * pitch_random_offset
 			var randomized_pitch := randf_range(pitch_scale - offset_amount, pitch_scale + offset_amount)
-			_play_sound(true, false, randomized_pitch, -5)
+			_play_sound(true, false, randomized_pitch, -7)
 
 
 func disable_collision() -> void:

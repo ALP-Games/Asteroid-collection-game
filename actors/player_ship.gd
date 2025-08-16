@@ -23,6 +23,9 @@ const JET_MAX_SCALE := 1.0
 @export var min_collision_force_for_sound: float = 2000
 @export var collision_sounds: Array[AudioStream]
 @export var collision_sound_curve: Curve
+# But maybe pitch variation should come from force or something
+# small collision = very high pitched sound
+@export var collision_pitch_variation := 0.07
 
 @export_group("Stabilization Warning")
 @export var stabilization_warning_multiple: float = 2.0
@@ -98,6 +101,7 @@ func _play_collision_sound(impulse_magnitude: float) -> void:
 		var chosen_sound := randi_range(0, collision_sounds.size() - 1)
 		collision_sounds_player.stream = collision_sounds[chosen_sound]
 		collision_sounds_player.volume_db = collision_default_volume * volume_multiplier
+		collision_sounds_player.pitch_scale = randf_range(1 - collision_pitch_variation, 1 + collision_pitch_variation)
 		collision_sounds_player.play()
 
 
