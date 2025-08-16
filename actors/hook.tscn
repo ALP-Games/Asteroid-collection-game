@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://54oykr40l7ln" path="res://actors/hook.gd" id="1_p38s4"]
 [ext_resource type="ArrayMesh" uid="uid://cd1bhk2nponvg" path="res://Assets/Hook_Cylinder_002.res" id="2_b33q5"]
-[ext_resource type="AudioStream" uid="uid://dix88u4l5frud" path="res://sounds/hook-snap.ogg" id="3_l63lw"]
+[ext_resource type="AudioStream" uid="uid://b64eyin0hh30y" path="res://sounds/hook/dropping_rocks.ogg" id="3_l63lw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b33q5"]
 size = Vector3(0.45, 0.45, 0.45)

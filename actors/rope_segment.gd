@@ -5,7 +5,7 @@ signal target_reached(target: RigidBody3D, attachment_joint: Node3D)
 #const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
 
 @export var sounds: Array[AudioStreamOggVorbis]
-@export var move_amount_to_sound: float = 5.0
+@export var move_amount_to_sound: float = 7.0
 @export var sound_pitch_curve: Curve
 var pitch_random_offset: float = 0.03
 var move_amount_buffer: float = 0
