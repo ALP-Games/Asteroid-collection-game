@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_v5qxn")
 
 [node name="LayoutsContainer" type="VBoxContainer" parent="."]
@@ -40,6 +41,7 @@ text = "1000"
 [node name="MainEstate" type="Control" parent="LayoutsContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="WarningParent" type="Control" parent="LayoutsContainer/MainEstate"]
 layout_mode = 1
@@ -49,6 +51,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="CollisionWarning" parent="LayoutsContainer/MainEstate/WarningParent" instance=ExtResource("2_ht2um")]
 layout_mode = 1
@@ -61,6 +64,7 @@ layout_mode = 1
 [node name="ShopScreen" parent="LayoutsContainer/MainEstate" instance=ExtResource("2_3lvfr")]
 visible = false
 layout_mode = 1
+mouse_filter = 1
 
 [node name="ExpandBottom" type="Control" parent="LayoutsContainer"]
 layout_mode = 2

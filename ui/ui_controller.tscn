@@ -30,6 +30,7 @@ offset_top = 45.335
 offset_right = 256.0
 offset_bottom = 188.335
 grow_horizontal = 2
+mouse_filter = 2
 texture = ExtResource("4_owo3d")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_6vchm")]

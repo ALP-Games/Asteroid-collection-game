@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwg7srbssmu0d"]
+[gd_scene load_steps=10 format=3 uid="uid://bwg7srbssmu0d"]
 
 [ext_resource type="Script" uid="uid://piyisi5o6pl3" path="res://actors/rope_segment.gd" id="1_sx3as"]
 [ext_resource type="ArrayMesh" uid="uid://cjl3tx4a3ak75" path="res://Assets/Chain_Plane.res" id="2_83gqw"]
+[ext_resource type="AudioStream" uid="uid://05mi5rhucq8u" path="res://sounds/chain/metal-chain-01.ogg" id="2_lonr8"]
+[ext_resource type="AudioStream" uid="uid://cqr434qjv0uo5" path="res://sounds/chain/metal-chain-02.ogg" id="3_y7ter"]
+[ext_resource type="AudioStream" uid="uid://bk2y830fklysr" path="res://sounds/chain/metal-chain-03.ogg" id="4_52pqg"]
+[ext_resource type="AudioStream" uid="uid://cvsdr303juvaf" path="res://sounds/chain/metal-chain-04.ogg" id="5_iwq4d"]
+[ext_resource type="AudioStream" uid="uid://ctnmd6r5gxywx" path="res://sounds/chain/metal-chain-05.ogg" id="6_soals"]
+
+[sub_resource type="Curve" id="Curve_lonr8"]
+_limits = [0.7, 2.0, 0.0, 70.0]
+_data = [Vector2(0, 0.7), 0.0, 0.029358, 0, 1, Vector2(10.2058, 0.999622), 0.029358, 0.0194339, 1, 0, Vector2(22.693, 1.12586), 0.00552948, 0.00552948, 0, 0, Vector2(50.789, 2), 0.0968977, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sx3as"]
 radius = 0.0695017
@@ -16,6 +26,8 @@ axis_lock_angular_z = true
 linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_sx3as")
+sounds = Array[AudioStreamOggVorbis]([ExtResource("2_lonr8"), ExtResource("3_y7ter"), ExtResource("4_52pqg"), ExtResource("5_iwq4d"), ExtResource("6_soals")])
+sound_pitch_curve = SubResource("Curve_lonr8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.23918e-08, -0.251737, -1.06567, -2.87393e-08, 1.06567, -0.251737, 1.095, 1.82238e-08, -4.78634e-08, 0, 0, -0.387667)

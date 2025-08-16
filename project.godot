@@ -51,6 +51,7 @@ stabilization_warinig=""
 collector=""
 player=""
 hook_ui=""
+rope_sound=""
 
 [input]
 

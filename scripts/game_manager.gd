@@ -2,6 +2,8 @@ extends Node
 
 const VICTORY_LEVEL = preload("res://levels/victory_level.tscn")
 
+const MAX_PLAYING_ROPE_SOUNDS := 5
+
 const UPPER_ASTEROID_COUNT := 100
 var current_asteroid_count := 0
 
@@ -15,6 +17,14 @@ var credist_amount: int = 0:
 	set(value):
 		credist_amount = value
 		credits_amount_changed.emit(credist_amount)
+
+
+func call_deferred_callable(callable: Callable) -> void:
+	call_deferred("_run_callable", callable)
+
+
+func _run_callable(callable: Callable) -> void:
+	callable.call()
 
 
 func _ready() -> void:

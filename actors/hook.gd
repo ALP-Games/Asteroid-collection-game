@@ -21,7 +21,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 func _on_child_entered_tree(node: Node) -> void:
 	if hooked and node is PinJoint3D:
-		print("Hook success")
 		hook_joint = node
 
 
