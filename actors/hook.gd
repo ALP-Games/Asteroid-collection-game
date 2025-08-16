@@ -2,7 +2,11 @@ class_name Hook extends RopeSegment
 
 var hooked := false
 
-var hook_joint: PinJoint3D = null 
+var hook_joint: PinJoint3D = null
+
+@export var pitch_variation := 0.07
+@onready var hook_sound: AudioStreamPlayer3D = $HookSound
+
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if hooked:
@@ -15,6 +19,8 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		hooked = true
 		attach_at_point(colliding_object, contact_position)
 		target_reached.emit(colliding_object, hook_joint)
+		hook_sound.pitch_scale = randf_range(1.0 - pitch_variation, 1.0 + pitch_variation)
+		hook_sound.play()
 		return
 	#print("Contact count - ", contact_count)
 
