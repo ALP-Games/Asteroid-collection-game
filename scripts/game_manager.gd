@@ -4,7 +4,7 @@ const VICTORY_LEVEL = preload("res://levels/victory_level.tscn")
 
 const MAX_PLAYING_ROPE_SOUNDS := 5
 
-const UPPER_ASTEROID_COUNT := 100
+#const UPPER_ASTEROID_COUNT := 100
 var current_asteroid_count := 0
 
 var first_start: bool = true
