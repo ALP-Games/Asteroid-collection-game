@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="UpgradeDataRes" load_steps=8 format=3 uid="uid://b64lxub18vq3q"]
+
+[ext_resource type="Script" uid="uid://ck2re64ar7f1s" path="res://scripts/upgrades/upgrade_entry.gd" id="1_5s5or"]
+[ext_resource type="Texture2D" uid="uid://bayeuxmswtxbl" path="res://Assets/Icons/ThrusterIcon.png" id="2_mqibd"]
+[ext_resource type="Script" uid="uid://cwyg5p6l0aonv" path="res://scripts/upgrades/upgrade_data_res.gd" id="3_mqibd"]
+
+[sub_resource type="Resource" id="Resource_5s5or"]
+script = ExtResource("1_5s5or")
+upgrade_name = &"Engine power 0/3"
+buy_text = &""
+upgrade_price = 200
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_mqibd"]
+script = ExtResource("1_5s5or")
+upgrade_name = &"More Engine power 1/3"
+buy_text = &""
+upgrade_price = 400
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_l4n81"]
+script = ExtResource("1_5s5or")
+upgrade_name = &"Most Engine power 2/3"
+buy_text = &""
+upgrade_price = 1000
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_nhvj5"]
+script = ExtResource("1_5s5or")
+upgrade_name = &"Engine power 3/3"
+buy_text = &""
+upgrade_price = -1
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[resource]
+script = ExtResource("3_mqibd")
+icon = ExtResource("2_mqibd")
+upgrade_type = 1
+data = Array[ExtResource("1_5s5or")]([SubResource("Resource_5s5or"), SubResource("Resource_mqibd"), SubResource("Resource_l4n81"), SubResource("Resource_nhvj5")])
+upgrade_name = &""
+buy_text = &"Buy"
+metadata/_custom_type_script = "uid://cwyg5p6l0aonv"

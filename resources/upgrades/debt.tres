@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="UpgradeDataRes" load_steps=10 format=3 uid="uid://cc6wsjxxo7a8e"]
+
+[ext_resource type="Script" uid="uid://ck2re64ar7f1s" path="res://scripts/upgrades/upgrade_entry.gd" id="1_bk0wo"]
+[ext_resource type="Texture2D" uid="uid://cbl1v5w182410" path="res://Assets/Icons/MoneyIcon.png" id="2_0irsf"]
+[ext_resource type="Script" uid="uid://cwyg5p6l0aonv" path="res://scripts/upgrades/upgrade_data_res.gd" id="2_yvjmu"]
+
+[sub_resource type="Resource" id="Resource_f6ahu"]
+script = ExtResource("1_bk0wo")
+upgrade_name = &"Corporate debt pay 0/4"
+buy_text = &""
+upgrade_price = 100
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_u8eja"]
+script = ExtResource("1_bk0wo")
+upgrade_name = &"Corporate debt pay 1/4"
+buy_text = &""
+upgrade_price = 500
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_j3gyc"]
+script = ExtResource("1_bk0wo")
+upgrade_name = &"Corporate debt pay 2/4"
+buy_text = &""
+upgrade_price = 1000
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_w7g6w"]
+script = ExtResource("1_bk0wo")
+upgrade_name = &"Corporate debt pay 3/4"
+buy_text = &""
+upgrade_price = 3000
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_bpga4"]
+script = ExtResource("1_bk0wo")
+upgrade_name = &"And one last one payment ;P 4/5"
+buy_text = &""
+upgrade_price = 6000
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_ueh04"]
+script = ExtResource("1_bk0wo")
+upgrade_name = &"DEBT PAID!"
+buy_text = &""
+upgrade_price = -1
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[resource]
+script = ExtResource("2_yvjmu")
+icon = ExtResource("2_0irsf")
+upgrade_type = 0
+data = Array[ExtResource("1_bk0wo")]([SubResource("Resource_f6ahu"), SubResource("Resource_u8eja"), SubResource("Resource_j3gyc"), SubResource("Resource_w7g6w"), SubResource("Resource_bpga4"), SubResource("Resource_ueh04")])
+upgrade_name = &""
+buy_text = &"Pay"
+metadata/_custom_type_script = "uid://cwyg5p6l0aonv"
