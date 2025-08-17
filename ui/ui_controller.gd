@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	for callable in process_functions:
 		callable.call(delta)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		if not get_tree().paused:
 			pause_menu.visible = true

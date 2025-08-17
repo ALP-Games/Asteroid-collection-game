@@ -1,6 +1,6 @@
 class_name HookRopeEmitter extends RopeEmitter
 
-@export var min_segment_count: int = 7.0
+@export var min_segment_count: int = 7
 @export var segment_length: float = 1.0
 
 var _internal_target_reached: bool = false

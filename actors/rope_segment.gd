@@ -1,7 +1,5 @@
 class_name RopeSegment extends RigidBody3D
 
-signal target_reached(target: RigidBody3D, attachment_joint: Node3D)
-
 #const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
 
 @export var spawn_sounds: Array[AudioStream]
@@ -79,10 +77,10 @@ func _play_sound(track_position: bool = false, force: bool = false,\
 	_setup_sound(audio_stream, stream_to_play, global_position, pitch_scale, volume)
 
 
-static func _setup_sound(audio_stream: AudioStreamPlayer3D, stream: AudioStream, position: Vector3,\
+static func _setup_sound(audio_stream: AudioStreamPlayer3D, stream: AudioStream, sound_pos: Vector3,\
 						pitch_scale: float = 1.0, volume: float = 0.0) -> void:
 	GameManager.call_deferred_callable((func():
-		audio_stream.global_position = position
+		audio_stream.global_position = sound_pos
 		audio_stream.stream = stream
 		audio_stream.pitch_scale = pitch_scale
 		audio_stream.volume_db = volume

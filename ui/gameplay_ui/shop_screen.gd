@@ -22,6 +22,6 @@ func _ready() -> void:
 		if GameManager.credist_amount < shop_data.upgrade_price:
 			new_shop_item.buy_button.disabled = true
 		new_shop_item.buy_button.text = shop_data.buy_text
-		new_shop_item.upgrade_id = index
+		new_shop_item.upgrade_id = (index as UpgradeData.UpgradeType)
 		new_shop_item.icon.texture = upgrade_data.upgrade_icons[index]
 	visible = false

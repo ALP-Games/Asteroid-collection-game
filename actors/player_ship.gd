@@ -146,7 +146,7 @@ func _thrusters_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int
 			reverse_force = starting_mass * 20.0
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var turn_ratio := angular_velocity.y / max_turn_speed
 	graphics.rotation.z = deg_to_rad(max_graphics_tilt) * turn_ratio
 	

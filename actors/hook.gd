@@ -1,5 +1,7 @@
 class_name Hook extends RopeSegment
 
+signal target_reached(target: RigidBody3D, attachment_joint: Node3D)
+
 var hooked := false
 
 var hook_joint: PinJoint3D = null

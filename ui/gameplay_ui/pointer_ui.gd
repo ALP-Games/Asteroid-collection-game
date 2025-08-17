@@ -20,7 +20,7 @@ func _ready() -> void:
 #func _process(delta: float) -> void:
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var position_delta := _collection_zone.global_position - _player_ship.global_position
 	#var distance_to_collection := _player_ship.global_position.distance_to(_collection_zone.global_position)
 	if position_delta.length() >= display_distance:

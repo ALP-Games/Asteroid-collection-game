@@ -8,7 +8,7 @@ var _parent: RigidBody3D
 func set_parent(parent: RigidBody3D) -> void:
 	_parent = parent
 
-func emit(target: Vector3) -> void:
+func emit(_target: Vector3) -> void:
 	pass
 
 
