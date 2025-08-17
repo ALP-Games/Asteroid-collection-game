@@ -11,6 +11,10 @@ class_name FancyCameraArmature extends Node3D
 @export_group("First Linear Zoom")
 @export var first_linear_zoom_time: float = 2.0
 
+@export_group("Mouse Tracking")
+@export var track_speed := 1.0
+@export var tracking_max_distance := 3.0
+
 @onready var camera_3d: Camera3D = $Camera3D
 
 @onready var y_interp_speed_current := y_interp_speed
@@ -21,16 +25,21 @@ var physics_process_funcs: Array[Callable]
 
 var previous_pos: Vector3
 var current_y_offset := 0.0
+var current_xz_offset := Vector2.ZERO
 
 
 func _ready() -> void:
 	add_to_group("camera")
 	if target:
 		physics_process_funcs.append(seek_target)
+		#physics_process_funcs.append(lerp_camera_offset)
 	if GameManager.first_start:
 		camera_3d.position.z = -default_height
 		current_y_offset = default_height
 		physics_process_funcs.append(linear_camera_pan)
+	else:
+		if target:
+			physics_process_funcs.append(lerp_camera_offset)
 	physics_process_funcs.append(lerp_height)
 	#set_physics_process(target != null)
 	
@@ -92,3 +101,14 @@ func linear_camera_pan(delta: float) -> void:
 		#current_y_offset = global_position.y
 		#physics_process_funcs[physics_process_funcs.find(linear_camera_pan)] = lerp_height
 		physics_process_funcs.erase(linear_camera_pan)
+		if target:
+			physics_process_funcs.append(lerp_camera_offset)
+
+
+func lerp_camera_offset(delta: float) -> void:
+	var middle_point := (target.global_position + get_mouse_world_position()) / 2
+	var middle_point_offset := middle_point - global_position
+	var middle_point_2d := Vector2(middle_point_offset.x, middle_point_offset.z)
+	middle_point_2d = middle_point_2d.limit_length(tracking_max_distance)
+	current_xz_offset = lerp(current_xz_offset, middle_point_2d, delta * track_speed)
+	camera_3d.position = Vector3(current_xz_offset.x, -current_xz_offset.y, camera_3d.position.z)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=11 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://f071xxnfd48x" path="res://ui/ui_controller.tscn" id="6_687qm"]
 [ext_resource type="PackedScene" uid="uid://btphdgvvmu41w" path="res://levels/world_environment.tscn" id="6_lmpr0"]
-[ext_resource type="PackedScene" uid="uid://8c0g621o2fgi" path="res://Assets/Crystal.glb" id="7_vons5"]
 [ext_resource type="PackedScene" uid="uid://bnc1rcs2iewo1" path="res://Assets/bill_board_2.tscn" id="8_687qm"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
@@ -36,9 +35,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1573, 0, 19.318)
 
 [node name="UIController" parent="CanvasLayer" node_paths=PackedStringArray("title_card_position_node") instance=ExtResource("6_687qm")]
 title_card_position_node = NodePath("../../TitlePosition")
-
-[node name="Crystal2" parent="." instance=ExtResource("7_vons5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14883, 0, 27.1563)
 
 [node name="BillBoard2" parent="." instance=ExtResource("8_687qm")]
 transform = Transform3D(0.74825, 0.331709, -0.574536, 0, 0.866025, 0.5, 0.663417, -0.374125, 0.648003, 7.6673, 0, -7.42499)

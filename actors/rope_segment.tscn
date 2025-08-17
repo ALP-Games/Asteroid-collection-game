@@ -30,8 +30,8 @@ axis_lock_angular_z = true
 linear_damp = 1.0
 angular_damp = 1.0
 script = ExtResource("1_sx3as")
-spawn_sounds = Array[AudioStreamOggVorbis]([ExtResource("2_soals"), ExtResource("3_6nqix"), ExtResource("4_csf4k"), ExtResource("5_e3lo8")])
-sounds = Array[AudioStreamOggVorbis]([ExtResource("2_lonr8"), ExtResource("3_y7ter"), ExtResource("4_52pqg"), ExtResource("5_iwq4d"), ExtResource("6_soals")])
+spawn_sounds = Array[AudioStream]([ExtResource("2_soals"), ExtResource("3_6nqix"), ExtResource("4_csf4k"), ExtResource("5_e3lo8")])
+sounds = Array[AudioStream]([ExtResource("2_lonr8"), ExtResource("3_y7ter"), ExtResource("4_52pqg"), ExtResource("5_iwq4d"), ExtResource("6_soals")])
 sound_pitch_curve = SubResource("Curve_lonr8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
