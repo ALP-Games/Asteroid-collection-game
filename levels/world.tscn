@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
@@ -10,10 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
 [ext_resource type="Texture2D" uid="uid://2sx7e81fofnl" path="res://Assets/Icons/ui_logo.png" id="11_re8x6"]
+[ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 
 [node name="World" type="Node3D"]
 
-[node name="AsteroidSpawner" parent="." instance=ExtResource("1_vons5")]
+[node name="AsteroidSpawner" parent="." node_paths=PackedStringArray("exclusion_zones") instance=ExtResource("1_vons5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8035)
+exclusion_zones = [NodePath("../GrinderExclusion"), NodePath("../ShopExclusion"), NodePath("../SignExclusion"), NodePath("../PlayerExclusion")]
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_vons5")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.3203, 0)
@@ -84,3 +87,27 @@ texture = ExtResource("11_re8x6")
 
 [node name="TitlePosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -13.19)
+
+[node name="GrinderExclusion" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111833, -1.90735e-06, 15.9561)
+script = ExtResource("11_wqmfy")
+radius = 8.88
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"
+
+[node name="ShopExclusion" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0405, -1.90735e-06, 16.9652)
+script = ExtResource("11_wqmfy")
+radius = 8.4
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"
+
+[node name="SignExclusion" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.67739, -1.90735e-06, -7.55879)
+script = ExtResource("11_wqmfy")
+radius = 5.57
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"
+
+[node name="PlayerExclusion" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0330651, -1.90735e-06, 0.0914071)
+script = ExtResource("11_wqmfy")
+radius = 2.61
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"

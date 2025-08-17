@@ -33,13 +33,13 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/meteor_collector/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://_other_sources/": "gray",
-"res://addons/": "gray",
+"res://addons/": "red",
 "res://addons/godot_extension_core_gdscript/": "blue"
 }
 

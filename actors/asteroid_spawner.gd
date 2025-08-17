@@ -9,9 +9,13 @@ const ASTEROID_SCENE = preload("res://actors/asteroid.tscn")
 @export var spawn_interval_max: float = 5.0
 @export var spawn_interval_min: float = 0.5
 
+@export var exclusion_zones: Array[RadiusNode3D]
+
 var asteroid_count: int = 200
 
 func generate_non_overlapping_positions() -> Array[Vector3]:
+	# could do packed arrays for speed if needed
+	
 	var positions: Array[Vector3] = []
 	var max_attempts := 1000
 	while positions.size() < asteroid_count and max_attempts > 0:
