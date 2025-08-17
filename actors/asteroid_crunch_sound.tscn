@@ -4,4 +4,5 @@
 
 [node name="AsteroidCrunchSound" type="AudioStreamPlayer3D"]
 stream = ExtResource("1_1bxt6")
+volume_db = 3.0
 autoplay = true

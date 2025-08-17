@@ -4,7 +4,8 @@ signal target_reached(target: RigidBody3D, attachment_joint: Node3D)
 
 #const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
 
-@export var sounds: Array[AudioStreamOggVorbis]
+@export var spawn_sounds: Array[AudioStream]
+@export var sounds: Array[AudioStream]
 @export var move_amount_to_sound: float = 7.0
 @export var sound_pitch_curve: Curve
 var pitch_random_offset: float = 0.03
@@ -17,15 +18,49 @@ var velocity_buffer: PackedFloat32Array
 
 
 func _ready() -> void:
-	_play_sound(true, true)
-	pass
+	#_play_sound(true, true)
+	#_play_spawn_sound(true)
+	if spawn_sounds.size() > 0:
+		var enter_pitch := 1.0
+		var offset_amount := enter_pitch * pitch_random_offset
+		var randomized_pitch := randf_range(enter_pitch - offset_amount, enter_pitch + offset_amount)
+		
+		var stream_to_play := _get_random_stream(spawn_sounds)
+		var audio_stream := AudioStreamPlayer3D.new()
+		add_child(audio_stream)
+		_setup_sound(audio_stream, stream_to_play, global_position, randomized_pitch)
 
 
 func _exit_tree() -> void:
-	pass
-	#call_deferred("_add_and_play_sound")
-	_play_sound(false, true, 1.5, 2.0)
-	#GameManager.call_deferred_callable(_add_and_play_sound)
+	if spawn_sounds.size() > 0:
+		var exit_pitch := 1.8
+		var offset_amount := exit_pitch * pitch_random_offset
+		var randomized_pitch := randf_range(exit_pitch - offset_amount, exit_pitch + offset_amount)
+	
+		var stream_to_play := _get_random_stream(spawn_sounds)
+		var audio_stream := AudioStreamPlayer3D.new()
+		get_tree().get_first_node_in_group("instantiated_root").add_child.call_deferred(audio_stream)
+		_setup_sound(audio_stream, stream_to_play, global_position, randomized_pitch, -5.0)
+	
+	#_play_spawn_sound(false, randomized_pitch, -4.0)
+	#_play_sound(false, true, 1.5, randomized_pitch)
+
+
+static func _get_random_stream(audio_array: Array[AudioStream]) -> AudioStream:
+	return audio_array[randi_range(0, audio_array.size() - 1)]
+
+
+func _play_spawn_sound(track_position: bool = false, pitch_scale: float = 1.0, volume: float = 0.0) -> void:
+	if spawn_sounds.size() <= 0:
+		return
+	var stream_to_play := spawn_sounds[randi_range(0, spawn_sounds.size() -1)]
+	var audio_stream := AudioStreamPlayer3D.new()
+	if track_position:
+		add_child(audio_stream)
+	else:
+		get_tree().get_first_node_in_group("instantiated_root").add_child.call_deferred(audio_stream)
+	#add_child(audio_stream)
+	_setup_sound(audio_stream, stream_to_play, global_position, pitch_scale, volume)
 
 
 func _play_sound(track_position: bool = false, force: bool = false,\
@@ -41,14 +76,19 @@ func _play_sound(track_position: bool = false, force: bool = false,\
 		add_child(audio_stream)
 	else:
 		get_tree().get_first_node_in_group("instantiated_root").add_child.call_deferred(audio_stream)
-	GameManager.call_deferred_callable((func(position: Vector3):
+	_setup_sound(audio_stream, stream_to_play, global_position, pitch_scale, volume)
+
+
+static func _setup_sound(audio_stream: AudioStreamPlayer3D, stream: AudioStream, position: Vector3,\
+						pitch_scale: float = 1.0, volume: float = 0.0) -> void:
+	GameManager.call_deferred_callable((func():
 		audio_stream.global_position = position
-		audio_stream.stream = stream_to_play
+		audio_stream.stream = stream
 		audio_stream.pitch_scale = pitch_scale
 		audio_stream.volume_db = volume
 		audio_stream.play()
 		audio_stream.finished.connect(func():audio_stream.queue_free())
-		).bind(global_position))
+		))
 
 
 func _physics_process(delta: float) -> void:

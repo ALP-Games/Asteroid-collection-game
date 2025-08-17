@@ -35,6 +35,10 @@ func show_warning() -> void:
 	shown_warinings.append(self)
 
 
+func is_shown() -> bool:
+	return shown_warinings.find(self) != -1
+
+
 func _show() -> void:
 	visible = true
 	animation_player.play("flashing")

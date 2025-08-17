@@ -157,8 +157,9 @@ func _physics_process(delta: float) -> void:
 		if destabilized_elapsed >= destabilized_time:
 			(get_tree().get_first_node_in_group("stabilization_warinig") as WarningBox).show_warning()
 	else:
-		if destabilized_elapsed >= destabilized_time:
-			(get_tree().get_first_node_in_group("stabilization_warinig") as WarningBox).hide_warning()
+		var stabilization_warning := (get_tree().get_first_node_in_group("stabilization_warinig") as WarningBox)
+		if stabilization_warning.is_shown():
+			stabilization_warning.hide_warning()
 		destabilized_elapsed = 0.0
 	
 	var shop_screen: Control = get_tree().get_first_node_in_group("shop_screen")
