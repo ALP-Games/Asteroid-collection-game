@@ -5,6 +5,9 @@ const JET_MIN_SCALE := 0.01
 const JET_MAX_SCALE := 1.0
 
 @export var max_velocity: float = 30
+@export_group("Weight Based Max Velocity")
+@export var weight_based_velocity_enabled: bool = false
+@export var drag_coefficient: float = 600
 
 @export_group("Movement")
 @export var starting_acceleration: float = 20
@@ -77,7 +80,6 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			reduced_mass = (mass * other_mass) / (mass + other_mass)
 		else:
 			reduced_mass = mass
-		#print("Reduced mass - ", reduced_mass)
 		var impulse_magnitude: float = abs(speed_relative) * reduced_mass
 		_stun_player_on_collision(impulse_magnitude)
 		_play_collision_sound(impulse_magnitude)
@@ -139,6 +141,9 @@ func _thrusters_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int
 		2:
 			thrust_force = starting_mass * 30.0
 			reverse_force = starting_mass * 15.0
+		3:
+			thrust_force = starting_mass * 35.0
+			reverse_force = starting_mass * 20.0
 
 
 func _process(delta: float) -> void:
@@ -191,13 +196,15 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("action2"):
 		emitter_manager.stop_emit()
 	
-	#var camera := get_tree().get_first_node_in_group("camera") as FancyCamera3D
-	#var mouse_world_position := camera.get_mouse_world_position()
-	#rope_prototype.look_at(mouse_world_position)
+	var top_velocity := max_velocity
+	var top_velocity_reverse := max_velocity
+	if weight_based_velocity_enabled:
+		top_velocity = thrust_force / drag_coefficient
+		top_velocity_reverse = reverse_force / drag_coefficient
+	var force_deficit := (top_velocity - linear_velocity.length()) / delta * mass
+	var reverse_deficit := (top_velocity_reverse - linear_velocity.length()) / delta * mass
 	
 	if thrust_input:
-		var force_deficit := (max_velocity - linear_velocity.length()) / delta * mass
-		
 		var desired_direction := Vector3.FORWARD.rotated(Vector3.UP, rotation.y) 
 		var negative_force := -(linear_velocity.normalized() - desired_direction) * thrust_force as Vector3
 		var force_to_apply := (desired_direction * clampf(force_deficit, 0, thrust_force)) + negative_force
@@ -206,7 +213,7 @@ func _physics_process(delta: float) -> void:
 	if reverse_input:
 		var desired_direction := Vector3.BACK.rotated(Vector3.UP, rotation.y)
 		var negative_force := -(linear_velocity.normalized() - desired_direction) * reverse_force as Vector3
-		var force_to_apply := (desired_direction * reverse_force) + negative_force
+		var force_to_apply := (desired_direction * clampf(reverse_deficit, 0, reverse_force)) + negative_force
 		apply_central_force(force_to_apply)
 	
 	var linear_stop := stop_input
@@ -234,5 +241,4 @@ func _physics_process(delta: float) -> void:
 		var reverse_angular_acceleration := -angular_velocity.y / delta as float
 		reverse_angular_acceleration = clamp(reverse_angular_acceleration, -stop_angular_amount, stop_angular_amount)
 		apply_torque(Vector3.UP * reverse_angular_acceleration / inverse_inertia)
-	#print("Angular velocity - ", angular_velocity)
 	
