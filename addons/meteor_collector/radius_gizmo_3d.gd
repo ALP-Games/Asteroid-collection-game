@@ -2,6 +2,10 @@
 class_name RadiusGizmo3D extends EditorNode3DGizmoPlugin
 
 
+func _get_gizmo_name() -> String:
+	return "RadiusGizmo3D"
+
+
 func _init() -> void:
 	var color = Color(1, 0, 0)
 	create_material("radius_material", color)
