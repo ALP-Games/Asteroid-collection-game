@@ -50,7 +50,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Assets/Crystal_Icosphere_004.res"
+"save_to_file/path": "uid://84sba36kc0k2"
 }
 }
 }

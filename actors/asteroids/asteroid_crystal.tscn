@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://btl7753aj2elr"]
+
+[ext_resource type="Script" uid="uid://cyd1rw5uji4q4" path="res://actors/asteroids/asteroid.gd" id="1_hosm5"]
+[ext_resource type="ArrayMesh" uid="uid://84sba36kc0k2" path="res://Assets/meshes/crystal_asteroid/Crystal_Icosphere_004.res" id="2_hosm5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xfbri"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_adigb"]
+radius = 0.1
+
+[node name="Asteroid" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 7
+axis_lock_linear_y = true
+mass = 100.0
+script = ExtResource("1_hosm5")
+weight_value_multiplier = 0.2
+default_density = 500.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, 0)
+mesh = ExtResource("2_hosm5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_xfbri")
+
+[node name="CollectionShape" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionShape"]
+shape = SubResource("SphereShape3D_adigb")

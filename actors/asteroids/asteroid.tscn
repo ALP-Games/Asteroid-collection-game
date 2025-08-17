@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgogh6ayhlim7"]
 
-[ext_resource type="Script" uid="uid://cyd1rw5uji4q4" path="res://actors/asteroid.gd" id="1_adigb"]
+[ext_resource type="Script" uid="uid://cyd1rw5uji4q4" path="res://actors/asteroids/asteroid.gd" id="1_adigb"]
 [ext_resource type="ArrayMesh" uid="uid://b1vi133l2ps3t" path="res://Assets/Icosphere_Icosphere_001.res" id="1_xfbri"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xfbri"]

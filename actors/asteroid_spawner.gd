@@ -1,6 +1,8 @@
 class_name AsteroidSpawner extends Node3D
 
-const ASTEROID_SCENE = preload("res://actors/asteroid.tscn")
+const ASTEROID_SCENE = preload("res://actors/asteroids/asteroid.tscn")
+const ASTEROID_CRYSTAL = preload("res://actors/asteroids/asteroid_crystal.tscn")
+const ASTEROID_GOLD = preload("res://actors/asteroids/asteroid_gold.tscn")
 
 @export var spawn_radius: float = 250.0
 @export var min_distance_between_asteroids: float = 10.0
