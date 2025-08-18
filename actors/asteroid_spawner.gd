@@ -11,19 +11,19 @@ enum AsteroidType {
 }
 	
 
-@export var spawn_radius: float = 550.0
+@export var spawn_radius: float = 300.0
 @export var min_distance_between_asteroids: float = 10.0
 # asteroid scale is actually a diameter
 @export var asteroid_scale_max: float = 5.0
 @export var asteroid_scale_min: float = 0.75
 @export_group("Asteroid Crystal")
-@export var crystal_minimum_distance: float = 150.0
+@export var crystal_minimum_distance: float = 75.0
 @export_group("Asteroid Gold")
-@export var gold_minimum_distance: float = 250.0
+@export var gold_minimum_distance: float = 150.0
 
 @export var exclusion_zones: Array[RadiusNode3D]
 
-var asteroid_count: int = 2000
+var asteroid_count: int = 1000
 
 func _rand_log_range(min_val: float, max_val: float, exponent: float = 0.55) -> float:
 	var t := pow(randf(), exponent)
