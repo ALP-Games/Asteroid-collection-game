@@ -11,7 +11,7 @@ enum AsteroidType {
 }
 	
 
-@export var spawn_radius: float = 300.0
+@export var spawn_radius: float = 400.0
 @export var min_distance_between_asteroids: float = 10.0
 # asteroid scale is actually a diameter
 @export var asteroid_scale_max: float = 5.0
@@ -23,7 +23,7 @@ enum AsteroidType {
 
 @export var exclusion_zones: Array[RadiusNode3D]
 
-var asteroid_count: int = 1000
+var asteroid_count: int = 750
 
 func _rand_log_range(min_val: float, max_val: float, exponent: float = 0.55) -> float:
 	var t := pow(randf(), exponent)
