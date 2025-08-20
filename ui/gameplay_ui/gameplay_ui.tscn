@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bxdxj6711e52i" path="res://ui/gameplay_ui/gameplay_ui.gd" id="1_v5qxn"]
 [ext_resource type="PackedScene" uid="uid://cs1vmfcrtxu06" path="res://ui/gameplay_ui/shop_screen.tscn" id="2_3lvfr"]
 [ext_resource type="PackedScene" uid="uid://dkdcvcgs2jgi1" path="res://ui/gameplay_ui/stabilization_warning.tscn" id="2_hlo7n"]
-[ext_resource type="PackedScene" uid="uid://bfpsspk6jppkh" path="res://ui/gameplay_ui/collision_warning.tscn" id="2_ht2um"]
+[ext_resource type="PackedScene" uid="uid://bpwkegiiu01e8" path="res://ui/gameplay_ui/collision_warning_graphic.tscn" id="2_wapsp"]
 [ext_resource type="PackedScene" uid="uid://x3e2x8oxiu8b" path="res://ui/gameplay_ui/pointer_ui.tscn" id="4_n5c7t"]
 [ext_resource type="PackedScene" uid="uid://c8f8d033685gb" path="res://ui/gameplay_ui/hook_ui.tscn" id="6_wapsp"]
 
@@ -53,9 +53,8 @@ grow_vertical = 2
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="CollisionWarning" parent="LayoutsContainer/MainEstate/WarningParent" instance=ExtResource("2_ht2um")]
+[node name="CollisionWarningGraphic" parent="LayoutsContainer/MainEstate/WarningParent" instance=ExtResource("2_wapsp")]
 layout_mode = 1
-anchors_preset = 15
 
 [node name="StabilizationWarning" parent="LayoutsContainer/MainEstate/WarningParent" instance=ExtResource("2_hlo7n")]
 visible = false

@@ -9,7 +9,6 @@ enum AsteroidType {
 	CRYSTAL,
 	GOLD
 }
-	
 
 @export var spawn_radius: float = 400.0
 @export var min_distance_between_asteroids: float = 10.0
