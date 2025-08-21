@@ -1,6 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba6b8j6v27a8d"]
-
-[ext_resource type="Texture2D" uid="uid://c447dvonm6o46" path="res://effects/circle32.png" id="1_g7pgr"]
+[gd_scene load_steps=8 format=3 uid="uid://ba6b8j6v27a8d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5wmuu"]
 transparency = 2
@@ -8,13 +6,8 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_g7pgr")
 texture_filter = 2
-billboard_mode = 3
 billboard_keep_scale = true
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
 
 [sub_resource type="Gradient" id="Gradient_5wmuu"]
 offsets = PackedFloat32Array(0, 0.227373, 1)
@@ -24,7 +17,7 @@ colors = PackedColorArray(0.152212, 0.457739, 0.95929, 1, 0.07422, 0.0485433, 0.
 gradient = SubResource("Gradient_5wmuu")
 
 [sub_resource type="Curve" id="Curve_aapv7"]
-_data = [Vector2(1e-05, 0), 0.0, 3.80594, 0, 0, Vector2(0.217119, 1), 4.60598, -1.30136, 1, 1, Vector2(0.655532, 0.429467), -1.30136, -1.24676, 1, 1, Vector2(1, 0), -1.07545, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 7.63923, 0, 0, Vector2(0.25261, 1), 1.43037, -1.41599, 0, 1, Vector2(0.655532, 0.429467), -1.41599, -1.24676, 1, 1, Vector2(1, 0), -1.07545, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_ehe0o"]
@@ -38,11 +31,13 @@ scale_curve = SubResource("CurveTexture_ehe0o")
 color = Color(0.877616, 0.877616, 0.877616, 1)
 color_ramp = SubResource("GradientTexture1D_4lo07")
 
-[sub_resource type="QuadMesh" id="QuadMesh_aapv7"]
+[sub_resource type="SphereMesh" id="SphereMesh_g7pgr"]
+radial_segments = 7
+rings = 3
 
 [node name="JetEffectParticle" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_5wmuu")
 amount = 32
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_4lo07")
-draw_pass_1 = SubResource("QuadMesh_aapv7")
+draw_pass_1 = SubResource("SphereMesh_g7pgr")
