@@ -15,7 +15,7 @@ const JET_MAX_SCALE := 1.0
 @export var turn_acceleration: float = 10.0
 @export var max_turn_speed: float = 4.0
 
-@export var stop_linear_amount: float = 20
+@export var starting_linear_amount_stop: float = 20
 @export var stop_angular_amount: float = 10
 
 @export_group("Collisions")
@@ -44,6 +44,7 @@ var sound_fade_out_tween: Tween
 @onready var starting_mass: float = mass
 @onready var thrust_force: float = starting_acceleration * starting_mass
 @onready var reverse_force: float = starting_reverse_acceleration * starting_mass
+@onready var stop_linear_amount: float = starting_linear_amount_stop * starting_mass
 
 @onready var graphics: Node3D = $Graphics
 @onready var emitter_manager: EmitterManager = $EmitterManager
@@ -61,7 +62,7 @@ var in_shop_range := false
 
 
 func _ready() -> void:
-	GameManager.upgrade_data.upgrade_incremented.connect(_thrusters_upgraded)
+	GameManager.upgrade_data.upgrade_incremented.connect(_on_upgrade)
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -128,22 +129,56 @@ func fade_out_sfx() -> void:
 	sound_fade_out_tween.tween_callback(func():jet_effect.stream_paused = true)
 
 
-func _thrusters_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
-	if upgrade_id != UpgradeData.UpgradeType.ENGINE_POWER:
-		return
+func _on_upgrade(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
+	match upgrade_id:
+		UpgradeData.UpgradeType.ENGINE_POWER:
+			_thrusters_upgraded(upgrade_level)
+		UpgradeData.UpgradeType.WEIGHT:
+			_weight_upgraded(upgrade_level)
+
+
+func _thrusters_upgraded(upgrade_level: int) -> void:
 	match upgrade_level:
 		0:
+			stop_linear_amount = starting_mass * starting_linear_amount_stop
 			thrust_force = starting_mass * starting_acceleration
 			reverse_force = starting_mass * starting_reverse_acceleration
 		1:
+			stop_linear_amount = starting_mass * 30.0
 			thrust_force = starting_mass * 25.0
 			reverse_force = starting_mass * 10.0
 		2:
-			thrust_force = starting_mass * 30.0
-			reverse_force = starting_mass * 15.0
+			stop_linear_amount = starting_mass * 50.0
+			thrust_force = starting_mass * 40.0
+			reverse_force = starting_mass * 25.0
 		3:
-			thrust_force = starting_mass * 35.0
-			reverse_force = starting_mass * 20.0
+			stop_linear_amount = starting_mass * 100.0
+			thrust_force = starting_mass * 75.0
+			reverse_force = starting_mass * 45.0
+		4:
+			stop_linear_amount = starting_mass * 160.0
+			thrust_force = starting_mass * 130.0
+			reverse_force = starting_mass * 75.0
+		5:
+			stop_linear_amount = starting_mass * 250.0
+			thrust_force = starting_mass * 190.0
+			reverse_force = starting_mass * 150.0
+
+
+func _weight_upgraded(upgrade_level: int) -> void:
+	match upgrade_level:
+		0:
+			mass = starting_mass
+		1:
+			mass = starting_mass + (500*2)
+		2:
+			mass = starting_mass + (500*4)
+		3:
+			mass = starting_mass + (500*8)
+		4:
+			mass = starting_mass + (500*16)
+		5:
+			mass = starting_mass + (500*32)
 
 
 func _process(_delta: float) -> void:
@@ -199,8 +234,8 @@ func _physics_process(delta: float) -> void:
 	var top_velocity := max_velocity
 	var top_velocity_reverse := max_velocity
 	if weight_based_velocity_enabled:
-		top_velocity = thrust_force / drag_coefficient
-		top_velocity_reverse = reverse_force / drag_coefficient
+		top_velocity = clampf(thrust_force / drag_coefficient, 0.0, max_velocity)
+		top_velocity_reverse = clampf(reverse_force / drag_coefficient, 0.0, max_velocity)
 	var force_deficit := (top_velocity - linear_velocity.length()) / delta * mass
 	var reverse_deficit := (top_velocity_reverse - linear_velocity.length()) / delta * mass
 	
@@ -233,7 +268,7 @@ func _physics_process(delta: float) -> void:
 			apply_torque(Vector3.UP * reverse_angular_acceleration / inverse_inertia.y)
 	
 	if linear_stop:
-		var negative_acceleration := -linear_velocity.normalized() * stop_linear_amount
+		var negative_acceleration := -linear_velocity.normalized() * starting_linear_amount_stop
 		apply_central_force(mass * negative_acceleration)
 		
 	if stop_input:

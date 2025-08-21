@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cu0l4x28nikl"]
+[gd_scene load_steps=5 format=3 uid="uid://cu0l4x28nikl"]
 
 [ext_resource type="Script" uid="uid://dlemi7jy41f5g" path="res://ui/gameplay_ui/shop_item.gd" id="1_mgmnk"]
 [ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_7kxbi"]
 [ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_pne7h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pne7h"]
 
 [node name="ShopItem" type="PanelContainer"]
 offset_right = 104.0
@@ -24,12 +26,18 @@ layout_mode = 2
 texture = ExtResource("2_7kxbi")
 expand_mode = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/NameAndIcon"]
+[node name="FlavorEstate" type="PanelContainer" parent="VBoxContainer/NameAndIcon"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pne7h")
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/NameAndIcon/FlavorEstate"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="ItemName" type="Label" parent="VBoxContainer/NameAndIcon/PanelContainer"]
+[node name="ItemName" type="Label" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelContainer"]
 layout_mode = 2
 text = "Upgrade Text"
 horizontal_alignment = 1

@@ -36,6 +36,8 @@ func _hooks_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) ->
 			max_emitter_amount = 4
 		4:
 			max_emitter_amount = 5
+		5:
+			max_emitter_amount = 6
 	_update_hook_ui()
 
 

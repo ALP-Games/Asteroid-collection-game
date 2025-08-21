@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp2w0mhwpqoq7"]
+
+[ext_resource type="Script" uid="uid://bcaacmka808e2" path="res://ui/gameplay_ui/shop_item_modifyable.gd" id="1_7vfys"]
+[ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_0uyxq"]
+[ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_8m76c"]
+
+[node name="ShopItemModifyable" type="PanelContainer"]
+offset_right = 104.0
+offset_bottom = 58.0
+size_flags_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_7vfys")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameAndIcon" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/NameAndIcon"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_0uyxq")
+expand_mode = 1
+
+[node name="FlavorEstate" type="VBoxContainer" parent="VBoxContainer/NameAndIcon"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/NameAndIcon/FlavorEstate"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="ItemName" type="Label" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelContainer"]
+layout_mode = 2
+text = "Upgrade Text"
+horizontal_alignment = 1
+
+[node name="PanelAdjustable" type="HBoxContainer" parent="VBoxContainer/NameAndIcon/FlavorEstate"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonAdd" type="Button" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+"
+
+[node name="TextContainer" type="PanelContainer" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextCount" type="Label" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable/TextContainer"]
+layout_mode = 2
+text = "0/5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRemove" type="Button" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "-"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="ItemPrice" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "100"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Buy"
+
+[node name="ClickSoundPlayer" parent="." instance=ExtResource("3_8m76c")]
