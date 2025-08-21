@@ -53,6 +53,10 @@ var sound_fade_out_tween: Tween
 @onready var jet_effect: AudioStreamPlayer3D = $JetEffect
 @onready var sound_default_volume: float = jet_effect.volume_db
 
+@onready var jet_effect_particle_1: GPUParticles3D = $JetEffectParticle1
+@onready var jet_effect_particle_2: GPUParticles3D = $JetEffectParticle2
+
+
 @onready var collision_sounds_player: AudioStreamPlayer3D = $CollisionSoundsPlayer
 @onready var collision_default_volume: float = collision_sounds_player.volume_db
 
@@ -185,6 +189,9 @@ func _physics_process(delta: float) -> void:
 		reverse_input = Input.is_action_pressed("reverse")
 		stop_input = Input.is_action_pressed("stop")
 		rotation_input = Input.get_axis("rot_left", "rot_right")
+	
+	jet_effect_particle_1.emitting = thrust_input
+	jet_effect_particle_2.emitting = thrust_input
 	
 	var movement_input_held := thrust_input or reverse_input or stop_input or not is_zero_approx(rotation_input)
 	_play_jet_effect(movement_input_held)

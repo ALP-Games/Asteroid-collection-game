@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=13 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="PackedScene" uid="uid://ddw1ejtyob1w0" path="res://actors/actor_graphics/player_graphics.tscn" id="2_3gxbi"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duvgvbdmebdsa" path="res://actors/anchor_rope_emitter.tscn" id="5_mfuwy"]
 [ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
 [ext_resource type="AudioStream" uid="uid://xxdkq8bd241g" path="res://sounds/jet-engine.ogg" id="7_pt2uk"]
+[ext_resource type="PackedScene" uid="uid://ba6b8j6v27a8d" path="res://effects/jet_effect_particle.tscn" id="9_4lo07"]
 
 [sub_resource type="Curve" id="Curve_5wmuu"]
 _limits = [0.2, 1.0, 1.0, 6.0]
@@ -49,14 +50,23 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 shape = SubResource("CapsuleShape3D_ljv35")
 
 [node name="EmitterManager" type="Node3D" parent="."]
+visible = false
 script = ExtResource("6_3gxbi")
 emitters = Array[PackedScene]([ExtResource("3_gv0w4"), ExtResource("5_mfuwy")])
 
 [node name="JetEffect" type="AudioStreamPlayer3D" parent="."]
+visible = false
 stream = ExtResource("7_pt2uk")
 volume_db = -5.0
 max_db = -2.0
 
 [node name="CollisionSoundsPlayer" type="AudioStreamPlayer3D" parent="."]
+visible = false
 stream = ExtResource("3_ehe0o")
 volume_db = 2.0
+
+[node name="JetEffectParticle1" parent="." instance=ExtResource("9_4lo07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.650303, 0, 0.885982)
+
+[node name="JetEffectParticle2" parent="." instance=ExtResource("9_4lo07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.65, 0, 0.886)
