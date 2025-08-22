@@ -20,7 +20,7 @@ const JET_MAX_SCALE := 1.0
 
 @export_group("Collisions")
 @export_subgroup("Stun")
-@export var min_collision_force_for_stun: float = 4000
+@export var starting_min_collision_force_for_stun: float = 4000
 @export var collision_stun_time_curve: Curve
 @export_subgroup("Sound")
 @export var min_collision_force_for_sound: float = 2000
@@ -40,6 +40,8 @@ var destabilized_elapsed := 0.0
 
 @export var jet_sound_fade_out_duration: float = 0.2
 var sound_fade_out_tween: Tween
+
+@onready var min_collision_force_for_stun := starting_min_collision_force_for_stun
 
 @onready var starting_mass: float = mass
 @onready var thrust_force: float = starting_acceleration * starting_mass
@@ -81,6 +83,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			reduced_mass = (mass * other_mass) / (mass + other_mass)
 		else:
 			reduced_mass = mass
+		print("Reduced mass - ", reduced_mass)
 		var impulse_magnitude: float = abs(speed_relative) * reduced_mass
 		_stun_player_on_collision(impulse_magnitude)
 		_play_collision_sound(impulse_magnitude)
@@ -88,6 +91,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 func _stun_player_on_collision(impulse_magnitude: float) -> void:
 	if impulse_magnitude >= min_collision_force_for_stun:
+		print("Impulse magnitude - ", impulse_magnitude)
 		player_stunned = true
 		var difference := impulse_magnitude / min_collision_force_for_stun
 		var stun_duration := collision_stun_time_curve.sample(difference)
@@ -102,10 +106,13 @@ func _play_collision_sound(impulse_magnitude: float) -> void:
 		var difference := impulse_magnitude / min_collision_force_for_sound
 		var volume_multiplier := collision_sound_curve.sample(difference)
 		var chosen_sound := randi_range(0, collision_sounds.size() - 1)
-		collision_sounds_player.stream = collision_sounds[chosen_sound]
-		collision_sounds_player.volume_db = collision_default_volume * volume_multiplier
-		collision_sounds_player.pitch_scale = randf_range(1 - collision_pitch_variation, 1 + collision_pitch_variation)
-		collision_sounds_player.play()
+		var collision_sound_player_instance := AudioStreamPlayer3D.new()
+		add_child(collision_sound_player_instance)
+		collision_sound_player_instance.finished.connect(func():collision_sound_player_instance.queue_free())
+		collision_sound_player_instance.stream = collision_sounds[chosen_sound]
+		collision_sound_player_instance.volume_db = collision_default_volume * volume_multiplier
+		collision_sound_player_instance.pitch_scale = randf_range(1 - collision_pitch_variation, 1 + collision_pitch_variation)
+		collision_sound_player_instance.play()
 
 
 func _play_jet_effect(play: bool) -> void:
@@ -169,16 +176,22 @@ func _weight_upgraded(upgrade_level: int) -> void:
 	match upgrade_level:
 		0:
 			mass = starting_mass
+			min_collision_force_for_stun = starting_min_collision_force_for_stun
 		1:
 			mass = starting_mass + (500*2)
+			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
 		2:
 			mass = starting_mass + (500*4)
+			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
 		3:
 			mass = starting_mass + (500*8)
+			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
 		4:
 			mass = starting_mass + (500*16)
+			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
 		5:
 			mass = starting_mass + (500*32)
+			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
 
 
 func _process(_delta: float) -> void:
