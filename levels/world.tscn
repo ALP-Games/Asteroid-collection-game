@@ -16,6 +16,7 @@
 
 [node name="AsteroidSpawner" parent="." node_paths=PackedStringArray("exclusion_zones") instance=ExtResource("1_vons5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8035)
+offset = Vector3(0, -10, 0)
 exclusion_zones = [NodePath("../GrinderExclusion"), NodePath("../ShopExclusion"), NodePath("../SignExclusion"), NodePath("../PlayerExclusion")]
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_vons5")]
