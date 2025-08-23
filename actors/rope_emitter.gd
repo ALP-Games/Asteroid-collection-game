@@ -102,7 +102,7 @@ func _enforce_rope_length() -> void:
 		var target_weight_ratio := _parent.mass / total_mass
 		
 		var direction := (global_position - rope_target.global_position).normalized()
-		#var stretch := current_distance - rope_max_length
+		var stretch := pow((current_distance / rope_max_length), 3.0)
 		
 		var relative_velocity := _parent.linear_velocity - rope_target.linear_velocity
 		var velocity_along_rope := relative_velocity.dot(direction)
@@ -110,8 +110,10 @@ func _enforce_rope_length() -> void:
 		if velocity_along_rope <= 0:
 			return
 		
-		var correction_velocity := direction * velocity_along_rope
+		var correction_velocity := direction * velocity_along_rope * stretch
 		
+		# not sure if modifying linear velocity directly is good like that
+		# but I think I failed with apply central force before
 		rope_target.linear_velocity += correction_velocity * target_weight_ratio 
 		_parent.linear_velocity -= correction_velocity * parent_weight_ratio
 
