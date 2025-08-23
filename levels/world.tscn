@@ -27,6 +27,7 @@ exclusion_zones = [NodePath("../GrinderExclusion"), NodePath("../ShopExclusion")
 [node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_vons5")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.3203, 0)
 target = NodePath("../PlayerShip")
+tracking_max_distance = 4.0
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_2mgkc")]
 
