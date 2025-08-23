@@ -18,6 +18,9 @@ func _ready() -> void:
 	
 	button_add.pressed.connect(_change_upgrade_level.bind(1))
 	button_remove.pressed.connect(_change_upgrade_level.bind(-1))
+	
+	button_add.button_down.connect(func():click_sound_player.play())
+	button_remove.button_down.connect(func():click_sound_player.play())
 
 
 func _on_upgrade_incremented(_upgrade_id: UpgradeData.UpgradeType, _level: int) -> void:
@@ -28,7 +31,7 @@ func _check_upgrade_numbers() -> void:
 	var upgrade_cur_max := GameManager.upgrade_data.get_upgrade_cur_max(upgrade_id)
 	button_add.disabled = upgrade_cur_max[0] == upgrade_cur_max[1]
 	button_remove.disabled = upgrade_cur_max[0] == 0
-	text_count.text = COUNT_FORMAT % [upgrade_cur_max[0] + 1, upgrade_cur_max[1] + 1]
+	text_count.text = COUNT_FORMAT % upgrade_cur_max
 
 
 func _change_upgrade_level(change: int) -> void:
