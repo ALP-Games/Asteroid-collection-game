@@ -20,13 +20,37 @@ enum AsteroidType {
 @export_group("Asteroid Gold")
 @export var gold_minimum_distance: float = 150.0
 @export_group("Background")
-@export var offset: Vector3 = Vector3.ZERO
-@export var background_asteroid_count: int = 1000
-@export var background_spawn_exponent: float = 0.65
+@export var offset: Vector3 = Vector3.ZERO:
+	set(value):
+		offset = value
+		if is_node_ready():
+			_generate_background_asteroids()
+@export var background_asteroid_count: int = 1000:
+	set(value):
+		background_asteroid_count = value
+		if is_node_ready():
+			_generate_background_asteroids()
+@export var background_spawn_exponent: float = 0.65:
+	set(value):
+		background_spawn_exponent = value
+		if is_node_ready():
+			_generate_background_asteroids()
+@export var background_asteroid_scale_max: float = 5.0:
+	set(value):
+		background_asteroid_scale_max = value
+		if is_node_ready():
+			_generate_background_asteroids()
+@export var background_asteroid_scale_min: float = 0.75:
+	set(value):
+		background_asteroid_scale_min = value
+		if is_node_ready():
+			_generate_background_asteroids()
 
 @export var exclusion_zones: Array[RadiusNode3D]
 
 var asteroid_count: int = 750
+
+var background_multi_mesh_instance: MultiMeshInstance3D
 
 var thread := Thread.new()
 
@@ -109,7 +133,7 @@ func generate_non_overlaping_background() -> Dictionary:
 	
 	var max_attempts := 1000
 	while spawn_count < background_asteroid_count and max_attempts > 0:
-		var radius := randf_range(asteroid_scale_min, asteroid_scale_max) / 2
+		var radius := randf_range(background_asteroid_scale_min, background_asteroid_scale_max) / 2
 		var log_range_val := _rand_log_range(0, spawn_radius, background_spawn_exponent)
 		var pos := Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 0.0), randf_range(-1.0, 1.0)).normalized()\
 			* log_range_val + offset
@@ -157,7 +181,9 @@ func _generate_gameplay_asteroids() -> void:
 
 
 func _generate_background_asteroids() -> void:
-	var multi_mesh_instance := MultiMeshInstance3D.new()
+	if background_multi_mesh_instance:
+		background_multi_mesh_instance.queue_free()
+	background_multi_mesh_instance = MultiMeshInstance3D.new()
 	var multi_mesh := MultiMesh.new()
 	multi_mesh.mesh = preload("res://Assets/Icosphere_Icosphere_001.res")
 	multi_mesh.transform_format = MultiMesh.TRANSFORM_3D
@@ -173,13 +199,14 @@ func _generate_background_asteroids() -> void:
 	for index in count:
 		var xform = Transform3D()
 		var scale_number := radii[index] / 2
-		xform = xform.scaled(Vector3(scale_number, scale_number, scale_number))
 		xform.basis = Basis(Vector3.UP, randf() * TAU)
+		xform = xform.rotated(Vector3.LEFT, randf() * TAU)
+		xform = xform.scaled(Vector3(scale_number, scale_number, scale_number))
 		xform.origin = positions[index]
 		multi_mesh.set_instance_transform(index, xform)
 	
-	multi_mesh_instance.multimesh = multi_mesh
-	instantiated_root.add_child(multi_mesh_instance)
+	background_multi_mesh_instance.multimesh = multi_mesh
+	instantiated_root.add_child(background_multi_mesh_instance)
 
 
 func _ready() -> void:
