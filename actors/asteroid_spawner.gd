@@ -15,6 +15,7 @@ enum AsteroidType {
 # asteroid scale is actually a diameter
 @export var asteroid_scale_max: float = 5.0
 @export var asteroid_scale_min: float = 0.75
+@export var exclusion_zones: Array[RadiusNode3D]
 @export_group("Asteroid Crystal")
 @export var crystal_minimum_distance: float = 75.0
 @export_group("Asteroid Gold")
@@ -45,8 +46,6 @@ enum AsteroidType {
 		background_asteroid_scale_min = value
 		if is_node_ready():
 			_generate_background_asteroids()
-
-@export var exclusion_zones: Array[RadiusNode3D]
 
 var asteroid_count: int = 750
 
