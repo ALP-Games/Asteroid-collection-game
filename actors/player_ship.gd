@@ -31,7 +31,7 @@ const JET_MAX_SCALE := 1.0
 @export var collision_pitch_variation := 0.07
 
 @export_group("Stabilization Warning")
-@export var stabilization_warning_multiple: float = 2.0
+@export var stabilization_warning_multiple: float = 1.2
 @export var destabilized_time: float = 0.25
 var destabilized_elapsed := 0.0
 
@@ -274,7 +274,6 @@ func _physics_process(delta: float) -> void:
 	
 	var movement_input_held := thrust_input or reverse_input or stop_input
 	_play_jet_sound(movement_input_held)
-	_play_rcs_sound(not is_zero_approx(rotation_input))
 	
 	if Input.is_action_just_pressed("action"):
 		var camera := get_tree().get_first_node_in_group("camera") as FancyCameraArmature
@@ -308,8 +307,10 @@ func _physics_process(delta: float) -> void:
 	if not thrust_input and not reverse_input:
 		linear_stop = true
 	
+	_play_rcs_sound(not is_zero_approx(rotation_input))
 	_enable_rcs_thruster_effect(rotation_input)
-	if rotation_input:
+	#if rotation_input and abs(angular_velocity.y) < max_turn_speed:
+	if (rotation_input < 0 and angular_velocity.y > -max_turn_speed) or (rotation_input > 0 and angular_velocity.y < max_turn_speed):
 		# Maybe body direct state should be retrieved only once
 		var inverse_inertia :=  PhysicsServer3D.body_get_direct_state(get_rid()).inverse_inertia
 		var acceleration_defficit := (max_turn_speed - absf(angular_velocity.y)) / delta as float
