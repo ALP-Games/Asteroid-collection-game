@@ -18,7 +18,7 @@ weight_value_multiplier = 0.2
 default_density = 500.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, 0)
+transform = Transform3D(0.31, 0, 0, 0, 0.31, 0, 0, 0, 0.31, -0.018561, -0.00961608, 0)
 mesh = ExtResource("2_hosm5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
