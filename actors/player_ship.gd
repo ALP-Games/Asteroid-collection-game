@@ -307,20 +307,24 @@ func _physics_process(delta: float) -> void:
 	if not thrust_input and not reverse_input:
 		linear_stop = true
 	
-	_play_rcs_sound(not is_zero_approx(rotation_input))
-	_enable_rcs_thruster_effect(rotation_input)
+	var rcs_direction := 0
+	var play_rcs_sound := false
 	#if rotation_input and abs(angular_velocity.y) < max_turn_speed:
 	if (rotation_input < 0 and angular_velocity.y > -max_turn_speed) or (rotation_input > 0 and angular_velocity.y < max_turn_speed):
 		# Maybe body direct state should be retrieved only once
 		var inverse_inertia :=  PhysicsServer3D.body_get_direct_state(get_rid()).inverse_inertia
 		var acceleration_defficit := (max_turn_speed - absf(angular_velocity.y)) / delta as float
 		apply_torque(-Vector3.UP * rotation_input * clamp(turn_acceleration, -acceleration_defficit, acceleration_defficit) / inverse_inertia)
+		rcs_direction = rotation_input
+		play_rcs_sound = true
 	else:
 		var inverse_inertia := PhysicsServer3D.body_get_direct_state(get_rid()).inverse_inertia
-		if inverse_inertia.y != 0:
+		if not is_zero_approx(inverse_inertia.y):
 			var reverse_angular_acceleration := -angular_velocity.y / delta as float
 			reverse_angular_acceleration = clamp(reverse_angular_acceleration, -turn_acceleration, turn_acceleration)
 			apply_torque(Vector3.UP * reverse_angular_acceleration / inverse_inertia.y)
+	_play_rcs_sound(play_rcs_sound)
+	_enable_rcs_thruster_effect(rcs_direction)
 	
 	if linear_stop:
 		var negative_acceleration := -linear_velocity.normalized() * starting_linear_amount_stop

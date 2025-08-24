@@ -18,7 +18,6 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8035)
 asteroid_scale_min = 1.0
 offset = Vector3(0, -17, 0)
-background_asteroid_count = 2000
 background_spawn_exponent = 0.45
 background_asteroid_scale_max = 20.0
 background_asteroid_scale_min = 3.0
