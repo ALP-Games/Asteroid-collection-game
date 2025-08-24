@@ -215,8 +215,6 @@ func _weight_upgraded(upgrade_level: int) -> void:
 
 
 func _enable_rcs_thruster_effect(rotation_input: float) -> void:
-	rcs_thrusters_left_trun
-	rcs_thrusters_right_trun
 	if rotation_input < 0:
 		for thruster in rcs_thrusters_left_trun:
 			thruster.emitting = true
@@ -274,10 +272,9 @@ func _physics_process(delta: float) -> void:
 		stop_input = Input.is_action_pressed("stop")
 		rotation_input = Input.get_axis("rot_left", "rot_right")
 	
-	var movement_input_held := thrust_input or reverse_input or stop_input #or not is_zero_approx(rotation_input)
+	var movement_input_held := thrust_input or reverse_input or stop_input
 	_play_jet_sound(movement_input_held)
 	_play_rcs_sound(not is_zero_approx(rotation_input))
-	print("Rotation input - ", rotation_input)
 	
 	if Input.is_action_just_pressed("action"):
 		var camera := get_tree().get_first_node_in_group("camera") as FancyCameraArmature
