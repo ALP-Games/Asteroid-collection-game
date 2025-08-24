@@ -39,7 +39,6 @@ var destabilized_elapsed := 0.0
 @export var max_graphics_tilt: float = 45.0
 
 @export var jet_sound_fade_out_duration: float = 0.2
-var sound_fade_out_tween: Tween
 
 @onready var min_collision_force_for_stun := starting_min_collision_force_for_stun
 
@@ -53,11 +52,20 @@ var sound_fade_out_tween: Tween
 
 @onready var jet_beam: Node3D = $Graphics/JetBeam
 @onready var jet_beam_2: Node3D = $Graphics/JetBeam2
+
 @onready var jet_effect: AudioStreamPlayer3D = $JetEffect
 @onready var sound_default_volume: float = jet_effect.volume_db
+var sound_fade_out_tween: Tween
+
+@onready var rcs_thrust_loop: AudioStreamPlayer3D = $RCSThrustLoop
+@onready var rcs_default_volume: float = rcs_thrust_loop.volume_db
+var rcs_fade_out_tween: Tween
 
 @onready var collision_sounds_player: AudioStreamPlayer3D = $CollisionSoundsPlayer
 @onready var collision_default_volume: float = collision_sounds_player.volume_db
+
+@onready var rcs_thrusters_left_trun: Array[GPUParticles3D] = [$Graphics/RCSFrontRight, $Graphics/RCSBackLeft]
+@onready var rcs_thrusters_right_trun: Array[GPUParticles3D] = [$Graphics/RCSFrontLeft, $Graphics/RCSBackRight]
 
 var player_stunned := false
 var in_shop_range := false
@@ -83,7 +91,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			reduced_mass = (mass * other_mass) / (mass + other_mass)
 		else:
 			reduced_mass = mass
-		print("Reduced mass - ", reduced_mass)
+		#print("Reduced mass - ", reduced_mass)
 		var impulse_magnitude: float = abs(speed_relative) * reduced_mass
 		_stun_player_on_collision(impulse_magnitude)
 		_play_collision_sound(impulse_magnitude)
@@ -91,7 +99,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 
 func _stun_player_on_collision(impulse_magnitude: float) -> void:
 	if impulse_magnitude >= min_collision_force_for_stun:
-		print("Impulse magnitude - ", impulse_magnitude)
+		#print("Impulse magnitude - ", impulse_magnitude)
 		player_stunned = true
 		var difference := impulse_magnitude / min_collision_force_for_stun
 		var stun_duration := collision_stun_time_curve.sample(difference)
@@ -115,25 +123,37 @@ func _play_collision_sound(impulse_magnitude: float) -> void:
 		collision_sound_player_instance.play()
 
 
-func _play_jet_effect(play: bool) -> void:
+func _play_jet_sound(play: bool) -> void:
+	_play_sound_effect(play, jet_effect, sound_fade_out_tween, sound_default_volume)
+
+
+func _play_rcs_sound(play: bool) -> void:
 	if play:
-		if sound_fade_out_tween and sound_fade_out_tween.is_valid():
-			sound_fade_out_tween.kill()
-		elif not jet_effect.playing and not jet_effect.stream_paused:
-			jet_effect.play()
-		jet_effect.volume_db = sound_default_volume
-		jet_effect.stream_paused = false
+		if not rcs_thrust_loop.playing and not rcs_thrust_loop.stream_paused:
+			rcs_thrust_loop.play()
+		rcs_thrust_loop.stream_paused = false
 	else:
-		if jet_effect.playing and not jet_effect.stream_paused:
-			fade_out_sfx()
+		rcs_thrust_loop.stream_paused = true
 
 
-func fade_out_sfx() -> void:
-	if sound_fade_out_tween and sound_fade_out_tween.is_valid():
+func _play_sound_effect(play: bool, sound_stream: AudioStreamPlayer3D, sound_tween: Tween, default_volume: float) -> void:
+	if play:
+		if sound_tween and sound_tween.is_valid():
+			sound_tween.kill()
+		if not sound_stream.playing and not sound_stream.stream_paused:
+			sound_stream.play()
+		sound_stream.volume_db = default_volume # maybe need a fade in tween?, or maybe even spawn the stream player?
+		sound_stream.stream_paused = false
+	else:
+		if sound_stream.playing and not sound_stream.stream_paused:
+			fade_out_sfx(sound_stream, sound_tween)
+
+func fade_out_sfx(sound_stream: AudioStreamPlayer3D, sound_tween: Tween) -> void:
+	if sound_tween and sound_tween.is_valid():
 		return
-	sound_fade_out_tween = create_tween()
-	sound_fade_out_tween.tween_property(jet_effect, "volume_db", -80.0, jet_sound_fade_out_duration)
-	sound_fade_out_tween.tween_callback(func():jet_effect.stream_paused = true)
+	sound_tween = create_tween()
+	sound_tween.tween_property(sound_stream, "volume_db", -80.0, jet_sound_fade_out_duration)
+	sound_tween.tween_callback(func():sound_stream.stream_paused = true)
 
 
 func _on_upgrade(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
@@ -194,6 +214,26 @@ func _weight_upgraded(upgrade_level: int) -> void:
 			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
 
 
+func _enable_rcs_thruster_effect(rotation_input: float) -> void:
+	rcs_thrusters_left_trun
+	rcs_thrusters_right_trun
+	if rotation_input < 0:
+		for thruster in rcs_thrusters_left_trun:
+			thruster.emitting = true
+		for thruster in rcs_thrusters_right_trun:
+			thruster.emitting = false
+	elif rotation_input > 0:
+		for thruster in rcs_thrusters_left_trun:
+			thruster.emitting = false
+		for thruster in rcs_thrusters_right_trun:
+			thruster.emitting = true
+	else:
+		for thruster in rcs_thrusters_left_trun:
+			thruster.emitting = false
+		for thruster in rcs_thrusters_right_trun:
+			thruster.emitting = false
+
+
 func _process(_delta: float) -> void:
 	var turn_ratio := angular_velocity.y / max_turn_speed
 	graphics.rotation.z = deg_to_rad(max_graphics_tilt) * turn_ratio
@@ -234,8 +274,10 @@ func _physics_process(delta: float) -> void:
 		stop_input = Input.is_action_pressed("stop")
 		rotation_input = Input.get_axis("rot_left", "rot_right")
 	
-	var movement_input_held := thrust_input or reverse_input or stop_input or not is_zero_approx(rotation_input)
-	_play_jet_effect(movement_input_held)
+	var movement_input_held := thrust_input or reverse_input or stop_input #or not is_zero_approx(rotation_input)
+	_play_jet_sound(movement_input_held)
+	_play_rcs_sound(not is_zero_approx(rotation_input))
+	print("Rotation input - ", rotation_input)
 	
 	if Input.is_action_just_pressed("action"):
 		var camera := get_tree().get_first_node_in_group("camera") as FancyCameraArmature
@@ -264,10 +306,12 @@ func _physics_process(delta: float) -> void:
 		var force_to_apply := (desired_direction * clampf(reverse_deficit, 0, reverse_force)) + negative_force
 		apply_central_force(force_to_apply)
 	
+	# TODO: change this to a better stop
 	var linear_stop := stop_input
 	if not thrust_input and not reverse_input:
 		linear_stop = true
 	
+	_enable_rcs_thruster_effect(rotation_input)
 	if rotation_input:
 		# Maybe body direct state should be retrieved only once
 		var inverse_inertia :=  PhysicsServer3D.body_get_direct_state(get_rid()).inverse_inertia

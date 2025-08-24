@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=13 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="PackedScene" uid="uid://ddw1ejtyob1w0" path="res://actors/actor_graphics/player_graphics.tscn" id="2_3gxbi"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://duvgvbdmebdsa" path="res://actors/anchor_rope_emitter.tscn" id="5_mfuwy"]
 [ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
 [ext_resource type="AudioStream" uid="uid://xxdkq8bd241g" path="res://sounds/jet-engine.ogg" id="7_pt2uk"]
+[ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="9_4lo07"]
 
 [sub_resource type="Curve" id="Curve_5wmuu"]
 _limits = [0.2, 1.0, 1.0, 6.0]
@@ -56,6 +57,12 @@ emitters = Array[PackedScene]([ExtResource("3_gv0w4"), ExtResource("5_mfuwy")])
 stream = ExtResource("7_pt2uk")
 volume_db = -5.0
 max_db = -2.0
+
+[node name="RCSThrustLoop" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_4lo07")
+volume_db = -5.0
+max_db = -2.0
+pitch_scale = 0.8
 
 [node name="CollisionSoundsPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_ehe0o")
