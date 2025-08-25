@@ -58,8 +58,6 @@ var destabilized_elapsed := 0.0
 var sound_fade_out_tween: Tween
 
 @onready var rcs_thrust_loop: AudioStreamPlayer3D = $RCSThrustLoop
-@onready var rcs_default_volume: float = rcs_thrust_loop.volume_db
-var rcs_fade_out_tween: Tween
 
 @onready var collision_sounds_player: AudioStreamPlayer3D = $CollisionSoundsPlayer
 @onready var collision_default_volume: float = collision_sounds_player.volume_db

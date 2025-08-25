@@ -29,12 +29,18 @@ func _init() -> void:
 	for index in UpgradeType.UPGRADE_COUNT:
 		_upgrade_levels_bought.append(0)
 		_upgrade_levels.append(0)
-	
+	call_deferred("_emit_upgrades")
 	#upgrade_data.resize(UpgradeType.UPGRADE_COUNT)
 	#upgrade_data[UpgradeType.HOOK_COUNT] = HOOK_COUNT_UPGRADE
 	#upgrade_data[UpgradeType.ENGINE_POWER] = ENGINE_UPGRADE
 	#upgrade_data[UpgradeType.DEBT] = DEBT
 
+
+# Maybe it's better to have a function that would query an upgrade level
+# For specific upgrade type
+func _emit_upgrades() -> void:
+	for index in UpgradeType.UPGRADE_COUNT:
+		upgrade_incremented.emit(index, _upgrade_levels[index])
 
 func get_upgrade_cur_max(type: UpgradeType) -> Array[int]:
 	if type == UpgradeType.UNDEFINED:
