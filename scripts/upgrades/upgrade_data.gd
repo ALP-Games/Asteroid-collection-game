@@ -87,3 +87,10 @@ func get_scene(type: UpgradeType) -> PackedScene:
 	if type == UpgradeType.UNDEFINED:
 		return
 	return _UPGRADE_DATA[type].upgrade_scene
+
+
+func get_upgrade_variables(type: UpgradeType) -> IUpgradeVariables:
+	if type == UpgradeType.UNDEFINED:
+		return
+	var current_level := _upgrade_levels_bought[type]
+	return _UPGRADE_DATA[type].variables[current_level]

@@ -3,6 +3,7 @@ class_name UpgradeDataRes extends Resource
 @export var icon: Texture2D
 @export var upgrade_type: UpgradeData.UpgradeType
 @export var data: Array[UpgradeEntry]
+@export var variables: Array[IUpgradeVariables]
 @export var upgrade_scene: PackedScene = preload("res://ui/gameplay_ui/shop_item.tscn")
 
 @export_group("Defaults")

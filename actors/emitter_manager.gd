@@ -25,19 +25,7 @@ func _update_hook_ui() -> void:
 func _hooks_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
 	if upgrade_id != UpgradeData.UpgradeType.HOOK_COUNT:
 		return
-	match upgrade_level:
-		0:
-			max_emitter_amount = 1
-		1:
-			max_emitter_amount = 2
-		2:
-			max_emitter_amount = 3
-		3:
-			max_emitter_amount = 4
-		4:
-			max_emitter_amount = 5
-		5:
-			max_emitter_amount = 6
+	max_emitter_amount = upgrade_level + 1
 	_update_hook_ui()
 
 

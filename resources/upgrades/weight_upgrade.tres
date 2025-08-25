@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeDataRes" load_steps=10 format=3 uid="uid://cs168fsjud6c2"]
+[gd_resource type="Resource" script_class="UpgradeDataRes" load_steps=19 format=3 uid="uid://cs168fsjud6c2"]
 
 [ext_resource type="Script" uid="uid://ck2re64ar7f1s" path="res://scripts/upgrades/upgrade_entry.gd" id="1_jmlt5"]
 [ext_resource type="Texture2D" uid="uid://b36x8n8ussm2b" path="res://Assets/Icons/weight.jpg" id="2_al0ry"]
 [ext_resource type="Script" uid="uid://cwyg5p6l0aonv" path="res://scripts/upgrades/upgrade_data_res.gd" id="2_ptnhn"]
 [ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="4_s5h3u"]
+[ext_resource type="Script" uid="uid://bg5iujt4td7f5" path="res://scripts/upgrades/upgrade_variables/iupgrade_variables.gd" id="5_s5h3u"]
+[ext_resource type="Script" uid="uid://c17ps8wa5r45h" path="res://scripts/upgrades/upgrade_variables/mass_upgrade_variables.gd" id="6_0v78t"]
 
 [sub_resource type="Resource" id="Resource_ptnhn"]
 script = ExtResource("1_jmlt5")
@@ -35,16 +37,54 @@ metadata/_custom_type_script = "uid://ck2re64ar7f1s"
 
 [sub_resource type="Resource" id="Resource_qq8bi"]
 script = ExtResource("1_jmlt5")
-upgrade_name = &"Weighted plating MAXED 4/4"
+upgrade_name = &""
+buy_text = &""
+upgrade_price = 8000
+metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_xxoic"]
+script = ExtResource("1_jmlt5")
+upgrade_name = &"Weighted plating MAXED 5/5"
 buy_text = &""
 upgrade_price = -1
 metadata/_custom_type_script = "uid://ck2re64ar7f1s"
+
+[sub_resource type="Resource" id="Resource_0lr5l"]
+script = ExtResource("6_0v78t")
+mass = 0.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_cluvm"]
+script = ExtResource("6_0v78t")
+mass = 1000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_vs2ws"]
+script = ExtResource("6_0v78t")
+mass = 2000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_tmrlm"]
+script = ExtResource("6_0v78t")
+mass = 4000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_i56at"]
+script = ExtResource("6_0v78t")
+mass = 8000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_f3sgm"]
+script = ExtResource("6_0v78t")
+mass = 16000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
 
 [resource]
 script = ExtResource("2_ptnhn")
 icon = ExtResource("2_al0ry")
 upgrade_type = 0
-data = Array[ExtResource("1_jmlt5")]([SubResource("Resource_ptnhn"), SubResource("Resource_al0ry"), SubResource("Resource_s5h3u"), SubResource("Resource_0v78t"), SubResource("Resource_qq8bi")])
+data = Array[ExtResource("1_jmlt5")]([SubResource("Resource_ptnhn"), SubResource("Resource_al0ry"), SubResource("Resource_s5h3u"), SubResource("Resource_0v78t"), SubResource("Resource_qq8bi"), SubResource("Resource_xxoic")])
+variables = Array[ExtResource("5_s5h3u")]([SubResource("Resource_0lr5l"), SubResource("Resource_cluvm"), SubResource("Resource_vs2ws"), SubResource("Resource_tmrlm"), SubResource("Resource_i56at"), SubResource("Resource_f3sgm")])
 upgrade_scene = ExtResource("4_s5h3u")
 upgrade_name = &"Weighted plating"
 buy_text = &"Buy"

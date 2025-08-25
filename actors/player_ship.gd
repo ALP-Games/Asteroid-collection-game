@@ -155,60 +155,20 @@ func fade_out_sfx(sound_stream: AudioStreamPlayer3D, sound_tween: Tween) -> void
 
 
 func _on_upgrade(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
+	# this match could be type based
 	match upgrade_id:
 		UpgradeData.UpgradeType.ENGINE_POWER:
-			_thrusters_upgraded(upgrade_level)
+			var thruster_variables: ThrusterUpgradeVariables = GameManager.upgrade_data.\
+				get_upgrade_variables(upgrade_id)
+			var data := thruster_variables.get_data(starting_mass)
+			thrust_force = data.thrust_force
+			stop_linear_amount = data.stop_linear_amount
+			reverse_force = data.reverse_force
 		UpgradeData.UpgradeType.WEIGHT:
-			_weight_upgraded(upgrade_level)
-
-
-func _thrusters_upgraded(upgrade_level: int) -> void:
-	match upgrade_level:
-		0:
-			stop_linear_amount = starting_mass * starting_linear_amount_stop
-			thrust_force = starting_mass * starting_acceleration
-			reverse_force = starting_mass * starting_reverse_acceleration
-		1:
-			stop_linear_amount = starting_mass * 30.0
-			thrust_force = starting_mass * 25.0
-			reverse_force = starting_mass * 10.0
-		2:
-			stop_linear_amount = starting_mass * 50.0
-			thrust_force = starting_mass * 40.0
-			reverse_force = starting_mass * 25.0
-		3:
-			stop_linear_amount = starting_mass * 100.0
-			thrust_force = starting_mass * 75.0
-			reverse_force = starting_mass * 45.0
-		4:
-			stop_linear_amount = starting_mass * 160.0
-			thrust_force = starting_mass * 130.0
-			reverse_force = starting_mass * 75.0
-		5:
-			stop_linear_amount = starting_mass * 250.0
-			thrust_force = starting_mass * 190.0
-			reverse_force = starting_mass * 150.0
-
-
-func _weight_upgraded(upgrade_level: int) -> void:
-	match upgrade_level:
-		0:
-			mass = starting_mass
-			min_collision_force_for_stun = starting_min_collision_force_for_stun
-		1:
-			mass = starting_mass + (500*2)
-			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
-		2:
-			mass = starting_mass + (500*4)
-			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
-		3:
-			mass = starting_mass + (500*8)
-			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
-		4:
-			mass = starting_mass + (500*16)
-			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
-		5:
-			mass = starting_mass + (500*32)
+			var mass_variables: MassUpgradeVariables = GameManager.upgrade_data.\
+				get_upgrade_variables(upgrade_id)
+			var data := mass_variables.get_data()
+			mass = starting_mass + data.mass
 			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
 
 
