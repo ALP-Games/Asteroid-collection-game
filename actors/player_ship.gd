@@ -206,16 +206,10 @@ func _process(_delta: float) -> void:
 	var scale_vector := Vector3(jet_scale, jet_scale, jet_scale)
 	
 	var weight: float = (Input.is_action_pressed("thrust") as float)
-	#weight = 1.0
-	#var weight: float = clamp((current_speed - max_speed_before_zoom) / \
-											#(max_zoom_speed - max_speed_before_zoom), 0.0, 1.0)
-											#Input.is_action_pressed("thrust")
-	var target_scale: Vector3 = lerp(Vector3.ZERO, scale_vector, weight)
+	var target_scale: Vector3 = lerp(Vector3.ZERO, scale_vector, weight + 0.0001)
 	current_scale = lerp(current_scale, target_scale, _delta * 5.0)
 	jet_beam.scale = current_scale
 	jet_beam_2.scale = current_scale
-	# can create jet pulse animation track
-	# can then scale it through code
 
 
 func _physics_process(delta: float) -> void:
