@@ -1,30 +1,30 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddw1ejtyob1w0"]
 
-[ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="1_qkslv"]
-[ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://Assets/vfx/JetBeam.tscn" id="2_0bfa1"]
-[ext_resource type="PackedScene" uid="uid://7k7ri26qwqvt" path="res://effects/rcs_thruster_effect.tscn" id="3_0bfa1"]
+[ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="1_0bfa1"]
+[ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://Assets/vfx/JetBeam.tscn" id="2_kbjdc"]
+[ext_resource type="PackedScene" uid="uid://7k7ri26qwqvt" path="res://effects/rcs_thruster_effect.tscn" id="3_bm1ep"]
 
 [node name="Graphics" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.47, -7.56387e-22, 7.0968e-08, 0, 0.47, 5.00933e-15, -7.0968e-08, 5.00933e-15, -0.47, 0, 0, 0.541739)
-mesh = ExtResource("1_qkslv")
+mesh = ExtResource("1_0bfa1")
 skeleton = NodePath("../..")
 
-[node name="JetBeam" parent="." instance=ExtResource("2_0bfa1")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.633783, 0, 1.01122)
+[node name="JetBeam" parent="." instance=ExtResource("2_kbjdc")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -0.633783, 0, 1.01122)
 
-[node name="JetBeam2" parent="." instance=ExtResource("2_0bfa1")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.662979, 0, 1.01122)
+[node name="JetBeam2" parent="." instance=ExtResource("2_kbjdc")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 0.662979, 0, 1.01122)
 
-[node name="RCSFrontLeft" parent="." instance=ExtResource("3_0bfa1")]
+[node name="RCSFrontLeft" parent="." instance=ExtResource("3_bm1ep")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.29591, 0, -0.943397)
 
-[node name="RCSFrontRight" parent="." instance=ExtResource("3_0bfa1")]
+[node name="RCSFrontRight" parent="." instance=ExtResource("3_bm1ep")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.296, 0, -0.943)
 
-[node name="RCSBackLeft" parent="." instance=ExtResource("3_0bfa1")]
+[node name="RCSBackLeft" parent="." instance=ExtResource("3_bm1ep")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.782111, 0, 0.565504)
 
-[node name="RCSBackRight" parent="." instance=ExtResource("3_0bfa1")]
+[node name="RCSBackRight" parent="." instance=ExtResource("3_bm1ep")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.782, 0, 0.566)

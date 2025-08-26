@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
-[ext_resource type="PackedScene" uid="uid://ddw1ejtyob1w0" path="res://actors/actor_graphics/player_graphics.tscn" id="2_3gxbi"]
 [ext_resource type="AudioStream" uid="uid://dg780oghxkwf1" path="res://sounds/thud_02.ogg" id="3_ehe0o"]
 [ext_resource type="PackedScene" uid="uid://p6u1dun8q8br" path="res://actors/hook_rope_emitter.tscn" id="3_gv0w4"]
+[ext_resource type="PackedScene" uid="uid://ddw1ejtyob1w0" path="res://actors/actor_graphics/player_graphics.tscn" id="4_4lo07"]
 [ext_resource type="AudioStream" uid="uid://cmc5t70kbtyto" path="res://sounds/thud_03.ogg" id="4_g5e8g"]
 [ext_resource type="PackedScene" uid="uid://duvgvbdmebdsa" path="res://actors/anchor_rope_emitter.tscn" id="5_mfuwy"]
 [ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
@@ -43,7 +43,7 @@ collision_stun_time_curve = SubResource("Curve_5wmuu")
 collision_sounds = Array[AudioStream]([ExtResource("3_ehe0o"), ExtResource("4_g5e8g")])
 collision_sound_curve = SubResource("Curve_4lo07")
 
-[node name="Graphics" parent="." instance=ExtResource("2_3gxbi")]
+[node name="Graphics" parent="." instance=ExtResource("4_4lo07")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)

@@ -190,17 +190,36 @@ func _enable_rcs_thruster_effect(rotation_input: float) -> void:
 			thruster.emitting = false
 
 
+var current_scale: Vector3 = Vector3.ZERO
+
+
 func _process(_delta: float) -> void:
 	var turn_ratio := angular_velocity.y / max_turn_speed
 	graphics.rotation.z = deg_to_rad(max_graphics_tilt) * turn_ratio
 	
 	#var velocity_ration := linear_velocity.length() / MAX_JET_VELOCITY
-	var jet_scale := remap(linear_velocity.length(), 0, MAX_JET_VELOCITY, JET_MIN_SCALE, JET_MAX_SCALE)
-	jet_beam.scale = Vector3(jet_scale, jet_scale, jet_scale)
-	jet_beam_2.scale = Vector3(jet_scale, jet_scale, jet_scale)
+	
+	#var jet_scale := remap(linear_velocity.length(), 0, MAX_JET_VELOCITY, JET_MIN_SCALE, JET_MAX_SCALE)
+	# print(sin(Time.get_ticks_msec() / 100.0))
+	var offset := 10.0
+	var jet_scale := (offset + sin(Time.get_ticks_msec() / 25.0)) / (1.0 + offset)
+	var scale_vector := Vector3(jet_scale, jet_scale, jet_scale)
+	
+	var weight: float = (Input.is_action_pressed("thrust") as float)
+	#weight = 1.0
+	#var weight: float = clamp((current_speed - max_speed_before_zoom) / \
+											#(max_zoom_speed - max_speed_before_zoom), 0.0, 1.0)
+											#Input.is_action_pressed("thrust")
+	var target_scale: Vector3 = lerp(Vector3.ZERO, scale_vector, weight)
+	current_scale = lerp(current_scale, target_scale, _delta * 5.0)
+	jet_beam.scale = current_scale
+	jet_beam_2.scale = current_scale
+	# can create jet pulse animation track
+	# can then scale it through code
 
 
 func _physics_process(delta: float) -> void:
+	
 	if abs(angular_velocity.y) >= max_turn_speed * stabilization_warning_multiple:
 		destabilized_elapsed += delta
 		if destabilized_elapsed >= destabilized_time:
