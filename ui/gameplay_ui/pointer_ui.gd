@@ -14,6 +14,8 @@ func _ready() -> void:
 	pointer_pivot.pivot_offset = Vector2(pointer_pivot.size.x / 2, pointer_pivot.size.y / 2)
 	po_i_icon.pivot_offset = Vector2(po_i_icon.size.x / 2, po_i_icon.size.y / 2)
 	_player_ship = get_tree().get_first_node_in_group("player")
+	# This should point to the closest?
+	# We should have a pointer to the shop
 	_collection_zone = get_tree().get_first_node_in_group("collector")
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bnc1rcs2iewo1" path="res://Assets/bill_board_2.tscn" id="8_687qm"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
+[ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/item_dispensor.tscn" id="11_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 
 [node name="World" type="Node3D"]
@@ -36,8 +37,12 @@ tracking_max_distance = 4.0
 [node name="CollectionZone" parent="." instance=ExtResource("3_712nc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000498533, 0, 16.2709)
 
-[node name="ShopZone" parent="." instance=ExtResource("8_legw5")]
+[node name="ShopZone" parent="." node_paths=PackedStringArray("item_dispensor") instance=ExtResource("8_legw5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1573, 0, 19.318)
+item_dispensor = NodePath("../ItemDispensor")
+
+[node name="ItemDispensor" parent="." instance=ExtResource("11_re8x6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9145, -2.38419e-07, 22.5577)
 
 [node name="Instantiated" type="Node3D" parent="." groups=["instantiated_root"]]
 

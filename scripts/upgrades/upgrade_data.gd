@@ -11,14 +11,17 @@ enum UpgradeType {
 	ENGINE_POWER,
 	WEIGHT,
 	DEBT,
+	GRINDER,
 	UPGRADE_COUNT
 }
 
+# this could be just taken from a directory
 const _UPGRADE_DATA: Array[UpgradeDataRes] = [
 	preload("res://resources/upgrades/hook_count_upgrade.tres"),
 	preload("res://resources/upgrades/engine_upgrade.tres"),
 	preload("res://resources/upgrades/weight_upgrade.tres"),
-	preload("res://resources/upgrades/debt.tres")
+	preload("res://resources/upgrades/debt.tres"),
+	preload("res://resources/upgrades/grinder.tres")
 ]
 
 # TODO: change to packed arrays

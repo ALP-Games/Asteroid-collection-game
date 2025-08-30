@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=14 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/player_ship.gd" id="1_ljv35"]
 [ext_resource type="AudioStream" uid="uid://dg780oghxkwf1" path="res://sounds/thud_02.ogg" id="3_ehe0o"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://p5sxlq10gtdr" path="res://actors/emitter_manager.gd" id="6_3gxbi"]
 [ext_resource type="AudioStream" uid="uid://xxdkq8bd241g" path="res://sounds/jet-engine.ogg" id="7_pt2uk"]
 [ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="9_4lo07"]
+[ext_resource type="Script" uid="uid://cbc1gb4d64p31" path="res://scripts/components/interactor_component.gd" id="10_aapv7"]
 
 [sub_resource type="Curve" id="Curve_5wmuu"]
 _limits = [0.2, 1.0, 1.0, 6.0]
@@ -67,3 +68,7 @@ pitch_scale = 0.8
 [node name="CollisionSoundsPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_ehe0o")
 volume_db = 2.0
+
+[node name="InteractorComponent" type="Node" parent="."]
+script = ExtResource("10_aapv7")
+metadata/_custom_type_script = "uid://cbc1gb4d64p31"

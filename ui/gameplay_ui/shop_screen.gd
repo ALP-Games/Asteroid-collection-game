@@ -1,5 +1,7 @@
 class_name ShopScreen extends Control
 
+signal shop_visibilit_changed(visible: bool)
+
 @onready var shop_items: VBoxContainer = $HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems
 
 
@@ -23,3 +25,9 @@ func _ready() -> void:
 		new_shop_item.upgrade_id = (index as UpgradeData.UpgradeType)
 		new_shop_item.icon.texture = upgrade_data.get_icon(index)
 	visible = false
+
+
+func toggle_shop() -> void:
+	var new_state := !visible
+	visible = new_state
+	shop_visibilit_changed.emit(new_state)

@@ -65,6 +65,9 @@ var sound_fade_out_tween: Tween
 @onready var rcs_thrusters_left_trun: Array[GPUParticles3D] = [$Graphics/RCSFrontRight, $Graphics/RCSBackLeft]
 @onready var rcs_thrusters_right_trun: Array[GPUParticles3D] = [$Graphics/RCSFrontLeft, $Graphics/RCSBackRight]
 
+@onready var interactor_component: InteractorComponent = $InteractorComponent
+
+
 var player_stunned := false
 var in_shop_range := false
 
@@ -224,11 +227,13 @@ func _physics_process(delta: float) -> void:
 			stabilization_warning.hide_warning()
 		destabilized_elapsed = 0.0
 	
+	
+	var interaction := interactor_component.get_interaction()
+	if interaction:
+		interaction.interact(Input.is_action_just_pressed("interact"), Input.is_action_pressed("interact"))
+	
 	var shop_screen: Control = get_tree().get_first_node_in_group("shop_screen")
-	
-	if (shop_screen.visible or in_shop_range) and Input.is_action_just_pressed("open_shop"):
-		shop_screen.visible = !shop_screen.visible
-	
+	# the stoppage should still be active, do a refactor
 	if shop_screen.visible:
 		return
 	

@@ -1,0 +1,3 @@
+[submodule "addons/godot_extension_core_gdscript"]
+	path = addons/godot_extension_core_gdscript
+	url = git@github.com:ALP-Games/godot_extension_core_gdscript.git
