@@ -13,12 +13,17 @@ func add_item(item: PriorityQueueItem) -> void:
 
 
 func get_first_item() -> PriorityQueueItem:
+	if queue.size() <= 0:
+		return null
 	return queue.front()
 
 
 func pop_first_item() -> PriorityQueueItem:
+	if queue.size() <= 0:
+		return null
 	return queue.pop_front()
 
 
 func remove_item(item: PriorityQueueItem) -> void:
-	queue.erase(item)
+	if queue.size() > 0:
+		queue.erase(item)
