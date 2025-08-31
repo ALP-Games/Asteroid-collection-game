@@ -28,6 +28,7 @@ func _on_credits_amount_changed(_new_amount: int) -> void:
 	_check_has_enough()
 
 
+# most of this code should be in shop item or shop itself
 func _try_buy_upgrade() -> void:
 	if GameManager.credist_amount >= upgrade_price:
 		GameManager.credist_amount -= upgrade_price

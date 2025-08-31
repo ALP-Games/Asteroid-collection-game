@@ -15,6 +15,9 @@ enum UpgradeType {
 	UPGRADE_COUNT
 }
 
+# need to restructure things to be shop items insead of upgrades at this point
+# how to do that?
+
 # this could be just taken from a directory
 const _UPGRADE_DATA: Array[UpgradeDataRes] = [
 	preload("res://resources/upgrades/hook_count_upgrade.tres"),
@@ -29,9 +32,11 @@ var _upgrade_levels_bought: Array[int]
 var _upgrade_levels: Array[int]
 
 func _init() -> void:
-	for index in UpgradeType.UPGRADE_COUNT:
-		_upgrade_levels_bought.append(0)
-		_upgrade_levels.append(0)
+	_upgrade_levels_bought.resize(UpgradeType.UPGRADE_COUNT)
+	_upgrade_levels.resize(UpgradeType.UPGRADE_COUNT)
+	#for index in UpgradeType.UPGRADE_COUNT:
+		#_upgrade_levels_bought.append(0)
+		#_upgrade_levels.append(0)
 	call_deferred("_emit_upgrades")
 	#upgrade_data.resize(UpgradeType.UPGRADE_COUNT)
 	#upgrade_data[UpgradeType.HOOK_COUNT] = HOOK_COUNT_UPGRADE
