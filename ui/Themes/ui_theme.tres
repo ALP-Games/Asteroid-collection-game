@@ -1,8 +1,7 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://7qtjarwklgd2"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://7qtjarwklgd2"]
 
 [ext_resource type="FontFile" uid="uid://csccbfi24u3wr" path="res://ui/Themes/login.regular.ttf" id="1_6x46u"]
 [ext_resource type="Texture2D" uid="uid://1y5jix8dsu3a" path="res://ui/Themes/ui_button_texture.png" id="1_d77ug"]
-[ext_resource type="FontFile" uid="uid://c1jml03dojwuq" path="res://ui/Themes/sector-017.regular.ttf" id="1_ickav"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_almtl"]
 texture = ExtResource("1_d77ug")
@@ -138,8 +137,8 @@ HBoxContainer/constants/separation = 8
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_6x46u")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_4q0gy")
-TextEdit/font_sizes/font_size = 24
-TextEdit/fonts/font = ExtResource("1_ickav")
+TextEdit/font_sizes/font_size = 14
+TextEdit/fonts/font = ExtResource("1_6x46u")
 TextEdit/icons/space = SubResource("ImageTexture_ickav")
 TextEdit/icons/tab = SubResource("ImageTexture_4seg3")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_rquvp")
