@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://7qtjarwklgd2"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://7qtjarwklgd2"]
 
+[ext_resource type="FontFile" uid="uid://csccbfi24u3wr" path="res://ui/Themes/login.regular.ttf" id="1_6x46u"]
 [ext_resource type="Texture2D" uid="uid://1y5jix8dsu3a" path="res://ui/Themes/ui_button_texture.png" id="1_d77ug"]
+[ext_resource type="FontFile" uid="uid://c1jml03dojwuq" path="res://ui/Themes/sector-017.regular.ttf" id="1_ickav"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_almtl"]
 texture = ExtResource("1_d77ug")
@@ -34,7 +36,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 0, 512, 512)
 
-[sub_resource type="Image" id="Image_d77ug"]
+[sub_resource type="Image" id="Image_rquvp"]
 data = {
 "data": PackedByteArray(180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 19, 180, 180, 180, 19, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 19, 180, 180, 180, 64, 180, 180, 180, 64, 180, 180, 180, 19, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 19, 180, 180, 180, 64, 180, 180, 180, 64, 180, 180, 180, 19, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 19, 180, 180, 180, 19, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 0),
 "format": "RGBA8",
@@ -44,9 +46,9 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_ickav"]
-image = SubResource("Image_d77ug")
+image = SubResource("Image_rquvp")
 
-[sub_resource type="Image" id="Image_ickav"]
+[sub_resource type="Image" id="Image_rixia"]
 data = {
 "data": PackedByteArray(179, 179, 179, 47, 179, 179, 179, 50, 179, 179, 179, 6, 175, 175, 175, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 177, 177, 177, 49, 180, 180, 180, 64, 175, 175, 175, 54, 175, 175, 175, 6, 175, 175, 175, 0, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 177, 177, 177, 5, 177, 177, 177, 52, 180, 180, 180, 64, 175, 175, 175, 54, 175, 175, 175, 6, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 177, 177, 177, 0, 177, 177, 177, 5, 177, 177, 177, 52, 180, 180, 180, 64, 179, 179, 179, 50, 179, 179, 179, 0, 180, 180, 180, 64, 180, 180, 180, 64, 178, 178, 178, 0, 178, 178, 178, 6, 178, 178, 178, 53, 180, 180, 180, 64, 177, 177, 177, 49, 177, 177, 177, 0, 180, 180, 180, 64, 180, 180, 180, 64, 178, 178, 178, 6, 178, 178, 178, 53, 180, 180, 180, 64, 178, 178, 178, 53, 177, 177, 177, 5, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 181, 181, 181, 48, 180, 180, 180, 64, 178, 178, 178, 53, 178, 178, 178, 5, 178, 178, 178, 0, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64, 181, 181, 181, 41, 181, 181, 181, 48, 178, 178, 178, 5, 178, 178, 178, 0, 180, 180, 180, 0, 180, 180, 180, 0, 180, 180, 180, 64, 180, 180, 180, 64),
 "format": "RGBA8",
@@ -56,7 +58,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_4seg3"]
-image = SubResource("Image_ickav")
+image = SubResource("Image_rixia")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rquvp"]
 content_margin_left = 4.0
@@ -108,15 +110,36 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [resource]
-Button/font_sizes/font_size = 24
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("1_6x46u")
 Button/styles/disabled = SubResource("StyleBoxTexture_almtl")
 Button/styles/focus = SubResource("StyleBoxEmpty_d77ug")
 Button/styles/hover = SubResource("StyleBoxTexture_k577y")
 Button/styles/normal = SubResource("StyleBoxTexture_k577y")
 Button/styles/pressed = SubResource("StyleBoxTexture_almtl")
 HBoxContainer/constants/separation = 8
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("1_6x46u")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_4q0gy")
 TextEdit/font_sizes/font_size = 24
+TextEdit/fonts/font = ExtResource("1_ickav")
 TextEdit/icons/space = SubResource("ImageTexture_ickav")
 TextEdit/icons/tab = SubResource("ImageTexture_4seg3")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_rquvp")
