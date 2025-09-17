@@ -12,7 +12,7 @@ var first_start: bool = true
 signal credits_amount_changed(new_amount: int)
 
 var upgrade_data: UpgradeData = null
-var shop: Shop = null
+var shop: ShopManager = null
 
 var credist_amount: int = 0:
 	set(value):
@@ -54,7 +54,7 @@ func _init() -> void:
 func _initialize() -> void:
 	credist_amount = 0
 	upgrade_data = UpgradeData.new()
-	shop = Shop.new()
+	shop = ShopManager.new()
 	current_asteroid_count = 0
 
 

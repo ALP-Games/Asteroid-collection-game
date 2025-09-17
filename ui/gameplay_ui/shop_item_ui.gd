@@ -1,4 +1,4 @@
-class_name ShopItem extends PanelContainer
+class_name ShopItemUI extends PanelContainer
 
 @onready var icon: TextureRect = $VBoxContainer/NameAndIcon/Icon
 @onready var item_name: Label = $VBoxContainer/NameAndIcon/FlavorEstate/PanelContainer/ItemName

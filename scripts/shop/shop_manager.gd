@@ -1,4 +1,4 @@
-class_name Shop extends RefCounted
+class_name ShopManager extends RefCounted
 
 enum ItemType {
 	UNDEFINED = -1,
@@ -10,8 +10,8 @@ enum ItemType {
 	ITEM_COUNT
 }
 
-var items_dir := DirAccess.open("res://scripts/shop/")
-var shop_items: Array[ShopItemRes] = []
+var items_dir := DirAccess.open("res://resources/shop/")
+var shop_items: Array[IShopItemRes] = []
 
 func _init() -> void:
 	shop_items.resize(ItemType.ITEM_COUNT)
@@ -19,6 +19,9 @@ func _init() -> void:
 	var file_name := items_dir.get_next()
 	while file_name != "":
 		if file_name.ends_with(".tres"):
-			print(file_name)
+			#print(file_name)
+			var resource := load(file_name)
+			if resource is IShopItemRes:
+				shop_items.append(resource)
 		file_name = items_dir.get_next()
 	# read from directory

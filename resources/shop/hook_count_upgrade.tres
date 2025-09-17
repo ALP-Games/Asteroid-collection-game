@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="UpgradeItemRes" load_steps=18 format=3 uid="uid://dv3b6gvx6rugq"]
+
+[ext_resource type="Script" uid="uid://b5op7b0h3gjhc" path="res://scripts/shop/upgrade_entry.gd" id="1_ui748"]
+[ext_resource type="Texture2D" uid="uid://cq5kmcc7anewh" path="res://Assets/Icons/ui_hook.png" id="2_iwt8b"]
+[ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/shop_item_ui.tscn" id="2_pois2"]
+[ext_resource type="Script" uid="uid://bmqv1a5xg7e18" path="res://scripts/shop/shop_entry.gd" id="2_sbfbm"]
+[ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_iwt8b"]
+
+[sub_resource type="Resource" id="Resource_ogdyf"]
+script = ExtResource("2_sbfbm")
+item_name = &"More hooks 0/5"
+buy_text = &""
+price = 100
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_mn2og"]
+script = ExtResource("1_ui748")
+shop_entry = SubResource("Resource_ogdyf")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_v5nn4"]
+script = ExtResource("2_sbfbm")
+item_name = &"More hooks 1/5"
+buy_text = &""
+price = 1000
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_h6ynd"]
+script = ExtResource("1_ui748")
+shop_entry = SubResource("Resource_v5nn4")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_7cmsm"]
+script = ExtResource("2_sbfbm")
+item_name = &"More hooks 2/5"
+buy_text = &""
+price = 5000
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_pv6tr"]
+script = ExtResource("1_ui748")
+shop_entry = SubResource("Resource_7cmsm")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_ndhy3"]
+script = ExtResource("2_sbfbm")
+item_name = &"More hooks 3/5"
+buy_text = &""
+price = 10000
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_d6wm2"]
+script = ExtResource("1_ui748")
+shop_entry = SubResource("Resource_ndhy3")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_tus52"]
+script = ExtResource("2_sbfbm")
+item_name = &"More hooks 4/5"
+buy_text = &""
+price = 20000
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_nnhde"]
+script = ExtResource("1_ui748")
+shop_entry = SubResource("Resource_tus52")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_ru02b"]
+script = ExtResource("2_sbfbm")
+item_name = &"Hooooks!!! 5/5"
+buy_text = &""
+price = -1
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_xhrjo"]
+script = ExtResource("1_ui748")
+shop_entry = SubResource("Resource_ru02b")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[resource]
+script = ExtResource("3_iwt8b")
+icon = ExtResource("2_iwt8b")
+item_type = 0
+data = Array[ExtResource("1_ui748")]([SubResource("Resource_mn2og"), SubResource("Resource_h6ynd"), SubResource("Resource_pv6tr"), SubResource("Resource_d6wm2"), SubResource("Resource_nnhde"), SubResource("Resource_xhrjo")])
+item_scene = ExtResource("2_pois2")
+item_name = &""
+buy_text = &"Buy"
+metadata/_custom_type_script = "uid://dwthg2qund1h2"

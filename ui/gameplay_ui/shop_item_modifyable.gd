@@ -1,4 +1,4 @@
-class_name ShopItemModifyable extends ShopItem
+class_name ShopItemModifyable extends ShopItemUI
 
 const COUNT_FORMAT := &"%1d/%1d"
 
