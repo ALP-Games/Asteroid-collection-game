@@ -59,3 +59,4 @@ light_color = Color(0.601413, 0.83228, 1, 1)
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 2.0
+shadow_enabled = true

@@ -1,32 +1,34 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://7qtjarwklgd2"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://7qtjarwklgd2"]
 
 [ext_resource type="FontFile" uid="uid://csccbfi24u3wr" path="res://ui/Themes/login.regular.ttf" id="1_6x46u"]
 [ext_resource type="Texture2D" uid="uid://1y5jix8dsu3a" path="res://ui/Themes/ui_button_texture.png" id="1_d77ug"]
+[ext_resource type="Texture2D" uid="uid://1ol4hymjthp5" path="res://ui/Themes/ui_panel_texture.png" id="3_6x46u"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_almtl"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6x46u"]
 texture = ExtResource("1_d77ug")
-texture_margin_left = 18.0
-texture_margin_top = 18.0
-texture_margin_right = 18.0
-texture_margin_bottom = 18.0
+texture_margin_left = 16.0
+texture_margin_top = 15.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-modulate_color = Color(0.501407, 0.501406, 0.501406, 1)
+region_rect = Rect2(0, 0, 512, 512)
+modulate_color = Color(0.38141, 0.555786, 0.620512, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d77ug"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k577y"]
 texture = ExtResource("1_d77ug")
-texture_margin_left = 18.0
-texture_margin_top = 18.0
-texture_margin_right = 18.0
-texture_margin_bottom = 18.0
+texture_margin_left = 16.0
+texture_margin_top = 15.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 0, 512, 512)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4q0gy"]
-texture = ExtResource("1_d77ug")
+texture = ExtResource("3_6x46u")
 texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
@@ -128,11 +130,11 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 18
 Button/fonts/font = ExtResource("1_6x46u")
-Button/styles/disabled = SubResource("StyleBoxTexture_almtl")
+Button/styles/disabled = SubResource("StyleBoxTexture_6x46u")
 Button/styles/focus = SubResource("StyleBoxEmpty_d77ug")
 Button/styles/hover = SubResource("StyleBoxTexture_k577y")
 Button/styles/normal = SubResource("StyleBoxTexture_k577y")
-Button/styles/pressed = SubResource("StyleBoxTexture_almtl")
+Button/styles/pressed = SubResource("StyleBoxTexture_6x46u")
 HBoxContainer/constants/separation = 8
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_6x46u")
