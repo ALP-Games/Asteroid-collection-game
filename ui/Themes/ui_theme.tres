@@ -13,7 +13,7 @@ texture_margin_bottom = 16.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 region_rect = Rect2(0, 0, 512, 512)
-modulate_color = Color(0.38141, 0.555786, 0.620512, 1)
+modulate_color = Color(0.498436, 0.531259, 0.55141, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d77ug"]
 
