@@ -81,7 +81,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [resource]
 script = ExtResource("3_4r7l7")
 icon = ExtResource("2_4r7l7")
-item_type = 0
+item_type = 3
 data = Array[ExtResource("1_k4gkn")]([SubResource("Resource_ntt0x"), SubResource("Resource_dsaoc"), SubResource("Resource_x0bsj"), SubResource("Resource_o8saq"), SubResource("Resource_iiqjt"), SubResource("Resource_hdcny")])
 item_scene = ExtResource("2_1yha8")
 item_name = &""

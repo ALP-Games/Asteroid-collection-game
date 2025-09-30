@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b5op7b0h3gjhc" path="res://scripts/shop/upgrade_entry.gd" id="1_fwp7r"]
 [ext_resource type="Script" uid="uid://bmqv1a5xg7e18" path="res://scripts/shop/shop_entry.gd" id="2_88lsc"]
-[ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/shop_item_ui.tscn" id="2_jy3ve"]
 [ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_88lsc"]
 [ext_resource type="Script" uid="uid://nwo2wkfbagv2" path="res://scripts/upgrades/upgrade_variables/thruster_upgrade_variables.gd" id="3_kny4t"]
 [ext_resource type="Texture2D" uid="uid://b8xm7gxfa5bsy" path="res://Assets/Icons/ui_jet.png" id="4_kny4t"]
+[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="5_kny4t"]
 
 [sub_resource type="Resource" id="Resource_vgyfv"]
 script = ExtResource("2_88lsc")
@@ -132,7 +132,7 @@ script = ExtResource("3_88lsc")
 icon = ExtResource("4_kny4t")
 item_type = 1
 data = Array[ExtResource("1_fwp7r")]([SubResource("Resource_0ux5o"), SubResource("Resource_6ct3h"), SubResource("Resource_rcgdt"), SubResource("Resource_v53ji"), SubResource("Resource_yypcn"), SubResource("Resource_wp0v2")])
-item_scene = ExtResource("2_jy3ve")
+item_scene = ExtResource("5_kny4t")
 item_name = &"Engine power"
 buy_text = &"Buy"
 metadata/_custom_type_script = "uid://dwthg2qund1h2"

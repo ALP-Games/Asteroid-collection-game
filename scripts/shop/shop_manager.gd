@@ -12,7 +12,7 @@ enum ItemType {
 
 signal item_bought(item_type: ItemType, count: int)
 
-var items_dir := DirAccess.open("res://resources/shop/")
+const ITEMS_DIR := "res://resources/shop/"
 var shop_items: Array[IShopItemRes] = []
 
 # we will have data here for now
@@ -24,12 +24,13 @@ func _init() -> void:
 	_items_bought.resize(ItemType.ITEM_COUNT)
 	_upgrade_levels.resize(ItemType.ITEM_COUNT)
 	
+	var items_dir := DirAccess.open(ITEMS_DIR)
 	items_dir.list_dir_begin()
 	var file_name := items_dir.get_next()
 	while file_name != "":
 		if file_name.ends_with(".tres"):
 			#print(file_name)
-			var resource := load(file_name)
+			var resource := load(ITEMS_DIR + file_name)
 			if resource is IShopItemRes:
 				assert(shop_items[resource.get_item_type()] == null, "Item with the same ID already added!")
 				shop_items[resource.get_item_type()] = resource
