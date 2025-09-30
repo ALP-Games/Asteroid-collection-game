@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b5op7b0h3gjhc" path="res://scripts/shop/upgrade_entry.gd" id="1_m2ou7"]
 [ext_resource type="Script" uid="uid://bmqv1a5xg7e18" path="res://scripts/shop/shop_entry.gd" id="2_abpqx"]
+[ext_resource type="Script" uid="uid://c17ps8wa5r45h" path="res://scripts/shop/upgrade_variables/mass_upgrade_variables.gd" id="3_abpqx"]
 [ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_natqq"]
-[ext_resource type="Script" uid="uid://c17ps8wa5r45h" path="res://scripts/shop/upgrade_variables/mass_upgrade_variables.gd" id="3_uoix5"]
 [ext_resource type="Texture2D" uid="uid://b36x8n8ussm2b" path="res://Assets/Icons/weight.jpg" id="4_kat7a"]
 [ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="5_abpqx"]
 
@@ -15,7 +15,7 @@ price = 500
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_6cpkt"]
-script = ExtResource("3_uoix5")
+script = ExtResource("3_abpqx")
 mass = 0.0
 metadata/_custom_type_script = "uid://c17ps8wa5r45h"
 
@@ -33,7 +33,7 @@ price = 1000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_bnnen"]
-script = ExtResource("3_uoix5")
+script = ExtResource("3_abpqx")
 mass = 1000.0
 metadata/_custom_type_script = "uid://c17ps8wa5r45h"
 
@@ -51,7 +51,7 @@ price = 2000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_lyfnl"]
-script = ExtResource("3_uoix5")
+script = ExtResource("3_abpqx")
 mass = 2000.0
 metadata/_custom_type_script = "uid://c17ps8wa5r45h"
 
@@ -69,7 +69,7 @@ price = 4000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_6icf5"]
-script = ExtResource("3_uoix5")
+script = ExtResource("3_abpqx")
 mass = 4000.0
 metadata/_custom_type_script = "uid://c17ps8wa5r45h"
 
@@ -87,7 +87,7 @@ price = 8000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_b4o38"]
-script = ExtResource("3_uoix5")
+script = ExtResource("3_abpqx")
 mass = 8000.0
 metadata/_custom_type_script = "uid://c17ps8wa5r45h"
 
@@ -105,7 +105,7 @@ price = -1
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_bsws6"]
-script = ExtResource("3_uoix5")
+script = ExtResource("3_abpqx")
 mass = 16000.0
 metadata/_custom_type_script = "uid://c17ps8wa5r45h"
 
