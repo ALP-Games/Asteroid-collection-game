@@ -6,14 +6,10 @@ class_name UpgradeItemRes extends ShopItemResDefaultsAbstract
 @export var item_scene: PackedScene = preload("res://ui/gameplay_ui/shop_item_ui.tscn")
 
 func get_entry(index: int) -> ShopEntry:
-	assert(data.size() > 0)
-	var entry: ShopEntry
-	if index >= data.size():
-		entry = data.back()
-	elif index < 0:
-		entry = data.front()
-	else:
-		entry = data[index].shop_entry
+	var data_entry := _get_data_entry(index)
+	if data_entry == null:
+		return null
+	var entry := data_entry.shop_entry
 	_validate_entry(entry) # can implement my own "validation" method
 	return entry
 
@@ -28,3 +24,22 @@ func get_item_type() -> ShopManager.ItemType:
 
 func get_item_scene() -> PackedScene:
 	return item_scene
+
+
+func get_variables(index: int) -> IUpgradeVariables:
+	var data_entry := _get_data_entry(index)
+	if data_entry == null:
+		return null
+	return data_entry.values
+
+
+func _get_data_entry(index: int) -> UpgradeEntry2:
+	assert(data.size() > 0)
+	var entry: UpgradeEntry2
+	if index >= data.size():
+		entry = data.back()
+	elif index < 0:
+		entry = data.front()
+	else:
+		entry = data[index]
+	return entry
