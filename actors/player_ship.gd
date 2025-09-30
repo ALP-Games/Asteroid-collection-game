@@ -160,14 +160,14 @@ func fade_out_sfx(sound_stream: AudioStreamPlayer3D, sound_tween: Tween) -> void
 func _on_upgrade(item_type: ShopManager.ItemType, count: int) -> void:
 	# this match could be type based
 	match item_type:
-		UpgradeData.UpgradeType.ENGINE_POWER:
+		ShopManager.ItemType.ENGINE_POWER:
 			var thruster_variables: ThrusterUpgradeVariables = GameManager.shop.\
 				get_upgrade_variables(item_type)
 			var data := thruster_variables.get_data(starting_mass)
 			thrust_force = data.thrust_force
 			stop_linear_amount = data.stop_linear_amount
 			reverse_force = data.reverse_force
-		UpgradeData.UpgradeType.WEIGHT:
+		ShopManager.ItemType.WEIGHT:
 			var mass_variables: MassUpgradeVariables = GameManager.shop.\
 				get_upgrade_variables(item_type)
 			var data := mass_variables.get_data()

@@ -28,7 +28,7 @@ func _add_interaction(interaction_component: InteractorComponent) -> void:
 
 func _remove_interaction(interaction_component: InteractorComponent) -> void:
 	var shop_screen: ShopScreen = get_tree().get_first_node_in_group("shop_screen")
-	if shop_screen.visible:
+	if shop_screen and shop_screen.visible:
 		shop_screen.shop_visibilit_changed.connect(func(_visble: bool):
 			interaction_component.remove_interaction(shop_interaction), CONNECT_ONE_SHOT)
 	else:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b5op7b0h3gjhc" path="res://scripts/shop/upgrade_entry.gd" id="1_m2ou7"]
 [ext_resource type="Script" uid="uid://bmqv1a5xg7e18" path="res://scripts/shop/shop_entry.gd" id="2_abpqx"]
 [ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_natqq"]
-[ext_resource type="Script" uid="uid://c17ps8wa5r45h" path="res://scripts/upgrades/upgrade_variables/mass_upgrade_variables.gd" id="3_uoix5"]
+[ext_resource type="Script" uid="uid://c17ps8wa5r45h" path="res://scripts/shop/upgrade_variables/mass_upgrade_variables.gd" id="3_uoix5"]
 [ext_resource type="Texture2D" uid="uid://b36x8n8ussm2b" path="res://Assets/Icons/weight.jpg" id="4_kat7a"]
 [ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="5_abpqx"]
 
