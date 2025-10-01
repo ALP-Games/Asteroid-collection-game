@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp2w0mhwpqoq7"]
+[gd_scene load_steps=7 format=3 uid="uid://bp2w0mhwpqoq7"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_0uyxq"]
 [ext_resource type="Script" uid="uid://bcaacmka808e2" path="res://ui/gameplay_ui/shop_item_modifyable.gd" id="1_7vfys"]
 [ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_0uyxq"]
+[ext_resource type="Texture2D" uid="uid://blt4ci75jxr2m" path="res://ui/Themes/ui_button_texture_2.png" id="2_8m76c"]
 [ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_8m76c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8q0v8"]
+texture = ExtResource("2_8m76c")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 512, 512)
+modulate_color = Color(1, 1, 1, 0.4392157)
 
 [node name="ShopItemModifyable" type="PanelContainer"]
 offset_right = 401.0
@@ -11,6 +23,7 @@ offset_bottom = 243.0
 size_flags_vertical = 0
 mouse_filter = 1
 theme = ExtResource("1_0uyxq")
+theme_override_styles/panel = SubResource("StyleBoxTexture_8q0v8")
 script = ExtResource("1_7vfys")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

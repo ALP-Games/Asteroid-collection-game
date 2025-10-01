@@ -1,9 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu0l4x28nikl"]
+[gd_scene load_steps=8 format=3 uid="uid://cu0l4x28nikl"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_k577y"]
 [ext_resource type="Script" uid="uid://dlemi7jy41f5g" path="res://ui/gameplay_ui/shop_item.gd" id="1_mgmnk"]
+[ext_resource type="Texture2D" uid="uid://blt4ci75jxr2m" path="res://ui/Themes/ui_button_texture_2.png" id="2_4q0gy"]
 [ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_7kxbi"]
 [ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_pne7h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_almtl"]
+texture = ExtResource("2_4q0gy")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 512, 512)
+modulate_color = Color(1, 1, 1, 0.4392157)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pne7h"]
 
@@ -13,6 +25,7 @@ offset_bottom = 196.0
 size_flags_vertical = 0
 mouse_filter = 1
 theme = ExtResource("1_k577y")
+theme_override_styles/panel = SubResource("StyleBoxTexture_almtl")
 script = ExtResource("1_mgmnk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
