@@ -1,4 +1,4 @@
-class_name ShopItem extends PanelContainer
+class_name ShopItemUI extends PanelContainer
 
 @onready var icon: TextureRect = $VBoxContainer/NameAndIcon/Icon
 @onready var item_name: Label = $VBoxContainer/NameAndIcon/FlavorEstate/PanelContainer/ItemName
@@ -7,7 +7,7 @@ class_name ShopItem extends PanelContainer
 @onready var click_sound_player: AudioStreamPlayer = $ClickSoundPlayer
 
 var upgrade_price: int = 0
-var upgrade_id: UpgradeData.UpgradeType
+var item_id: ShopManager.ItemType
 
 # what is an upgrade?
 # upgrades can have levels?
@@ -17,7 +17,11 @@ var upgrade_id: UpgradeData.UpgradeType
 func _ready() -> void:
 	GameManager.credits_amount_changed.connect(_on_credits_amount_changed)
 	buy_button.button_down.connect(func():click_sound_player.play())
-	buy_button.pressed.connect(_try_buy_upgrade)
+	buy_button.pressed.connect(_try_buy_item)
+
+
+func initialize() -> void:
+	_check_has_enough()
 
 
 func _exit_tree() -> void:
@@ -28,27 +32,25 @@ func _on_credits_amount_changed(_new_amount: int) -> void:
 	_check_has_enough()
 
 
-func _try_buy_upgrade() -> void:
-	if GameManager.credist_amount >= upgrade_price:
-		GameManager.credist_amount -= upgrade_price
-		var upgrade_data := GameManager.upgrade_data
-		upgrade_data.increment_upgrade(upgrade_id)
-		
+# most of this code should be in shop item or shop itself
+func _try_buy_item() -> void:
+	var shop := GameManager.shop
+	if shop.buy_item(item_id):
 		if not is_inside_tree():
 			return
 		
-		var shop_data := upgrade_data.get_shop_data(upgrade_id)
+		var shop_data := shop.get_shop_data(item_id)
 		if shop_data == null:
 			queue_free()
 			return
-		if shop_data.upgrade_price <= 0:
+		if shop_data.price <= 0:
 			buy_button.visible = false
 			item_price.visible = false
 		else:
 			buy_button.text = shop_data.buy_text
-			upgrade_price = shop_data.upgrade_price
+			upgrade_price = shop_data.price
 			item_price.text = str(upgrade_price)
-		item_name.text = shop_data.upgrade_name
+		item_name.text = shop_data.item_name
 		_check_has_enough()
 
 

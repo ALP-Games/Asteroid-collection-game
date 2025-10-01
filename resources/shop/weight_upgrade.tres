@@ -1,0 +1,126 @@
+[gd_resource type="Resource" script_class="UpgradeItemRes" load_steps=25 format=3 uid="uid://cc0yj5svu6tf2"]
+
+[ext_resource type="Script" uid="uid://b5op7b0h3gjhc" path="res://scripts/shop/upgrade_entry.gd" id="1_m2ou7"]
+[ext_resource type="Script" uid="uid://bmqv1a5xg7e18" path="res://scripts/shop/shop_entry.gd" id="2_abpqx"]
+[ext_resource type="Script" uid="uid://c17ps8wa5r45h" path="res://scripts/shop/upgrade_variables/mass_upgrade_variables.gd" id="3_abpqx"]
+[ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_natqq"]
+[ext_resource type="Texture2D" uid="uid://b36x8n8ussm2b" path="res://Assets/Icons/weight.jpg" id="4_kat7a"]
+[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="5_abpqx"]
+
+[sub_resource type="Resource" id="Resource_b6juv"]
+script = ExtResource("2_abpqx")
+item_name = &""
+buy_text = &""
+price = 500
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_6cpkt"]
+script = ExtResource("3_abpqx")
+mass = 0.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_0xqdc"]
+script = ExtResource("1_m2ou7")
+shop_entry = SubResource("Resource_b6juv")
+values = SubResource("Resource_6cpkt")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_8tyje"]
+script = ExtResource("2_abpqx")
+item_name = &""
+buy_text = &""
+price = 1000
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_bnnen"]
+script = ExtResource("3_abpqx")
+mass = 1000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_l1mot"]
+script = ExtResource("1_m2ou7")
+shop_entry = SubResource("Resource_8tyje")
+values = SubResource("Resource_bnnen")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_pwtqo"]
+script = ExtResource("2_abpqx")
+item_name = &""
+buy_text = &""
+price = 2000
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_lyfnl"]
+script = ExtResource("3_abpqx")
+mass = 2000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_f13jy"]
+script = ExtResource("1_m2ou7")
+shop_entry = SubResource("Resource_pwtqo")
+values = SubResource("Resource_lyfnl")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_41abb"]
+script = ExtResource("2_abpqx")
+item_name = &""
+buy_text = &""
+price = 4000
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_6icf5"]
+script = ExtResource("3_abpqx")
+mass = 4000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_tngrx"]
+script = ExtResource("1_m2ou7")
+shop_entry = SubResource("Resource_41abb")
+values = SubResource("Resource_6icf5")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_y1jeo"]
+script = ExtResource("2_abpqx")
+item_name = &""
+buy_text = &""
+price = 8000
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_b4o38"]
+script = ExtResource("3_abpqx")
+mass = 8000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_h5lhm"]
+script = ExtResource("1_m2ou7")
+shop_entry = SubResource("Resource_y1jeo")
+values = SubResource("Resource_b4o38")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[sub_resource type="Resource" id="Resource_xxxqp"]
+script = ExtResource("2_abpqx")
+item_name = &"Weighted plating MAXED 5/5"
+buy_text = &""
+price = -1
+metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
+
+[sub_resource type="Resource" id="Resource_bsws6"]
+script = ExtResource("3_abpqx")
+mass = 16000.0
+metadata/_custom_type_script = "uid://c17ps8wa5r45h"
+
+[sub_resource type="Resource" id="Resource_eukbi"]
+script = ExtResource("1_m2ou7")
+shop_entry = SubResource("Resource_xxxqp")
+values = SubResource("Resource_bsws6")
+metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
+
+[resource]
+script = ExtResource("3_natqq")
+icon = ExtResource("4_kat7a")
+item_type = 2
+data = Array[ExtResource("1_m2ou7")]([SubResource("Resource_0xqdc"), SubResource("Resource_l1mot"), SubResource("Resource_f13jy"), SubResource("Resource_tngrx"), SubResource("Resource_h5lhm"), SubResource("Resource_eukbi")])
+item_scene = ExtResource("5_abpqx")
+item_name = &"Weighted plating"
+buy_text = &"Buy"
+metadata/_custom_type_script = "uid://dwthg2qund1h2"

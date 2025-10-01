@@ -11,7 +11,8 @@ var first_start: bool = true
 
 signal credits_amount_changed(new_amount: int)
 
-var upgrade_data: UpgradeData = null
+#var upgrade_data: UpgradeData = null
+var shop: ShopManager = null
 
 var credist_amount: int = 0:
 	set(value):
@@ -28,7 +29,8 @@ func _run_callable(callable: Callable) -> void:
 
 
 func _ready() -> void:
-	upgrade_data.upgrade_incremented.connect(_check_victory)
+	#upgrade_data.upgrade_incremented.connect(_check_victory)
+	shop.item_bought.connect(_check_victory)
 	call_deferred("_reset_first_start")
 
 func _reset_first_start() -> void:
@@ -36,8 +38,8 @@ func _reset_first_start() -> void:
 	first_start = false
 
 
-func _check_victory(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
-	if upgrade_id != UpgradeData.UpgradeType.DEBT:
+func _check_victory(upgrade_id: ShopManager.ItemType, upgrade_level: int) -> void:
+	if upgrade_id != ShopManager.ItemType.DEBT:
 		return
 	if upgrade_level == 5:
 		var instantiated_root := get_tree().get_first_node_in_group("instantiated_root")
@@ -52,7 +54,8 @@ func _init() -> void:
 
 func _initialize() -> void:
 	credist_amount = 0
-	upgrade_data = UpgradeData.new()
+	#upgrade_data = UpgradeData.new()
+	shop = ShopManager.new()
 	current_asteroid_count = 0
 
 

@@ -73,7 +73,7 @@ var in_shop_range := false
 
 
 func _ready() -> void:
-	GameManager.upgrade_data.upgrade_incremented.connect(_on_upgrade)
+	GameManager.shop.item_bought.connect(_on_upgrade)
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -157,19 +157,19 @@ func fade_out_sfx(sound_stream: AudioStreamPlayer3D, sound_tween: Tween) -> void
 	sound_tween.tween_callback(func():sound_stream.stream_paused = true)
 
 
-func _on_upgrade(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
+func _on_upgrade(item_type: ShopManager.ItemType, count: int) -> void:
 	# this match could be type based
-	match upgrade_id:
-		UpgradeData.UpgradeType.ENGINE_POWER:
-			var thruster_variables: ThrusterUpgradeVariables = GameManager.upgrade_data.\
-				get_upgrade_variables(upgrade_id)
+	match item_type:
+		ShopManager.ItemType.ENGINE_POWER:
+			var thruster_variables: ThrusterUpgradeVariables = GameManager.shop.\
+				get_upgrade_variables(item_type)
 			var data := thruster_variables.get_data(starting_mass)
 			thrust_force = data.thrust_force
 			stop_linear_amount = data.stop_linear_amount
 			reverse_force = data.reverse_force
-		UpgradeData.UpgradeType.WEIGHT:
-			var mass_variables: MassUpgradeVariables = GameManager.upgrade_data.\
-				get_upgrade_variables(upgrade_id)
+		ShopManager.ItemType.WEIGHT:
+			var mass_variables: MassUpgradeVariables = GameManager.shop.\
+				get_upgrade_variables(item_type)
 			var data := mass_variables.get_data()
 			mass = starting_mass + data.mass
 			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
