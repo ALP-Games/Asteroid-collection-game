@@ -1,6 +1,6 @@
 class_name ShopItemUI extends PanelContainer
 
-@onready var icon: TextureRect = $VBoxContainer/NameAndIcon/Icon
+@onready var icon: TextureRect = $VBoxContainer/NameAndIcon/Frame/Icon
 @onready var item_name: Label = $VBoxContainer/NameAndIcon/FlavorEstate/PanelContainer/ItemName
 @onready var item_price: Label = $VBoxContainer/HBoxContainer/PanelContainer/ItemPrice
 @onready var buy_button: Button = $VBoxContainer/HBoxContainer/BuyButton

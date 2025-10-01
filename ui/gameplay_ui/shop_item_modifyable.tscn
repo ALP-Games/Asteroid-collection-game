@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp2w0mhwpqoq7"]
+[gd_scene load_steps=6 format=3 uid="uid://bp2w0mhwpqoq7"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_0uyxq"]
 [ext_resource type="Script" uid="uid://bcaacmka808e2" path="res://ui/gameplay_ui/shop_item_modifyable.gd" id="1_7vfys"]
 [ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_0uyxq"]
 [ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_8m76c"]
+[ext_resource type="Texture2D" uid="uid://bkxx4me3aopdt" path="res://Assets/Icons/ui_icon_bg.png" id="3_8q0v8"]
 
 [node name="ShopItemModifyable" type="PanelContainer"]
 offset_right = 401.0
@@ -20,9 +21,26 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/NameAndIcon"]
+[node name="Frame" type="TextureRect" parent="VBoxContainer/NameAndIcon"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+texture = ExtResource("3_8q0v8")
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/NameAndIcon/Frame"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = -78.0
+offset_right = 78.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_0uyxq")
 expand_mode = 2
 
