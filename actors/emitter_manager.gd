@@ -15,17 +15,17 @@ var hook_ui: HookUI
 func _ready() -> void:
 	hook_ui = get_tree().get_first_node_in_group("hook_ui")
 	call_deferred("_update_hook_ui")
-	GameManager.upgrade_data.upgrade_incremented.connect(_hooks_upgraded)
+	GameManager.shop.item_bought.connect(_hooks_upgraded)
 
 
 func _update_hook_ui() -> void:
 	hook_ui.set_hook_count(instanced_emitters.size(), max_emitter_amount)
 
 
-func _hooks_upgraded(upgrade_id: UpgradeData.UpgradeType, upgrade_level: int) -> void:
-	if upgrade_id != UpgradeData.UpgradeType.HOOK_COUNT:
+func _hooks_upgraded(item_type: ShopManager.ItemType, count: int) -> void:
+	if item_type != ShopManager.ItemType.HOOK_COUNT:
 		return
-	max_emitter_amount = upgrade_level + 1
+	max_emitter_amount = count + 1
 	_update_hook_ui()
 
 
