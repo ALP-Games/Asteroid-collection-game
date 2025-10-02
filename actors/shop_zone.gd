@@ -1,6 +1,6 @@
 class_name ShopZone extends Node3D
 
-@export var item_dispensor: ItemDispensor
+@export var item_dispensor: ItemDispenser
 
 var shop_interaction := Interaction.new()
 
@@ -38,3 +38,14 @@ func _remove_interaction(interaction_component: InteractorComponent) -> void:
 func _enable_shop_screen() -> void:
 	var shop_screen: ShopScreen = get_tree().get_first_node_in_group("shop_screen")
 	shop_screen.toggle_shop()
+	if GameManager.shop.item_bought.is_connected(_item_bought):
+		GameManager.shop.item_bought.disconnect(_item_bought)
+	else:
+		GameManager.shop.item_bought.connect(_item_bought)
+	# we can subscribe to item bought?
+
+
+func _item_bought(item_type: ShopManager.ItemType, count: int) -> void:
+	if item_type == ShopManager.ItemType.GRINDER:
+		#item_dispensor.add_item_to_dispense()
+		pass
