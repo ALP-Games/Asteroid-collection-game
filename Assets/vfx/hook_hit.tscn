@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://btw85yqdumem8"]
+
+[ext_resource type="ArrayMesh" uid="uid://de0buda2q3add" path="res://Assets/vfx/Pebble_Icosphere_002.res" id="1_5l1bh"]
+
+[sub_resource type="Gradient" id="Gradient_oy1se"]
+offsets = PackedFloat32Array(0.6666667, 0.96)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gbqnl"]
+gradient = SubResource("Gradient_oy1se")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gbqnl"]
+lifetime_randomness = 0.5
+direction = Vector3(0, 0, -1)
+spread = 44.549
+initial_velocity_min = 3.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.19999999
+color_ramp = SubResource("GradientTexture1D_gbqnl")
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.046
+
+[node name="JetBeam" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 30
+explosiveness = 1.0
+randomness = 1.0
+fract_delta = false
+process_material = SubResource("ParticleProcessMaterial_gbqnl")
+draw_pass_1 = ExtResource("1_5l1bh")
