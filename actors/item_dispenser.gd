@@ -1,4 +1,4 @@
-class_name ItemDispensor extends Node3D
+class_name ItemDispenser extends Node3D
 
 # I think we should queue items in the dispensor
 # and then they get spawned once it's unocupied

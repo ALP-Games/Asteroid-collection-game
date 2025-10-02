@@ -17,7 +17,7 @@ config_version=5
 
 config/name="Asteroid Collection Game"
 run/main_scene="uid://pg35x7vyq772"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 run/default_gravity=0.0
 
@@ -115,9 +115,10 @@ escape={
 [layer_names]
 
 3d_physics/layer_1="PlayerShip"
-3d_physics/layer_2="Asteroid"
+3d_physics/layer_2="Hookable"
 3d_physics/layer_3="Rope"
 3d_physics/layer_4="AsteroidCollection"
+3d_physics/layer_5="BasicCollision"
 
 [physics]
 
