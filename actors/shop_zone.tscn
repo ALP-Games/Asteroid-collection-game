@@ -43,6 +43,7 @@ shape = SubResource("BoxShape3D_uden6")
 
 [node name="ShopCube006" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -0.0790353, 0.0428529, -2.74969)
+layers = 2
 mesh = ExtResource("2_toxax")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="ShopCube006"]
