@@ -1,6 +1,6 @@
 class_name Asteroid extends RigidBody3D
 
-const ROCK_EXPLOSION = preload("res://Assets/vfx/RockExplosion.tscn")
+const ROCK_EXPLOSION = preload("res://actors/effects/rock_explosion.tscn")
 const ASTEROID_CRUNCH_SOUND = preload("res://actors/effects/asteroid_crunch_sound.tscn")
 
 const DEFAULT_SCALE: float = 1.0

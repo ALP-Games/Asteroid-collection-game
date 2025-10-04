@@ -18,6 +18,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	for index in contact_count:
 		var colliding_object := state.get_contact_collider_object(index)
 		var contact_position := state.get_contact_local_position(index)
+		var hookable := HookableComponent.core().get_from(colliding_object)
+		if not hookable:
+			continue
 		hooked = true
 		attach_at_point(colliding_object, contact_position)
 		target_reached.emit(colliding_object, hook_joint)

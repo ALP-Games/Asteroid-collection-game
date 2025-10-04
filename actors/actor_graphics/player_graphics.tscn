@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddw1ejtyob1w0"]
 
 [ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="1_0bfa1"]
-[ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://Assets/vfx/JetBeam.tscn" id="2_kbjdc"]
+[ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://actors/effects/JetBeam.tscn" id="2_kbjdc"]
 [ext_resource type="PackedScene" uid="uid://7k7ri26qwqvt" path="res://effects/rcs_thruster_effect.tscn" id="3_bm1ep"]
 
 [node name="Graphics" type="Node3D"]

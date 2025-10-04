@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="2_m7ci5"]
 [ext_resource type="PackedScene" uid="uid://be5355utlahim" path="res://Assets/baseShreder.tscn" id="3_0ydpf"]
 [ext_resource type="AudioStream" uid="uid://xxdkq8bd241g" path="res://sounds/jet-engine.ogg" id="3_2sc4u"]
-[ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://Assets/vfx/JetBeam.tscn" id="3_o5cmu"]
+[ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://actors/effects/JetBeam.tscn" id="3_o5cmu"]
 [ext_resource type="AudioStream" uid="uid://bqltukh57ygg4" path="res://sounds/Rock_Crunch.ogg" id="4_0he0h"]
 [ext_resource type="AudioStream" uid="uid://1ql2mnfrmeoc" path="res://sounds/Collector.ogg" id="5_vye7y"]
 [ext_resource type="Material" uid="uid://cs8kwjaq1xphk" path="res://Assets/vfx/Icosphere.001.tres" id="6_x8xnp"]
