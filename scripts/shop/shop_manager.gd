@@ -105,5 +105,5 @@ func get_upgrade_variables(type: ItemType) -> IUpgradeVariables:
 	if shop_items[type] is not UpgradeItemRes:
 		return null
 	var upgrade_item : UpgradeItemRes = shop_items[type]
-	var bought_amount := _items_bought[type]
-	return upgrade_item.get_variables(bought_amount)
+	var current_upgrade := _upgrade_levels[type]
+	return upgrade_item.get_variables(current_upgrade)
