@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs1vmfcrtxu06"]
+[gd_scene load_steps=6 format=3 uid="uid://cs1vmfcrtxu06"]
 
 [ext_resource type="Script" uid="uid://4cmcfv6vr1j1" path="res://ui/gameplay_ui/shop_screen.gd" id="1_4kj2c"]
 [ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/shop_item_ui.tscn" id="1_b85yj"]
+[ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_jds8u"]
+[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="4_jgxuq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgxuq"]
+bg_color = Color(0.14509805, 0.14509805, 0.14509805, 0.47843137)
 
 [node name="ShopScreen" type="Control" groups=["shop_screen"]]
 layout_mode = 3
@@ -11,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme = ExtResource("1_jds8u")
 script = ExtResource("1_4kj2c")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -24,7 +30,7 @@ grow_vertical = 2
 [node name="ExpandRight" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.0
 
 [node name="Content" type="Control" parent="HBoxContainer"]
 layout_mode = 2
@@ -50,6 +56,7 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_jgxuq")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer"]
 layout_mode = 2
@@ -59,13 +66,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ShopItem" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems" instance=ExtResource("1_b85yj")]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems"]
 layout_mode = 2
 
-[node name="ShopItem2" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems" instance=ExtResource("1_b85yj")]
+[node name="ShopItem" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems/HBoxContainer" instance=ExtResource("1_b85yj")]
+layout_mode = 2
+
+[node name="ShopItemModifyable" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems/HBoxContainer" instance=ExtResource("4_jgxuq")]
+layout_mode = 2
+
+[node name="ShopItem2" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems/HBoxContainer" instance=ExtResource("1_b85yj")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems"]
+layout_mode = 2
+
+[node name="ShopItem" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems/HBoxContainer2" instance=ExtResource("1_b85yj")]
+layout_mode = 2
+
+[node name="ShopItem2" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems/HBoxContainer2" instance=ExtResource("1_b85yj")]
+layout_mode = 2
+
+[node name="ShopItem3" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems/HBoxContainer2" instance=ExtResource("1_b85yj")]
 layout_mode = 2
 
 [node name="ExpandLeft" type="Control" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.4
+size_flags_stretch_ratio = 0.0

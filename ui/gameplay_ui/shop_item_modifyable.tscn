@@ -1,100 +1,87 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp2w0mhwpqoq7"]
+[gd_scene load_steps=5 format=3 uid="uid://bp2w0mhwpqoq7"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_0uyxq"]
 [ext_resource type="Script" uid="uid://bcaacmka808e2" path="res://ui/gameplay_ui/shop_item_modifyable.gd" id="1_7vfys"]
 [ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_0uyxq"]
-[ext_resource type="Texture2D" uid="uid://blt4ci75jxr2m" path="res://ui/Themes/ui_button_texture_2.png" id="2_8m76c"]
 [ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_8m76c"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8q0v8"]
-texture = ExtResource("2_8m76c")
-texture_margin_left = 24.0
-texture_margin_top = 24.0
-texture_margin_right = 24.0
-texture_margin_bottom = 24.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-region_rect = Rect2(0, 0, 512, 512)
-modulate_color = Color(1, 1, 1, 0.4392157)
-
-[node name="ShopItemModifyable" type="PanelContainer"]
+[node name="ShopItemModifyable" type="VBoxContainer"]
 offset_right = 401.0
 offset_bottom = 243.0
+size_flags_horizontal = 3
 size_flags_vertical = 0
-mouse_filter = 1
 theme = ExtResource("1_0uyxq")
-theme_override_styles/panel = SubResource("StyleBoxTexture_8q0v8")
 script = ExtResource("1_7vfys")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="NameContainer" type="PanelContainer" parent="."]
 layout_mode = 2
-
-[node name="NameAndIcon" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/NameAndIcon"]
+[node name="ItemName" type="Label" parent="NameContainer"]
+layout_mode = 2
+text = "Upgrade Text"
+horizontal_alignment = 1
+
+[node name="ContentContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="ContentEstate" type="HBoxContainer" parent="ContentContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="ContentContainer/ContentEstate"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_0uyxq")
 expand_mode = 2
 
-[node name="FlavorEstate" type="VBoxContainer" parent="VBoxContainer/NameAndIcon"]
+[node name="BuyAndPrice" type="VBoxContainer" parent="ContentContainer/ContentEstate"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/NameAndIcon/FlavorEstate"]
+[node name="PanelContainer" type="PanelContainer" parent="ContentContainer/ContentEstate/BuyAndPrice"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="ItemName" type="Label" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelContainer"]
+[node name="ItemPrice" type="Label" parent="ContentContainer/ContentEstate/BuyAndPrice/PanelContainer"]
 layout_mode = 2
-text = "Upgrade Text"
+text = "100"
 horizontal_alignment = 1
 
-[node name="PanelAdjustable" type="HBoxContainer" parent="VBoxContainer/NameAndIcon/FlavorEstate"]
+[node name="BuyButton" type="Button" parent="ContentContainer/ContentEstate/BuyAndPrice"]
 layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "Buy"
+
+[node name="PanelAdjustable" type="VBoxContainer" parent="ContentContainer/ContentEstate"]
+layout_mode = 2
+
+[node name="TextContainer" type="PanelContainer" parent="ContentContainer/ContentEstate/PanelAdjustable"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ButtonAdd" type="Button" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "+"
-
-[node name="TextContainer" type="PanelContainer" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextCount" type="Label" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable/TextContainer"]
+[node name="TextCount" type="Label" parent="ContentContainer/ContentEstate/PanelAdjustable/TextContainer"]
 layout_mode = 2
 text = "0/5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonRemove" type="Button" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable"]
+[node name="ButtonsBox" type="HBoxContainer" parent="ContentContainer/ContentEstate/PanelAdjustable"]
+layout_mode = 2
+
+[node name="ButtonAdd" type="Button" parent="ContentContainer/ContentEstate/PanelAdjustable/ButtonsBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+"
+
+[node name="ButtonRemove" type="Button" parent="ContentContainer/ContentEstate/PanelAdjustable/ButtonsBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "-"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-
-[node name="ItemPrice" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer"]
-layout_mode = 2
-text = "100"
-horizontal_alignment = 1
-
-[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-disabled = true
-text = "Buy"
 
 [node name="ClickSoundPlayer" parent="." instance=ExtResource("3_8m76c")]

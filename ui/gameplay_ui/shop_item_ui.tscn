@@ -1,76 +1,64 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu0l4x28nikl"]
+[gd_scene load_steps=6 format=3 uid="uid://cu0l4x28nikl"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_68j5v"]
 [ext_resource type="Script" uid="uid://dlemi7jy41f5g" path="res://ui/gameplay_ui/shop_item_ui.gd" id="1_wjryw"]
 [ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_68j5v"]
-[ext_resource type="Texture2D" uid="uid://blt4ci75jxr2m" path="res://ui/Themes/ui_button_texture_2.png" id="2_mg81s"]
 [ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_dlrfh"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l3mjy"]
-texture = ExtResource("2_mg81s")
-texture_margin_left = 24.0
-texture_margin_top = 24.0
-texture_margin_right = 24.0
-texture_margin_bottom = 24.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-region_rect = Rect2(0, 0, 512, 512)
-modulate_color = Color(1, 1, 1, 0.4392157)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pne7h"]
 
-[node name="ShopItem" type="PanelContainer"]
-offset_right = 104.0
-offset_bottom = 58.0
+[node name="ShopItem" type="VBoxContainer"]
+offset_right = 285.0
+offset_bottom = 223.0
+size_flags_horizontal = 3
 size_flags_vertical = 0
-mouse_filter = 1
 theme = ExtResource("1_68j5v")
-theme_override_styles/panel = SubResource("StyleBoxTexture_l3mjy")
 script = ExtResource("1_wjryw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="NameAndIcon" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/NameAndIcon"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-texture = ExtResource("2_68j5v")
-expand_mode = 1
-
-[node name="FlavorEstate" type="PanelContainer" parent="VBoxContainer/NameAndIcon"]
+[node name="FlavorEstate" type="PanelContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_pne7h")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/NameAndIcon/FlavorEstate"]
+[node name="PanelContainer" type="PanelContainer" parent="FlavorEstate"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 
-[node name="ItemName" type="Label" parent="VBoxContainer/NameAndIcon/FlavorEstate/PanelContainer"]
+[node name="ItemName" type="Label" parent="FlavorEstate/PanelContainer"]
 layout_mode = 2
 text = "Upgrade Text"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="ContentEstate" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Panel/ContentEstate"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("2_68j5v")
+expand_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/ContentEstate"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/ContentEstate/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="ItemPrice" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+[node name="ItemPrice" type="Label" parent="Panel/ContentEstate/HBoxContainer/PanelContainer"]
 layout_mode = 2
 text = "100"
 horizontal_alignment = 1
 
-[node name="BuyButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="BuyButton" type="Button" parent="Panel/ContentEstate/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 disabled = true

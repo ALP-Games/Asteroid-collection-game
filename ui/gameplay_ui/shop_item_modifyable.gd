@@ -2,9 +2,9 @@ class_name ShopItemModifyable extends ShopItemUI
 
 const COUNT_FORMAT := &"%1d/%1d"
 
-@onready var text_count: Label = $VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable/TextContainer/TextCount
-@onready var button_add: Button = $VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable/ButtonAdd
-@onready var button_remove: Button = $VBoxContainer/NameAndIcon/FlavorEstate/PanelAdjustable/ButtonRemove
+@onready var text_count: Label = $ContentContainer/ContentEstate/PanelAdjustable/TextContainer/TextCount
+@onready var button_add: Button = $ContentContainer/ContentEstate/PanelAdjustable/ButtonsBox/ButtonAdd
+@onready var button_remove: Button = $ContentContainer/ContentEstate/PanelAdjustable/ButtonsBox/ButtonRemove
 
 
 #var upgrade_cur_max: Array[int]
@@ -21,6 +21,12 @@ func _ready() -> void:
 	
 	button_add.button_down.connect(func():click_sound_player.play())
 	button_remove.button_down.connect(func():click_sound_player.play())
+
+func _set_layout_items() -> void:
+	icon = $ContentContainer/ContentEstate/Icon
+	item_name = $NameContainer/ItemName
+	item_price = $ContentContainer/ContentEstate/BuyAndPrice/PanelContainer/ItemPrice
+	buy_button = $ContentContainer/ContentEstate/BuyAndPrice/BuyButton
 
 
 func _on_item_bought(_item_type: ShopManager.ItemType, _count: int) -> void:

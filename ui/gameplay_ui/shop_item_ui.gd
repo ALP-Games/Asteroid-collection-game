@@ -1,9 +1,9 @@
-class_name ShopItemUI extends PanelContainer
+class_name ShopItemUI extends Control
 
-@onready var icon: TextureRect = $VBoxContainer/NameAndIcon/Icon
-@onready var item_name: Label = $VBoxContainer/NameAndIcon/FlavorEstate/PanelContainer/ItemName
-@onready var item_price: Label = $VBoxContainer/HBoxContainer/PanelContainer/ItemPrice
-@onready var buy_button: Button = $VBoxContainer/HBoxContainer/BuyButton
+var icon: TextureRect
+var item_name: Label
+var item_price: Label
+var buy_button: Button
 @onready var click_sound_player: AudioStreamPlayer = $ClickSoundPlayer
 
 var upgrade_price: int = 0
@@ -15,9 +15,17 @@ var item_id: ShopManager.ItemType
 
 # upgrade is some kind of data that can be looked up and we can change some kind of player related number
 func _ready() -> void:
+	_set_layout_items()
 	GameManager.credits_amount_changed.connect(_on_credits_amount_changed)
 	buy_button.button_down.connect(func():click_sound_player.play())
 	buy_button.pressed.connect(_try_buy_item)
+
+
+func _set_layout_items() -> void:
+	icon = $Panel/ContentEstate/Icon
+	item_name = $FlavorEstate/PanelContainer/ItemName
+	item_price = $Panel/ContentEstate/HBoxContainer/PanelContainer/ItemPrice
+	buy_button = $Panel/ContentEstate/HBoxContainer/BuyButton
 
 
 func initialize() -> void:
