@@ -39,8 +39,12 @@ enabled=PackedStringArray("res://addons/godot_extension_core_gdscript/plugin.cfg
 
 folder_colors={
 "res://_other_sources/": "gray",
+"res://actors/": "yellow",
 "res://addons/": "red",
-"res://addons/godot_extension_core_gdscript/": "blue"
+"res://addons/godot_extension_core_gdscript/": "blue",
+"res://resources/": "gray",
+"res://scripts/": "pink",
+"res://ui/": "green"
 }
 
 [global_group]
@@ -115,7 +119,7 @@ escape={
 [layer_names]
 
 3d_physics/layer_1="PlayerShip"
-3d_physics/layer_2="Hookable"
+3d_physics/layer_2="Asteroid"
 3d_physics/layer_3="Rope"
 3d_physics/layer_4="AsteroidCollection"
 3d_physics/layer_5="BasicCollision"

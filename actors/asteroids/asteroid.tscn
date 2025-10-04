@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgogh6ayhlim7"]
+[gd_scene load_steps=6 format=3 uid="uid://cgogh6ayhlim7"]
 
 [ext_resource type="Script" uid="uid://cyd1rw5uji4q4" path="res://actors/asteroids/asteroid.gd" id="1_adigb"]
 [ext_resource type="ArrayMesh" uid="uid://b1vi133l2ps3t" path="res://Assets/Icosphere_Icosphere_001.res" id="1_xfbri"]
+[ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_mmsgs"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xfbri"]
 
@@ -9,8 +10,8 @@
 radius = 0.1
 
 [node name="Asteroid" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 7
+collision_layer = 18
+collision_mask = 21
 axis_lock_linear_y = true
 mass = 100.0
 script = ExtResource("1_adigb")
@@ -28,3 +29,7 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionShape"]
 shape = SubResource("SphereShape3D_adigb")
+
+[node name="HookableComponent" type="Node" parent="."]
+script = ExtResource("3_mmsgs")
+metadata/_custom_type_script = "uid://bi2ox86m0yg1y"
