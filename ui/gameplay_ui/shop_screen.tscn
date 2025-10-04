@@ -49,6 +49,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer/Content/VBoxContainer/LabelContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Shop"
 horizontal_alignment = 1
 
