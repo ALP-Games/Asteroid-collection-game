@@ -50,12 +50,10 @@ func get_upgrade_cur_max(type: ItemType) -> Array[int]:
 	return [_upgrade_levels[type], _items_bought[type]]
 
 
+## Only for UpgradeItemRes items
 func change_upgrade_level(type: ItemType, change: int) -> void:
-	if type == ItemType.UNDEFINED:
-		return
-	if shop_items[type] is not UpgradeItemRes:
-		item_bought.emit(type, change) ## HERE IS VERY WEIRD DESIGN
-		return
+	assert(type != ItemType.UNDEFINED, "UNDEFINED ItemType!")
+	assert(shop_items[type] is not UpgradeItemRes, "change_upgrade_level can only be called for items of type UpgradeItemRes")
 	var upgrade_item : UpgradeItemRes = shop_items[type]
 	var upgrade_change := _upgrade_levels[type] + change
 	#!!! keep in mind that all upgrades right now have "fully upgraded" level !!!
@@ -76,8 +74,10 @@ func buy_item(type: ItemType) -> bool:
 	GameManager.credist_amount -= entry.price
 	_items_bought[type] += 1
 	# A litle wonky that this thing gets called fro non upgrades too
-	change_upgrade_level(type, 1) ## HERE IS VERY WEIRD DESIGN, EMITING ITEM BOUGHT ONLY IN CHANGE UPGRADE LEVEL
-	# TOTO: change to emit item bought in buy_item function, get count for upgrades from change_upgrade_level
+	if shop_items[type] is UpgradeItemRes:
+		change_upgrade_level(type, 1)
+	else:
+		item_bought.emit(type, 1)
 	return true
 
 
