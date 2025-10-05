@@ -1,5 +1,7 @@
 class_name ShopZone extends Node3D
 
+const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
+
 @export var item_dispensor: ItemDispenser
 
 var shop_interaction := Interaction.new()
@@ -42,10 +44,9 @@ func _enable_shop_screen() -> void:
 		GameManager.shop.item_bought.disconnect(_item_bought)
 	else:
 		GameManager.shop.item_bought.connect(_item_bought)
-	# we can subscribe to item bought?
 
 
 func _item_bought(item_type: ShopManager.ItemType, count: int) -> void:
 	if item_type == ShopManager.ItemType.GRINDER:
-		#item_dispensor.add_item_to_dispense()
+		item_dispensor.add_item_to_dispense(FOLDED_GRINDER)
 		pass

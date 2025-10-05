@@ -7,8 +7,6 @@
 
 [sub_resource type="Resource" id="Resource_0wmde"]
 script = ExtResource("1_2l8cr")
-item_name = &""
-buy_text = &""
 price = 100
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -17,7 +15,5 @@ script = ExtResource("2_wsdg4")
 icon = ExtResource("2_8hewl")
 item_type = 4
 data = SubResource("Resource_0wmde")
-item_scene = ExtResource("2_0wmde")
 item_name = &"Grinder"
-buy_text = &"Buy"
 metadata/_custom_type_script = "uid://bsjcomw6parw3"

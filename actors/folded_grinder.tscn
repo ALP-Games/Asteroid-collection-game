@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ylpkw2lvllxq"]
+[gd_scene load_steps=5 format=3 uid="uid://ylpkw2lvllxq"]
+
+[ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="1_65tvr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3k1hc"]
 
@@ -10,9 +12,16 @@ metallic = 1.0
 material = SubResource("StandardMaterial3D_3k1hc")
 
 [node name="FoldedGrinder" type="RigidBody3D"]
+collision_mask = 21
+axis_lock_linear_y = true
+mass = 500.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_3k1hc")
 
 [node name="Graphics" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_3khxb")
+
+[node name="HookableComponent" type="Node" parent="."]
+script = ExtResource("1_65tvr")
+metadata/_custom_type_script = "uid://bi2ox86m0yg1y"

@@ -54,6 +54,7 @@ func change_upgrade_level(type: ItemType, change: int) -> void:
 	if type == ItemType.UNDEFINED:
 		return
 	if shop_items[type] is not UpgradeItemRes:
+		item_bought.emit(type, change) ## HERE IS VERY WEIRD DESIGN
 		return
 	var upgrade_item : UpgradeItemRes = shop_items[type]
 	var upgrade_change := _upgrade_levels[type] + change
@@ -75,7 +76,8 @@ func buy_item(type: ItemType) -> bool:
 	GameManager.credist_amount -= entry.price
 	_items_bought[type] += 1
 	# A litle wonky that this thing gets called fro non upgrades too
-	change_upgrade_level(type, 1)
+	change_upgrade_level(type, 1) ## HERE IS VERY WEIRD DESIGN, EMITING ITEM BOUGHT ONLY IN CHANGE UPGRADE LEVEL
+	# TOTO: change to emit item bought in buy_item function, get count for upgrades from change_upgrade_level
 	return true
 
 

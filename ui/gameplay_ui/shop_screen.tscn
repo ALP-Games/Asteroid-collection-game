@@ -91,7 +91,7 @@ layout_mode = 2
 [node name="ShopItem3" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems/HBoxContainer2" instance=ExtResource("1_b85yj")]
 layout_mode = 2
 
-[node name="ExpandLeft" type="Control" parent="HBoxContainer"]
+[node name="ExpandLeft" type="Control" parent="HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
