@@ -255,8 +255,8 @@ func _physics_process(delta: float) -> void:
 		var camera := get_tree().get_first_node_in_group("camera") as FancyCameraArmature
 		var mouse_world_position := camera.get_mouse_world_position()
 		emitter_manager.emit(mouse_world_position)
-	elif Input.is_action_just_pressed("action2"):
-		emitter_manager.stop_emit()
+	#elif Input.is_action_just_pressed("action2"):
+		#emitter_manager.stop_emit()
 	
 	var top_velocity := max_velocity
 	var top_velocity_reverse := max_velocity

@@ -8,7 +8,15 @@ var _internal_target_reached: bool = false
 func emit(target: Vector3) -> void:
 	super(target)
 	emitter_done.connect(reset_vars_on_emitter_done)
+	(first_segment as Hook).parent_emitter = self
 	first_segment.target_reached.connect(on_rope_target_reached)
+
+
+func stop_emit() -> void:
+	if rope_target:
+		var hookable: HookableComponent = HookableComponent.core().get_from(rope_target)
+		hookable.unhook()
+	super()
 
 
 func reset_vars_on_emitter_done() -> void:
@@ -29,7 +37,7 @@ func on_rope_target_reached(target_object: RigidBody3D, attachment_joint: Node3D
 	rope_target = target_object
 	target_attachment = attachment_joint
 	first_segment.target_reached.disconnect(on_rope_target_reached)
-	target_object.tree_exiting.connect(stop_emit)	
+	target_object.tree_exiting.connect(stop_emit)
 	if not _min_segment_count_reached():
 		rope_max_length = min_segment_count * segment_length
 		return

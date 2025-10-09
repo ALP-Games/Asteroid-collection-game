@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_ogdyf"]
 script = ExtResource("2_sbfbm")
 item_name = &"More hooks 0/5"
-buy_text = &""
 price = 100
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -21,7 +20,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_v5nn4"]
 script = ExtResource("2_sbfbm")
 item_name = &"More hooks 1/5"
-buy_text = &""
 price = 1000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -33,7 +31,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_7cmsm"]
 script = ExtResource("2_sbfbm")
 item_name = &"More hooks 2/5"
-buy_text = &""
 price = 5000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -45,7 +42,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_ndhy3"]
 script = ExtResource("2_sbfbm")
 item_name = &"More hooks 3/5"
-buy_text = &""
 price = 10000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -57,7 +53,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_tus52"]
 script = ExtResource("2_sbfbm")
 item_name = &"More hooks 4/5"
-buy_text = &""
 price = 20000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -69,8 +64,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_ru02b"]
 script = ExtResource("2_sbfbm")
 item_name = &"Hooooks!!! 5/5"
-buy_text = &""
-price = -1
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_xhrjo"]
@@ -81,9 +74,5 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [resource]
 script = ExtResource("3_iwt8b")
 icon = ExtResource("2_iwt8b")
-item_type = 0
 data = Array[ExtResource("1_ui748")]([SubResource("Resource_mn2og"), SubResource("Resource_h6ynd"), SubResource("Resource_pv6tr"), SubResource("Resource_d6wm2"), SubResource("Resource_nnhde"), SubResource("Resource_xhrjo")])
-item_scene = ExtResource("2_pois2")
-item_name = &""
-buy_text = &"Buy"
 metadata/_custom_type_script = "uid://dwthg2qund1h2"

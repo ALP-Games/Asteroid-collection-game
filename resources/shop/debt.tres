@@ -9,7 +9,6 @@
 [sub_resource type="Resource" id="Resource_2joy2"]
 script = ExtResource("2_o2f73")
 item_name = &"Corporate debt pay 0/4"
-buy_text = &""
 price = 100
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -21,7 +20,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_d7kf3"]
 script = ExtResource("2_o2f73")
 item_name = &"Corporate debt pay 1/4"
-buy_text = &""
 price = 1000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -33,7 +31,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_qk47y"]
 script = ExtResource("2_o2f73")
 item_name = &"Corporate debt pay 2/4"
-buy_text = &""
 price = 5000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -45,7 +42,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_71amr"]
 script = ExtResource("2_o2f73")
 item_name = &"Corporate debt pay 3/4"
-buy_text = &""
 price = 10000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -57,7 +53,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_7xhsy"]
 script = ExtResource("2_o2f73")
 item_name = &"And one last one payment ;P 4/5"
-buy_text = &""
 price = 100000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
@@ -69,8 +64,6 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_hof7h"]
 script = ExtResource("2_o2f73")
 item_name = &"DEBT PAID!"
-buy_text = &""
-price = -1
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_hdcny"]
@@ -83,7 +76,5 @@ script = ExtResource("3_4r7l7")
 icon = ExtResource("2_4r7l7")
 item_type = 3
 data = Array[ExtResource("1_k4gkn")]([SubResource("Resource_ntt0x"), SubResource("Resource_dsaoc"), SubResource("Resource_x0bsj"), SubResource("Resource_o8saq"), SubResource("Resource_iiqjt"), SubResource("Resource_hdcny")])
-item_scene = ExtResource("2_1yha8")
-item_name = &""
 buy_text = &"Pay"
 metadata/_custom_type_script = "uid://dwthg2qund1h2"

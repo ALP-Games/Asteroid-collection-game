@@ -44,6 +44,7 @@ folder_colors={
 "res://addons/godot_extension_core_gdscript/": "blue",
 "res://resources/": "gray",
 "res://scripts/": "pink",
+"res://shaders/": "orange",
 "res://ui/": "green"
 }
 

@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvtppusu6jht4"]
+[gd_scene load_steps=9 format=3 uid="uid://cvtppusu6jht4"]
 
 [ext_resource type="Script" uid="uid://cyd1rw5uji4q4" path="res://actors/asteroids/asteroid.gd" id="1_p17b6"]
 [ext_resource type="ArrayMesh" uid="uid://bo3v7dwcy2qgr" path="res://Assets/meshes/gold_asteroid/Gold_Icosphere_003.res" id="2_p17b6"]
 [ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_g5eoy"]
+[ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_kmpxh"]
+[ext_resource type="Material" uid="uid://ypg1md42sf1m" path="res://shaders/materials/yellow_outline.tres" id="5_gls1p"]
+[ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_k68jl"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xfbri"]
 
@@ -35,3 +38,13 @@ shape = SubResource("SphereShape3D_adigb")
 [node name="HookableComponent" type="Node" parent="."]
 script = ExtResource("3_g5eoy")
 metadata/_custom_type_script = "uid://bi2ox86m0yg1y"
+
+[node name="UnhookSelection" type="Node" parent="." node_paths=PackedStringArray("meshes")]
+script = ExtResource("4_kmpxh")
+meshes = [NodePath("../MeshInstance3D")]
+material_overlay = ExtResource("5_gls1p")
+metadata/_custom_type_script = "uid://dtpuy1iftshns"
+
+[node name="MouseOverComponent" type="Node" parent="."]
+script = ExtResource("6_k68jl")
+metadata/_custom_type_script = "uid://b6pqa311a7k0c"

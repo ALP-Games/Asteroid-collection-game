@@ -27,6 +27,7 @@ var previous_pos: Vector3
 var current_y_offset := 0.0
 var current_xz_offset := Vector2.ZERO
 
+var moused_over_basic_collision_object: Node
 
 func _ready() -> void:
 	add_to_group("camera")
@@ -65,6 +66,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	for callable in physics_process_funcs:
 		callable.call(delta)
+	_process_mouse_over_basic_collision_object()
 	#seek_target(delta)
 	#lerp_height(delta)
 
@@ -72,6 +74,38 @@ func _physics_process(delta: float) -> void:
 func get_mouse_world_position() -> Vector3:
 	var mouse_position := get_viewport().get_mouse_position()
 	return camera_3d.project_position(mouse_position, position.y)
+
+
+# this result has to be cached
+# or similar
+# but basically done every frame only once per frame
+func _process_mouse_over_basic_collision_object() -> void:
+	var mouse_position := get_viewport().get_mouse_position()
+	var ray_origin := camera_3d.project_ray_origin(mouse_position)
+	var ray_direction := camera_3d.project_ray_normal(mouse_position)
+	#print("Normal - ", camera_3d.project_ray_normal(mouse_position), "; orign - ", camera_3d.project_ray_origin(mouse_position))
+	var ray_destination := ray_origin + ray_direction * 100
+	
+	var space = get_world_3d().direct_space_state
+	var result := space.intersect_ray(PhysicsRayQueryParameters3D.create(ray_origin, ray_destination, 1))
+	
+	var result_recieved := result != {}
+	var previous_object_valid := moused_over_basic_collision_object != null
+	var current_object_same: bool = false
+	
+	if result_recieved and previous_object_valid:
+		current_object_same = result.collider == moused_over_basic_collision_object
+	
+	if not current_object_same:
+		if previous_object_valid:
+			MouseOverComponent.core().invoke_on_component(moused_over_basic_collision_object, func(component: MouseOverComponent):
+				component.mouse_exited())
+		if result_recieved:
+			MouseOverComponent.core().invoke_on_component(result.collider, func(component: MouseOverComponent):
+				component.mouse_entered())
+			moused_over_basic_collision_object = result.collider
+		else:
+			moused_over_basic_collision_object = null
 
 
 func seek_target(_delta: float) -> void:

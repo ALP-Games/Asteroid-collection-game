@@ -6,6 +6,7 @@ const HOOK_HIT_ASTEROID = preload("uid://btw85yqdumem8")
 
 var hooked := false
 
+var parent_emitter: Emitter
 var hook_joint: PinJoint3D = null
 
 @export var pitch_variation := 0.07
@@ -20,9 +21,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	for index in contact_count:
 		var colliding_object := state.get_contact_collider_object(index)
 		var contact_position := state.get_contact_local_position(index)
-		var hookable := HookableComponent.core().get_from(colliding_object)
-		if not hookable:
+		var hookable: HookableComponent = HookableComponent.core().get_from(colliding_object)
+		if not hookable or hookable.hooked:
+			parent_emitter.stop_emit()
 			continue
+		hookable.hook(self)
 		if colliding_object is Asteroid:
 			var velocity_direction := state.get_contact_local_velocity_at_position(index).normalized()
 			_instantiate_asteroid_hit(velocity_direction, contact_position)
@@ -51,6 +54,6 @@ func _on_child_entered_tree(node: Node) -> void:
 
 
 func release_target() -> void:
-	hooked = true
+	hooked = false
 	if hook_joint:
 		hook_joint.queue_free()

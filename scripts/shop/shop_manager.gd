@@ -53,7 +53,7 @@ func get_upgrade_cur_max(type: ItemType) -> Array[int]:
 ## Only for UpgradeItemRes items
 func change_upgrade_level(type: ItemType, change: int) -> void:
 	assert(type != ItemType.UNDEFINED, "UNDEFINED ItemType!")
-	assert(shop_items[type] is not UpgradeItemRes, "change_upgrade_level can only be called for items of type UpgradeItemRes")
+	assert(shop_items[type] is UpgradeItemRes, "change_upgrade_level can only be called for items of type UpgradeItemRes")
 	var upgrade_item : UpgradeItemRes = shop_items[type]
 	var upgrade_change := _upgrade_levels[type] + change
 	#!!! keep in mind that all upgrades right now have "fully upgraded" level !!!
