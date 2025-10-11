@@ -26,7 +26,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not unhook_selection.overlay_active() and hooked:
+	if not hooked:
+		if unhook_selection.overlay_active():
+			unhook_selection.reset_overlayed_material()
+		return
+	if not unhook_selection.overlay_active():
 		unhook_selection.overlay_material()
 	if Input.is_action_just_pressed("action2"):
 		hook_object.parent_emitter.stop_emit()

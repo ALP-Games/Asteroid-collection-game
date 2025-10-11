@@ -9,6 +9,7 @@ func overlay_active() -> bool:
 			return false
 	return meshes.size() > 0
 
+
 func overlay_material() -> void:
 	for mesh in meshes:
 		mesh.material_overlay = material_overlay
