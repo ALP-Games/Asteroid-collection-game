@@ -58,6 +58,7 @@ collector=""
 player=""
 hook_ui=""
 rope_sound=""
+right_click_gizmo=""
 
 [input]
 

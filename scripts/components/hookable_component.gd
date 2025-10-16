@@ -9,6 +9,8 @@ var hooked: bool = false
 var hook_object: Hook
 @onready var unhook_selection: MaterialOverlayer = $"../UnhookSelection"
 
+var right_click_gizmo: RightClickGizmo = null
+
 static func core() -> ComponentCore:
 	return ComponentCore.new(HookableComponent)
 
@@ -18,9 +20,12 @@ func _ready() -> void:
 	var mouse_over_component: MouseOverComponent = MouseOverComponent.core().get_from(get_parent())
 	if mouse_over_component: # FOR DEBUG ONLY
 		mouse_over_component.on_mouse_enter.connect(func():
+			right_click_gizmo = get_tree().get_first_node_in_group("right_click_gizmo") as RightClickGizmo
 			set_physics_process(true))
 		mouse_over_component.on_mouse_exit.connect(func():
 			set_physics_process(false)
+			if right_click_gizmo.enabled():
+				right_click_gizmo.disable()
 			if unhook_selection.overlay_active():
 				unhook_selection.reset_overlayed_material())
 
@@ -29,7 +34,11 @@ func _physics_process(delta: float) -> void:
 	if not hooked:
 		if unhook_selection.overlay_active():
 			unhook_selection.reset_overlayed_material()
+		if right_click_gizmo.enabled():
+			right_click_gizmo.disable()
 		return
+	if not right_click_gizmo.enabled():
+		right_click_gizmo.enable_on(get_parent())
 	if not unhook_selection.overlay_active():
 		unhook_selection.overlay_material()
 	if Input.is_action_just_pressed("action2"):

@@ -4,9 +4,11 @@ const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 
 @export var item_dispensor: ItemDispenser
 
-var shop_interaction := Interaction.new()
+var shop_interaction := Interaction.new() # Maybe interactions should be a resource?, then PriorityQueueItem has to be a resource
+# Or maybe there should be a resource that would initialize an interaction priority queue item
 
 func _init() -> void:
+	shop_interaction.priority = 10
 	shop_interaction.interaction_callable = _enable_shop_screen
 
 # TODO: shop interact action should be added to queue
