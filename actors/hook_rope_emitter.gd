@@ -37,7 +37,10 @@ func on_rope_target_reached(target_object: RigidBody3D, attachment_joint: Node3D
 	rope_target = target_object
 	target_attachment = attachment_joint
 	first_segment.target_reached.disconnect(on_rope_target_reached)
-	target_object.tree_exiting.connect(stop_emit)
+	target_object.tree_exiting.connect(func():
+			rope_target = null
+			stop_emit(),
+		CONNECT_ONE_SHOT)
 	if not _min_segment_count_reached():
 		rope_max_length = min_segment_count * segment_length
 		return
