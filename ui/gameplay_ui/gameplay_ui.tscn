@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpwkegiiu01e8" path="res://ui/gameplay_ui/collision_warning_graphic.tscn" id="2_wapsp"]
 [ext_resource type="PackedScene" uid="uid://x3e2x8oxiu8b" path="res://ui/gameplay_ui/pointer_ui.tscn" id="4_n5c7t"]
 [ext_resource type="PackedScene" uid="uid://c8f8d033685gb" path="res://ui/gameplay_ui/hook_ui.tscn" id="6_wapsp"]
-[ext_resource type="PackedScene" uid="uid://cgjsot8bv83rv" path="res://ui/right_click_gizmo.tscn" id="7_akeve"]
+[ext_resource type="PackedScene" uid="uid://cgjsot8bv83rv" path="res://ui/gameplay_ui/gizmos/right_click_gizmo.tscn" id="7_akeve"]
 
 [node name="GameplayUI" type="Control"]
 layout_mode = 3

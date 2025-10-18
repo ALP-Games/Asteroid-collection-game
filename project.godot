@@ -59,6 +59,7 @@ player=""
 hook_ui=""
 rope_sound=""
 right_click_gizmo=""
+gizmos_ui=""
 
 [input]
 

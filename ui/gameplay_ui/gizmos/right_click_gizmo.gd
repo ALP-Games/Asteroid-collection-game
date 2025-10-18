@@ -41,4 +41,9 @@ func enabled() -> bool:
 func _process(delta: float) -> void:
 	#if not node_to_follow:
 		#return
-	right_click_icon.global_position = camera.unproject_position(node_to_follow.global_position) - (right_click_icon.size / 2)
+	var position_to_follow: Vector3
+	if node_to_follow is PhysicsBody3D:
+		position_to_follow = node_to_follow.get_global_transform_interpolated().origin
+	else:
+		position_to_follow = node_to_follow.global_position
+	right_click_icon.global_position = camera.unproject_position(position_to_follow) - (right_click_icon.size / 2)

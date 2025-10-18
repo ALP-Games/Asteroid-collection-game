@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgjsot8bv83rv"]
 
 [ext_resource type="Texture2D" uid="uid://c2nam6ipxw3dd" path="res://Assets/Icons/right_click.png" id="1_7mgre"]
-[ext_resource type="Script" uid="uid://dxf2kscs1vmc4" path="res://ui/right_click_gizmo.gd" id="1_xggf2"]
+[ext_resource type="Script" uid="uid://dxf2kscs1vmc4" path="res://ui/gameplay_ui/gizmos/right_click_gizmo.gd" id="1_xggf2"]
 
 [node name="RightClickGizmo" type="Control"]
 layout_mode = 3
