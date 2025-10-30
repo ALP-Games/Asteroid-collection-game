@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cs1vmfcrtxu06" path="res://ui/gameplay_ui/shop_screen.tscn" id="2_3lvfr"]
 [ext_resource type="PackedScene" uid="uid://dkdcvcgs2jgi1" path="res://ui/gameplay_ui/stabilization_warning.tscn" id="2_hlo7n"]
 [ext_resource type="PackedScene" uid="uid://bpwkegiiu01e8" path="res://ui/gameplay_ui/collision_warning_graphic.tscn" id="2_wapsp"]
+[ext_resource type="PackedScene" uid="uid://cemgi1lk1yt1f" path="res://ui/gameplay_ui/gizmos/gizmo_manager.tscn" id="3_vasx0"]
 [ext_resource type="PackedScene" uid="uid://x3e2x8oxiu8b" path="res://ui/gameplay_ui/pointer_ui.tscn" id="4_n5c7t"]
 [ext_resource type="PackedScene" uid="uid://c8f8d033685gb" path="res://ui/gameplay_ui/hook_ui.tscn" id="6_wapsp"]
-[ext_resource type="PackedScene" uid="uid://cgjsot8bv83rv" path="res://ui/gameplay_ui/gizmos/right_click_gizmo.tscn" id="7_akeve"]
 
 [node name="GameplayUI" type="Control"]
 layout_mode = 3
@@ -22,7 +22,7 @@ script = ExtResource("1_v5qxn")
 layout_mode = 1
 mouse_filter = 2
 
-[node name="RightClickGizmo" parent="." instance=ExtResource("7_akeve")]
+[node name="GizmoManager" parent="." instance=ExtResource("3_vasx0")]
 layout_mode = 1
 
 [node name="LayoutsContainer" type="VBoxContainer" parent="."]

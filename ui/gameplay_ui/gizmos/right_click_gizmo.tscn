@@ -1,21 +1,33 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgjsot8bv83rv"]
 
+[ext_resource type="Script" uid="uid://dkxb5cj4nfi1r" path="res://ui/gameplay_ui/gizmos/gizmo_over_node3d.gd" id="1_4hxnj"]
 [ext_resource type="Texture2D" uid="uid://c2nam6ipxw3dd" path="res://Assets/Icons/right_click.png" id="1_7mgre"]
-[ext_resource type="Script" uid="uid://dxf2kscs1vmc4" path="res://ui/gameplay_ui/gizmos/right_click_gizmo.gd" id="1_xggf2"]
 
 [node name="RightClickGizmo" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xggf2")
+script = ExtResource("1_4hxnj")
+metadata/_custom_type_script = "uid://dkxb5cj4nfi1r"
 
 [node name="RightClickIcon" type="TextureRect" parent="."]
 modulate = Color(1, 0.8656666, 0.38, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_7mgre")
 expand_mode = 1
