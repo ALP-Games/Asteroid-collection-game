@@ -56,6 +56,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_me52j"]
 resource_name = "Shreder"
 length = 1.25
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -438,16 +439,13 @@ _data = {
 
 [node name="rocket_base_a2" instance=ExtResource("1_tpi20")]
 
+[node name="Skeleton3D" parent="rocket_base_a/rocket_grinder_a" index="0"]
+bones/0/position = Vector3(-7.6293945e-06, 6.1035156e-05, -3.0517578e-05)
+bones/1/rotation = Quaternion(0.6621641, -1.1511273e-16, 4.6438062e-17, 0.7493589)
+bones/2/rotation = Quaternion(0.6621641, -1.1511273e-16, 4.6438062e-17, 0.7493589)
+
 [node name="Skeleton3D" parent="rocket_base_a" index="2"]
-bones/0/position = Vector3(0, 2.5, 0)
-bones/1/position = Vector3(-5.539446, -0.32200155, -2.237058)
-bones/1/rotation = Quaternion(-0.17339227, -0.08829052, 0.87409383, 0.4450841)
-bones/2/position = Vector3(2.2773829, -0.32200128, -5.5227423)
-bones/2/rotation = Quaternion(-0.7417209, -0.37768042, 0.49391794, 0.25150105)
-bones/3/position = Vector3(5.507223, -0.32200155, 2.3148503)
-bones/3/rotation = Quaternion(0.87404835, 0.44506097, 0.17362162, 0.08840713)
-bones/4/position = Vector3(-2.2611, -0.32200193, 5.529487)
-bones/4/rotation = Quaternion(0.4953416, 0.25222537, 0.740771, 0.37719688)
+bones/2/rotation = Quaternion(0.24105932, -0.79666984, -0.16052386, 0.53050894)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {

@@ -1,0 +1,22 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=4 format=3 uid="uid://ctjw38sstq0kg"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_d41ra"]
+filter_enabled = true
+filters = ["", "rocket_base_a/Skeleton3D:Bone", "rocket_base_a/Skeleton3D:Bone.001", "rocket_base_a/Skeleton3D:Bone.002", "rocket_base_a/Skeleton3D:Bone.003", "rocket_base_a/Skeleton3D:Bone.004"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_labbg"]
+animation = &"Shreder"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2t4m7"]
+animation = &"mobilecollector_idle"
+
+[resource]
+graph_offset = Vector2(-780.7549, 99.56268)
+nodes/output/position = Vector2(220, 200)
+nodes/Grinding/node = SubResource("AnimationNodeAnimation_labbg")
+nodes/Grinding/position = Vector2(-380, 200)
+nodes/Open/node = SubResource("AnimationNodeAnimation_2t4m7")
+nodes/Open/position = Vector2(-380, 380)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_d41ra")
+nodes/Blend2/position = Vector2(0, 200)
+node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Grinding", &"Blend2", 1, &"Open"]
