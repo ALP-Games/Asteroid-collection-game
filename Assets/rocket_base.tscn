@@ -2,6 +2,57 @@
 
 [ext_resource type="PackedScene" uid="uid://b7tti2p0wi4ia" path="res://Assets/rocket_base_a.glb" id="1_tpi20"]
 
+[sub_resource type="Animation" id="Animation_5andv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -42.682022, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_volumetric_fog_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [16.0]
+}
+
 [sub_resource type="Animation" id="Animation_me52j"]
 resource_name = "Shreder"
 length = 1.25
@@ -377,57 +428,6 @@ tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = PackedFloat32Array(0, 1, 0.6621641, 0, 0, 0.7493589)
 
-[sub_resource type="Animation" id="Animation_5andv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OmniLight3D:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("OmniLight3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -42.682022, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("OmniLight3D:light_color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("OmniLight3D:light_volumetric_fog_energy")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [16.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8oqpj"]
 _data = {
 &"RESET": SubResource("Animation_5andv"),
@@ -440,13 +440,13 @@ _data = {
 
 [node name="Skeleton3D" parent="rocket_base_a" index="2"]
 bones/0/position = Vector3(0, 2.5, 0)
-bones/1/position = Vector3(-5.539459, -0.3219681, -2.2370756)
+bones/1/position = Vector3(-5.539446, -0.32200155, -2.237058)
 bones/1/rotation = Quaternion(-0.17339227, -0.08829052, 0.87409383, 0.4450841)
-bones/2/position = Vector3(2.2773743, -0.32197574, -5.522766)
+bones/2/position = Vector3(2.2773829, -0.32200128, -5.5227423)
 bones/2/rotation = Quaternion(-0.7417209, -0.37768042, 0.49391794, 0.25150105)
-bones/3/position = Vector3(5.507218, -0.32198325, 2.3148196)
+bones/3/position = Vector3(5.507223, -0.32200155, 2.3148503)
 bones/3/rotation = Quaternion(0.87404835, 0.44506097, 0.17362162, 0.08840713)
-bones/4/position = Vector3(-2.2611086, -0.3219681, 5.52948)
+bones/4/position = Vector3(-2.2611, -0.32200193, 5.529487)
 bones/4/rotation = Quaternion(0.4953416, 0.25222537, 0.740771, 0.37719688)
 
 [node name="AnimationPlayer" parent="." index="1"]

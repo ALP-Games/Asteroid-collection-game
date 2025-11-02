@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3y0gwfhn8my0"]
+
+[ext_resource type="Script" uid="uid://di736q7b2mqdw" path="res://actors/deployed_collector.gd" id="1_labbg"]
+[ext_resource type="PackedScene" uid="uid://b35atmw2au8ee" path="res://Assets/rocket_base.tscn" id="1_wu34f"]
+[ext_resource type="AudioStream" uid="uid://1ql2mnfrmeoc" path="res://sounds/Collector.ogg" id="3_labbg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2t4m7"]
+size = Vector3(6.937256, 1, 4.8615723)
+
+[node name="DeployedCollector" type="Node3D"]
+script = ExtResource("1_labbg")
+
+[node name="CollectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21209025)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188551, 0, -0.297241)
+shape = SubResource("BoxShape3D_2t4m7")
+
+[node name="rocket_base_a2" parent="." instance=ExtResource("1_wu34f")]
+
+[node name="CollectionSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_labbg")
+unit_size = 5.0
+autoplay = true
+max_distance = 75.0
+
+[connection signal="area_entered" from="CollectionArea" to="." method="_on_area_3d_area_entered"]

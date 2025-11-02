@@ -1,6 +1,8 @@
 class_name GizmoManager extends Control
 
 const RIGHT_CLICK_GIZMO = preload("uid://cgjsot8bv83rv")
+const HOLD_E_GIZMO = preload("uid://dtlenb301o4r3")
+
 
 ## SESSION MIGHT NOT BE NEEDED!
 #class GizmoSession extends RefCounted:
@@ -71,6 +73,16 @@ class GizmoProxy extends RefCounted:
 			_gizmo_instance.finished_disabling.connect(_gizmo_disabled, CONNECT_ONE_SHOT)
 	
 	
+	func get_gizmo() -> IGizmo:
+		return _gizmo_instance
+	
+	
+	func _notification(what: int) -> void:
+		if what == NOTIFICATION_PREDELETE:
+			if _gizmo_instance:
+				_gizmo_instance.queue_free()
+	
+	
 	func _gizmo_enabled() -> void:
 		_state = State.ENABLED
 	
@@ -85,17 +97,15 @@ func _enter_tree() -> void:
 	add_to_group("gizmo_manager")
 
 
-# we add it
-# then the user enables it?
-# I think the user shoud not be enabing it
-func add_right_cick_gizmo() -> IGizmo:
-	var instance := RIGHT_CLICK_GIZMO.instantiate() as IGizmo
-	add_child(instance)
-	return instance
-
-
 func get_right_click_proxy(node_to_follow: Node3D) -> GizmoProxy:
 	return GizmoProxy.new(self, func() -> IGizmo:
 		var gizmo := RIGHT_CLICK_GIZMO.instantiate() as GizmoOverNode3D
+		gizmo.node_to_follow = node_to_follow
+		return gizmo)
+
+
+func get_hold_e_gizmo_proxy(node_to_follow: Node3D) -> GizmoProxy:
+	return GizmoProxy.new(self, func() -> IGizmo:
+		var gizmo := HOLD_E_GIZMO.instantiate() as HoldEGizmo
 		gizmo.node_to_follow = node_to_follow
 		return gizmo)

@@ -9,6 +9,8 @@ func add_item(item: PriorityQueueItem) -> void:
 		if item.priority > other_item.priority:
 			insert_pos = index
 			break
+		else:
+			insert_pos += 1
 	queue.insert(insert_pos, item)
 
 

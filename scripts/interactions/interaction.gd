@@ -5,7 +5,7 @@ class_name Interaction extends PriorityQueueItem
 
 var interaction_callable: Callable = _do_nothing
 
-func _do_nothing() -> void:
+static func _do_nothing() -> void:
 	pass
 
 

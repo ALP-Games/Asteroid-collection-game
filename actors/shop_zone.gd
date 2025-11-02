@@ -2,7 +2,7 @@ class_name ShopZone extends Node3D
 
 const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 
-@export var item_dispensor: ItemDispenser
+@export var item_dispenser: ItemDispenser
 
 var shop_interaction := Interaction.new() # Maybe interactions should be a resource?, then PriorityQueueItem has to be a resource
 # Or maybe there should be a resource that would initialize an interaction priority queue item
@@ -50,5 +50,5 @@ func _enable_shop_screen() -> void:
 
 func _item_bought(item_type: ShopManager.ItemType, count: int) -> void:
 	if item_type == ShopManager.ItemType.GRINDER:
-		item_dispensor.add_item_to_dispense(FOLDED_GRINDER)
+		item_dispenser.add_item_to_dispense(FOLDED_GRINDER)
 		pass
