@@ -22,7 +22,6 @@ func _ready() -> void:
 	modulate.a = 0
 	set_process(false)
 	state = State.DISABLED
-	#_disable_visuals()
 
 
 func _process(_delta: float) -> void:

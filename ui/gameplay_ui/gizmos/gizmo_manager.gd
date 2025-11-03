@@ -2,6 +2,7 @@ class_name GizmoManager extends Control
 
 const RIGHT_CLICK_GIZMO = preload("uid://cgjsot8bv83rv")
 const HOLD_E_GIZMO = preload("uid://dtlenb301o4r3")
+const GIZMO_COUNT_UP = preload("uid://cerkgsfa3pytw")
 
 
 ## SESSION MIGHT NOT BE NEEDED!
@@ -109,3 +110,11 @@ func get_hold_e_gizmo_proxy(node_to_follow: Node3D) -> GizmoProxy:
 		var gizmo := HOLD_E_GIZMO.instantiate() as HoldEGizmo
 		gizmo.node_to_follow = node_to_follow
 		return gizmo)
+
+
+func get_count_up_gizmo(node_to_follow: Node3D, value: int) -> GizmoCountUp:
+	var gizmo := GIZMO_COUNT_UP.instantiate() as GizmoCountUp
+	add_child(gizmo)
+	gizmo.node_to_follow = node_to_follow
+	gizmo.counter_value = value
+	return gizmo
