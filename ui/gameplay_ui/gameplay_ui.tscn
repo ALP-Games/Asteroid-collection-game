@@ -43,8 +43,19 @@ size_flags_horizontal = 10
 text = "CREDS:"
 label_settings = ExtResource("4_vasx0")
 
-[node name="Amount" type="Label" parent="LayoutsContainer/HBoxContainer"]
+[node name="CreditsAmountControl" type="Control" parent="LayoutsContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Amount" type="Label" parent="LayoutsContainer/HBoxContainer/CreditsAmountControl" groups=["credits_counter_label"]]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_right = 32.0
+offset_bottom = 12.5
+grow_vertical = 2
 size_flags_horizontal = 2
 text = "1000"
 label_settings = ExtResource("4_vasx0")

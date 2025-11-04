@@ -7,23 +7,31 @@ class_name GizmoCountUp extends GizmoOverNode3D
 @export var scale_pulse := 1.1
 @export var scale_burst := 0.2
 @export var burst_time := 0.05
+@export var travel_time := 0.2
 
 var counter_value := 0
 var _current_counter_value := 0
 var _gizmo_position: Vector3
+var _destination: Vector2
+var _travel_amount := 0.0
 
 func _ready() -> void:
 	super()
 	physics_interpolation_mode = PHYSICS_INTERPOLATION_MODE_OFF
 	modulate.a = 1.0
 	counter_label.text = str(_current_counter_value)
+	_destination = (get_tree().get_first_node_in_group("credits_counter_label") as Control).global_position
 
 
 func _process(_delta: float) -> void:
-	position = camera.unproject_position(_gizmo_position)
+	var origination_pos := camera.unproject_position(_gizmo_position)
 	var viewport_size := camera.get_viewport().get_visible_rect().size
-	position.y = clampf(position.y, -counter_label.position.y, viewport_size.y - counter_label.size.y - counter_label.position.y)
-	position.x = clampf(position.x, -counter_label.position.x, viewport_size.x - counter_label.size.x)
+	origination_pos.y = clampf(origination_pos.y, -counter_label.position.y, viewport_size.y - counter_label.size.y - counter_label.position.y)
+	origination_pos.x = clampf(origination_pos.x, -counter_label.position.x, viewport_size.x - counter_label.size.x)
+	
+	position = lerp(origination_pos, _destination, _travel_amount)
+	#position = origination_pos
+	
 	counter_label.text = str(_current_counter_value)
 
 
@@ -46,10 +54,16 @@ func enable() -> void:
 	var count_up := create_tween()
 	count_up.tween_property(self, "_current_counter_value", counter_value, count_up_time)
 	count_up.tween_callback(func():
-		if state == State.ENABLING:
-			finished_enabling.emit()
-			state = State.ENABLED
-			queue_free()).set_delay(delay_after_coutup)
+		var float_up_tween := create_tween()
+		float_up_tween.tween_property(self, "_travel_amount", 1.0, travel_time)
+		float_up_tween.tween_callback(func():
+			if state == State.ENABLING:
+				finished_enabling.emit()
+				state = State.ENABLED
+				GameManager.credist_amount += counter_value
+				queue_free()
+				# update money only here
+			)).set_delay(delay_after_coutup)
 	set_process(true)
 
 

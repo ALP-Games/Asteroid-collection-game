@@ -60,6 +60,7 @@ hook_ui=""
 rope_sound=""
 right_click_gizmo=""
 gizmos_ui=""
+credits_counter_label=""
 
 [input]
 
