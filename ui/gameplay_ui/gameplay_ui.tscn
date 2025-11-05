@@ -94,4 +94,3 @@ size_flags_stretch_ratio = 0.04
 
 [node name="HookUI" parent="." instance=ExtResource("6_wapsp")]
 layout_mode = 1
-offset_right = 121.0
