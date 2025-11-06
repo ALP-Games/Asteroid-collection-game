@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
@@ -11,6 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
 [ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/item_dispenser.tscn" id="11_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
+[ext_resource type="PackedScene" uid="uid://ddpmvbbr6hbbb" path="res://actors/latch_mechanizm.tscn" id="12_wqmfy"]
 
 [node name="World" type="Node3D"]
 
@@ -114,3 +115,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0330651, -1.90735e-06, 0.09
 script = ExtResource("11_wqmfy")
 radius = 2.61
 metadata/_custom_type_script = "uid://ceo3kiibjuffa"
+
+[node name="LatchMechanizm" parent="." instance=ExtResource("12_wqmfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.813818, 0, 0)
+
+[node name="LatchMechanizm2" parent="." instance=ExtResource("12_wqmfy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -30.810543, -9.536743e-07, -6.502021)
+
+[node name="LatchMechanizm3" parent="." instance=ExtResource("12_wqmfy")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -18.2826, 0, -15.277488)
+
+[node name="LatchMechanizm4" parent="." instance=ExtResource("12_wqmfy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2243958, 0, -11.701839)
