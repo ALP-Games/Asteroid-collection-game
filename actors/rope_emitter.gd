@@ -102,7 +102,7 @@ func _enforce_rope_length() -> void:
 		var target_weight_ratio := _parent.mass / total_mass
 		
 		var direction := (global_position - rope_target.global_position).normalized()
-		var stretch := pow((current_distance / rope_max_length), 3.0)
+		var stretch := pow((current_distance / rope_max_length), 4.0)
 		
 		var relative_velocity := _parent.linear_velocity - rope_target.linear_velocity
 		var velocity_along_rope := relative_velocity.dot(direction)

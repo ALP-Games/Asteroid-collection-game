@@ -34,6 +34,10 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		target_reached.emit(colliding_object, hook_joint)
 		hook_sound.pitch_scale = randf_range(1.0 - pitch_variation, 1.0 + pitch_variation)
 		hook_sound.play()
+		parent_emitter.emitter_done.connect(func():
+			if hookable.hook_object == self:
+				hookable.unhook(),
+			CONNECT_ONE_SHOT)
 		return
 	#print("Contact count - ", contact_count)
 
