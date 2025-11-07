@@ -20,7 +20,7 @@ radius = 0.96972656
 [node name="LatchMechanizm" type="Node3D"]
 script = ExtResource("1_k2u0o")
 retraction_acceleration = 40.0
-strength_exponent = 1.3
+strength_exponent = 1.0
 
 [node name="Latch" type="RigidBody3D" parent="."]
 mass = 4000.0
