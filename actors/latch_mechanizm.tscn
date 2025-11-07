@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://ddpmvbbr6hbbb"]
 
-[ext_resource type="Script" path="res://actors/latch_mechanism.gd" id="1_k2u0o"]
-[ext_resource type="ArrayMesh" path="res://Assets/meshes/latch/Latch_Latch.res" id="2_70ipd"]
+[ext_resource type="Script" uid="uid://bo10hq38evinq" path="res://actors/latch_mechanism.gd" id="1_k2u0o"]
+[ext_resource type="ArrayMesh" uid="uid://qak8pxt0hj5a" path="res://Assets/meshes/latch/Latch_Latch.res" id="2_70ipd"]
 [ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_t0rci"]
-[ext_resource type="ArrayMesh" path="res://Assets/meshes/latch/Latch_Housing.res" id="3_x6m58"]
+[ext_resource type="ArrayMesh" uid="uid://c2kno8hnqawyp" path="res://Assets/meshes/latch/Latch_Housing.res" id="3_x6m58"]
 [ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_gbovt"]
 [ext_resource type="Material" uid="uid://ypg1md42sf1m" path="res://shaders/materials/yellow_outline.tres" id="5_goe2f"]
 [ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_uh6p8"]

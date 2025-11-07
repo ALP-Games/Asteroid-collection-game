@@ -34,8 +34,8 @@ func _process_latch() -> void:
 		latched = false
 		slider_joint_3d.queue_free()
 		
-	print("Protruded amount - ", protruded_amount)
+	#print("Protruded amount - ", protruded_amount)
 	if protruded_amount > 0:
 		var retraction_strength := pow(retraction_acceleration * protruded_amount / _slider_length, strength_exponent)
-		latch.apply_central_force(Vector3(0.0, 0.0, 1.0) * latch.mass * retraction_strength * latch.global_transform.basis)
+		latch.apply_central_force(Vector3(0.0, 0.0, 1.0).rotated(Vector3.UP, latch.global_rotation.y) * latch.mass * retraction_strength)
 	#print("Latch velocity - ", latch.linear_velocity)
