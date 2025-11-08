@@ -233,16 +233,13 @@ func _physics_process(delta: float) -> void:
 		interaction.interact(Input.is_action_just_pressed("interact"), Input.is_action_pressed("interact"))
 	
 	var shop_screen: Control = get_tree().get_first_node_in_group("shop_screen")
-	# the stoppage should still be active, do a refactor
-	if shop_screen.visible:
-		return
 	
 	var thrust_input: bool = false
 	var reverse_input: bool = false
 	var stop_input: bool = false
 	var rotation_input: float = 0.0
 	
-	if not player_stunned:
+	if not player_stunned and not shop_screen.visible:
 		thrust_input = Input.is_action_pressed("thrust")
 		reverse_input = Input.is_action_pressed("reverse")
 		stop_input = Input.is_action_pressed("stop")
