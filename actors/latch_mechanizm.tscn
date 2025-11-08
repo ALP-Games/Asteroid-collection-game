@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddpmvbbr6hbbb"]
+[gd_scene load_steps=12 format=3 uid="uid://ddpmvbbr6hbbb"]
 
 [ext_resource type="Script" uid="uid://bo10hq38evinq" path="res://actors/latch_mechanism.gd" id="1_k2u0o"]
 [ext_resource type="ArrayMesh" uid="uid://qak8pxt0hj5a" path="res://Assets/meshes/latch/Latch_Latch.res" id="2_70ipd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_gbovt"]
 [ext_resource type="Material" uid="uid://ypg1md42sf1m" path="res://shaders/materials/yellow_outline.tres" id="5_goe2f"]
 [ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_uh6p8"]
+[ext_resource type="PackedScene" uid="uid://wwkbjrq1iad4" path="res://effects/gas_emission_effect.tscn" id="7_gbovt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k2u0o"]
 size = Vector3(1.7050781, 1, 0.16381836)
@@ -23,6 +24,7 @@ retraction_acceleration = 40.0
 strength_exponent = 1.0
 
 [node name="Latch" type="RigidBody3D" parent="."]
+collision_mask = 21
 mass = 4000.0
 
 [node name="Handle" type="CollisionShape3D" parent="Latch"]
@@ -60,6 +62,12 @@ linear_limit/upper_distance = 0.0
 linear_limit/lower_distance = -2.1
 
 [node name="Housing" type="StaticBody3D" parent="."]
+
+[node name="GasEmissionEffect" parent="Housing" instance=ExtResource("7_gbovt")]
+transform = Transform3D(-0.49999994, 0, -0.86602557, 0, 1, 0, 0.86602557, 0, -0.49999994, 0, 0.027950525, -1)
+
+[node name="GasEmissionEffect2" parent="Housing" instance=ExtResource("7_gbovt")]
+transform = Transform3D(-0.5000001, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, -0.5000001, 0, 0.027950525, -1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Housing"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
