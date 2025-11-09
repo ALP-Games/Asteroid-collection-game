@@ -44,6 +44,17 @@ _subresources={
 "use_external/fallback_path": "res://Assets/Roundcube.001.tres",
 "use_external/path": "uid://cl10eowp407lq"
 }
+},
+"meshes": {
+"Becon_Roundcube": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": true,
+"save_to_file/fallback_path": "res://Assets/meshes/beacon/Becon_Roundcube.res",
+"save_to_file/path": "uid://d0k40pyircjhn"
+}
 }
 }
 gltf/naming_version=2
