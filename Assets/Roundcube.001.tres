@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cl10eowp407lq"]
+
+[ext_resource type="Texture2D" uid="uid://b1n6i5lnetjgn" path="res://Assets/Becon_Ucupaint Roundcube_1.png" id="1_nrugm"]
+[ext_resource type="Texture2D" uid="uid://bs17ibklmyjpo" path="res://Assets/Becon_Ucupaint Roundcube.png" id="2_tgjvn"]
+[ext_resource type="Texture2D" uid="uid://cldxt32ehv8km" path="res://Assets/Becon_Ucupaint Roundcube_2.png" id="3_hqfaa"]
+
+[resource]
+resource_name = "Roundcube.001"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_nrugm")
+metallic_texture = ExtResource("3_hqfaa")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_hqfaa")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("2_tgjvn")
