@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://d3y0gwfhn8my0"]
+[gd_scene load_steps=21 format=4 uid="uid://d3y0gwfhn8my0"]
 
 [ext_resource type="Script" uid="uid://di736q7b2mqdw" path="res://actors/deployed_collector.gd" id="1_labbg"]
 [ext_resource type="Texture2D" uid="uid://xu1h3tvrna1y" path="res://Assets/rocket_base_a_Ucupaint Base Color.png" id="2_e32wt"]
@@ -7,9 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bqlpthedrbh5h" path="res://Assets/rocket_base_a_Ucupaint rocket_base Color.png" id="4_x6krn"]
 [ext_resource type="Texture2D" uid="uid://d2jha0auxaufc" path="res://Assets/rocket_base_a_Ucupaint rocket_base Roughness.png" id="5_vrecf"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://b7on5ka3gr86r" path="res://actors/actor_graphics/deployed_collector/deployed_collector_animation_machine.tres" id="7_6333c"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2t4m7"]
-size = Vector3(6.937256, 1, 4.8615723)
+[ext_resource type="AudioStream" uid="uid://dilef2ib3e0xv" path="res://sounds/breaking-the-sound-barrier-2.ogg" id="8_vrecf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_samf3"]
 resource_name = "Base"
@@ -559,21 +557,13 @@ _data = {
 &"mobilecollector_idle": SubResource("Animation_tl0ry")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2t4m7"]
+size = Vector3(6.937256, 1, 4.8615723)
+
 [node name="DeployedCollector" type="Node3D"]
 script = ExtResource("1_labbg")
 
-[node name="CollectionArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21209025)
-collision_layer = 0
-collision_mask = 8
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188551, 0, -0.297241)
-shape = SubResource("BoxShape3D_2t4m7")
-
 [node name="rocket_base_a2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3997936, 0)
 
 [node name="rocket_base_a" type="Node3D" parent="rocket_base_a2"]
 
@@ -594,14 +584,14 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 0.123077504, -0.992397, 0, 0.992397, 0.123077504, 0, -1.2725358, -1.2507577)
 bones/1/enabled = true
 bones/1/position = Vector3(0, -1.2725358, -1.2507577)
-bones/1/rotation = Quaternion(0.844422, -1.378618e-16, 3.7900653e-16, -0.5356785)
+bones/1/rotation = Quaternion(0.89349777, -1.5323582e-16, 4.0228845e-16, -0.4490678)
 bones/1/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/2/name = "Shreder2"
 bones/2/parent = 0
 bones/2/rest = Transform3D(1, 0, 0, 0, 0.123077504, -0.992397, 0, 0.992397, 0.123077504, 0, -1.2747273, 1.0453506)
 bones/2/enabled = true
 bones/2/position = Vector3(0, -1.2747273, 1.0453506)
-bones/2/rotation = Quaternion(-0.6355353, -1.2936737e-16, 1.9014505e-16, 0.77207184)
+bones/2/rotation = Quaternion(-0.55562323, -1.3439234e-16, 1.4678446e-16, 0.83143425)
 bones/2/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/3/name = "Bone.001"
 bones/3/parent = 0
@@ -675,6 +665,16 @@ light_indirect_energy = 7.94
 light_volumetric_fog_energy = 16.0
 omni_range = 206.42961
 
+[node name="CollectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21209025)
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188551, 0, -0.297241)
+shape = SubResource("BoxShape3D_2t4m7")
+
 [node name="CollectionSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_labbg")
 unit_size = 5.0
@@ -686,5 +686,9 @@ root_node = NodePath("../rocket_base_a2")
 tree_root = ExtResource("7_6333c")
 anim_player = NodePath("../rocket_base_a2/AnimationPlayer")
 parameters/grind_loop/Add2/add_amount = 1.0
+
+[node name="BreakingSoundBarrier" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_vrecf")
+autoplay = true
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_area_3d_area_entered"]
