@@ -234,12 +234,14 @@ func _physics_process(delta: float) -> void:
 	
 	var shop_screen: Control = get_tree().get_first_node_in_group("shop_screen")
 	
+	var can_poll_inputs := not player_stunned and not shop_screen.visible
+	
 	var thrust_input: bool = false
 	var reverse_input: bool = false
 	var stop_input: bool = false
 	var rotation_input: float = 0.0
 	
-	if not player_stunned and not shop_screen.visible:
+	if can_poll_inputs:
 		thrust_input = Input.is_action_pressed("thrust")
 		reverse_input = Input.is_action_pressed("reverse")
 		stop_input = Input.is_action_pressed("stop")
@@ -248,7 +250,7 @@ func _physics_process(delta: float) -> void:
 	var movement_input_held := thrust_input or reverse_input or stop_input
 	_play_jet_sound(movement_input_held)
 	
-	if Input.is_action_just_pressed("action"):
+	if can_poll_inputs and Input.is_action_just_pressed("action"):
 		var camera := get_tree().get_first_node_in_group("camera") as FancyCameraArmature
 		var mouse_world_position := camera.get_mouse_world_position()
 		emitter_manager.emit(mouse_world_position)
