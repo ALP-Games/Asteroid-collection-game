@@ -1,4 +1,4 @@
-class_name FoldedGrinder extends RigidBody3D
+class_name GrinderBeacon extends RigidBody3D
 
 const DEPLOYED_COLLECTOR = preload("uid://d3y0gwfhn8my0")
 

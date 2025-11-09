@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b35atmw2au8ee"]
+[gd_scene load_steps=8 format=3 uid="uid://b35atmw2au8ee"]
 
 [ext_resource type="PackedScene" uid="uid://b7tti2p0wi4ia" path="res://Assets/rocket_base_a.glb" id="1_tpi20"]
+[ext_resource type="AudioStream" uid="uid://dilef2ib3e0xv" path="res://sounds/breaking-the-sound-barrier-2.ogg" id="2_k7jx6"]
 
 [sub_resource type="Animation" id="Animation_5andv"]
 length = 0.001
@@ -319,6 +320,20 @@ tracks/18/keys = {
 "update": 0,
 "values": [30.0]
 }
+tracks/19/type = "method"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("BreakingSoundBarrier")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_tl0ry"]
 resource_name = "mobilecollector_idle"
@@ -439,13 +454,16 @@ _data = {
 
 [node name="rocket_base_a2" instance=ExtResource("1_tpi20")]
 
-[node name="Skeleton3D" parent="rocket_base_a/rocket_grinder_a" index="0"]
-bones/0/position = Vector3(-7.6293945e-06, 6.1035156e-05, -3.0517578e-05)
-bones/1/rotation = Quaternion(0.6621641, -1.1511273e-16, 4.6438062e-17, 0.7493589)
-bones/2/rotation = Quaternion(0.6621641, -1.1511273e-16, 4.6438062e-17, 0.7493589)
-
 [node name="Skeleton3D" parent="rocket_base_a" index="2"]
-bones/2/rotation = Quaternion(0.24105932, -0.79666984, -0.16052386, 0.53050894)
+bones/0/position = Vector3(0, 2.5, 0)
+bones/1/position = Vector3(-5.539459, -0.3219681, -2.2370756)
+bones/1/rotation = Quaternion(-0.17339227, -0.08829052, 0.87409383, 0.4450841)
+bones/2/position = Vector3(2.2773743, -0.32197574, -5.522766)
+bones/2/rotation = Quaternion(-0.7417209, -0.37768042, 0.49391794, 0.25150105)
+bones/3/position = Vector3(5.507218, -0.32198325, 2.3148196)
+bones/3/rotation = Quaternion(0.87404835, 0.44506097, 0.17362162, 0.08840713)
+bones/4/position = Vector3(-2.2611086, -0.3219681, 5.52948)
+bones/4/rotation = Quaternion(0.4953416, 0.25222537, 0.740771, 0.37719688)
 
 [node name="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -458,3 +476,6 @@ light_energy = 0.0
 light_indirect_energy = 7.94
 light_volumetric_fog_energy = 16.0
 omni_range = 206.42961
+
+[node name="BreakingSoundBarrier" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("2_k7jx6")

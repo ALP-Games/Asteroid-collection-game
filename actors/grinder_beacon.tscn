@@ -1,30 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://ylpkw2lvllxq"]
+[gd_scene load_steps=13 format=3 uid="uid://ylpkw2lvllxq"]
 
-[ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="1_65tvr"]
-[ext_resource type="Script" uid="uid://csfqyurb2ywfh" path="res://actors/folded_grinder.gd" id="1_mobjs"]
-[ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="2_dj7do"]
-[ext_resource type="Shader" uid="uid://71ff4h8ongb8" path="res://shaders/inverted-hull-stencil-read-2.gdshader" id="3_dj7do"]
-[ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="4_hnl3e"]
+[ext_resource type="Script" uid="uid://csfqyurb2ywfh" path="res://actors/grinder_beacon.gd" id="1_pg7tx"]
+[ext_resource type="ArrayMesh" uid="uid://d0k40pyircjhn" path="res://Assets/meshes/beacon/Becon_Roundcube.res" id="2_ft08n"]
+[ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_cijt5"]
+[ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_t7nde"]
+[ext_resource type="Shader" uid="uid://71ff4h8ongb8" path="res://shaders/inverted-hull-stencil-read-2.gdshader" id="5_d186k"]
+[ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_gihkd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mobjs"]
-radius = 6.0
+radius = 7.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3k1hc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3k1hc"]
-albedo_color = Color(0.61745477, 0.61745477, 0.6174547, 1)
-metallic = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_3khxb"]
-material = SubResource("StandardMaterial3D_3k1hc")
+[sub_resource type="SphereShape3D" id="SphereShape3D_68v8x"]
+radius = 1.4
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mobjs"]
 load_path = "res://.godot/imported/Icosphere_Ucupaint Icosphere_1.png-0d2f37c1b665f0e5b7b9995a1e66fd29.s3tc.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hnl3e"]
 render_priority = 2
-shader = ExtResource("3_dj7do")
-shader_parameter/outline_size = 4.0
+shader = ExtResource("5_d186k")
+shader_parameter/outline_size = 1.5
 shader_parameter/outline_color = Color(1.353256, 1.1739426, 0.5256553, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_68v8x"]
@@ -49,11 +44,11 @@ stencil_flags = 6
 stencil_compare = 6
 stencil_reference = 2
 
-[node name="FoldedGrinder" type="RigidBody3D"]
+[node name="GrinderBeacon" type="RigidBody3D"]
 collision_mask = 21
 axis_lock_linear_y = true
 mass = 500.0
-script = ExtResource("1_mobjs")
+script = ExtResource("1_pg7tx")
 
 [node name="InteractionArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -63,23 +58,23 @@ collision_mask = 16
 shape = SubResource("SphereShape3D_mobjs")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_3k1hc")
+shape = SubResource("SphereShape3D_68v8x")
 
 [node name="Graphics" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_3khxb")
+mesh = ExtResource("2_ft08n")
 
 [node name="HookableComponent" type="Node" parent="."]
-script = ExtResource("1_65tvr")
+script = ExtResource("3_cijt5")
 metadata/_custom_type_script = "uid://bi2ox86m0yg1y"
 
 [node name="UnhookSelection" type="Node" parent="." node_paths=PackedStringArray("meshes")]
-script = ExtResource("2_dj7do")
+script = ExtResource("4_t7nde")
 meshes = [NodePath("../Graphics")]
 material_overlay = SubResource("StandardMaterial3D_kyuk2")
 metadata/_custom_type_script = "uid://dtpuy1iftshns"
 
 [node name="MouseOverComponent" type="Node" parent="."]
-script = ExtResource("4_hnl3e")
+script = ExtResource("6_gihkd")
 metadata/_custom_type_script = "uid://b6pqa311a7k0c"
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
