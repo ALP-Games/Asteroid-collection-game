@@ -439,6 +439,20 @@ tracks/18/keys = {
 "update": 0,
 "values": [30.0]
 }
+tracks/19/type = "method"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("BreakingSoundBarrier")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_tl0ry"]
 resource_name = "mobilecollector_idle"
@@ -576,7 +590,7 @@ bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(-7.6293945e-06, 6.1035156e-05, -3.0517578e-05)
+bones/0/position = Vector3(0, 0, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Shreder1"
@@ -584,14 +598,14 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 0.123077504, -0.992397, 0, 0.992397, 0.123077504, 0, -1.2725358, -1.2507577)
 bones/1/enabled = true
 bones/1/position = Vector3(0, -1.2725358, -1.2507577)
-bones/1/rotation = Quaternion(0.89349777, -1.5323582e-16, 4.0228845e-16, -0.4490678)
+bones/1/rotation = Quaternion(0.6621641, 0, 0, 0.7493589)
 bones/1/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/2/name = "Shreder2"
 bones/2/parent = 0
 bones/2/rest = Transform3D(1, 0, 0, 0, 0.123077504, -0.992397, 0, 0.992397, 0.123077504, 0, -1.2747273, 1.0453506)
 bones/2/enabled = true
 bones/2/position = Vector3(0, -1.2747273, 1.0453506)
-bones/2/rotation = Quaternion(-0.55562323, -1.3439234e-16, 1.4678446e-16, 0.83143425)
+bones/2/rotation = Quaternion(0.6621641, 0, 0, 0.7493589)
 bones/2/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/3/name = "Bone.001"
 bones/3/parent = 0
@@ -610,36 +624,36 @@ bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
-bones/0/position = Vector3(0, 2.5, 0)
+bones/0/position = Vector3(0, 0, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "Bone.001"
 bones/1/parent = -1
 bones/1/rest = Transform3D(0.7692274, 0.512428, -0.38171563, -0.55440784, 0.8322452, -7.043323e-08, 0.31768093, 0.21162622, 0.9242798, -5.539446, -0.32200173, -2.2370582)
 bones/1/enabled = true
-bones/1/position = Vector3(-5.539446, -0.32200155, -2.237058)
-bones/1/rotation = Quaternion(-0.17339227, -0.08829052, 0.87409383, 0.4450841)
+bones/1/position = Vector3(-5.539446, -0.32200173, -2.2370582)
+bones/1/rotation = Quaternion(0.056352567, -0.18623771, -0.28408068, 0.9388494)
 bones/1/scale = Vector3(0.99999994, 1, 1)
 bones/2/name = "Bone.002"
 bones/2/parent = -1
 bones/2/rest = Transform3D(-0.32090127, -0.21377058, -0.9226722, -0.55440795, 0.83224475, 7.789815e-07, 0.7678893, 0.51153713, -0.38558456, 2.2773829, -0.3220015, -5.5227423)
 bones/2/enabled = true
-bones/2/position = Vector3(2.2773829, -0.32200128, -5.5227423)
-bones/2/rotation = Quaternion(-0.7417209, -0.37768042, 0.49391788, 0.25150102)
+bones/2/position = Vector3(2.2773829, -0.3220015, -5.5227423)
+bones/2/rotation = Quaternion(0.2410593, -0.7966698, -0.16052386, 0.53050894)
 bones/2/scale = Vector3(0.99999994, 0.9999997, 0.9999997)
 bones/3/name = "Bone.003"
 bones/3/parent = -1
 bones/3/rest = Transform3D(-0.76906055, -0.5123168, 0.38220045, -0.5544077, 0.8322451, 1.6479105e-07, -0.31808457, -0.21189477, -0.9240794, 5.507223, -0.3220016, 2.3148503)
 bones/3/enabled = true
-bones/3/position = Vector3(5.507223, -0.32200155, 2.3148503)
-bones/3/rotation = Quaternion(0.87404835, 0.44506097, 0.17362162, 0.08840713)
+bones/3/position = Vector3(5.507223, -0.3220016, 2.3148503)
+bones/3/rotation = Quaternion(-0.28406587, 0.93880045, -0.056426965, 0.18648401)
 bones/3/scale = Vector3(0.99999994, 0.9999999, 1)
 bones/4/name = "Bone.004"
 bones/4/parent = -1
 bones/4/rest = Transform3D(0.31794932, 0.21180502, 0.9241465, -0.5544078, 0.83224505, -1.4813334e-07, -0.76911646, -0.5123539, 0.38203812, -2.2610998, -0.3220016, 5.529487)
 bones/4/enabled = true
-bones/4/position = Vector3(-2.2611, -0.32200193, 5.529487)
-bones/4/rotation = Quaternion(0.4953416, 0.25222537, 0.740771, 0.37719688)
+bones/4/position = Vector3(-2.2610998, -0.3220016, 5.529487)
+bones/4/rotation = Quaternion(-0.16098607, 0.532038, -0.24075076, 0.7956495)
 bones/4/scale = Vector3(0.99999994, 0.9999999, 0.9999999)
 bones/5/name = "neutral_bone"
 bones/5/parent = -1
@@ -665,6 +679,9 @@ light_indirect_energy = 7.94
 light_volumetric_fog_energy = 16.0
 omni_range = 206.42961
 
+[node name="BreakingSoundBarrier" type="AudioStreamPlayer" parent="rocket_base_a2"]
+stream = ExtResource("8_vrecf")
+
 [node name="CollectionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.21209025)
 collision_layer = 0
@@ -686,9 +703,5 @@ root_node = NodePath("../rocket_base_a2")
 tree_root = ExtResource("7_6333c")
 anim_player = NodePath("../rocket_base_a2/AnimationPlayer")
 parameters/grind_loop/Add2/add_amount = 1.0
-
-[node name="BreakingSoundBarrier" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_vrecf")
-autoplay = true
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_area_3d_area_entered"]
