@@ -47,6 +47,7 @@ func _check_victory(upgrade_id: ShopManager.ItemType, upgrade_level: int) -> voi
 		timer_instance.start(0.5)
 		timer_instance.timeout.connect(func():get_tree().change_scene_to_packed(VICTORY_LEVEL))
 
+
 func _init() -> void:
 	_initialize()
 

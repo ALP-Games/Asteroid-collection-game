@@ -127,6 +127,7 @@ escape={
 3d_physics/layer_3="Rope"
 3d_physics/layer_4="AsteroidCollection"
 3d_physics/layer_5="PlayerShip"
+3d_physics/layer_6="MouseOverables"
 
 [physics]
 

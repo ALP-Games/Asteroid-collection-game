@@ -2,6 +2,7 @@ class_name LatchMechanism extends Node3D
 
 const MIN_UPPER_DISTANCE: float = 1.0
 const MIN_DETATCH_DISTANCE: float = 0.9
+const MIN_PROTRUSION_DISTANCE: float = 0.1
 
 @export var retraction_acceleration: float = 50.0
 @export var strength_exponent: float = 2.0
@@ -68,8 +69,9 @@ func _process_latch() -> void:
 				set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 			deflation_tween_2.tween_callback(func():gas_emission_effect_2.emitting = false)
 	
-	gas_emission_effect.amount_ratio = protruded_amount / _slider_length
-	gas_emission_effect_2.amount_ratio = protruded_amount / _slider_length
+	var emission_ratio: float = max(protruded_amount - MIN_PROTRUSION_DISTANCE, 0.0) / _slider_length - MIN_PROTRUSION_DISTANCE
+	gas_emission_effect.amount_ratio = emission_ratio
+	gas_emission_effect_2.amount_ratio = emission_ratio
 	
 	#print("Protruded amount - ", protruded_amount)
 	if protruded_amount > 0:

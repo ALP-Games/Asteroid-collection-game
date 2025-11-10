@@ -88,22 +88,33 @@ func _process_mouse_over_basic_collision_object() -> void:
 	
 	var space = get_world_3d().direct_space_state
 	var result := space.intersect_ray(PhysicsRayQueryParameters3D.create(ray_origin, ray_destination, 1))
+	var ray_collider: Node = null
+	if result == {}:
+		var mouse_overable_query := PhysicsRayQueryParameters3D.create(ray_origin, ray_destination, 32)
+		mouse_overable_query.collide_with_areas = true
+		mouse_overable_query.collide_with_bodies = false
+		var mouse_overable_area := space.intersect_ray(mouse_overable_query)
+		if mouse_overable_area != {}:
+			result = mouse_overable_area
+			ray_collider = mouse_overable_area.collider.get_parent()
+	else:
+		ray_collider = result.collider
 	
 	var result_recieved := result != {}
 	var previous_object_valid := moused_over_basic_collision_object != null
 	var current_object_same: bool = false
 	
 	if result_recieved and previous_object_valid:
-		current_object_same = result.collider == moused_over_basic_collision_object
+		current_object_same = ray_collider == moused_over_basic_collision_object
 	
 	if not current_object_same:
 		if previous_object_valid:
 			MouseOverComponent.core().invoke_on_component(moused_over_basic_collision_object, func(component: MouseOverComponent):
 				component.mouse_exited())
 		if result_recieved:
-			MouseOverComponent.core().invoke_on_component(result.collider, func(component: MouseOverComponent):
+			MouseOverComponent.core().invoke_on_component(ray_collider, func(component: MouseOverComponent):
 				component.mouse_entered())
-			moused_over_basic_collision_object = result.collider
+			moused_over_basic_collision_object = ray_collider
 		else:
 			moused_over_basic_collision_object = null
 
