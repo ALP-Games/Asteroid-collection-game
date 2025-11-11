@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddpmvbbr6hbbb"]
+[gd_scene load_steps=14 format=3 uid="uid://ddpmvbbr6hbbb"]
 
 [ext_resource type="Script" uid="uid://bo10hq38evinq" path="res://actors/latch_mechanism.gd" id="1_k2u0o"]
 [ext_resource type="ArrayMesh" uid="uid://qak8pxt0hj5a" path="res://Assets/meshes/latch/Latch_Latch.res" id="2_70ipd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://ypg1md42sf1m" path="res://shaders/materials/yellow_outline.tres" id="5_goe2f"]
 [ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_uh6p8"]
 [ext_resource type="PackedScene" uid="uid://wwkbjrq1iad4" path="res://effects/gas_emission_effect.tscn" id="7_gbovt"]
+[ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="7_goe2f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k2u0o"]
 size = Vector3(1.7050781, 1, 0.16381836)
@@ -25,6 +26,7 @@ radius = 0.96972656
 script = ExtResource("1_k2u0o")
 retraction_acceleration = 40.0
 strength_exponent = 1.0
+sound_min_volume_db = -40.0
 
 [node name="Latch" type="RigidBody3D" parent="."]
 collision_mask = 21
@@ -74,10 +76,18 @@ linear_limit/lower_distance = -2.1
 
 [node name="Housing" type="StaticBody3D" parent="."]
 
-[node name="GasEmissionEffect" parent="Housing" instance=ExtResource("7_gbovt")]
+[node name="GasSound" type="AudioStreamPlayer3D" parent="Housing"]
+stream = ExtResource("7_goe2f")
+
+[node name="GasEmissionEffectFront" parent="Housing" instance=ExtResource("7_gbovt")]
+transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 0, 0.027950525, -1)
+amount = 600
+lifetime = 0.3
+
+[node name="GasEmissionEffectLeft" parent="Housing" instance=ExtResource("7_gbovt")]
 transform = Transform3D(-0.49999994, 0, -0.86602557, 0, 1, 0, 0.86602557, 0, -0.49999994, 0, 0.027950525, -1)
 
-[node name="GasEmissionEffect2" parent="Housing" instance=ExtResource("7_gbovt")]
+[node name="GasEmissionEffectRight" parent="Housing" instance=ExtResource("7_gbovt")]
 transform = Transform3D(-0.5000001, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, -0.5000001, 0, 0.027950525, -1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Housing"]
