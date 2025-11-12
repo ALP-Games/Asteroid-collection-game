@@ -11,7 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
 [ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/item_dispenser.tscn" id="11_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
-[ext_resource type="PackedScene" uid="uid://ddpmvbbr6hbbb" path="res://actors/latch_mechanizm.tscn" id="12_wqmfy"]
+[ext_resource type="PackedScene" uid="uid://ddpmvbbr6hbbb" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_wqmfy"]
 
 [node name="World" type="Node3D"]
 
