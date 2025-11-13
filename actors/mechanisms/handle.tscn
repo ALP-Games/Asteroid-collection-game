@@ -1,6 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1rags3ln5ga8"]
+[gd_scene load_steps=13 format=3 uid="uid://d1rags3ln5ga8"]
 
+[ext_resource type="Script" uid="uid://df8cbnne428dl" path="res://actors/mechanisms/handle.gd" id="1_114hg"]
 [ext_resource type="ArrayMesh" uid="uid://cnxv75gkf0qjw" path="res://Assets/meshes/handle/Handle_Handle.res" id="1_cer7c"]
+[ext_resource type="Script" uid="uid://c5a5pc3ov6dpg" path="res://scripts/follow_nodes.gd" id="1_dj1to"]
 [ext_resource type="ArrayMesh" uid="uid://b1eocl7j1wl1r" path="res://Assets/meshes/handle/Handle_Base.res" id="2_osdn8"]
 [ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_cuw0i"]
 [ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_dj1to"]
@@ -20,14 +22,32 @@ size = Vector3(2.024414, 1, 5.675537)
 
 [node name="Handle" type="RigidBody3D"]
 collision_mask = 21
+script = ExtResource("1_114hg")
 
-[node name="Graphics" type="Node3D" parent="."]
+[node name="Graphics" type="Node3D" parent="." node_paths=PackedStringArray("nodes_to_follow", "following_nodes")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.6238884, 0)
+script = ExtResource("1_dj1to")
+nodes_to_follow = [NodePath("HandlePivot/CollisionPosition"), NodePath("HandlePivot/CollisionPosition2"), NodePath("HandlePivot/CollisionPosition3"), NodePath("HandlePivot/OutlinePosition")]
+following_nodes = [NodePath("../HandleCollision"), NodePath("../HandleCollision2"), NodePath("../HandleCollision3"), NodePath("../MouseOverableArea")]
 
-[node name="Handle" type="MeshInstance3D" parent="Graphics"]
+[node name="HandlePivot" type="Node3D" parent="Graphics"]
+
+[node name="Handle" type="MeshInstance3D" parent="Graphics/HandlePivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4164584)
 mesh = ExtResource("1_cer7c")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
+
+[node name="CollisionPosition" type="Node3D" parent="Graphics/HandlePivot"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.00339365, 2.400789)
+
+[node name="CollisionPosition2" type="Node3D" parent="Graphics/HandlePivot"]
+transform = Transform3D(2, 0, 0, 0, 1.7203813, 1.019945, 0, -1.019945, 1.7203813, 0, 1.1437016, 6.904426)
+
+[node name="CollisionPosition3" type="Node3D" parent="Graphics/HandlePivot"]
+transform = Transform3D(2, 0, 0, 0, 1.9999999, 0, 0, 0, 1.9999999, -0.0045850277, 1.6015096, 10.136756)
+
+[node name="OutlinePosition" type="Node3D" parent="Graphics/HandlePivot"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.2477767, 5.522485)
 
 [node name="Base" type="MeshInstance3D" parent="Graphics"]
 mesh = ExtResource("2_osdn8")
@@ -54,7 +74,7 @@ metadata/_custom_type_script = "uid://bi2ox86m0yg1y"
 
 [node name="UnhookSelection" type="Node" parent="." node_paths=PackedStringArray("meshes")]
 script = ExtResource("4_dj1to")
-meshes = [NodePath("../Graphics/Handle")]
+meshes = [NodePath("../Graphics/HandlePivot/Handle")]
 material_overlay = ExtResource("5_114hg")
 metadata/_custom_type_script = "uid://dtpuy1iftshns"
 
@@ -63,9 +83,9 @@ script = ExtResource("6_dsg6t")
 metadata/_custom_type_script = "uid://b6pqa311a7k0c"
 
 [node name="MouseOverableArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7612424)
 collision_layer = 32
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MouseOverableArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7632113)
 shape = SubResource("BoxShape3D_sqo1c")
