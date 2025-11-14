@@ -23,6 +23,8 @@ size = Vector3(2.024414, 1, 5.675537)
 [node name="Handle" type="RigidBody3D"]
 collision_mask = 21
 script = ExtResource("1_114hg")
+starting_angle = 1.5707963267948966
+rotation_animation_duration = 1.0
 
 [node name="Graphics" type="Node3D" parent="." node_paths=PackedStringArray("nodes_to_follow", "following_nodes")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.6238884, 0)
@@ -31,6 +33,7 @@ nodes_to_follow = [NodePath("HandlePivot/CollisionPosition"), NodePath("HandlePi
 following_nodes = [NodePath("../HandleCollision"), NodePath("../HandleCollision2"), NodePath("../HandleCollision3"), NodePath("../MouseOverableArea")]
 
 [node name="HandlePivot" type="Node3D" parent="Graphics"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [node name="Handle" type="MeshInstance3D" parent="Graphics/HandlePivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4164584)
@@ -57,15 +60,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6054201, 0)
 shape = SubResource("BoxShape3D_pieqw")
 
 [node name="HandleCollision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.62219155, 1.2003945)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.8242829, 0.0016967725)
 shape = SubResource("BoxShape3D_cer7c")
 
 [node name="HandleCollision2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.86019063, 0.5099725, 0, -0.5099725, 0.86019063, 0, -0.052037597, 3.452213)
+transform = Transform3D(1, 0, 0, 0, 0.50997245, -0.86019063, 0, 0.86019063, 0.50997245, 0, -4.0761013, 0.5718506)
 shape = SubResource("BoxShape3D_cer7c")
 
 [node name="HandleCollision3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.0022925138, 0.17686641, 5.068378)
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, -0.0022925138, -5.6922665, 0.80075455)
 shape = SubResource("BoxShape3D_osdn8")
 
 [node name="HookableComponent" type="Node" parent="."]
@@ -83,7 +86,7 @@ script = ExtResource("6_dsg6t")
 metadata/_custom_type_script = "uid://b6pqa311a7k0c"
 
 [node name="MouseOverableArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.7612424)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -3.385131, 0.62388825)
 collision_layer = 32
 collision_mask = 0
 
