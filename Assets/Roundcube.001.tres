@@ -8,6 +8,7 @@
 resource_name = "Roundcube.001"
 cull_mode = 2
 vertex_color_use_as_albedo = true
+albedo_color = Color(0.34054518, 0.4592452, 0.48359835, 1)
 albedo_texture = ExtResource("1_nrugm")
 metallic_texture = ExtResource("3_hqfaa")
 metallic_texture_channel = 2
