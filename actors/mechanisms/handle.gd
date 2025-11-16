@@ -11,6 +11,7 @@ var _current_state: State = State.IDLE
 @export_range(-360, 360, 0.001, "radians_as_degrees") var starting_angle: float
 @export_range(-360, 360, 0.001, "radians_as_degrees") var target_angle: float
 @export var rotation_animation_duration: float = 0.5
+@export var tween_transition: Tween.TransitionType = Tween.TRANS_ELASTIC
 @export var attached_body: PhysicsBody3D
 
 @export var _show_target_instead_of_starting: bool = false:
@@ -24,8 +25,11 @@ var _current_state: State = State.IDLE
 		if play_rotation_animation:
 			start_enablement_animation(func():play_rotation_animation=false)
 
+#@export_group("Collisions")
+@onready var collisions: Array[CollisionShape3D] = [$HandleCollision, $HandleCollision2, $HandleCollision3]
 
-@onready var handle_pivot = $Graphics/HandlePivot
+
+@onready var handle_pivot := $Graphics/HandlePivot
 @onready var graphics: FollowNodes = $Graphics
 @onready var attachment_joint: Generic6DOFJoint3D = $AttachmentJoint
 
@@ -38,6 +42,8 @@ func _ready():
 	graphics.refresh()
 	if attached_body:
 		attachment_joint.node_b = attached_body.get_path()
+	if not Engine.is_editor_hint():
+		_disabe_collisions(true)
 
 func _process(_delta):
 	if not Engine.is_editor_hint():
@@ -47,14 +53,24 @@ func _process(_delta):
 	_update_handle_rotation()
 
 
+func _disabe_collisions(disable: bool) -> void:
+		for collision_obj in collisions:
+			collision_obj.disabled = disable
+
+
 func start_enablement_animation(do_at_end: Callable = _do_nothing) -> void:
+	graphics.update_follow_nodes = true
 	var enablement_tween := create_tween()
 	_current_state = State.ANIMATED
 	_show_target_instead_of_starting = false
 	enablement_tween.tween_property(handle_pivot, "rotation:x", \
 		target_angle, rotation_animation_duration).\
-			set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-	enablement_tween.tween_callback(func():_current_state = State.IDLE)
+			set_trans(tween_transition).set_ease(Tween.EASE_OUT)
+	enablement_tween.tween_callback(
+		func():
+			_current_state = State.IDLE
+			_disabe_collisions(false)
+			graphics.update_follow_nodes = false)
 	if do_at_end != _do_nothing:
 		enablement_tween.tween_callback(do_at_end)
 

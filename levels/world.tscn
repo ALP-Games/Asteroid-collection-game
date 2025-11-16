@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="10_mla2a"]
 [ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/scenes/item_dispenser.tscn" id="11_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
-[ext_resource type="PackedScene" uid="uid://ddpmvbbr6hbbb" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_wqmfy"]
+[ext_resource type="PackedScene" uid="uid://flpa4on2t8e3" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_wqmfy"]
 
 [node name="World" type="Node3D"]
 
@@ -22,7 +22,7 @@ spawn_radius = 600.0
 min_distance_between_asteroids = 5.0
 asteroid_scale_max = 12.0
 asteroid_scale_min = 1.0
-exclusion_zones = [NodePath("../GrinderExclusion"), NodePath("../ShopExclusion"), NodePath("../SignExclusion"), NodePath("../PlayerExclusion")]
+exclusion_zones = [NodePath("../GrinderExclusion"), NodePath("../ShopExclusion"), NodePath("../SignExclusion"), NodePath("../PlayerExclusion"), NodePath("../TestExclusion")]
 offset = Vector3(0, -40, 0)
 background_asteroid_count = 200
 background_spawn_exponent = 0.1
@@ -61,13 +61,21 @@ graphics_rotation = Vector3(-30, 0, 0)
 
 [node name="Handle" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
 transform = Transform3D(0.7071067, 0.7071067, -3.090862e-08, 0, -4.3711385e-08, -1, -0.7071067, 0.7071067, -3.090862e-08, 10.591309, -3.6664414, -3.2120297)
-starting_angle = -2.0759818787846553
+target_angle = -2.076941809873252
+rotation_animation_duration = 1.5
+tween_transition = 9
 attached_body = NodePath("../BillBoard")
 
 [node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
 transform = Transform3D(-0.6427877, -0.76604444, 3.3484866e-08, 0, -4.371139e-08, -1, 0.76604456, -0.64278764, 2.809714e-08, 3.201982, -3.6062727, -9.759439)
-starting_angle = -2.091742201930164
+target_angle = -2.076941809873252
+rotation_animation_duration = 1.5
+tween_transition = 9
 attached_body = NodePath("../BillBoard")
+
+[node name="BillBoardLatch" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_wqmfy")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 9.478312, 0, -8.579195)
+attachment_node = NodePath("../BillBoard")
 
 [node name="LightPad" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275543, -3.15398, -0.454553)
@@ -110,6 +118,12 @@ script = ExtResource("11_wqmfy")
 radius = 8.88
 metadata/_custom_type_script = "uid://ceo3kiibjuffa"
 
+[node name="TestExclusion" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.953769, -1.90735e-06, -2.0691452)
+script = ExtResource("11_wqmfy")
+radius = 48.575
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"
+
 [node name="ShopExclusion" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0405, -1.90735e-06, 16.9652)
 script = ExtResource("11_wqmfy")
@@ -128,15 +142,21 @@ script = ExtResource("11_wqmfy")
 radius = 2.61
 metadata/_custom_type_script = "uid://ceo3kiibjuffa"
 
-[node name="LatchMechanizm" parent="." node_paths=PackedStringArray("dependant_latches") instance=ExtResource("12_wqmfy")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -30.921017, 0, -1.2329922)
-dependant_latches = [NodePath("../LatchMechanizm2"), NodePath("../LatchMechanizm3")]
+[node name="LatchMechanizm6" parent="." instance=ExtResource("12_wqmfy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.463333, 0, -1.2329929)
 
 [node name="LatchMechanizm2" parent="." instance=ExtResource("12_wqmfy")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -30.810543, -9.536743e-07, -6.502021)
+transform = Transform3D(0.8088528, 0, -0.58801115, 0, 1, 0, 0.58801115, 0, 0.8088528, -30.846136, 0, 15.250731)
 
 [node name="LatchMechanizm3" parent="." instance=ExtResource("12_wqmfy")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -31.052145, 0, -12.511307)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.35286, -9.536743e-07, -6.502022)
 
-[node name="LatchMechanizm4" parent="." instance=ExtResource("12_wqmfy")]
+[node name="LatchMechanizm4" parent="." node_paths=PackedStringArray("dependant_latches") instance=ExtResource("12_wqmfy")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.59446, 0, -12.511308)
+dependant_latches = [NodePath("../LatchMechanizm3"), NodePath("../LatchMechanizm6")]
+
+[node name="LatchMechanizm" parent="." instance=ExtResource("12_wqmfy")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.669349, 0, -22.427387)
+
+[connection signal="unlatched" from="BillBoardLatch" to="Handle" method="start_enablement_animation"]
+[connection signal="unlatched" from="BillBoardLatch" to="Handle2" method="start_enablement_animation"]
