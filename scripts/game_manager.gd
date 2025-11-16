@@ -1,6 +1,6 @@
 extends Node
 
-const VICTORY_LEVEL = preload("res://levels/victory_level.tscn")
+const VICTORY_LEVEL = preload("res://levels/game_end.tscn")
 
 const MAX_PLAYING_ROPE_SOUNDS := 5
 
