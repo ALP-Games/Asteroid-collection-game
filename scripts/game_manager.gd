@@ -33,7 +33,7 @@ func _ready() -> void:
 	call_deferred("_reset_first_start")
 
 func _reset_first_start() -> void:
-	credist_amount = 1000000
+	#credist_amount = 1000000
 	first_start = false
 
 
