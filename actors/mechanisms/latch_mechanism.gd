@@ -102,7 +102,7 @@ func _do_unlatch() -> void:
 	global_transform = housing_global_transform
 	
 	latch.apply_central_impulse(Vector3(0.0, 0.0, -1.0).rotated(Vector3.UP, latch.global_rotation.y) * latch.mass * unlatch_impulse)
-	apply_central_impulse(Vector3(0.0, 0.0, 1.0).rotated(Vector3.UP, latch.global_rotation.y) * latch.mass * unlatch_impulse)
+	apply_central_impulse(Vector3(0.0, 0.0, 1.0).rotated(Vector3.UP, latch.global_rotation.y) * mass * unlatch_impulse)
 	#gas_emission_effect.emitting = false
 	
 	for effect in gas_emission_effects_side:
