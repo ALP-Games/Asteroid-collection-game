@@ -4,6 +4,8 @@ const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 
 @export var item_dispenser: ItemDispenser
 
+@onready var handles: Array[Handle] = [$Handle, $Handle2, $Handle3]
+
 var shop_interaction := Interaction.new() # Maybe interactions should be a resource?, then PriorityQueueItem has to be a resource
 # Or maybe there should be a resource that would initialize an interaction priority queue item
 
@@ -48,7 +50,13 @@ func _enable_shop_screen() -> void:
 		GameManager.shop.item_bought.connect(_item_bought)
 
 
-func _item_bought(item_type: ShopManager.ItemType, count: int) -> void:
+func enable_handles() -> void:
+	handles.all(func(handle):
+		handle.start_enablement_animation()
+		return true)
+
+
+func _item_bought(item_type: ShopManager.ItemType, _count: int) -> void:
 	if item_type == ShopManager.ItemType.GRINDER:
 		item_dispenser.add_item_to_dispense(FOLDED_GRINDER)
 		pass

@@ -1,11 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://bb87h4iblio7e"]
+[gd_scene load_steps=13 format=3 uid="uid://bb87h4iblio7e"]
 
 [ext_resource type="Script" uid="uid://ku12f32d4f3k" path="res://actors/scripts/shop_zone.gd" id="1_tlytx"]
 [ext_resource type="ArrayMesh" uid="uid://dvaiti0k2yo4a" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
 [ext_resource type="Texture2D" uid="uid://bqgp4mys5etv8" path="res://Assets/Icons/Eicon.png" id="3_e1x1e"]
+[ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/scenes/item_dispenser.tscn" id="4_cp3rh"]
+[ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="5_jm7ee"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uden6"]
 size = Vector3(7.93945, 1, 7.88184)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rbfe"]
+transparency = 1
+albedo_texture = ExtResource("3_e1x1e")
+emission_enabled = true
+emission_texture = ExtResource("3_e1x1e")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7who5"]
+material = SubResource("StandardMaterial3D_7rbfe")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e1x1e"]
 radius = 0.811365
@@ -22,17 +33,14 @@ size = Vector3(1.08976, 6.91626, 8.7915)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0b5e"]
 size = Vector3(18.856, 8.27155, 4.65637)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7rbfe"]
-transparency = 1
-albedo_texture = ExtResource("3_e1x1e")
-emission_enabled = true
-emission_texture = ExtResource("3_e1x1e")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_7who5"]
-material = SubResource("StandardMaterial3D_7rbfe")
-
-[node name="ShopZone" type="Node3D"]
+[node name="ShopZone" type="RigidBody3D" node_paths=PackedStringArray("item_dispenser")]
+collision_mask = 21
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+mass = 100000.0
 script = ExtResource("1_tlytx")
+item_dispenser = NodePath("ItemDispenser")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
@@ -41,33 +49,10 @@ collision_mask = 16
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_uden6")
 
-[node name="ShopCube006" type="MeshInstance3D" parent="."]
+[node name="ShopMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -0.0790353, 0.0428529, -2.74969)
 layers = 2
 mesh = ExtResource("2_toxax")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="ShopCube006"]
-collision_mask = 17
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04035, 0, 6.66848)
-shape = SubResource("CapsuleShape3D_e1x1e")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9016, 1.34536, 1.31469)
-shape = SubResource("BoxShape3D_7rbfe")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.71972, 1.34536, 2.30657)
-shape = SubResource("BoxShape3D_7who5")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.572239, 1.64365, -2.6295)
-shape = SubResource("BoxShape3D_l0b5e")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="ShopCube006/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.22845, 0, 5.97097)
-shape = SubResource("CapsuleShape3D_e1x1e")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60886, 0.234585)
@@ -80,6 +65,50 @@ omni_range = 6.20894
 [node name="MeshInstance3D" type="MeshInstance3D" parent="OmniLight3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.168901, -4.11428, 0)
 mesh = SubResource("PlaneMesh_7who5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -5.3224382, 0.0428529, 1.1180282)
+shape = SubResource("CapsuleShape3D_e1x1e")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, 7.983892, 0.82316166, -1.9871699)
+shape = SubResource("BoxShape3D_7rbfe")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -5.1364727, 0.82316166, -1.4118794)
+shape = SubResource("BoxShape3D_7who5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, -0.4109339, 0.99616987, -4.2748)
+shape = SubResource("BoxShape3D_l0b5e")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.58, 0, 0, 0, 0.58, 0, 0, 0, 0.58, 5.2734656, 0.0428529, 0.7134726)
+shape = SubResource("CapsuleShape3D_e1x1e")
+
+[node name="ItemDispenser" parent="." instance=ExtResource("4_cp3rh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0217285, 0, 3.6314254)
+
+[node name="Handle" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
+transform = Transform3D(1.9106855e-15, -1, 4.371139e-08, -4.371139e-08, -4.371139e-08, -1, 1, 0, -4.371139e-08, -3.6643522, -1.8117318, -3.9706852)
+attached_body = NodePath("..")
+starting_angle = 0.0
+target_angle = -1.5707963267948966
+duration_randomization = 0.2
+
+[node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
+transform = Transform3D(-1, 4.371139e-08, 4.3711385e-08, -4.371139e-08, -4.371139e-08, -1, -4.3711385e-08, -1, 4.3711392e-08, 0.9949496, -1.6697135, -4.105047)
+attached_body = NodePath("..")
+starting_angle = 0.0
+target_angle = -1.5707963267948966
+duration_randomization = 0.2
+
+[node name="Handle3" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
+transform = Transform3D(8.742278e-08, 1, -4.3711395e-08, -4.371139e-08, -4.371139e-08, -1, -1, 8.742278e-08, 4.371138e-08, 8.26835, -1.8117318, -2.298031)
+attached_body = NodePath("..")
+starting_angle = 0.0
+target_angle = -1.5707963267948966
+duration_randomization = 0.2
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

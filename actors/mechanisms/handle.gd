@@ -25,6 +25,7 @@ var _current_state: State = State.IDLE
 		play_rotation_animation = value
 		if play_rotation_animation:
 			start_enablement_animation(func():play_rotation_animation=false)
+			#start_enablement_animation()
 
 #@export_group("Collisions")
 @onready var collisions: Array[CollisionShape3D] = [$HandleCollision, $HandleCollision2, $HandleCollision3]
