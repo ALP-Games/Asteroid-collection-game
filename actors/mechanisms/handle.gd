@@ -35,9 +35,8 @@ var _current_state: State = State.IDLE
 # add a function that can be bound to a signal to do so
 func _ready():
 	_update_handle_rotation()
-	graphics.update_follow_nodes = true
+	graphics.refresh()
 	attachment_joint.node_b = attached_body.get_path()
-
 
 func _process(_delta):
 	if not Engine.is_editor_hint():

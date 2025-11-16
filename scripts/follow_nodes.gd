@@ -33,6 +33,10 @@ func _editor_update_follow_nodes() -> void:
 func _runtime_update_follow_nodes() -> void:
 	if not update_follow_nodes:
 		return
+	refresh()
+
+
+func refresh() -> void:
 	for index in following_nodes.size():
 		var following_node := following_nodes[index]
 		var node_to_follow := nodes_to_follow[index]
