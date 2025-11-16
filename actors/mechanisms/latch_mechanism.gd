@@ -68,6 +68,8 @@ func _process_latch() -> void:
 	if ready_to_unlatch():
 		var unlatch := true
 		for dependant_latch in dependant_latches:
+			if not dependant_latch.latched:
+				break
 			if not dependant_latch.ready_to_unlatch():
 				unlatch = false
 				break

@@ -38,7 +38,7 @@ collision_mask = 21
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-mass = 100000.0
+mass = 25000.0
 script = ExtResource("1_tlytx")
 item_dispenser = NodePath("ItemDispenser")
 
@@ -91,6 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0217285, 0, 3.6314254)
 
 [node name="Handle" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
 transform = Transform3D(1.9106855e-15, -1, 4.371139e-08, -4.371139e-08, -4.371139e-08, -1, 1, 0, -4.371139e-08, -3.6643522, -1.8117318, -3.9706852)
+mass = 25000.0
 attached_body = NodePath("..")
 starting_angle = 0.0
 target_angle = -1.5707963267948966
@@ -98,13 +99,15 @@ duration_randomization = 0.2
 
 [node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
 transform = Transform3D(-1, 4.371139e-08, 4.3711385e-08, -4.371139e-08, -4.371139e-08, -1, -4.3711385e-08, -1, 4.3711392e-08, 0.9949496, -1.6697135, -4.105047)
+mass = 25000.0
 attached_body = NodePath("..")
 starting_angle = 0.0
 target_angle = -1.5707963267948966
 duration_randomization = 0.2
 
 [node name="Handle3" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
-transform = Transform3D(8.742278e-08, 1, -4.3711395e-08, -4.371139e-08, -4.371139e-08, -1, -1, 8.742278e-08, 4.371138e-08, 8.26835, -1.8117318, -2.298031)
+transform = Transform3D(8.742278e-08, 1, -4.3711395e-08, -4.371139e-08, -4.371139e-08, -1, -1, 8.742278e-08, 4.371138e-08, 8.26835, -1.6671348, -2.298031)
+mass = 25000.0
 attached_body = NodePath("..")
 starting_angle = 0.0
 target_angle = -1.5707963267948966
