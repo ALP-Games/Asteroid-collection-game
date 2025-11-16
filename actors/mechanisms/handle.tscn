@@ -94,3 +94,7 @@ collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MouseOverableArea"]
 shape = SubResource("BoxShape3D_sqo1c")
+
+[node name="AttachmentJoint" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.575, -0.5)
+node_a = NodePath("..")

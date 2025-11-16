@@ -97,8 +97,13 @@ func _enforce_rope_length() -> void:
 		return
 	
 	if current_distance > rope_max_length:
-		var total_mass := _parent.mass + rope_target.mass
-		var parent_weight_ratio := rope_target.mass / total_mass
+		var target_mass: float
+		if rope_target is Handle:
+			target_mass = rope_target.get_total_mass()
+		else:
+			target_mass = rope_target.mass
+		var total_mass := _parent.mass + target_mass
+		var parent_weight_ratio := target_mass / total_mass
 		var target_weight_ratio := _parent.mass / total_mass
 		
 		var direction := (global_position - rope_target.global_position).normalized()

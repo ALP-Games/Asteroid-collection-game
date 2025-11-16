@@ -11,6 +11,7 @@ var _current_state: State = State.IDLE
 @export_range(-360, 360, 0.001, "radians_as_degrees") var starting_angle: float
 @export_range(-360, 360, 0.001, "radians_as_degrees") var target_angle: float
 @export var rotation_animation_duration: float = 0.5
+@export var attached_body: PhysicsBody3D
 
 @export var _show_target_instead_of_starting: bool = false:
 	set(value):
@@ -26,6 +27,7 @@ var _current_state: State = State.IDLE
 
 @onready var handle_pivot = $Graphics/HandlePivot
 @onready var graphics: FollowNodes = $Graphics
+@onready var attachment_joint: Generic6DOFJoint3D = $AttachmentJoint
 
 
 
@@ -34,6 +36,7 @@ var _current_state: State = State.IDLE
 func _ready():
 	_update_handle_rotation()
 	graphics.update_follow_nodes = true
+	attachment_joint.node_b = attached_body.get_path()
 
 
 func _process(_delta):
@@ -58,6 +61,13 @@ func start_enablement_animation(do_at_end: Callable = _do_nothing) -> void:
 
 func _do_nothing() -> void:
 	pass
+
+
+func get_total_mass() -> float:
+	var total_mass := mass
+	if attached_body and attached_body is RigidBody3D: 
+		total_mass += attached_body.mass
+	return total_mass
 
 
 func _update_handle_rotation() -> void:
