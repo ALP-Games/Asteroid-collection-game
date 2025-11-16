@@ -36,7 +36,8 @@ var _current_state: State = State.IDLE
 func _ready():
 	_update_handle_rotation()
 	graphics.refresh()
-	attachment_joint.node_b = attached_body.get_path()
+	if attached_body:
+		attachment_joint.node_b = attached_body.get_path()
 
 func _process(_delta):
 	if not Engine.is_editor_hint():
