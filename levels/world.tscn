@@ -64,7 +64,7 @@ transform = Transform3D(0.7071067, 0.7071067, -3.090862e-08, 0, -4.3711385e-08, 
 attached_body = NodePath("../BillBoard")
 target_angle = -2.076941809873252
 rotation_animation_duration = 1.5
-duration_randomization = 0.25
+duration_randomization = 0.3
 tween_transition = 9
 
 [node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
@@ -72,7 +72,7 @@ transform = Transform3D(-0.6427877, -0.76604444, 3.3484866e-08, 0, -4.371139e-08
 attached_body = NodePath("../BillBoard")
 target_angle = -2.076941809873252
 rotation_animation_duration = 1.5
-duration_randomization = 0.4
+duration_randomization = 0.3
 tween_transition = 9
 
 [node name="BillBoardLatch" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_wqmfy")]

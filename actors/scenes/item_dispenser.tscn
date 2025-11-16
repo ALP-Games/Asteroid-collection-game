@@ -19,7 +19,7 @@ mesh = SubResource("PlaneMesh_jb5kr")
 
 [node name="DispensingArea" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 7
+collision_mask = 23
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DispensingArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
