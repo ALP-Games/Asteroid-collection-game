@@ -61,17 +61,19 @@ graphics_rotation = Vector3(-30, 0, 0)
 
 [node name="Handle" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
 transform = Transform3D(0.7071067, 0.7071067, -3.090862e-08, 0, -4.3711385e-08, -1, -0.7071067, 0.7071067, -3.090862e-08, 10.591309, -3.6664414, -3.2120297)
+attached_body = NodePath("../BillBoard")
 target_angle = -2.076941809873252
 rotation_animation_duration = 1.5
+duration_randomization = 0.25
 tween_transition = 9
-attached_body = NodePath("../BillBoard")
 
 [node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
 transform = Transform3D(-0.6427877, -0.76604444, 3.3484866e-08, 0, -4.371139e-08, -1, 0.76604456, -0.64278764, 2.809714e-08, 3.201982, -3.6062727, -9.759439)
+attached_body = NodePath("../BillBoard")
 target_angle = -2.076941809873252
 rotation_animation_duration = 1.5
+duration_randomization = 0.4
 tween_transition = 9
-attached_body = NodePath("../BillBoard")
 
 [node name="BillBoardLatch" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_wqmfy")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 9.478312, 0, -8.579195)

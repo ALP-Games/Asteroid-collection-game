@@ -8,11 +8,12 @@ enum State {
 
 var _current_state: State = State.IDLE
 
+@export var attached_body: PhysicsBody3D
 @export_range(-360, 360, 0.001, "radians_as_degrees") var starting_angle: float
 @export_range(-360, 360, 0.001, "radians_as_degrees") var target_angle: float
 @export var rotation_animation_duration: float = 0.5
+@export var duration_randomization: float = 0.1
 @export var tween_transition: Tween.TransitionType = Tween.TRANS_ELASTIC
-@export var attached_body: PhysicsBody3D
 
 @export var _show_target_instead_of_starting: bool = false:
 	set(value):
@@ -64,7 +65,7 @@ func start_enablement_animation(do_at_end: Callable = _do_nothing) -> void:
 	_current_state = State.ANIMATED
 	_show_target_instead_of_starting = false
 	enablement_tween.tween_property(handle_pivot, "rotation:x", \
-		target_angle, rotation_animation_duration).\
+		target_angle, randf_range(-duration_randomization, duration_randomization) + rotation_animation_duration).\
 			set_trans(tween_transition).set_ease(Tween.EASE_OUT)
 	enablement_tween.tween_callback(
 		func():
