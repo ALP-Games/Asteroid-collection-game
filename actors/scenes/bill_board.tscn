@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwntxfo0nt44n"]
+
+[ext_resource type="PackedScene" uid="uid://c22qexi157sbg" path="res://Assets/BillBoard.glb" id="1_85720"]
+[ext_resource type="Texture2D" uid="uid://bnc4qabwqsxjh" path="res://Assets/Icons/Controls.png" id="2_co7mu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c357i"]
+transparency = 1
+albedo_texture = ExtResource("2_co7mu")
+emission_enabled = true
+emission_texture = ExtResource("2_co7mu")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vor7w"]
+material = SubResource("StandardMaterial3D_c357i")
+size = Vector2(12.285, 5.84)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h1aew"]
+size = Vector3(11.55957, 7.2197266, 1.5783691)
+
+[node name="BillBoard" type="RigidBody3D"]
+collision_mask = 21
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+mass = 500000.0
+
+[node name="BillBoard2" parent="." instance=ExtResource("1_85720")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0881796, 0.403937)
+mesh = SubResource("PlaneMesh_vor7w")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83981, 1.72203, -7.45058e-08)
+light_color = Color(0.997835, 0.836699, 0.53214, 1)
+light_energy = 4.81
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97575, 1.72203, -7.45058e-08)
+light_color = Color(0.997835, 0.836699, 0.53214, 1)
+light_energy = 4.81
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_h1aew")

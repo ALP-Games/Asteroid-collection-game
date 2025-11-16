@@ -22,6 +22,8 @@ size = Vector3(2.024414, 1, 5.675537)
 
 [node name="Handle" type="RigidBody3D"]
 collision_mask = 21
+axis_lock_linear_y = true
+mass = 1000.0
 script = ExtResource("1_114hg")
 starting_angle = 1.5707963267948966
 rotation_animation_duration = 1.0

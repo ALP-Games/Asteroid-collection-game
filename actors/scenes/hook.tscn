@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cel7gr1l4orx3"]
 
-[ext_resource type="Script" uid="uid://54oykr40l7ln" path="res://actors/hook.gd" id="1_p38s4"]
+[ext_resource type="Script" uid="uid://54oykr40l7ln" path="res://actors/scripts/hook.gd" id="1_p38s4"]
 [ext_resource type="ArrayMesh" uid="uid://cd1bhk2nponvg" path="res://Assets/Hook_Cylinder_002.res" id="2_b33q5"]
 [ext_resource type="AudioStream" uid="uid://b64eyin0hh30y" path="res://sounds/hook/dropping_rocks.ogg" id="3_l63lw"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://duvgvbdmebdsa"]
 
-[ext_resource type="Script" uid="uid://cebfmtuwm72wr" path="res://actors/rope_emitter.gd" id="1_grws4"]
+[ext_resource type="Script" uid="uid://cebfmtuwm72wr" path="res://actors/scripts/rope_emitter.gd" id="1_grws4"]
 
 [node name="AnchorRopeEmitter" type="Node3D"]
 script = ExtResource("1_grws4")

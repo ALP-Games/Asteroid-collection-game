@@ -6,8 +6,8 @@ class_name RopeEmitter extends Emitter
 const MAX_ROPE_STRETCH := 1.95
 
 #const ROPE_SEGMENT = preload("res://actors/rope_segment.tscn")
-@export var first_segment_scene: PackedScene = load("res://actors/anchor.tscn")
-@export var rope_segment_scene: PackedScene = load("res://actors/rope_segment.tscn")
+@export var first_segment_scene: PackedScene = load("res://actors/scenes/anchor.tscn")
+@export var rope_segment_scene: PackedScene = load("res://actors/scenes/rope_segment.tscn")
 
 @export var shoot_force := 20000.0
 @export var segment_spacing := 0.75

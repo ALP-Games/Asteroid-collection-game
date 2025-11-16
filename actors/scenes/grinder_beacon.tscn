@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://ylpkw2lvllxq"]
 
-[ext_resource type="Script" uid="uid://csfqyurb2ywfh" path="res://actors/grinder_beacon.gd" id="1_pg7tx"]
+[ext_resource type="Script" uid="uid://csfqyurb2ywfh" path="res://actors/scripts/grinder_beacon.gd" id="1_pg7tx"]
 [ext_resource type="ArrayMesh" uid="uid://d0k40pyircjhn" path="res://Assets/meshes/beacon/Becon_Roundcube.res" id="2_ft08n"]
 [ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_cijt5"]
 [ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_t7nde"]

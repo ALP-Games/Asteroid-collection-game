@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=14 format=3 uid="uid://pg35x7vyq772"]
 
-[ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/player_ship.tscn" id="1_2mgkc"]
-[ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/asteroid_spawner.tscn" id="1_vons5"]
-[ext_resource type="PackedScene" uid="uid://be5mn1fxx1nf7" path="res://actors/camera_3d.tscn" id="2_vons5"]
-[ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/collection_zone.tscn" id="3_712nc"]
+[ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/scenes/player_ship.tscn" id="1_2mgkc"]
+[ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/scenes/asteroid_spawner.tscn" id="1_vons5"]
+[ext_resource type="PackedScene" uid="uid://be5mn1fxx1nf7" path="res://actors/scenes/camera_3d.tscn" id="2_vons5"]
+[ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/scenes/collection_zone.tscn" id="3_712nc"]
 [ext_resource type="PackedScene" uid="uid://f071xxnfd48x" path="res://ui/ui_controller.tscn" id="6_687qm"]
 [ext_resource type="PackedScene" uid="uid://btphdgvvmu41w" path="res://levels/world_environment.tscn" id="6_lmpr0"]
-[ext_resource type="PackedScene" uid="uid://bnc1rcs2iewo1" path="res://Assets/bill_board_2.tscn" id="8_687qm"]
-[ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/shop_zone.tscn" id="8_legw5"]
+[ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/scenes/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
-[ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/item_dispenser.tscn" id="11_re8x6"]
+[ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_wqmfy"]
+[ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="10_mla2a"]
+[ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/scenes/item_dispenser.tscn" id="11_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 [ext_resource type="PackedScene" uid="uid://ddpmvbbr6hbbb" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_wqmfy"]
 
@@ -54,8 +55,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9145, -2.38419e-07, 22.557
 [node name="UIController" parent="CanvasLayer" node_paths=PackedStringArray("title_card_position_node") instance=ExtResource("6_687qm")]
 title_card_position_node = NodePath("../../TitlePosition")
 
-[node name="BillBoard2" parent="." instance=ExtResource("8_687qm")]
-transform = Transform3D(0.74825, 0.331709, -0.574536, 0, 0.866025, 0.5, 0.663417, -0.374125, 0.648003, 7.6673, 0, -7.42499)
+[node name="BillBoard" parent="." instance=ExtResource("9_wqmfy")]
+transform = Transform3D(0.74824995, 0.3317088, -0.5745357, 0, 0.86602515, 0.5000005, 0.6634169, -0.37412533, 0.6480033, 7.6673, 0, -7.42499)
+
+[node name="PinHandle2" type="Generic6DOFJoint3D" parent="BillBoard"]
+transform = Transform3D(1, 1.4901161e-08, 0, 2.9802322e-08, 1, -2.9802322e-08, 1.1920929e-07, 0, 1, -4.2298126, -3.485094, -0.51306343)
+node_a = NodePath("..")
+node_b = NodePath("../../Handle2")
+
+[node name="PinHandle" type="Generic6DOFJoint3D" parent="BillBoard"]
+transform = Transform3D(1, 1.4901161e-08, 0, 4.4703484e-08, 1, -2.9802322e-08, 2.9802322e-08, 0, 1, 4.2408752, -3.4418716, -0.58792305)
+node_a = NodePath("..")
+node_b = NodePath("../../Handle")
+
+[node name="Handle" parent="." instance=ExtResource("10_mla2a")]
+transform = Transform3D(0.7071067, 0.7071067, -3.090862e-08, 0, -4.3711385e-08, -1, -0.7071067, 0.7071067, -3.090862e-08, 10.591309, -3.6664414, -3.2120297)
+starting_angle = -2.0759818787846553
+
+[node name="Handle2" parent="." instance=ExtResource("10_mla2a")]
+transform = Transform3D(-0.6427877, -0.76604444, 3.3484866e-08, 0, -4.371139e-08, -1, 0.76604456, -0.64278764, 2.809714e-08, 3.201982, -3.6062727, -9.759439)
+starting_angle = -2.091742201930164
 
 [node name="LightPad" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275543, -3.15398, -0.454553)
@@ -127,4 +146,4 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -30.
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -31.052145, 0, -12.511307)
 
 [node name="LatchMechanizm4" parent="." instance=ExtResource("12_wqmfy")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.2243958, 0, -13.713417)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.669349, 0, -22.427387)

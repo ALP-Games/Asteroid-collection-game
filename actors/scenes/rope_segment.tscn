@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bwg7srbssmu0d"]
 
-[ext_resource type="Script" uid="uid://piyisi5o6pl3" path="res://actors/rope_segment.gd" id="1_sx3as"]
+[ext_resource type="Script" uid="uid://piyisi5o6pl3" path="res://actors/scripts/rope_segment.gd" id="1_sx3as"]
 [ext_resource type="ArrayMesh" uid="uid://cjl3tx4a3ak75" path="res://Assets/Chain_Plane.res" id="2_83gqw"]
 [ext_resource type="AudioStream" uid="uid://05mi5rhucq8u" path="res://sounds/chain/cling/metal-chain-01.ogg" id="2_lonr8"]
 [ext_resource type="AudioStream" uid="uid://bh8kscw5p37cv" path="res://sounds/chain/impact/chain-impact-01.ogg" id="2_soals"]

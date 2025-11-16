@@ -25,12 +25,15 @@ var _current_state: State = State.IDLE
 
 
 @onready var handle_pivot = $Graphics/HandlePivot
+@onready var graphics: FollowNodes = $Graphics
+
 
 
 # TODO: add smooth rotation to desegnated position
 # add a function that can be bound to a signal to do so
 func _ready():
-	pass
+	_update_handle_rotation()
+	graphics.update_follow_nodes = true
 
 
 func _process(_delta):

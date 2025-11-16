@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c1000u0p7ilse"]
 
-[ext_resource type="Script" uid="uid://piyisi5o6pl3" path="res://actors/rope_segment.gd" id="1_tin6g"]
+[ext_resource type="Script" uid="uid://piyisi5o6pl3" path="res://actors/scripts/rope_segment.gd" id="1_tin6g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_br5ok"]
 albedo_color = Color(0.39, 0.37362, 0.3354, 1)

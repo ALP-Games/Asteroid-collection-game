@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpnachpt8s3bi"]
 
-[ext_resource type="Script" uid="uid://ds1ln0pn6664q" path="res://actors/collection_zone.gd" id="1_ribsy"]
+[ext_resource type="Script" uid="uid://ds1ln0pn6664q" path="res://actors/scripts/collection_zone.gd" id="1_ribsy"]
 [ext_resource type="PackedScene" uid="uid://be5355utlahim" path="res://Assets/baseShreder.tscn" id="2_r1rk2"]
 [ext_resource type="AudioStream" uid="uid://1ql2mnfrmeoc" path="res://sounds/Collector.ogg" id="3_8fmtq"]
 

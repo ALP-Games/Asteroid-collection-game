@@ -1,5 +1,5 @@
 @tool
-extends Node
+class_name FollowNodes extends Node
 
 @export var nodes_to_follow: Array[Node3D]
 @export var following_nodes: Array[Node3D]

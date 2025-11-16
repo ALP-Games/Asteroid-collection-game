@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4uy7s1i45ukc"]
 
-[ext_resource type="Script" uid="uid://cebfmtuwm72wr" path="res://actors/rope_emitter.gd" id="1_2p7ti"]
+[ext_resource type="Script" uid="uid://cebfmtuwm72wr" path="res://actors/scripts/rope_emitter.gd" id="1_2p7ti"]
 
 [node name="RopeEmitter" type="Node3D"]
 script = ExtResource("1_2p7ti")
