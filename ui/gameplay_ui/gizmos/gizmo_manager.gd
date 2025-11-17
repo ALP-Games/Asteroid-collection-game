@@ -3,6 +3,7 @@ class_name GizmoManager extends Control
 const RIGHT_CLICK_GIZMO = preload("uid://cgjsot8bv83rv")
 const HOLD_E_GIZMO = preload("uid://dtlenb301o4r3")
 const GIZMO_COUNT_UP = preload("uid://cerkgsfa3pytw")
+const RIGHT_HOLD_GIZMO = preload("uid://3qwfbs7tmgw0")
 
 
 ## SESSION MIGHT NOT BE NEEDED!
@@ -107,7 +108,7 @@ func get_right_click_proxy(node_to_follow: Node3D) -> GizmoProxy:
 
 func get_hold_e_gizmo_proxy(node_to_follow: Node3D) -> GizmoProxy:
 	return GizmoProxy.new(self, func() -> IGizmo:
-		var gizmo := HOLD_E_GIZMO.instantiate() as HoldEGizmo
+		var gizmo := HOLD_E_GIZMO.instantiate() as GizmoOverNode3D
 		gizmo.node_to_follow = node_to_follow
 		return gizmo)
 
@@ -117,4 +118,14 @@ func get_count_up_gizmo(node_to_follow: Node3D, value: int) -> GizmoCountUp:
 	add_child(gizmo)
 	gizmo.node_to_follow = node_to_follow
 	gizmo.counter_value = value
+	return gizmo
+
+
+func get_right_hold_gizmo() -> IGizmo:
+	var gizmo := RIGHT_HOLD_GIZMO.instantiate() as GizmoLambdaProcess
+	add_child(gizmo)
+	#var mouse_position := get_viewport().get_mouse_position()
+	gizmo.func_to_process = func(_delta:float)->void:
+		gizmo.position = get_viewport().get_mouse_position()
+	gizmo.enable()
 	return gizmo

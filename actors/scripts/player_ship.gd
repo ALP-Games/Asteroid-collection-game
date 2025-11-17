@@ -40,6 +40,8 @@ var destabilized_elapsed := 0.0
 
 @export var jet_sound_fade_out_duration: float = 0.2
 
+@export var right_click_hold_time: float = 0.2
+
 @onready var min_collision_force_for_stun := starting_min_collision_force_for_stun
 
 @onready var starting_mass: float = mass
@@ -67,6 +69,10 @@ var sound_fade_out_tween: Tween
 
 @onready var interactor_component: InteractorComponent = $InteractorComponent
 
+var _right_hold_gizmo: IGizmo
+var _right_hold_progress: ProgressBarComponent
+var _right_hold_timer: SceneTreeTimer = null
+
 
 var player_stunned := false
 var in_shop_range := false
@@ -74,6 +80,16 @@ var in_shop_range := false
 
 func _ready() -> void:
 	GameManager.shop.item_bought.connect(_on_upgrade)
+	#call_deferred("_get_gizmos")
+	var gizmo_manager := get_tree().get_first_node_in_group("gizmo_manager") as GizmoManager
+	_right_hold_gizmo = gizmo_manager.get_right_hold_gizmo()
+	_right_hold_progress = ProgressBarComponent.core().get_from(_right_hold_gizmo)
+
+
+#func _get_gizmos() -> void:
+	#var gizmo_manager := get_tree().get_first_node_in_group("gizmo_manager") as GizmoManager
+	#_right_hold_gizmo = gizmo_manager.get_right_hold_gizmo()
+	#_right_hold_progress = ProgressBarComponent.core().get_from(_right_hold_gizmo)
 
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
@@ -157,7 +173,7 @@ func fade_out_sfx(sound_stream: AudioStreamPlayer3D, sound_tween: Tween) -> void
 	sound_tween.tween_callback(func():sound_stream.stream_paused = true)
 
 
-func _on_upgrade(item_type: ShopManager.ItemType, count: int) -> void:
+func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
 	# this match could be type based
 	match item_type:
 		ShopManager.ItemType.ENGINE_POWER:
@@ -213,6 +229,11 @@ func _process(_delta: float) -> void:
 	current_scale = lerp(current_scale, target_scale, _delta * 5.0)
 	jet_beam.scale = current_scale
 	jet_beam_2.scale = current_scale
+	
+	if _right_hold_timer:
+		_right_hold_progress.set_progress((1.0 - _right_hold_timer.time_left / right_click_hold_time) * 100.0)
+	else:
+		_right_hold_progress.set_progress(0.0)
 
 
 func _physics_process(delta: float) -> void:
@@ -257,6 +278,14 @@ func _physics_process(delta: float) -> void:
 	#elif Input.is_action_just_pressed("action2"):
 		#emitter_manager.stop_emit()
 	
+	if can_poll_inputs and Input.is_action_just_pressed("action2"):
+		_right_hold_timer = get_tree().create_timer(right_click_hold_time, false, false, false)
+	elif not can_poll_inputs or not Input.is_action_pressed("action2"):
+		_right_hold_timer = null
+	elif _right_hold_timer and is_zero_approx(_right_hold_timer.time_left):
+		_right_hold_timer = null
+		emitter_manager.stop_emit()
+	
 	var top_velocity := max_velocity
 	var top_velocity_reverse := max_velocity
 	if weight_based_velocity_enabled:
@@ -282,7 +311,7 @@ func _physics_process(delta: float) -> void:
 	if not thrust_input and not reverse_input:
 		linear_stop = true
 	
-	var rcs_direction := 0
+	var rcs_direction := 0.0
 	var play_rcs_sound := false
 	#if rotation_input and abs(angular_velocity.y) < max_turn_speed:
 	if (rotation_input < 0 and angular_velocity.y > -max_turn_speed) or (rotation_input > 0 and angular_velocity.y < max_turn_speed):
