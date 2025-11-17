@@ -50,8 +50,8 @@ func _process(_delta: float) -> void:
 	if _interactor and _interactor.get_interaction() == _deploy_interaction:
 		assert(_hold_e_gizmo, "Should be a valid proxy reference!")
 		_hold_e_gizmo.enable()
-		var gizmo_instance: HoldEGizmo = _hold_e_gizmo.get_gizmo()
+		var gizmo_instance := _hold_e_gizmo.get_gizmo()
 		if gizmo_instance.is_node_ready():
-			gizmo_instance.set_progress(100.0 - _deploy_interaction.get_progress() * 100.0)
-		# Enable gizmo
+			var progress_bar: ProgressBarComponent = ProgressBarComponent.core().get_from(gizmo_instance)
+			progress_bar.set_progress(_deploy_interaction.get_progress() * 100.0)
 		pass
