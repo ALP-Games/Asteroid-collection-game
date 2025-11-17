@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="UpgradeItemRes" load_steps=18 format=3 uid="uid://bcptprw7k0gud"]
 
 [ext_resource type="Script" uid="uid://b5op7b0h3gjhc" path="res://scripts/shop/upgrade_entry.gd" id="1_k4gkn"]
-[ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/shop_item_ui.tscn" id="2_1yha8"]
+[ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/scenes/shop_item_ui.tscn" id="2_1yha8"]
 [ext_resource type="Texture2D" uid="uid://cbl1v5w182410" path="res://Assets/Icons/MoneyIcon.png" id="2_4r7l7"]
 [ext_resource type="Script" uid="uid://bmqv1a5xg7e18" path="res://scripts/shop/shop_entry.gd" id="2_o2f73"]
 [ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_4r7l7"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cs1vmfcrtxu06"]
 
-[ext_resource type="Script" uid="uid://4cmcfv6vr1j1" path="res://ui/gameplay_ui/shop_screen.gd" id="1_4kj2c"]
-[ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/shop_item_ui.tscn" id="1_b85yj"]
+[ext_resource type="Script" uid="uid://4cmcfv6vr1j1" path="res://ui/gameplay_ui/scripts/shop_screen.gd" id="1_4kj2c"]
+[ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/scenes/shop_item_ui.tscn" id="1_b85yj"]
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_jds8u"]
-[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="4_jgxuq"]
+[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/scenes/shop_item_modifyable.tscn" id="4_jgxuq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgxuq"]
 bg_color = Color(0.14509805, 0.14509805, 0.14509805, 0.47843137)

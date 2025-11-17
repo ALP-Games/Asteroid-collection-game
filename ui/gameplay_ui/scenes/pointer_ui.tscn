@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://x3e2x8oxiu8b"]
 
 [ext_resource type="Texture2D" uid="uid://bn4fyfuvknkcm" path="res://Assets/Icons/Arrow.png" id="1_6ay4x"]
-[ext_resource type="Script" uid="uid://du5m4b1mbji6b" path="res://ui/gameplay_ui/pointer_ui.gd" id="1_k3js1"]
+[ext_resource type="Script" uid="uid://du5m4b1mbji6b" path="res://ui/gameplay_ui/scripts/pointer_ui.gd" id="1_k3js1"]
 [ext_resource type="Texture2D" uid="uid://c3keennftqh31" path="res://Assets/Icons/CollectionIcon.png" id="2_74q7g"]
 
 [node name="PointerUI" type="Control"]

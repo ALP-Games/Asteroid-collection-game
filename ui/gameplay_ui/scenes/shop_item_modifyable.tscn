@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp2w0mhwpqoq7"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_0uyxq"]
-[ext_resource type="Script" uid="uid://bcaacmka808e2" path="res://ui/gameplay_ui/shop_item_modifyable.gd" id="1_7vfys"]
+[ext_resource type="Script" uid="uid://bcaacmka808e2" path="res://ui/gameplay_ui/scripts/shop_item_modifyable.gd" id="1_7vfys"]
 [ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_0uyxq"]
 [ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_8m76c"]
 

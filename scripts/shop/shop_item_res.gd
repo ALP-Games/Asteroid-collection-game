@@ -3,7 +3,7 @@ class_name ShopItemRes extends ShopItemResDefaultsAbstract
 @export var icon: Texture2D
 @export var item_type: ShopManager.ItemType
 @export var data: ShopEntry
-@export var item_scene: PackedScene = preload("res://ui/gameplay_ui/shop_item_ui.tscn")
+@export var item_scene: PackedScene = preload("res://ui/gameplay_ui/scenes/shop_item_ui.tscn")
 
 # should it be indexed?
 # I think it's better for them to track their internal state on their own, no?

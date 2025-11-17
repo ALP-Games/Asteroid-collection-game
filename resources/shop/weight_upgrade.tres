@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://c17ps8wa5r45h" path="res://scripts/shop/upgrade_variables/mass_upgrade_variables.gd" id="3_abpqx"]
 [ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_natqq"]
 [ext_resource type="Texture2D" uid="uid://bredee5casrty" path="res://Assets/Icons/ui_weight.png" id="4_abpqx"]
-[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="5_abpqx"]
+[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/scenes/shop_item_modifyable.tscn" id="5_abpqx"]
 
 [sub_resource type="Resource" id="Resource_b6juv"]
 script = ExtResource("2_abpqx")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8f8d033685gb"]
 
-[ext_resource type="Script" uid="uid://2a06d8gcauu0" path="res://ui/gameplay_ui/hook_ui.gd" id="1_wekdu"]
+[ext_resource type="Script" uid="uid://2a06d8gcauu0" path="res://ui/gameplay_ui/scripts/hook_ui.gd" id="1_wekdu"]
 [ext_resource type="LabelSettings" uid="uid://da0v0q3k618re" path="res://ui/Themes/label_settings.tres" id="2_xau80"]
 
 [node name="HookUI" type="PanelContainer" groups=["hook_ui"]]

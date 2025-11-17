@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_88lsc"]
 [ext_resource type="Script" uid="uid://nwo2wkfbagv2" path="res://scripts/shop/upgrade_variables/thruster_upgrade_variables.gd" id="3_kny4t"]
 [ext_resource type="Texture2D" uid="uid://b8xm7gxfa5bsy" path="res://Assets/Icons/ui_jet.png" id="4_kny4t"]
-[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/shop_item_modifyable.tscn" id="5_kny4t"]
+[ext_resource type="PackedScene" uid="uid://bp2w0mhwpqoq7" path="res://ui/gameplay_ui/scenes/shop_item_modifyable.tscn" id="5_kny4t"]
 
 [sub_resource type="Resource" id="Resource_vgyfv"]
 script = ExtResource("2_88lsc")

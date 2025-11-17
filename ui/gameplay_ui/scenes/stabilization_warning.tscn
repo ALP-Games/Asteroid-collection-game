@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkdcvcgs2jgi1"]
 
-[ext_resource type="Script" uid="uid://dlcder8i0ns8l" path="res://ui/gameplay_ui/warning_box.gd" id="1_shfvi"]
+[ext_resource type="Script" uid="uid://dlcder8i0ns8l" path="res://ui/gameplay_ui/scripts/warning_box.gd" id="1_shfvi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wapsp"]
 
