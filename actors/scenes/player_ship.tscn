@@ -44,6 +44,7 @@ max_turn_speed = 3.0
 collision_stun_time_curve = SubResource("Curve_5wmuu")
 collision_sounds = Array[AudioStream]([ExtResource("3_ehe0o"), ExtResource("4_g5e8g")])
 collision_sound_curve = SubResource("Curve_4lo07")
+right_click_hold_time = 0.3
 
 [node name="Graphics" parent="." instance=ExtResource("4_4lo07")]
 
