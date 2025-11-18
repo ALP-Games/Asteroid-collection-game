@@ -2,14 +2,20 @@ class_name GrinderBeacon extends RigidBody3D
 
 const DEPLOYED_COLLECTOR = preload("uid://d3y0gwfhn8my0")
 
-
 var _interactor: InteractorComponent = null
 var _deploy_interaction := HoldInteraction.new()
 var _hold_e_gizmo: GizmoManager.GizmoProxy = null
 
+@onready var _hookable_component: HookableComponent = $HookableComponent
+@onready var _decelerator_component: DeceleratorComponent = $DeceleratorComponent
+
+
 func _ready() -> void:
 	_deploy_interaction.hold_time = 0.5
 	_deploy_interaction.interaction_callable = _deploy_collector
+	
+	_hookable_component.object_hooked.connect(func():_decelerator_component.decelerate = false)
+	_hookable_component.object_unhooked.connect(func():_decelerator_component.decelerate = true)
 
 
 func _deploy_collector() -> void:

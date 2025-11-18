@@ -5,6 +5,11 @@ const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 @export var item_dispenser: ItemDispenser
 
 @onready var handles: Array[Handle] = [$Handle, $Handle2, $Handle3]
+@onready var decelerator_component: DeceleratorComponent = $DeceleratorComponent
+
+
+var hooked_places_count: int = 0
+
 
 var shop_interaction := Interaction.new() # Maybe interactions should be a resource?, then PriorityQueueItem has to be a resource
 # Or maybe there should be a resource that would initialize an interaction priority queue item
@@ -13,7 +18,24 @@ func _init() -> void:
 	shop_interaction.priority = 10
 	shop_interaction.interaction_callable = _enable_shop_screen
 
-# TODO: shop interact action should be added to queue
+
+func _ready() -> void:
+	for handle in handles:
+		HookableComponent.core().invoke_on_component(handle, func(hookable: HookableComponent)->void:
+			hookable.object_hooked.connect(_process_hooked_places_count.bind(true))
+			hookable.object_unhooked.connect(_process_hooked_places_count.bind(false)))
+
+
+func _process_hooked_places_count(hooked: bool) -> void:
+	if hooked:
+		hooked_places_count += 1
+		decelerator_component.decelerate = false
+	else:
+		hooked_places_count -= 1
+	
+	if hooked_places_count == 0:
+		decelerator_component.decelerate = true
+
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	InteractorComponent.core().invoke_on_component(body, _add_interaction)

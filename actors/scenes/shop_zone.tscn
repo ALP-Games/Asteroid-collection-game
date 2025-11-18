@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bb87h4iblio7e"]
+[gd_scene load_steps=14 format=3 uid="uid://bb87h4iblio7e"]
 
 [ext_resource type="Script" uid="uid://ku12f32d4f3k" path="res://actors/scripts/shop_zone.gd" id="1_tlytx"]
 [ext_resource type="ArrayMesh" uid="uid://dvaiti0k2yo4a" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
 [ext_resource type="Texture2D" uid="uid://bqgp4mys5etv8" path="res://Assets/Icons/Eicon.png" id="3_e1x1e"]
 [ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/scenes/item_dispenser.tscn" id="4_cp3rh"]
 [ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="5_jm7ee"]
+[ext_resource type="Script" uid="uid://banct1fm1y4u0" path="res://scripts/components/decelerator_component.gd" id="6_viby6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uden6"]
 size = Vector3(7.93945, 1, 7.88184)
@@ -112,6 +113,10 @@ attached_body = NodePath("..")
 starting_angle = 0.0
 target_angle = -1.5707963267948966
 duration_randomization = 0.2
+
+[node name="DeceleratorComponent" type="Node" parent="."]
+script = ExtResource("6_viby6")
+metadata/_custom_type_script = "uid://banct1fm1y4u0"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
