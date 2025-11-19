@@ -5,7 +5,7 @@ extends Component
 @onready var parent_body: RigidBody3D = get_parent()
 
 @export var deceleration_amount: float = 10.0
-@export var deceleration_sound: AudioStreamPlayer3D
+@export var deceleration_sounds: Array[AudioStreamPlayer3D]
 @export var deceleration_effects: Array[GPUParticles3D]
 
 var decelerate := true
@@ -36,11 +36,11 @@ func _enable_graphics(enable: bool) -> void:
 
 
 func _enable_sound(enable: bool) -> void:
-	if not deceleration_sound:
-		return
 	if enable:
-		if not deceleration_sound.playing and not deceleration_sound.stream_paused:
-			deceleration_sound.play()
-		deceleration_sound.stream_paused = false
+		for deceleration_sound in deceleration_sounds:
+			if not deceleration_sound.playing and not deceleration_sound.stream_paused:
+				deceleration_sound.play()
+			deceleration_sound.stream_paused = false
 	else:
-		deceleration_sound.stream_paused = true
+		for deceleration_sound in deceleration_sounds:
+			deceleration_sound.stream_paused = true

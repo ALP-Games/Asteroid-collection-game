@@ -80,38 +80,38 @@ metadata/_custom_type_script = "uid://dtpuy1iftshns"
 script = ExtResource("6_gihkd")
 metadata/_custom_type_script = "uid://b6pqa311a7k0c"
 
-[node name="DeceleratorComponent" type="Node" parent="." node_paths=PackedStringArray("deceleration_sound", "deceleration_effects")]
+[node name="DeceleratorComponent" type="Node" parent="." node_paths=PackedStringArray("deceleration_sounds", "deceleration_effects")]
 script = ExtResource("7_v27bq")
-deceleration_amount = 10.0
-deceleration_sound = NodePath("../RCSThrustLoop")
+deceleration_sounds = [NodePath("../RCSThrustLoop")]
 deceleration_effects = [NodePath("../RCSThrusterEffect"), NodePath("../RCSThrusterEffect2"), NodePath("../RCSThrusterEffect3"), NodePath("../RCSThrusterEffect4")]
 metadata/_custom_type_script = "uid://banct1fm1y4u0"
 
 [node name="RCSThrustLoop" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_be41w")
 volume_db = -7.0
+unit_size = 7.0
 max_db = -2.0
 pitch_scale = 0.65
 
 [node name="RCSThrusterEffect" parent="." instance=ExtResource("7_v4nea")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -0.93, 0, 0.93)
 amount = 60
-lifetime = 0.09999999999999999
+lifetime = 0.1
 
 [node name="RCSThrusterEffect2" parent="." instance=ExtResource("7_v4nea")]
 transform = Transform3D(-0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071067, -0.93, 0, -0.93)
 amount = 60
-lifetime = 0.09999999999999999
+lifetime = 0.1
 
 [node name="RCSThrusterEffect3" parent="." instance=ExtResource("7_v4nea")]
 transform = Transform3D(-0.70710677, 0, 0.70710665, 0, 1, 0, -0.70710665, 0, -0.70710677, 0.93, 0, -0.93)
 amount = 60
-lifetime = 0.09999999999999999
+lifetime = 0.1
 
 [node name="RCSThrusterEffect4" parent="." instance=ExtResource("7_v4nea")]
 transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0.93, 0, 0.93)
 amount = 60
-lifetime = 0.09999999999999999
+lifetime = 0.1
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
