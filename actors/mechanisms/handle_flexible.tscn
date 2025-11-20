@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3vivkyod80qk"]
+
+[ext_resource type="Script" uid="uid://3bf504uqo66x" path="res://actors/mechanisms/handle_flexible.gd" id="1_y1o2t"]
+[ext_resource type="ArrayMesh" uid="uid://b1eocl7j1wl1r" path="res://Assets/meshes/handle/Handle_Base.res" id="4_ify1f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sqo1c"]
+size = Vector3(2.024414, 1, 5.675537)
+
+[node name="HandleBase" type="Node3D"]
+script = ExtResource("1_y1o2t")
+starting_angle = 1.5707963267948966
+rotation_animation_duration = 1.0
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.6238884, 0)
+mesh = ExtResource("4_ify1f")
+skeleton = NodePath("")
+
+[node name="MouseOverableArea(forReference)" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseOverableArea(forReference)"]
+shape = SubResource("BoxShape3D_sqo1c")
