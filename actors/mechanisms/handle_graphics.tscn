@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://dw5b8dy1wt4wc"]
+
+[ext_resource type="ArrayMesh" uid="uid://cnxv75gkf0qjw" path="res://Assets/meshes/handle/Handle_Handle.res" id="1_38q3s"]
+[ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="2_pexek"]
+[ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="3_rc17h"]
+[ext_resource type="Shader" uid="uid://71ff4h8ongb8" path="res://shaders/inverted-hull-stencil-read-2.gdshader" id="4_r21y3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38q3s"]
+size = Vector3(2.024414, 1, 5.675537)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_srauu"]
+load_path = "res://.godot/imported/Icosphere_Ucupaint Icosphere_1.png-0d2f37c1b665f0e5b7b9995a1e66fd29.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tlsir"]
+render_priority = 2
+shader = ExtResource("4_r21y3")
+shader_parameter/outline_size = 2.0
+shader_parameter/outline_color = Color(1.353256, 1.1739426, 0.5256553, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0d66c"]
+load_path = "res://.godot/imported/Icosphere_Ucupaint Icosphere_1.png-0d2f37c1b665f0e5b7b9995a1e66fd29.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4noh"]
+resource_name = "Icosphere"
+next_pass = SubResource("ShaderMaterial_tlsir")
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0)
+metallic_texture = SubResource("CompressedTexture2D_srauu")
+metallic_texture_channel = 2
+roughness_texture = SubResource("CompressedTexture2D_0d66c")
+roughness_texture_channel = 1
+rim_tint = 0.4
+clearcoat_roughness = 0.7
+backlight = Color(1, 1, 1, 1)
+stencil_mode = 3
+stencil_flags = 6
+stencil_compare = 6
+stencil_reference = 2
+
+[node name="HandleGraphics" type="Node3D"]
+
+[node name="Handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 1.3)
+mesh = ExtResource("1_38q3s")
+skeleton = NodePath("../../..")
+
+[node name="MouseOverableArea" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MouseOverableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78343606, 2.8889909)
+shape = SubResource("BoxShape3D_38q3s")
+
+[node name="MouseOverComponent" type="Node" parent="."]
+script = ExtResource("2_pexek")
+metadata/_custom_type_script = "uid://b6pqa311a7k0c"
+
+[node name="MaterialOverlayer" type="Node" parent="." node_paths=PackedStringArray("meshes")]
+script = ExtResource("3_rc17h")
+meshes = [NodePath("../Handle")]
+material_overlay = SubResource("StandardMaterial3D_f4noh")
+metadata/_custom_type_script = "uid://dtpuy1iftshns"
+
+[connection signal="on_mouse_enter" from="MouseOverComponent" to="MaterialOverlayer" method="overlay_material"]
+[connection signal="on_mouse_exit" from="MouseOverComponent" to="MaterialOverlayer" method="reset_overlayed_material"]

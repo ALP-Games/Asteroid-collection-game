@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://bb87h4iblio7e"]
+[gd_scene load_steps=21 format=3 uid="uid://bb87h4iblio7e"]
 
 [ext_resource type="Script" uid="uid://ku12f32d4f3k" path="res://actors/scripts/shop_zone.gd" id="1_tlytx"]
 [ext_resource type="ArrayMesh" uid="uid://dvaiti0k2yo4a" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
 [ext_resource type="Texture2D" uid="uid://bqgp4mys5etv8" path="res://Assets/Icons/Eicon.png" id="3_e1x1e"]
 [ext_resource type="PackedScene" uid="uid://b4qabwbwp2g23" path="res://actors/scenes/item_dispenser.tscn" id="4_cp3rh"]
-[ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="5_jm7ee"]
+[ext_resource type="PackedScene" uid="uid://c3vivkyod80qk" path="res://actors/mechanisms/handle_base.tscn" id="5_bhdt2"]
+[ext_resource type="PackedScene" uid="uid://dw5b8dy1wt4wc" path="res://actors/mechanisms/handle_graphics.tscn" id="6_qvpob"]
 [ext_resource type="Script" uid="uid://banct1fm1y4u0" path="res://scripts/components/decelerator_component.gd" id="6_viby6"]
 [ext_resource type="PackedScene" uid="uid://7k7ri26qwqvt" path="res://effects/rcs_thruster_effect.tscn" id="7_5o1uo"]
 [ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="8_dcf32"]
@@ -36,6 +37,9 @@ size = Vector3(1.08976, 6.91626, 8.7915)
 [sub_resource type="BoxShape3D" id="BoxShape3D_l0b5e"]
 size = Vector3(18.856, 8.27155, 4.65637)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_umddc"]
+size = Vector3(1.2011719, 1.1367188, 2.0302734)
+
 [sub_resource type="Gradient" id="Gradient_nr8wr"]
 offsets = PackedFloat32Array(0.576419, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -61,7 +65,7 @@ collision_mask = 21
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-mass = 25000.0
+mass = 60000.0
 script = ExtResource("1_tlytx")
 item_dispenser = NodePath("ItemDispenser")
 
@@ -112,29 +116,66 @@ shape = SubResource("CapsuleShape3D_e1x1e")
 [node name="ItemDispenser" parent="." instance=ExtResource("4_cp3rh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0217285, 0, 3.6314254)
 
-[node name="Handle" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
-transform = Transform3D(1.9106855e-15, -1, 4.371139e-08, -4.371139e-08, -4.371139e-08, -1, 1, 0, -4.371139e-08, -3.6643522, -1.8117318, -3.9706852)
-mass = 25000.0
-attached_body = NodePath("..")
+[node name="HandleBase" parent="." node_paths=PackedStringArray("handle_node") instance=ExtResource("5_bhdt2")]
+transform = Transform3D(1.3113416e-07, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, 1.3113416e-07, -5.7320566e-15, -3.0504, -1.8117318, -3.9706852)
+handle_node = NodePath("Pivot")
 starting_angle = 0.0
 target_angle = -1.5707963267948966
 duration_randomization = 0.2
 
-[node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
-transform = Transform3D(-1, 4.371139e-08, 4.3711385e-08, -4.371139e-08, -4.371139e-08, -1, -4.3711385e-08, -1, 4.3711392e-08, 0.9949496, -1.6697135, -4.105047)
-mass = 25000.0
-attached_body = NodePath("..")
+[node name="Pivot" type="Node3D" parent="HandleBase"]
+
+[node name="HandleGraphics" parent="HandleBase/Pivot" instance=ExtResource("6_qvpob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.11431432)
+
+[node name="HookableArea" type="Area3D" parent="HandleBase/Pivot"]
+transform = Transform3D(1.3113416e-07, -4.2351647e-22, 1, -1, -4.371139e-08, 1.3113416e-07, 4.371139e-08, -1, -5.732056e-15, -0.0006825924, 1.1974237, 5.03809)
+collision_layer = 64
+collision_mask = 0
+
+[node name="HandleCollision" type="CollisionShape3D" parent="HandleBase/Pivot/HookableArea"]
+shape = SubResource("BoxShape3D_umddc")
+
+[node name="HandleBase2" parent="." node_paths=PackedStringArray("handle_node") instance=ExtResource("5_bhdt2")]
+transform = Transform3D(-1, 1.509958e-07, -6.600236e-15, 0, -4.371139e-08, -1, -1.509958e-07, -1, 4.371139e-08, 0.9949496, -1.6697135, -3.4862714)
+handle_node = NodePath("Pivot")
 starting_angle = 0.0
 target_angle = -1.5707963267948966
 duration_randomization = 0.2
 
-[node name="Handle3" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("5_jm7ee")]
-transform = Transform3D(8.742278e-08, 1, -4.3711395e-08, -4.371139e-08, -4.371139e-08, -1, -1, 8.742278e-08, 4.371138e-08, 8.26835, -1.6671348, -2.298031)
-mass = 25000.0
-attached_body = NodePath("..")
+[node name="Pivot" type="Node3D" parent="HandleBase2"]
+
+[node name="HandleGraphics" parent="HandleBase2/Pivot" instance=ExtResource("6_qvpob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.11431432)
+
+[node name="HookableArea2" type="Area3D" parent="HandleBase2/Pivot"]
+transform = Transform3D(1.3113417e-07, -4.2351647e-22, 1, -1, -4.371139e-08, 1.3113417e-07, 4.371139e-08, -1, -5.7320575e-15, -0.0006825924, 1.1974237, 5.03809)
+collision_layer = 64
+collision_mask = 0
+
+[node name="HandleCollision2" type="CollisionShape3D" parent="HandleBase2/Pivot/HookableArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.3710776e-35, 0, -3.3710776e-35, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_umddc")
+
+[node name="HandleBase3" parent="." node_paths=PackedStringArray("handle_node") instance=ExtResource("5_bhdt2")]
+transform = Transform3D(7.54979e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, 7.54979e-08, -3.300118e-15, 7.645274, -1.6671348, -2.298031)
+handle_node = NodePath("Pivot")
 starting_angle = 0.0
 target_angle = -1.5707963267948966
 duration_randomization = 0.2
+
+[node name="Pivot" type="Node3D" parent="HandleBase3"]
+
+[node name="HandleGraphics" parent="HandleBase3/Pivot" instance=ExtResource("6_qvpob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.11431432)
+
+[node name="HookableArea3" type="Area3D" parent="HandleBase3/Pivot"]
+transform = Transform3D(7.54979e-08, -4.2351647e-22, 1, -1, -4.371139e-08, 7.54979e-08, 4.371139e-08, -1, -3.3001185e-15, -0.000682354, 1.197423, 5.03809)
+collision_layer = 64
+collision_mask = 0
+
+[node name="HandleCollision3" type="CollisionShape3D" parent="HandleBase3/Pivot/HookableArea3"]
+shape = SubResource("BoxShape3D_umddc")
 
 [node name="DeceleratorComponent" type="Node" parent="." node_paths=PackedStringArray("deceleration_sounds", "deceleration_effects")]
 script = ExtResource("6_viby6")

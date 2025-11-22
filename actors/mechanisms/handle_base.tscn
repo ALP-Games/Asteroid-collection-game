@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3vivkyod80qk"]
+
+[ext_resource type="Script" uid="uid://3bf504uqo66x" path="res://actors/mechanisms/handle_base.gd" id="1_6pqbr"]
+[ext_resource type="ArrayMesh" uid="uid://b1eocl7j1wl1r" path="res://Assets/meshes/handle/Handle_Base.res" id="2_e7a86"]
+
+[node name="HandleBase" type="Node3D"]
+script = ExtResource("1_6pqbr")
+starting_angle = 1.5707963267948966
+rotation_animation_duration = 1.0
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("2_e7a86")
+skeleton = NodePath("")
