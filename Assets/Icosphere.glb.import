@@ -15,9 +15,11 @@ dest_files=["res://.godot/imported/Icosphere.glb-a7d539eeb26bc317a3ebf72f125d997
 
 nodes/root_type=""
 nodes/root_name=""
+nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
 nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
@@ -32,11 +34,15 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
 _subresources={
 "materials": {
 "Icosphere": {
 "use_external/enabled": true,
-"use_external/path": "res://Assets/Icosphere.tres"
+"use_external/fallback_path": "res://Assets/Icosphere.tres",
+"use_external/path": "uid://bp35e0uv5wmmg"
 }
 },
 "meshes": {
@@ -46,7 +52,8 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
-"save_to_file/path": "res://Assets/Icosphere_Icosphere_001.res"
+"save_to_file/fallback_path": "res://Assets/Icosphere_Icosphere_001.res",
+"save_to_file/path": "uid://b1vi133l2ps3t"
 }
 }
 }
