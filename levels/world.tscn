@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/scenes/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/scenes/asteroid_spawner.tscn" id="1_vons5"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="10_mla2a"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 [ext_resource type="PackedScene" uid="uid://flpa4on2t8e3" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_wqmfy"]
-[ext_resource type="PackedScene" uid="uid://dw5b8dy1wt4wc" path="res://actors/mechanisms/handle_graphics.tscn" id="13_mla2a"]
 
 [node name="World" type="Node3D"]
 
@@ -153,9 +152,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0330651, -1.90735e-06, 0.09
 script = ExtResource("11_wqmfy")
 radius = 2.61
 metadata/_custom_type_script = "uid://ceo3kiibjuffa"
-
-[node name="HandleGraphics" parent="." instance=ExtResource("13_mla2a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.263252, 0, -5.565172)
 
 [connection signal="unlatched" from="ShopLatch" to="ShopZone" method="enable_handles"]
 [connection signal="unlatched" from="ShopLatch" to="ShopZone/DeadLock" method="queue_free"]

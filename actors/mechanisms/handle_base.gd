@@ -1,6 +1,8 @@
 @tool
 class_name HandleBase extends Node
 
+signal rotation_finished
+
 enum State {
 	IDLE,
 	ANIMATED
@@ -56,6 +58,7 @@ func start_enablement_animation(do_at_end: Callable = _do_nothing) -> void:
 	enablement_tween.tween_callback(
 		func():
 			_current_state = State.IDLE
+			rotation_finished.emit()
 			#graphics.update_follow_nodes = false
 			)
 	if do_at_end != _do_nothing:

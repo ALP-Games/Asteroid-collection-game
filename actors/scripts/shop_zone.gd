@@ -4,7 +4,7 @@ const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 
 @export var item_dispenser: ItemDispenser
 
-@onready var handles: Array[Handle] = [$Handle, $Handle2, $Handle3]
+@onready var handles: Array[HandleBase] = [$HandleBase, $HandleBase2, $HandleBase3]
 @onready var decelerator_component: DeceleratorComponent = $DeceleratorComponent
 
 
@@ -73,7 +73,7 @@ func _enable_shop_screen() -> void:
 
 
 func enable_handles() -> void:
-	handles.all(func(handle):
+	handles.all(func(handle: HandleBase):
 		handle.start_enablement_animation()
 		return true)
 

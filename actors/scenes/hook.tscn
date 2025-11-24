@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cel7gr1l4orx3"]
+[gd_scene load_steps=6 format=3 uid="uid://cel7gr1l4orx3"]
 
 [ext_resource type="Script" uid="uid://54oykr40l7ln" path="res://actors/scripts/hook.gd" id="1_p38s4"]
 [ext_resource type="ArrayMesh" uid="uid://cd1bhk2nponvg" path="res://Assets/Hook_Cylinder_002.res" id="2_b33q5"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b33q5"]
 size = Vector3(0.45, 0.45, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_di7xx"]
+size = Vector3(0.46972656, 1, 0.4609375)
 
 [node name="Hook" type="RigidBody3D"]
 collision_layer = 4
@@ -25,6 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.174098)
 mesh = ExtResource("2_b33q5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.28942737)
 shape = SubResource("BoxShape3D_b33q5")
 
 [node name="RopeEnd" type="Node3D" parent="."]
@@ -37,5 +41,13 @@ transform = Transform3D(1, 0, 0, 0, -1.82768e-08, 0.418124, 0, -1, -4.37114e-08,
 stream = ExtResource("3_l63lw")
 volume_db = 5.0
 max_db = 6.0
+
+[node name="HookCollision" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.18453427)
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HookCollision"]
+shape = SubResource("BoxShape3D_di7xx")
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]

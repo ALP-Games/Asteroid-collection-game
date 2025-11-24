@@ -11,7 +11,14 @@ var hook_joint: PinJoint3D = null
 
 @export var pitch_variation := 0.07
 @onready var hook_sound: AudioStreamPlayer3D = $HookSound
+@onready var hook_collision: Area3D = $HookCollision
 
+
+func _ready() -> void:
+	super()
+	hook_collision.body_entered.connect(_on_hook_collision_entered)
+	hook_collision.area_entered.connect(_on_hook_collision_entered)
+	_enable_hook_collision(true)
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	if hooked:
@@ -51,6 +58,26 @@ func _instantiate_asteroid_hit(velocity_direction: Vector3, contact_position: Ve
 	particles.emitting = true
 	particles.finished.connect(func():asteroid_hit_effect.queue_free())
 	#asteroid_hit_effect.
+
+
+func _enable_hook_collision(enable: bool) -> void:
+	hook_collision.monitoring = enable
+
+
+func _on_hook_collision_entered(collision_obj: CollisionObject3D) -> void:
+	var hookable: HookableComponent = HookableComponent.core().get_from(collision_obj)
+	# I think at this point HookableComponent might be useless 
+	assert(hookable, "Object with hookable collision must have HookableComponent")
+	hookable.hook(self)
+	if collision_obj is Asteroid:
+		var velocity_direction := linear_velocity.normalized()
+		# to get position do raycast in velocity_direction from global_position
+		# on the hookable layer
+		
+		#_instantiate_asteroid_hit(velocity_direction, contact_position)
+		#var velocity_direction := state.get_contact_local_velocity_at_position(index).normalized()
+		#_instantiate_asteroid_hit(velocity_direction, contact_position)
+
 
 func _on_child_entered_tree(node: Node) -> void:
 	if hooked and node is PinJoint3D:
