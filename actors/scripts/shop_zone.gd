@@ -1,4 +1,4 @@
-class_name ShopZone extends Node3D
+class_name ShopZone extends RigidBody3D
 
 const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 
@@ -9,6 +9,8 @@ const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 
 
 var hooked_places_count: int = 0
+
+var _total_mass: float = 0
 
 
 var shop_interaction := Interaction.new() # Maybe interactions should be a resource?, then PriorityQueueItem has to be a resource
@@ -24,6 +26,14 @@ func _ready() -> void:
 		HookableComponent.core().invoke_on_component(handle, func(hookable: HookableComponent)->void:
 			hookable.object_hooked.connect(_process_hooked_places_count.bind(true))
 			hookable.object_unhooked.connect(_process_hooked_places_count.bind(false)))
+	_total_mass = mass
+	var handle_array: Array = get_meta(Handle.HANDLE_META, [])
+	for handle: RigidBody3D in handle_array:
+		_total_mass += handle.mass
+
+
+func get_total_mass() -> float:
+	return _total_mass
 
 
 func _process_hooked_places_count(hooked: bool) -> void:

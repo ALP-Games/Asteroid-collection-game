@@ -1,6 +1,8 @@
 @tool
 class_name Handle extends RigidBody3D
 
+const HANDLE_META := "handle_array"
+
 enum State {
 	IDLE,
 	ANIMATED
@@ -33,8 +35,19 @@ var _current_state: State = State.IDLE
 
 @onready var handle_pivot := $Graphics/HandlePivot
 @onready var graphics: FollowNodes = $Graphics
-@onready var attachment_joint: Generic6DOFJoint3D = $AttachmentJoint
+@onready var attachment_joints: Array[Generic6DOFJoint3D] = [$AttachmentJoint, $AttachmentJoint2,
+	$AttachmentJoint3, $AttachmentJoint4]
 
+
+func _enter_tree() -> void:
+	if not Engine.is_editor_hint() and attached_body:
+		var handle_array: Array = attached_body.get_meta(HANDLE_META, [])
+		handle_array.append(self)
+		attached_body.set_meta(HANDLE_META, handle_array)
+		#if attached_body.has_meta(HANDLE_META):
+			#attached_body.get_meta(HANDLE_META)
+		#else:
+			#attached_body.set_meta(HANDLE_META, [self])
 
 
 # TODO: add smooth rotation to desegnated position
@@ -43,7 +56,8 @@ func _ready():
 	_update_handle_rotation()
 	graphics.refresh()
 	if attached_body:
-		attachment_joint.node_b = attached_body.get_path()
+		for attachemnt in attachment_joints:
+			attachemnt.node_b = attached_body.get_path()
 	if not Engine.is_editor_hint():
 		_disabe_collisions(true)
 

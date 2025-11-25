@@ -99,5 +99,17 @@ collision_mask = 0
 shape = SubResource("BoxShape3D_sqo1c")
 
 [node name="AttachmentJoint" type="Generic6DOFJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.575, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.575, -0.5)
+node_a = NodePath("..")
+
+[node name="AttachmentJoint2" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.575, -0.5)
+node_a = NodePath("..")
+
+[node name="AttachmentJoint3" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12501436, -0.5)
+node_a = NodePath("..")
+
+[node name="AttachmentJoint4" type="Generic6DOFJoint3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.125, -0.5)
 node_a = NodePath("..")

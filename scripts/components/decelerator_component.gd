@@ -14,6 +14,7 @@ var decelerate := true
 static func core() -> ComponentCore:
 	return ComponentCore.new(DeceleratorComponent)
 
+# TODO: turn off effects when velocity is minimal
 
 #decelration enabled/disabled
 # when decelerated stops the graphics, but will continue to decelerate again
@@ -27,7 +28,12 @@ func _physics_process(delta: float) -> void:
 	_enable_sound(enable_effects)
 	if not decelerate:
 		return
-	parent_body.apply_central_force(parent_body.mass * negative_acceleration)
+	var mass: float
+	if parent_body.has_method("get_total_mass"):
+		mass = parent_body.get_total_mass()
+	else:
+		mass = parent_body.mass
+	parent_body.apply_central_force(mass * negative_acceleration)
 
 
 func _enable_graphics(enable: bool) -> void:
