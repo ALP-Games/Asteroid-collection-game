@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://d1rags3ln5ga8"]
 
 [ext_resource type="Script" uid="uid://df8cbnne428dl" path="res://actors/mechanisms/handle.gd" id="1_114hg"]
-[ext_resource type="ArrayMesh" uid="uid://cnxv75gkf0qjw" path="res://Assets/meshes/handle/Handle_Handle.res" id="1_cer7c"]
 [ext_resource type="Script" uid="uid://c5a5pc3ov6dpg" path="res://scripts/follow_nodes.gd" id="1_dj1to"]
-[ext_resource type="ArrayMesh" uid="uid://b1eocl7j1wl1r" path="res://Assets/meshes/handle/Handle_Base.res" id="2_osdn8"]
+[ext_resource type="ArrayMesh" uid="uid://b3m6ehul6uf4h" path="res://Assets/leaver_base_Cylinder_006.res" id="3_114hg"]
 [ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_cuw0i"]
 [ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_dj1to"]
+[ext_resource type="ArrayMesh" uid="uid://ceewvrcu1goo5" path="res://Assets/leaver_base_Cube_012.res" id="4_dsg6t"]
 [ext_resource type="Material" uid="uid://ypg1md42sf1m" path="res://shaders/materials/yellow_outline.tres" id="5_114hg"]
 [ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_dsg6t"]
 
@@ -38,8 +38,8 @@ following_nodes = [NodePath("../HandleCollision"), NodePath("../HandleCollision2
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [node name="Handle" type="MeshInstance3D" parent="Graphics/HandlePivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4164584)
-mesh = ExtResource("1_cer7c")
+transform = Transform3D(-2.565, 2.2423943e-07, 0, 2.2423943e-07, 2.565, 2.2423943e-07, 1.9603634e-14, 2.2423943e-07, -2.565, 0, 0, 0)
+mesh = ExtResource("3_114hg")
 skeleton = NodePath("../../..")
 
 [node name="CollisionPosition" type="Node3D" parent="Graphics/HandlePivot"]
@@ -55,7 +55,8 @@ transform = Transform3D(2, 0, 0, 0, 1.9999999, 0, 0, 0, 1.9999999, -0.0045850277
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.2477767, 5.522485)
 
 [node name="Base" type="MeshInstance3D" parent="Graphics"]
-mesh = ExtResource("2_osdn8")
+transform = Transform3D(-2.565, -2.2423943e-07, 9.801817e-15, 0, -1.12119714e-07, -2.565, 2.2423943e-07, -2.565, 1.12119714e-07, 0, 1.7444197, -0.755)
+mesh = ExtResource("4_dsg6t")
 
 [node name="BaseCollision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6054201, 0)
