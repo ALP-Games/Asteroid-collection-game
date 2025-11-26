@@ -76,7 +76,8 @@ func _process_latch() -> void:
 		if unlatch:
 			_do_unlatch()
 	
-	var emission_ratio: float = clampf(protruded_amount - MIN_PROTRUSION_DISTANCE /  _slider_length - MIN_PROTRUSION_DISTANCE, 0.0, 1.0)
+	var emission_ratio: float = max(clampf(protruded_amount / _slider_length, 0.0, 1.0) -\
+		MIN_PROTRUSION_DISTANCE, 0.0)
 	for effect in gas_emission_effects_side:
 		effect.amount_ratio = emission_ratio
 	
