@@ -82,6 +82,7 @@ metadata/_custom_type_script = "uid://b6pqa311a7k0c"
 
 [node name="DeceleratorComponent" type="Node" parent="." node_paths=PackedStringArray("deceleration_sounds", "deceleration_effects")]
 script = ExtResource("7_v27bq")
+stop_angular_amount = 0.0
 deceleration_sounds = [NodePath("../RCSThrustLoop")]
 deceleration_effects = [NodePath("../RCSThrusterEffect"), NodePath("../RCSThrusterEffect2"), NodePath("../RCSThrusterEffect3"), NodePath("../RCSThrusterEffect4")]
 metadata/_custom_type_script = "uid://banct1fm1y4u0"
