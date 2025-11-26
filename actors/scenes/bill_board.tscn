@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwntxfo0nt44n"]
+[gd_scene load_steps=14 format=3 uid="uid://bwntxfo0nt44n"]
 
-[ext_resource type="PackedScene" uid="uid://c22qexi157sbg" path="res://Assets/BillBoard.glb" id="1_85720"]
-[ext_resource type="Script" uid="uid://c504yp48ijeka" path="res://scripts/rotating_objects.gd" id="1_unfsu"]
-[ext_resource type="Texture2D" uid="uid://bnc4qabwqsxjh" path="res://Assets/Icons/Controls.png" id="2_co7mu"]
+[ext_resource type="PackedScene" uid="uid://c22qexi157sbg" path="res://Assets/BillBoard.glb" id="2_r66o1"]
+[ext_resource type="Texture2D" uid="uid://bnc4qabwqsxjh" path="res://Assets/Icons/Controls.png" id="3_j56jp"]
+[ext_resource type="Script" uid="uid://bigk5100t7th6" path="res://actors/scripts/billboard.gd" id="4_r66o1"]
+[ext_resource type="Script" uid="uid://banct1fm1y4u0" path="res://scripts/components/decelerator_component.gd" id="4_yssbw"]
+[ext_resource type="PackedScene" uid="uid://7k7ri26qwqvt" path="res://effects/rcs_thruster_effect.tscn" id="5_d12rs"]
+[ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="6_ped7b"]
+[ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="7_88f0i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c357i"]
 transparency = 1
-albedo_texture = ExtResource("2_co7mu")
+albedo_texture = ExtResource("3_j56jp")
 emission_enabled = true
-emission_texture = ExtResource("2_co7mu")
+emission_texture = ExtResource("3_j56jp")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vor7w"]
 material = SubResource("StandardMaterial3D_c357i")
@@ -17,18 +21,40 @@ size = Vector2(12.285, 5.84)
 [sub_resource type="BoxShape3D" id="BoxShape3D_h1aew"]
 size = Vector3(11.55957, 7.2197266, 1.5783691)
 
-[node name="BillBoard" type="RigidBody3D" node_paths=PackedStringArray("rotation_objects")]
+[sub_resource type="Gradient" id="Gradient_r66o1"]
+offsets = PackedFloat32Array(0.576419, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_biq26"]
+gradient = SubResource("Gradient_r66o1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j56jp"]
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.2
+angle_min = 1.07288e-05
+angle_max = 720.0
+direction = Vector3(0, 0, 1)
+spread = 2.5
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_biq26")
+
+[node name="BillBoard" type="RigidBody3D"]
+transform = Transform3D(0.7477981, 0, -0.66392624, 0, 1, 0, 0.66392624, 0, 0.7477981, 0, 0, 0)
 collision_mask = 21
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 50000.0
-script = ExtResource("1_unfsu")
-rotation_objects = [NodePath("BillBoard2"), NodePath("TextMeshContainer"), NodePath("CollisionShape3D")]
+script = ExtResource("4_r66o1")
 
-[node name="BillBoard2" parent="." instance=ExtResource("1_85720")]
+[node name="BillBoard2" parent="." instance=ExtResource("2_r66o1")]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 
 [node name="TextMeshContainer" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 
 [node name="TextMesh" type="MeshInstance3D" parent="TextMeshContainer"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0881796, 0.403937)
@@ -50,4 +76,63 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 shape = SubResource("BoxShape3D_h1aew")
+
+[node name="DeceleratorComponent" type="Node" parent="." node_paths=PackedStringArray("deceleration_sounds", "deceleration_effects")]
+script = ExtResource("4_yssbw")
+stop_angular_amount = 0.5
+deceleration_sounds = [NodePath("../RCSThrustLoop")]
+deceleration_effects = [NodePath("../RCSThrusterEffect"), NodePath("../RCSThrusterEffect2"), NodePath("../RCSThrusterEffect3"), NodePath("../RCSThrusterEffect4")]
+metadata/_custom_type_script = "uid://banct1fm1y4u0"
+
+[node name="RCSThrusterEffect" parent="." instance=ExtResource("5_d12rs")]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -5.7541127, -2.6252496, 1.8501806)
+emitting = true
+amount = 240
+lifetime = 0.15000000000000002
+process_material = SubResource("ParticleProcessMaterial_j56jp")
+
+[node name="RCSThrusterEffect2" parent="." instance=ExtResource("5_d12rs")]
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 5.754, -2.625, 1.85)
+emitting = true
+amount = 240
+lifetime = 0.15000000000000002
+process_material = SubResource("ParticleProcessMaterial_j56jp")
+
+[node name="RCSThrusterEffect3" parent="." instance=ExtResource("5_d12rs")]
+transform = Transform3D(-0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, -0.7071067, 5.754, -2.625, -0.6260108)
+emitting = true
+amount = 240
+lifetime = 0.15000000000000002
+process_material = SubResource("ParticleProcessMaterial_j56jp")
+
+[node name="RCSThrusterEffect4" parent="." instance=ExtResource("5_d12rs")]
+transform = Transform3D(-0.70710677, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, -0.70710677, -5.754, -2.625, -0.626)
+emitting = true
+amount = 240
+lifetime = 0.15000000000000002
+process_material = SubResource("ParticleProcessMaterial_j56jp")
+
+[node name="RCSThrustLoop" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_ped7b")
+volume_db = -7.0
+unit_size = 7.0
+max_db = -2.0
+pitch_scale = 0.65
+
+[node name="Handle" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("7_88f0i")]
+transform = Transform3D(0.059306353, 0.99823976, -4.363445e-08, 0, -4.3711385e-08, -1, -0.99823976, 0.059306353, -2.5923619e-09, 4.983663, -3.6664414, 1.2091179)
+attached_body = NodePath("..")
+target_angle = -2.076941809873252
+rotation_animation_duration = 1.5
+duration_randomization = 0.3
+tween_transition = 9
+
+[node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("7_88f0i")]
+transform = Transform3D(0.027921677, -0.9996102, 4.369435e-08, 0, -4.371139e-08, -1, 0.9996103, 0.027921647, -1.2204939e-09, -4.889058, -3.6062727, 1.2189455)
+attached_body = NodePath("..")
+target_angle = -2.076941809873252
+rotation_animation_duration = 1.5
+duration_randomization = 0.3
+tween_transition = 9

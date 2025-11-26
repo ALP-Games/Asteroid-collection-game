@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/scenes/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/scenes/asteroid_spawner.tscn" id="1_vons5"]
@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://btphdgvvmu41w" path="res://levels/world_environment.tscn" id="6_lmpr0"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/scenes/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
-[ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_wqmfy"]
-[ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="10_mla2a"]
+[ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 [ext_resource type="PackedScene" uid="uid://flpa4on2t8e3" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_wqmfy"]
 
@@ -70,29 +69,11 @@ node_a = NodePath("..")
 [node name="UIController" parent="CanvasLayer" node_paths=PackedStringArray("title_card_position_node") instance=ExtResource("6_687qm")]
 title_card_position_node = NodePath("../../TitlePosition")
 
-[node name="BillBoard" parent="." instance=ExtResource("9_wqmfy")]
+[node name="BillBoard" parent="." instance=ExtResource("9_re8x6")]
 transform = Transform3D(0.7477981, 0, -0.66392624, 0, 1, 0, 0.66392624, 0, 0.7477981, 7.6673, 0, -7.42499)
-graphics_rotation = Vector3(-30, 0, 0)
 
-[node name="Handle" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
-transform = Transform3D(0.7071067, 0.7071067, -3.090862e-08, 0, -4.3711385e-08, -1, -0.7071067, 0.7071067, -3.090862e-08, 10.591309, -3.6664414, -3.2120297)
-attached_body = NodePath("../BillBoard")
-target_angle = -2.076941809873252
-rotation_animation_duration = 1.5
-duration_randomization = 0.3
-tween_transition = 9
-
-[node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
-transform = Transform3D(-0.6427877, -0.76604444, 3.3484866e-08, 0, -4.371139e-08, -1, 0.76604456, -0.64278764, 2.809714e-08, 3.201982, -3.6062727, -9.759439)
-attached_body = NodePath("../BillBoard")
-target_angle = -2.076941809873252
-rotation_animation_duration = 1.5
-duration_randomization = 0.3
-tween_transition = 9
-
-[node name="BillBoardLatch" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_wqmfy")]
+[node name="BillBoardLatch" parent="." instance=ExtResource("12_wqmfy")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 9.478312, 0, -8.579195)
-attachment_node = NodePath("../BillBoard")
 
 [node name="LightPad" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275543, -3.15398, -0.454553)
@@ -158,5 +139,4 @@ metadata/_custom_type_script = "uid://ceo3kiibjuffa"
 [connection signal="unlatched" from="ShopLatch" to="ShopZone/DeadLock2" method="queue_free"]
 [connection signal="unlatched" from="ShopLatch2" to="ShopZone/DeadLock" method="queue_free"]
 [connection signal="unlatched" from="ShopLatch3" to="ShopZone/DeadLock" method="queue_free"]
-[connection signal="unlatched" from="BillBoardLatch" to="Handle" method="start_enablement_animation"]
-[connection signal="unlatched" from="BillBoardLatch" to="Handle2" method="start_enablement_animation"]
+[connection signal="unlatched" from="BillBoardLatch" to="BillBoard" method="enable_handles"]
