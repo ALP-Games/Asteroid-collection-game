@@ -97,6 +97,8 @@ func _do_unlatch() -> void:
 	var instantiated_root := get_tree().get_first_node_in_group("instantiated_root")
 	var latch_global_transform := latch.global_transform
 	var housing_global_transform := global_transform
+	HookableComponent.core().invoke_on_component(latch, func(hookable: HookableComponent)->void:
+		hookable.unhook())
 	remove_child(latch)
 	instantiated_root.add_child(latch)
 	latch.global_transform = latch_global_transform
