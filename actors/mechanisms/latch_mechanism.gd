@@ -16,8 +16,8 @@ const MIN_PROTRUSION_DISTANCE: float = 0.1
 @export var dependant_latches: Array[LatchMechanism]
 @export var share_dependence: bool = true
 @export_group("Sound Effects")
-@export var sound_max_volume_db: float = 0.0
-@export var sound_min_volume_db: float = -40.0
+@export var sound_max_volume_db: float = 5.0
+@export var sound_min_volume_db: float = -20.0
 @export var sound_max_pitch: float = 1.0
 @export var sound_min_pitch: float = 0.9
 
