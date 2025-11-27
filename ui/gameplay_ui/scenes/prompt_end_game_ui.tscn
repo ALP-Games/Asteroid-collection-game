@@ -26,7 +26,7 @@ mouse_filter = 1
 
 [node name="ItemName" type="Label" parent="FlavorEstate/PanelContainer"]
 layout_mode = 2
-text = "Finish The Game?"
+text = "Quit this job and live your best Life?"
 horizontal_alignment = 1
 
 [node name="Panel" type="PanelContainer" parent="."]
@@ -44,6 +44,6 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "Yes! Please!"
+text = "Yes! Now!"
 
 [node name="ClickSoundPlayer" parent="." instance=ExtResource("3_v5n2r")]
