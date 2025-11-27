@@ -17,7 +17,9 @@ const MIN_PROTRUSION_DISTANCE: float = 0.1
 @export var share_dependence: bool = true
 @export_group("Sound Effects")
 @export var sound_max_volume_db: float = 5.0
-@export var sound_min_volume_db: float = -20.0
+@export var sound_intermediate_volume_db: float = -15.0
+@export_range(0.0, 1.0, 0.01) var intermediate_sound_point: float = 0.1
+@export var sound_min_volume_db: float = -40.0
 @export var sound_max_pitch: float = 1.0
 @export var sound_min_pitch: float = 0.9
 
@@ -76,13 +78,19 @@ func _process_latch() -> void:
 		if unlatch:
 			_do_unlatch()
 	
-	var emission_ratio: float = max(clampf(protruded_amount / _slider_length, 0.0, 1.0) -\
-		MIN_PROTRUSION_DISTANCE, 0.0)
+	var min_protruded_distance := _slider_length * MIN_PROTRUSION_DISTANCE
+	var emission_ratio: float = max((protruded_amount - min_protruded_distance) / (_slider_length - min_protruded_distance), 0.0)
+	
+	#var emission_ratio: float = max(clampf(protruded_amount / _slider_length, 0.0, 1.0) -\
+		#MIN_PROTRUSION_DISTANCE, 0.0) / (1.0 - MIN_PROTRUSION_DISTANCE)
 	for effect in gas_emission_effects_side:
 		effect.amount_ratio = emission_ratio
 	
-	gas_sound.stream_paused = protruded_amount < MIN_PROTRUSION_DISTANCE
-	gas_sound.volume_db = lerp(sound_min_volume_db, sound_max_volume_db, emission_ratio)
+	gas_sound.stream_paused = is_zero_approx(protruded_amount)
+	if emission_ratio < intermediate_sound_point:
+		gas_sound.volume_db = lerp(sound_min_volume_db, sound_intermediate_volume_db, emission_ratio / intermediate_sound_point)
+	else:
+		gas_sound.volume_db = lerp(sound_intermediate_volume_db, sound_max_volume_db, emission_ratio - intermediate_sound_point / 1.0 - intermediate_sound_point)
 	gas_sound.pitch_scale = lerp(sound_min_pitch, sound_max_pitch, emission_ratio)
 	
 	if protruded_amount / _slider_length > MIN_PROTRUSION_DISTANCE:
