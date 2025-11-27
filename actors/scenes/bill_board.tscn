@@ -43,7 +43,8 @@ color_ramp = SubResource("GradientTexture1D_biq26")
 
 [node name="BillBoard" type="RigidBody3D"]
 transform = Transform3D(0.7477981, 0, -0.66392624, 0, 1, 0, 0.66392624, 0, 0.7477981, 0, 0, 0)
-collision_mask = 21
+collision_layer = 65
+collision_mask = 85
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/scenes/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/scenes/asteroid_spawner.tscn" id="1_vons5"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 [ext_resource type="PackedScene" uid="uid://flpa4on2t8e3" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_wqmfy"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_re8x6"]
+points = PackedVector3Array(-4.227457, 0.2957511, -0.44432375, -4.227457, 0.2957511, 0.4443229, -4.227457, 0.5628582, -0.44432375, -2.114556, -0.12122314, -0.44432375, -4.227457, 0.5628582, 0.4443229, -2.114556, -0.12122314, 0.4443229, -3.7126806, 0.73125005, -0.07680884, 4.227457, 0.5628582, -0.44432375, 2.1137285, -0.12122314, -0.44432375, -3.7126806, 0.73125005, 0.07672104, 4.227457, 0.5628582, 0.4443229, 2.1137285, -0.12122314, 0.4443229, 3.7110252, 0.73125005, -0.07680884, 4.227457, 0.2957511, -0.44432375, 3.7110252, 0.73125005, 0.07672104, 4.227457, 0.2957511, 0.4443229)
 
 [node name="World" type="Node3D"]
 
@@ -84,29 +87,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube004"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube004/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
+
 [node name="LightPadCube005" type="MeshInstance3D" parent="LightPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube005"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube005/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
+
 [node name="LightPadCube006" type="MeshInstance3D" parent="LightPad"]
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube006"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube006/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
 
 [node name="LightPadCube007" type="MeshInstance3D" parent="LightPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube007"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube007/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
+
 [node name="LightPadCube008" type="MeshInstance3D" parent="LightPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube008"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube008/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
+
 [node name="LightPadCube009" type="MeshInstance3D" parent="LightPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube009"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube009/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
 
 [node name="TitlePosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -13.19)
