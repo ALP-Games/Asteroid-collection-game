@@ -21,27 +21,6 @@ func _ready() -> void:
 	var mouse_over_component: MouseOverComponent = MouseOverComponent.core().get_from(get_parent())
 	if mouse_over_component: # FOR DEBUG ONLY, why for debug? :thinking:
 		mouse_over_component.on_mouse_enter.connect(func():
-			#var gizmo_manager := get_tree().get_first_node_in_group("gizmo_manager") as GizmoManager
-			# need to give gizmo
-			# and if gizmo not needed then remove it
-			# maybe we need to save the gizmo UI?
-			# or get the gizmo in _physics_process?
-			# or need to get reference to gizmo or something that is associated with this object?
-			# how to make this least retarded?
-			# now it's waaaay worse than it was
-			
-			# GizmoManager
-			# get gizmo "owner" from GizmoManager?
-			# get gizmo from the "owner"?
-			# do we clean up owners or?
-			# if gizmo not enabled it should not have an instance
-			# we should track - there might be a gizmo?
-			# we need a Gizmo Interface class?
-			# all gizmos need to follow some kind of transform3D or whatever
-			
-			#right_click_gizmo = gizmo_manager.add_right_cick_gizmo()
-			#right_click_gizmo = get_tree().get_first_node_in_group("right_click_gizmo")
-			#right_click_gizmo.node_to_follow = get_parent()
 			set_physics_process(true))
 		mouse_over_component.on_mouse_exit.connect(func():
 			set_physics_process(false)
