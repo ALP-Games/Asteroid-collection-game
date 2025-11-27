@@ -41,11 +41,8 @@ func _check_victory(upgrade_id: ShopManager.ItemType, upgrade_level: int) -> voi
 	if upgrade_id != ShopManager.ItemType.DEBT:
 		return
 	if upgrade_level == 5:
-		var instantiated_root := get_tree().get_first_node_in_group("instantiated_root")
-		var timer_instance := Timer.new()
-		instantiated_root.add_child(timer_instance)
-		timer_instance.start(0.5)
-		timer_instance.timeout.connect(func():get_tree().change_scene_to_packed(VICTORY_LEVEL))
+		var shop_screen: ShopScreen = get_tree().get_first_node_in_group("shop_screen")
+		shop_screen.add_end_game_prompt()
 
 
 func _init() -> void:
