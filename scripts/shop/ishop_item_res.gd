@@ -14,7 +14,7 @@ func get_icon(_index: int) -> Texture2D:
 
 func get_item_type() -> ShopManager.ItemType:
 	assert(false, "get_item_type function must be overriden by implementation!")
-	return 0
+	return ShopManager.ItemType.UNDEFINED
 
 
 func get_item_scene() -> PackedScene:

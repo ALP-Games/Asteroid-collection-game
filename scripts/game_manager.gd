@@ -28,8 +28,8 @@ func _run_callable(callable: Callable) -> void:
 
 
 func _ready() -> void:
+	_initialize()
 	#upgrade_data.upgrade_incremented.connect(_check_victory)
-	shop.item_bought.connect(_check_victory)
 	call_deferred("_reset_first_start")
 
 func _reset_first_start() -> void:
@@ -45,13 +45,14 @@ func _check_victory(upgrade_id: ShopManager.ItemType, upgrade_level: int) -> voi
 		shop_screen.add_end_game_prompt()
 
 
-func _init() -> void:
-	_initialize()
+#func _init() -> void:
+	#_initialize()
 
 
 func _initialize() -> void:
 	credist_amount = 0
 	shop = ShopManager.new()
+	shop.item_bought.connect(_check_victory)
 	current_asteroid_count = 0
 
 

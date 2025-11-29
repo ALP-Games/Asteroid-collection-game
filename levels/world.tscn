@@ -19,16 +19,18 @@ points = PackedVector3Array(-4.227457, 0.2957511, -0.44432375, -4.227457, 0.2957
 
 [node name="AsteroidSpawner" parent="." node_paths=PackedStringArray("exclusion_zones") instance=ExtResource("1_vons5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8035)
-spawn_radius = 600.0
+spawn_radius = 350.0
 min_distance_between_asteroids = 5.0
-asteroid_scale_max = 12.0
-asteroid_scale_min = 1.0
+asteroid_scale_max = 9.0
+asteroid_scale_min = 1.5
 exclusion_zones = [NodePath("../GrinderExclusion"), NodePath("../ShopExclusion"), NodePath("../SignExclusion"), NodePath("../PlayerExclusion")]
-offset = Vector3(0, -40, 0)
-background_asteroid_count = 200
-background_spawn_exponent = 0.1
+crystal_minimum_distance = 100.0
+gold_minimum_distance = 225.0
+offset = Vector3(0, -80, 0)
+background_asteroid_count = 500
+background_spawn_exponent = 0.5
 background_asteroid_scale_max = 50.0
-background_asteroid_scale_min = 3.0
+background_asteroid_scale_min = 10.0
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_vons5")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.3203, 0)

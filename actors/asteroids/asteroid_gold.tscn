@@ -18,7 +18,8 @@ collision_mask = 21
 axis_lock_linear_y = true
 mass = 100.0
 script = ExtResource("1_p17b6")
-weight_value_multiplier = 0.5
+initial_value = 100.0
+weight_value_multiplier = 0.05
 default_density = 1000.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

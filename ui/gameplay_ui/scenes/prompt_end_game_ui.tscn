@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://xjrrlw1r2i3f"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_esn73"]
-[ext_resource type="Script" uid="uid://1wf6wb2pye7n" path="res://ui/gameplay_ui/scenes/prompt_end_game_ui.gd" id="2_esn73"]
+[ext_resource type="Script" uid="uid://1wf6wb2pye7n" path="res://ui/gameplay_ui/scripts/prompt_end_game_ui.gd" id="2_esn73"]
 [ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_v5n2r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pne7h"]
