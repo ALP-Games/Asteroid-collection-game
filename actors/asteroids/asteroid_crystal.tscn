@@ -18,7 +18,8 @@ collision_mask = 21
 axis_lock_linear_y = true
 mass = 100.0
 script = ExtResource("1_hosm5")
-weight_value_multiplier = 0.2
+initial_value = 50.0
+weight_value_multiplier = 0.02
 default_density = 500.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

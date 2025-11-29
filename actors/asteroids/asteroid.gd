@@ -10,6 +10,7 @@ const DEFAULT_SCALE: float = 1.0
 
 var asteroid_scale: float = 1.0
 
+@export var initial_value: float = 10.0
 @export var weight_value_multiplier: float = 0.1
 @export var default_density: float = 100.0
 
@@ -36,7 +37,7 @@ func set_mass_with_scale(new_scale: float) -> void:
 
 
 func get_asteroid_value() -> int:
-	return (mass * weight_value_multiplier) as int
+	return initial_value + (mass * weight_value_multiplier) as int
 
 
 func destroy_asteroid() -> void:
