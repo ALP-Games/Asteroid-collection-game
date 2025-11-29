@@ -13,6 +13,7 @@ var dispensor_item_queue: Array[PackedScene]
 
 
 func _ready() -> void:
+	dispensing_area.global_position.y = 0.0
 	_check_avaliability()
 
 
@@ -30,6 +31,7 @@ func _check_avaliability() -> void:
 	else:
 		avaliability_indicator.light_color = color_avaliable
 		_dispense_item()
+
 
 func _dispense_item() -> void:
 	if dispensor_item_queue.size() > 0:
