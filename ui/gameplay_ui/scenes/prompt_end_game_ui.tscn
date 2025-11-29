@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://xjrrlw1r2i3f"]
+
+[ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_esn73"]
+[ext_resource type="Script" uid="uid://1wf6wb2pye7n" path="res://ui/gameplay_ui/scenes/prompt_end_game_ui.gd" id="2_esn73"]
+[ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_v5n2r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pne7h"]
+
+[node name="PromptEndGame" type="VBoxContainer"]
+offset_right = 285.0
+offset_bottom = 223.0
+size_flags_horizontal = 3
+theme = ExtResource("1_esn73")
+script = ExtResource("2_esn73")
+
+[node name="FlavorEstate" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pne7h")
+
+[node name="PanelContainer" type="PanelContainer" parent="FlavorEstate"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="ItemName" type="Label" parent="FlavorEstate/PanelContainer"]
+layout_mode = 2
+text = "Quit this job and live your best Life?"
+horizontal_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContentEstate" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/ContentEstate"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BuyButton" type="Button" parent="Panel/ContentEstate/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Yes! Now!"
+
+[node name="ClickSoundPlayer" parent="." instance=ExtResource("3_v5n2r")]

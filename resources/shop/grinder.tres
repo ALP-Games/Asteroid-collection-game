@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 [resource]
 script = ExtResource("2_wsdg4")
 icon = ExtResource("2_8hewl")
-item_type = 4
+item_type = 3
 data = SubResource("Resource_0wmde")
 item_name = &"Grinder"
 metadata/_custom_type_script = "uid://bsjcomw6parw3"

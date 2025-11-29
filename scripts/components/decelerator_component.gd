@@ -6,7 +6,7 @@ extends Component
 
 @export var deceleration_amount: float = 10.0
 @export var stop_angular_amount: float = 1.0
-#@export var min_decel_for_effects: 
+@export var min_velocity_for_effects: float = 0.1 
 @export var deceleration_sounds: Array[AudioStreamPlayer3D]
 @export var deceleration_effects: Array[GPUParticles3D]
 
@@ -25,8 +25,7 @@ func _physics_process(delta: float) -> void:
 	var deceleration_deficit: float = min(parent_body.linear_velocity.length() / delta, deceleration_amount)
 	var negative_acceleration := -parent_body.linear_velocity.normalized() * deceleration_deficit
 	#print("Negative acceleration - ", negative_acceleration)
-	var enable_effects := decelerate and not is_zero_approx(parent_body.linear_velocity.length())
-	print("Velocity - ", parent_body.linear_velocity.length())
+	var enable_effects := decelerate and parent_body.linear_velocity.length() > min_velocity_for_effects
 	_enable_graphics(enable_effects)
 	_enable_sound(enable_effects)
 	if not decelerate:

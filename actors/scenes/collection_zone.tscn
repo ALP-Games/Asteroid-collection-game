@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpnachpt8s3bi"]
+[gd_scene load_steps=7 format=3 uid="uid://cpnachpt8s3bi"]
 
 [ext_resource type="Script" uid="uid://ds1ln0pn6664q" path="res://actors/scripts/collection_zone.gd" id="1_ribsy"]
 [ext_resource type="PackedScene" uid="uid://be5355utlahim" path="res://Assets/baseShreder.tscn" id="2_r1rk2"]
@@ -9,6 +9,9 @@ size = Vector3(13.0719, 1, 4.18872)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1rk2"]
 size = Vector3(0.275391, 2.42944, 6.78711)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_60bxb"]
+size = Vector3(15.175781, 4.1488037, 10.171875)
 
 [node name="CollectionZone" type="Node3D" groups=["collector"]]
 script = ExtResource("1_ribsy")
@@ -41,5 +44,13 @@ stream = ExtResource("3_8fmtq")
 unit_size = 5.0
 autoplay = true
 max_distance = 75.0
+
+[node name="BuildingCollision" type="StaticBody3D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BuildingCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.9984703, 0)
+shape = SubResource("BoxShape3D_60bxb")
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_area_3d_area_entered"]

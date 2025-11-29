@@ -2,6 +2,8 @@ class_name ShopScreen extends Control
 
 signal shop_visibilit_changed(visible: bool)
 
+const PROMPT_END_GAME_UI = preload("uid://xjrrlw1r2i3f")
+
 @onready var shop_items: VBoxContainer = $HBoxContainer/Content/VBoxContainer/ShopContentContainer/ScrollContainer/ShopItems
 
 
@@ -36,6 +38,21 @@ func _ready() -> void:
 		hbox_ref.add_child(control)
 		control.size_flags_horizontal |= Control.SIZE_EXPAND
 	visible = false
+
+
+func add_end_game_prompt() -> void:
+	var last_hbox :HBoxContainer = shop_items.get_child(shop_items.get_child_count() - 1)
+	if last_hbox.get_child_count() > 2:
+		var instantiate_new_hbox := true
+		for child in last_hbox.get_children():
+			if child is not ShopItemUI:
+				child.queue_free()
+				instantiate_new_hbox = false
+				break;
+		if instantiate_new_hbox:
+			last_hbox = HBoxContainer.new()
+			shop_items.add_child(last_hbox)
+	last_hbox.add_child(PROMPT_END_GAME_UI.instantiate())
 
 
 func toggle_shop() -> void:

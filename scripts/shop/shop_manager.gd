@@ -5,8 +5,8 @@ enum ItemType {
 	HOOK_COUNT,
 	ENGINE_POWER,
 	WEIGHT,
-	DEBT,
 	GRINDER,
+	DEBT,
 	ITEM_COUNT
 }
 

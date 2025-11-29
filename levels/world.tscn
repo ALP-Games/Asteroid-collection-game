@@ -8,10 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://btphdgvvmu41w" path="res://levels/world_environment.tscn" id="6_lmpr0"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/scenes/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
-[ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_wqmfy"]
-[ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="10_mla2a"]
+[ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 [ext_resource type="PackedScene" uid="uid://flpa4on2t8e3" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_wqmfy"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_re8x6"]
+points = PackedVector3Array(-4.227457, 0.2957511, -0.44432375, -4.227457, 0.2957511, 0.4443229, -4.227457, 0.5628582, -0.44432375, -2.114556, -0.12122314, -0.44432375, -4.227457, 0.5628582, 0.4443229, -2.114556, -0.12122314, 0.4443229, -3.7126806, 0.73125005, -0.07680884, 4.227457, 0.5628582, -0.44432375, 2.1137285, -0.12122314, -0.44432375, -3.7126806, 0.73125005, 0.07672104, 4.227457, 0.5628582, 0.4443229, 2.1137285, -0.12122314, 0.4443229, 3.7110252, 0.73125005, -0.07680884, 4.227457, 0.2957511, -0.44432375, 3.7110252, 0.73125005, 0.07672104, 4.227457, 0.2957511, 0.4443229)
 
 [node name="World" type="Node3D"]
 
@@ -35,16 +37,17 @@ tracking_max_distance = 4.0
 
 [node name="PlayerShip" parent="." instance=ExtResource("1_2mgkc")]
 
-[node name="ShopLatch" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_wqmfy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.438469, 0, 12.299711)
+[node name="ShopLatch" parent="." node_paths=PackedStringArray("attachment_node", "dependant_latches") instance=ExtResource("12_wqmfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3696, 0, 11.923192)
 attachment_node = NodePath("../ShopZone")
+dependant_latches = [NodePath("../ShopLatch2"), NodePath("../ShopLatch3")]
 
 [node name="ShopLatch2" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_wqmfy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.599633, 0, 12.299711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.378756, 0, 11.923192)
 attachment_node = NodePath("../ShopZone")
 
 [node name="ShopLatch3" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_wqmfy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.840252, 0, 12.299711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.632677, 0, 11.923192)
 attachment_node = NodePath("../ShopZone")
 
 [node name="CollectionZone" parent="." instance=ExtResource("3_712nc")]
@@ -70,29 +73,11 @@ node_a = NodePath("..")
 [node name="UIController" parent="CanvasLayer" node_paths=PackedStringArray("title_card_position_node") instance=ExtResource("6_687qm")]
 title_card_position_node = NodePath("../../TitlePosition")
 
-[node name="BillBoard" parent="." instance=ExtResource("9_wqmfy")]
+[node name="BillBoard" parent="." instance=ExtResource("9_re8x6")]
 transform = Transform3D(0.7477981, 0, -0.66392624, 0, 1, 0, 0.66392624, 0, 0.7477981, 7.6673, 0, -7.42499)
-graphics_rotation = Vector3(-30, 0, 0)
 
-[node name="Handle" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
-transform = Transform3D(0.7071067, 0.7071067, -3.090862e-08, 0, -4.3711385e-08, -1, -0.7071067, 0.7071067, -3.090862e-08, 10.591309, -3.6664414, -3.2120297)
-attached_body = NodePath("../BillBoard")
-target_angle = -2.076941809873252
-rotation_animation_duration = 1.5
-duration_randomization = 0.3
-tween_transition = 9
-
-[node name="Handle2" parent="." node_paths=PackedStringArray("attached_body") instance=ExtResource("10_mla2a")]
-transform = Transform3D(-0.6427877, -0.76604444, 3.3484866e-08, 0, -4.371139e-08, -1, 0.76604456, -0.64278764, 2.809714e-08, 3.201982, -3.6062727, -9.759439)
-attached_body = NodePath("../BillBoard")
-target_angle = -2.076941809873252
-rotation_animation_duration = 1.5
-duration_randomization = 0.3
-tween_transition = 9
-
-[node name="BillBoardLatch" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_wqmfy")]
+[node name="BillBoardLatch" parent="." instance=ExtResource("12_wqmfy")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 9.478312, 0, -8.579195)
-attachment_node = NodePath("../BillBoard")
 
 [node name="LightPad" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0275543, -3.15398, -0.454553)
@@ -102,29 +87,71 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube004"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube004/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
+
 [node name="LightPadCube005" type="MeshInstance3D" parent="LightPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube005"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube005/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
+
 [node name="LightPadCube006" type="MeshInstance3D" parent="LightPad"]
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube006"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube006/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
 
 [node name="LightPadCube007" type="MeshInstance3D" parent="LightPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 33)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube007"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube007/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
+
 [node name="LightPadCube008" type="MeshInstance3D" parent="LightPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 29)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube008"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube008/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
+
 [node name="LightPadCube009" type="MeshInstance3D" parent="LightPad"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 mesh = ExtResource("9_687qm")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="LightPad/LightPadCube009"]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightPad/LightPadCube009/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_re8x6")
 
 [node name="TitlePosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -13.19)
@@ -158,5 +185,4 @@ metadata/_custom_type_script = "uid://ceo3kiibjuffa"
 [connection signal="unlatched" from="ShopLatch" to="ShopZone/DeadLock2" method="queue_free"]
 [connection signal="unlatched" from="ShopLatch2" to="ShopZone/DeadLock" method="queue_free"]
 [connection signal="unlatched" from="ShopLatch3" to="ShopZone/DeadLock" method="queue_free"]
-[connection signal="unlatched" from="BillBoardLatch" to="Handle" method="start_enablement_animation"]
-[connection signal="unlatched" from="BillBoardLatch" to="Handle2" method="start_enablement_animation"]
+[connection signal="unlatched" from="BillBoardLatch" to="BillBoard" method="enable_handles"]

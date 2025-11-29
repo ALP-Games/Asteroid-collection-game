@@ -57,7 +57,8 @@ gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_biq26")
 
 [node name="ShopZone" type="RigidBody3D" node_paths=PackedStringArray("item_dispenser")]
-collision_mask = 21
+collision_layer = 65
+collision_mask = 85
 axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
