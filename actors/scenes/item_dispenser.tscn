@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4qabwbwp2g23"]
+[gd_scene load_steps=4 format=3 uid="uid://b4qabwbwp2g23"]
 
 [ext_resource type="Script" uid="uid://c4gmt1gnc8ess" path="res://actors/scripts/item_dispenser.gd" id="1_jb5kr"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ml1lt"]
-albedo_color = Color(0.603922, 0.462745, 0, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_jb5kr"]
-material = SubResource("StandardMaterial3D_ml1lt")
+[ext_resource type="ArrayMesh" uid="uid://c75613el5be2g" path="res://Assets/becon_platform_Cube_013.res" id="2_cqgba"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ml1lt"]
 size = Vector3(2, 1, 2)
@@ -15,7 +10,8 @@ size = Vector3(2, 1, 2)
 script = ExtResource("1_jb5kr")
 
 [node name="Graphics" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_jb5kr")
+transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0, -0.30402696, 0)
+mesh = ExtResource("2_cqgba")
 
 [node name="DispensingArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -26,6 +22,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_ml1lt")
 
 [node name="AvaliabilityIndicator" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454097, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06023094, 0)
 light_color = Color(0.435294, 0.894118, 0.223529, 1)
 omni_range = 1.08074
