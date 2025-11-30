@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1n6i5lnetjgn"
 path.s3tc="res://.godot/imported/Becon_Ucupaint Roundcube_1.png-9321fa410339aad22128c2008e5b0b2f.s3tc.ctex"
+path.etc2="res://.godot/imported/Becon_Ucupaint Roundcube_1.png-9321fa410339aad22128c2008e5b0b2f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Becon_Ucupaint Roundcube_1.png"
-dest_files=["res://.godot/imported/Becon_Ucupaint Roundcube_1.png-9321fa410339aad22128c2008e5b0b2f.s3tc.ctex"]
+dest_files=["res://.godot/imported/Becon_Ucupaint Roundcube_1.png-9321fa410339aad22128c2008e5b0b2f.s3tc.ctex", "res://.godot/imported/Becon_Ucupaint Roundcube_1.png-9321fa410339aad22128c2008e5b0b2f.etc2.ctex"]
 
 [params]
 

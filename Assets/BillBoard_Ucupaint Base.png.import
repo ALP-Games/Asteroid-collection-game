@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://16oja76gmn3n"
 path.s3tc="res://.godot/imported/BillBoard_Ucupaint Base.png-aa86e4080020ed37e290493bc9cdd06a.s3tc.ctex"
+path.etc2="res://.godot/imported/BillBoard_Ucupaint Base.png-aa86e4080020ed37e290493bc9cdd06a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/BillBoard_Ucupaint Base.png"
-dest_files=["res://.godot/imported/BillBoard_Ucupaint Base.png-aa86e4080020ed37e290493bc9cdd06a.s3tc.ctex"]
+dest_files=["res://.godot/imported/BillBoard_Ucupaint Base.png-aa86e4080020ed37e290493bc9cdd06a.s3tc.ctex", "res://.godot/imported/BillBoard_Ucupaint Base.png-aa86e4080020ed37e290493bc9cdd06a.etc2.ctex"]
 
 [params]
 

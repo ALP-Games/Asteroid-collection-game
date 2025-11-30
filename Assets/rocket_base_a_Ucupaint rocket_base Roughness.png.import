@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2jha0auxaufc"
 path.s3tc="res://.godot/imported/rocket_base_a_Ucupaint rocket_base Roughness.png-4c672a2721a578552d1aea5072ae2285.s3tc.ctex"
+path.etc2="res://.godot/imported/rocket_base_a_Ucupaint rocket_base Roughness.png-4c672a2721a578552d1aea5072ae2285.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/rocket_base_a_Ucupaint rocket_base Roughness.png"
-dest_files=["res://.godot/imported/rocket_base_a_Ucupaint rocket_base Roughness.png-4c672a2721a578552d1aea5072ae2285.s3tc.ctex"]
+dest_files=["res://.godot/imported/rocket_base_a_Ucupaint rocket_base Roughness.png-4c672a2721a578552d1aea5072ae2285.s3tc.ctex", "res://.godot/imported/rocket_base_a_Ucupaint rocket_base Roughness.png-4c672a2721a578552d1aea5072ae2285.etc2.ctex"]
 
 [params]
 

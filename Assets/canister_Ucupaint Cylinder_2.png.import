@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcud8ob1cuxa5"
 path.s3tc="res://.godot/imported/canister_Ucupaint Cylinder_2.png-690f737b04857b5436f94854c2b30c4b.s3tc.ctex"
+path.etc2="res://.godot/imported/canister_Ucupaint Cylinder_2.png-690f737b04857b5436f94854c2b30c4b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/canister_Ucupaint Cylinder_2.png"
-dest_files=["res://.godot/imported/canister_Ucupaint Cylinder_2.png-690f737b04857b5436f94854c2b30c4b.s3tc.ctex"]
+dest_files=["res://.godot/imported/canister_Ucupaint Cylinder_2.png-690f737b04857b5436f94854c2b30c4b.s3tc.ctex", "res://.godot/imported/canister_Ucupaint Cylinder_2.png-690f737b04857b5436f94854c2b30c4b.etc2.ctex"]
 
 [params]
 

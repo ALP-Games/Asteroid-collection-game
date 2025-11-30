@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhn8sd41y42yd"
 path.s3tc="res://.godot/imported/Crystal_Ucupaint GlowStone Emission Color.png-9759f7361726356cf1b9779151be422d.s3tc.ctex"
+path.etc2="res://.godot/imported/Crystal_Ucupaint GlowStone Emission Color.png-9759f7361726356cf1b9779151be422d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Crystal_Ucupaint GlowStone Emission Color.png"
-dest_files=["res://.godot/imported/Crystal_Ucupaint GlowStone Emission Color.png-9759f7361726356cf1b9779151be422d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Crystal_Ucupaint GlowStone Emission Color.png-9759f7361726356cf1b9779151be422d.s3tc.ctex", "res://.godot/imported/Crystal_Ucupaint GlowStone Emission Color.png-9759f7361726356cf1b9779151be422d.etc2.ctex"]
 
 [params]
 

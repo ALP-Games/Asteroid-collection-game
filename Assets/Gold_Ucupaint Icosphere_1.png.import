@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://conej8hnc1w43"
 path.s3tc="res://.godot/imported/Gold_Ucupaint Icosphere_1.png-7f5187068fec62c274ca576ee7612701.s3tc.ctex"
+path.etc2="res://.godot/imported/Gold_Ucupaint Icosphere_1.png-7f5187068fec62c274ca576ee7612701.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Gold_Ucupaint Icosphere_1.png"
-dest_files=["res://.godot/imported/Gold_Ucupaint Icosphere_1.png-7f5187068fec62c274ca576ee7612701.s3tc.ctex"]
+dest_files=["res://.godot/imported/Gold_Ucupaint Icosphere_1.png-7f5187068fec62c274ca576ee7612701.s3tc.ctex", "res://.godot/imported/Gold_Ucupaint Icosphere_1.png-7f5187068fec62c274ca576ee7612701.etc2.ctex"]
 
 [params]
 

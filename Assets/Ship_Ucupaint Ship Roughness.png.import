@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce8n5cg5iu8rb"
 path.s3tc="res://.godot/imported/Ship_Ucupaint Ship Roughness.png-515457a3d76f33c16087871c28a30eb1.s3tc.ctex"
+path.etc2="res://.godot/imported/Ship_Ucupaint Ship Roughness.png-515457a3d76f33c16087871c28a30eb1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Ship_Ucupaint Ship Roughness.png"
-dest_files=["res://.godot/imported/Ship_Ucupaint Ship Roughness.png-515457a3d76f33c16087871c28a30eb1.s3tc.ctex"]
+dest_files=["res://.godot/imported/Ship_Ucupaint Ship Roughness.png-515457a3d76f33c16087871c28a30eb1.s3tc.ctex", "res://.godot/imported/Ship_Ucupaint Ship Roughness.png-515457a3d76f33c16087871c28a30eb1.etc2.ctex"]
 
 [params]
 

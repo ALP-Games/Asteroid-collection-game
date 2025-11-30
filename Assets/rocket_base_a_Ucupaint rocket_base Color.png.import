@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqlpthedrbh5h"
 path.s3tc="res://.godot/imported/rocket_base_a_Ucupaint rocket_base Color.png-1fe01db84cb4804b7dada45b47cab4bc.s3tc.ctex"
+path.etc2="res://.godot/imported/rocket_base_a_Ucupaint rocket_base Color.png-1fe01db84cb4804b7dada45b47cab4bc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/rocket_base_a_Ucupaint rocket_base Color.png"
-dest_files=["res://.godot/imported/rocket_base_a_Ucupaint rocket_base Color.png-1fe01db84cb4804b7dada45b47cab4bc.s3tc.ctex"]
+dest_files=["res://.godot/imported/rocket_base_a_Ucupaint rocket_base Color.png-1fe01db84cb4804b7dada45b47cab4bc.s3tc.ctex", "res://.godot/imported/rocket_base_a_Ucupaint rocket_base Color.png-1fe01db84cb4804b7dada45b47cab4bc.etc2.ctex"]
 
 [params]
 

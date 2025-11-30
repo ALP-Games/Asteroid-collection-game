@@ -17,7 +17,7 @@ func _ready() -> void:
 	_check_avaliability()
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_check_avaliability()
 
 

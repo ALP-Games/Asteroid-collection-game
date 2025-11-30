@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4f1jd2sj64rg"
 path.s3tc="res://.godot/imported/Hook_Ucupaint Hook Color.png-c19e6f82c354644882932afdf28b90db.s3tc.ctex"
+path.etc2="res://.godot/imported/Hook_Ucupaint Hook Color.png-c19e6f82c354644882932afdf28b90db.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Hook_Ucupaint Hook Color.png"
-dest_files=["res://.godot/imported/Hook_Ucupaint Hook Color.png-c19e6f82c354644882932afdf28b90db.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hook_Ucupaint Hook Color.png-c19e6f82c354644882932afdf28b90db.s3tc.ctex", "res://.godot/imported/Hook_Ucupaint Hook Color.png-c19e6f82c354644882932afdf28b90db.etc2.ctex"]
 
 [params]
 

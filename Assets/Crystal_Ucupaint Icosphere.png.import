@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://67jbv36ktuqo"
 path.s3tc="res://.godot/imported/Crystal_Ucupaint Icosphere.png-7510e810558a71753f90477c7eee898b.s3tc.ctex"
+path.etc2="res://.godot/imported/Crystal_Ucupaint Icosphere.png-7510e810558a71753f90477c7eee898b.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Crystal_Ucupaint Icosphere.png"
-dest_files=["res://.godot/imported/Crystal_Ucupaint Icosphere.png-7510e810558a71753f90477c7eee898b.s3tc.ctex"]
+dest_files=["res://.godot/imported/Crystal_Ucupaint Icosphere.png-7510e810558a71753f90477c7eee898b.s3tc.ctex", "res://.godot/imported/Crystal_Ucupaint Icosphere.png-7510e810558a71753f90477c7eee898b.etc2.ctex"]
 
 [params]
 

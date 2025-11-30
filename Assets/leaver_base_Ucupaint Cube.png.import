@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch848epfgb5jd"
 path.s3tc="res://.godot/imported/leaver_base_Ucupaint Cube.png-f4082ac1c1777fd9ec475d7efd498abb.s3tc.ctex"
+path.etc2="res://.godot/imported/leaver_base_Ucupaint Cube.png-f4082ac1c1777fd9ec475d7efd498abb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/leaver_base_Ucupaint Cube.png"
-dest_files=["res://.godot/imported/leaver_base_Ucupaint Cube.png-f4082ac1c1777fd9ec475d7efd498abb.s3tc.ctex"]
+dest_files=["res://.godot/imported/leaver_base_Ucupaint Cube.png-f4082ac1c1777fd9ec475d7efd498abb.s3tc.ctex", "res://.godot/imported/leaver_base_Ucupaint Cube.png-f4082ac1c1777fd9ec475d7efd498abb.etc2.ctex"]
 
 [params]
 
