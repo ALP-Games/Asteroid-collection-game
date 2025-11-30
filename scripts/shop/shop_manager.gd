@@ -16,7 +16,7 @@ const ITEMS_DIR := "res://resources/shop/"
 const SHOP_ITEMS: Array[IShopItemRes] = [
 	preload("uid://bcptprw7k0gud"),
 	preload("uid://drijoevjjam0y"),
-	preload("uid://3q8hhvqiiyki"),
+	preload("uid://b2k7xjou34t21"),
 	preload("uid://dv3b6gvx6rugq"),
 	preload("uid://cc0yj5svu6tf2")
 ]
