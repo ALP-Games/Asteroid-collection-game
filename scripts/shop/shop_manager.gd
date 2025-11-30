@@ -13,6 +13,13 @@ enum ItemType {
 signal item_bought(item_type: ItemType, count: int)
 
 const ITEMS_DIR := "res://resources/shop/"
+const SHOP_ITEMS: Array[IShopItemRes] = [
+	preload("uid://bcptprw7k0gud"),
+	preload("uid://drijoevjjam0y"),
+	preload("uid://3q8hhvqiiyki"),
+	preload("uid://dv3b6gvx6rugq"),
+	preload("uid://cc0yj5svu6tf2")
+]
 var shop_items: Array[IShopItemRes] = []
 
 # we will have data here for now
@@ -24,17 +31,9 @@ func _init() -> void:
 	_items_bought.resize(ItemType.ITEM_COUNT)
 	_upgrade_levels.resize(ItemType.ITEM_COUNT)
 	
-	var items_dir := DirAccess.open(ITEMS_DIR)
-	items_dir.list_dir_begin()
-	var file_name := items_dir.get_next()
-	while file_name != "":
-		if file_name.ends_with(".tres"):
-			#print(file_name)
-			var resource := load(ITEMS_DIR + file_name)
-			if resource is IShopItemRes:
-				assert(shop_items[resource.get_item_type()] == null, "Item with the same ID already added!")
-				shop_items[resource.get_item_type()] = resource
-		file_name = items_dir.get_next()
+	for item in SHOP_ITEMS:
+		assert(shop_items[item.get_item_type()] == null, "Item with the same ID already added!")
+		shop_items[item.get_item_type()] = item
 	shop_items.make_read_only()
 	call_deferred("_emit_items_bought")
 	# read from directory
