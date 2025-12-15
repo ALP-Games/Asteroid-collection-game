@@ -216,5 +216,5 @@ func _generate_background_asteroids() -> void:
 
 
 func _ready() -> void:
-	#_generate_gameplay_asteroids()
+	_generate_gameplay_asteroids()
 	_generate_background_asteroids()
