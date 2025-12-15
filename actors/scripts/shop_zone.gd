@@ -22,6 +22,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	add_to_group("shop")
 	for handle in handles:
 		HookableComponent.core().invoke_on_component(handle, func(hookable: HookableComponent)->void:
 			hookable.object_hooked.connect(_process_hooked_places_count.bind(true))

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://co5xq21hyde6g"]
+
+[ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/scenes/asteroid_spawner.tscn" id="1_lbfdw"]
+[ext_resource type="PackedScene" uid="uid://be5mn1fxx1nf7" path="res://actors/scenes/camera_3d.tscn" id="2_5odyp"]
+[ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/scenes/player_ship.tscn" id="3_1vc8c"]
+[ext_resource type="PackedScene" uid="uid://btphdgvvmu41w" path="res://levels/world_environment.tscn" id="7_4bsba"]
+[ext_resource type="PackedScene" uid="uid://f071xxnfd48x" path="res://ui/ui_controller.tscn" id="8_5ikei"]
+[ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_t235d"]
+
+[node name="TestWorld" type="Node3D"]
+
+[node name="AsteroidSpawner" parent="." node_paths=PackedStringArray("exclusion_zones") instance=ExtResource("1_lbfdw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8035)
+spawn_radius = 350.0
+min_distance_between_asteroids = 5.0
+asteroid_scale_max = 9.0
+asteroid_scale_min = 1.5
+exclusion_zones = [NodePath("../PlayerExclusion")]
+crystal_minimum_distance = 100.0
+gold_minimum_distance = 225.0
+offset = Vector3(0, -80, 0)
+background_asteroid_count = 500
+background_spawn_exponent = 0.5
+background_asteroid_scale_max = 50.0
+background_asteroid_scale_min = 10.0
+
+[node name="Camera3D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_5odyp")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.3203, 0)
+target = NodePath("../PlayerShip")
+tracking_max_distance = 4.0
+
+[node name="PlayerShip" parent="." instance=ExtResource("3_1vc8c")]
+
+[node name="Instantiated" type="Node3D" parent="." groups=["instantiated_root"]]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("7_4bsba")]
+
+[node name="PlayerExclusion" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0330651, -1.90735e-06, 0.0914071)
+script = ExtResource("11_t235d")
+radius = 2.61
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"
+
+[node name="TitlePosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -13.19)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIController" parent="CanvasLayer" node_paths=PackedStringArray("title_card_position_node") instance=ExtResource("8_5ikei")]
+title_card_position_node = NodePath("../../TitlePosition")

@@ -53,11 +53,13 @@ var background_multi_mesh_instance: MultiMeshInstance3D
 
 var thread := Thread.new()
 
-func _rand_log_range(min_val: float, max_val: float, exponent: float = 0.55) -> float:
-	var t := pow(randf(), exponent)
+func _rand_log_range(min_val: float, max_val: float,
+					exponent: float = 0.55,
+					rand_func: Callable = randf) -> float:
+	var t := pow(rand_func.call(), exponent)
 	return lerp(min_val, max_val, t)
 
-func generate_non_overlapping_positions() -> Dictionary:
+func _generate_non_overlapping_positions() -> Dictionary:
 	# could do packed arrays for speed if needed
 	var spawn_count: int = 0
 	var positions: PackedVector3Array
@@ -117,7 +119,7 @@ func generate_non_overlapping_positions() -> Dictionary:
 
 
 # Maybe it doe not need to be "non overlaping"
-func generate_non_overlaping_background() -> Dictionary:
+func _generate_non_overlaping_background(generator: RandomNumberGenerator) -> Dictionary:
 	var spawn_count: int = 0
 	var positions: PackedVector3Array
 	var radii: PackedFloat32Array
@@ -132,9 +134,11 @@ func generate_non_overlaping_background() -> Dictionary:
 	
 	var max_attempts := 1000
 	while spawn_count < background_asteroid_count and max_attempts > 0:
-		var radius := randf_range(background_asteroid_scale_min, background_asteroid_scale_max) / 2
-		var log_range_val := _rand_log_range(0, spawn_radius, background_spawn_exponent)
-		var pos := Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 0.0), randf_range(-1.0, 1.0)).normalized()\
+		var radius := generator.randf_range(background_asteroid_scale_min, background_asteroid_scale_max) / 2
+		var log_range_val := _rand_log_range(0, spawn_radius, background_spawn_exponent, generator.randf)
+		var pos := Vector3(generator.randf_range(-1.0, 1.0), 
+						generator.randf_range(-1.0, 0.0),
+						generator.randf_range(-1.0, 1.0)).normalized()\
 			* log_range_val + offset
 		
 		var valid := true
@@ -160,7 +164,7 @@ func generate_non_overlaping_background() -> Dictionary:
 
 func _generate_gameplay_asteroids() -> void:
 	var instantiated_root := get_tree().get_first_node_in_group("instantiated_root")
-	var return_dict := generate_non_overlapping_positions()
+	var return_dict := _generate_non_overlapping_positions()
 	var positions := return_dict["positions"] as PackedVector3Array
 	var radii := return_dict["radii"] as PackedFloat32Array
 	var asteroid_types := return_dict["types"] as PackedInt32Array
@@ -188,9 +192,12 @@ func _generate_background_asteroids() -> void:
 	multi_mesh.transform_format = MultiMesh.TRANSFORM_3D
 	#multi_mesh.color_array = MultiMesh.
 	#multi_mesh.custom_data_array
+	var bckg_rng := RandomNumberGenerator.new()
+	#bckg_rng.randomize()
+	bckg_rng.seed = "Background".hash()
 	
 	var instantiated_root := get_tree().get_first_node_in_group("instantiated_root")
-	var return_dict := generate_non_overlaping_background()
+	var return_dict := _generate_non_overlaping_background(bckg_rng)
 	var positions := return_dict["positions"] as PackedVector3Array
 	var radii := return_dict["radii"] as PackedFloat32Array
 	var count := return_dict["count"] as int
@@ -198,8 +205,8 @@ func _generate_background_asteroids() -> void:
 	for index in count:
 		var xform = Transform3D()
 		var scale_number := radii[index] / 2
-		xform.basis = Basis(Vector3.UP, randf() * TAU)
-		xform = xform.rotated(Vector3.LEFT, randf() * TAU)
+		xform.basis = Basis(Vector3.UP, bckg_rng.randf() * TAU)
+		xform = xform.rotated(Vector3.LEFT, bckg_rng.randf() * TAU)
 		xform = xform.scaled(Vector3(scale_number, scale_number, scale_number))
 		xform.origin = positions[index]
 		multi_mesh.set_instance_transform(index, xform)
@@ -209,5 +216,5 @@ func _generate_background_asteroids() -> void:
 
 
 func _ready() -> void:
-	_generate_gameplay_asteroids()
+	#_generate_gameplay_asteroids()
 	_generate_background_asteroids()
