@@ -574,7 +574,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_2t4m7"]
 size = Vector3(6.937256, 1, 4.8615723)
 
-[node name="DeployedCollector" type="Node3D"]
+[node name="DeployedCollector" type="Node3D" groups=["collector"]]
 script = ExtResource("1_labbg")
 
 [node name="rocket_base_a2" type="Node3D" parent="."]
