@@ -13,6 +13,8 @@ const POINTER_GIZMO = preload("uid://x3e2x8oxiu8b")
 @export var full_alpha_distance: float = 40.0
 @export var distance_fade_out: float = 250.0
 @export var max_fade_out_value: float = 0.1
+@export var scale_down_per_instance: float = 0.75
+@export var max_scale_down_value: float = 0.1
 
 # maybe having different scene entries is better
 # but I will only have 2 types of pointers so no reason to make it
@@ -103,6 +105,8 @@ func _update_pointers(nodes_to_point_to: Array[Node], new_pointer_func: Callable
 				pointer.modulate.a = max(lerp(1.0, max_fade_out_value, 
 					(position_delta.length() - full_alpha_distance) /
 					(distance_fade_out - full_alpha_distance)), max_fade_out_value)
+			#pointer.modify_scale(0.5)
+			pointer.modify_scale(max(pow(scale_down_per_instance, index), max_scale_down_value))
 			pointer.visible = true
 			var angle := Vector3.FORWARD.signed_angle_to(position_delta, Vector3.UP)
 			pointer.add_angle(angle)
