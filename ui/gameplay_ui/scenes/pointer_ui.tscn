@@ -10,3 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_k3js1")
+display_fade_start = 40.0
+full_alpha_distance = 42.0
+max_fade_out_value = 0.05
