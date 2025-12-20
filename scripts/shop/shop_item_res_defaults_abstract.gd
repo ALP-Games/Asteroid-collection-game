@@ -1,5 +1,4 @@
-# TODO: mark as abstract
-class_name ShopItemResDefaultsAbstract extends IShopItemRes
+@abstract class_name ShopItemResDefaultsAbstract extends IShopItemRes
 
 @export var item_name: StringName
 @export var buy_text: StringName = &"Buy"

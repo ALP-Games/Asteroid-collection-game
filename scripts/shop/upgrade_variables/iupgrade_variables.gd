@@ -1,1 +1,1 @@
-class_name IUpgradeVariables extends Resource
+@abstract class_name IUpgradeVariables extends Resource

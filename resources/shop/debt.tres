@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeItemRes" load_steps=18 format=3 uid="uid://bcptprw7k0gud"]
+[gd_resource type="Resource" script_class="UpgradeItemRes" load_steps=25 format=3 uid="uid://bk5r6ftxwtw12"]
 
 [ext_resource type="Script" uid="uid://b5op7b0h3gjhc" path="res://scripts/shop/upgrade_entry.gd" id="1_k4gkn"]
 [ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/scenes/shop_item_ui.tscn" id="2_1yha8"]
 [ext_resource type="Texture2D" uid="uid://cbl1v5w182410" path="res://Assets/Icons/MoneyIcon.png" id="2_4r7l7"]
 [ext_resource type="Script" uid="uid://bmqv1a5xg7e18" path="res://scripts/shop/shop_entry.gd" id="2_o2f73"]
 [ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_4r7l7"]
+[ext_resource type="Script" uid="uid://dsas21ddk7hci" path="res://scripts/shop/upgrade_variables/multiplier_variables.gd" id="3_o2f73"]
 
 [sub_resource type="Resource" id="Resource_2joy2"]
 script = ExtResource("2_o2f73")
@@ -12,9 +13,14 @@ item_name = &"Corporate debt pay 0/4"
 price = 100
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
+[sub_resource type="Resource" id="Resource_o2f73"]
+script = ExtResource("3_o2f73")
+metadata/_custom_type_script = "uid://dsas21ddk7hci"
+
 [sub_resource type="Resource" id="Resource_ntt0x"]
 script = ExtResource("1_k4gkn")
 shop_entry = SubResource("Resource_2joy2")
+values = SubResource("Resource_o2f73")
 metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_d7kf3"]
@@ -23,9 +29,15 @@ item_name = &"Corporate debt pay 1/4"
 price = 1000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
+[sub_resource type="Resource" id="Resource_n4c3o"]
+script = ExtResource("3_o2f73")
+multiplier = 1.1
+metadata/_custom_type_script = "uid://dsas21ddk7hci"
+
 [sub_resource type="Resource" id="Resource_dsaoc"]
 script = ExtResource("1_k4gkn")
 shop_entry = SubResource("Resource_d7kf3")
+values = SubResource("Resource_n4c3o")
 metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_qk47y"]
@@ -34,9 +46,15 @@ item_name = &"Corporate debt pay 2/4"
 price = 5000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
+[sub_resource type="Resource" id="Resource_tqnx2"]
+script = ExtResource("3_o2f73")
+multiplier = 1.3
+metadata/_custom_type_script = "uid://dsas21ddk7hci"
+
 [sub_resource type="Resource" id="Resource_x0bsj"]
 script = ExtResource("1_k4gkn")
 shop_entry = SubResource("Resource_qk47y")
+values = SubResource("Resource_tqnx2")
 metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_71amr"]
@@ -45,9 +63,15 @@ item_name = &"Corporate debt pay 3/4"
 price = 10000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
+[sub_resource type="Resource" id="Resource_151gw"]
+script = ExtResource("3_o2f73")
+multiplier = 1.6
+metadata/_custom_type_script = "uid://dsas21ddk7hci"
+
 [sub_resource type="Resource" id="Resource_o8saq"]
 script = ExtResource("1_k4gkn")
 shop_entry = SubResource("Resource_71amr")
+values = SubResource("Resource_151gw")
 metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_7xhsy"]
@@ -56,9 +80,15 @@ item_name = &"And one last one payment ;P 4/5"
 price = 100000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
+[sub_resource type="Resource" id="Resource_7a55a"]
+script = ExtResource("3_o2f73")
+multiplier = 2.2
+metadata/_custom_type_script = "uid://dsas21ddk7hci"
+
 [sub_resource type="Resource" id="Resource_iiqjt"]
 script = ExtResource("1_k4gkn")
 shop_entry = SubResource("Resource_7xhsy")
+values = SubResource("Resource_7a55a")
 metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_hof7h"]
@@ -66,9 +96,15 @@ script = ExtResource("2_o2f73")
 item_name = &"DEBT PAID!"
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
+[sub_resource type="Resource" id="Resource_yeonj"]
+script = ExtResource("3_o2f73")
+multiplier = 3.0
+metadata/_custom_type_script = "uid://dsas21ddk7hci"
+
 [sub_resource type="Resource" id="Resource_hdcny"]
 script = ExtResource("1_k4gkn")
 shop_entry = SubResource("Resource_hof7h")
+values = SubResource("Resource_yeonj")
 metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [resource]

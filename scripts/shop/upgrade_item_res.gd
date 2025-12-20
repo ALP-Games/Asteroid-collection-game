@@ -5,6 +5,7 @@ class_name UpgradeItemRes extends ShopItemResDefaultsAbstract
 @export var data: Array[UpgradeEntry] # IUpgradeVariables
 @export var item_scene: PackedScene = preload("res://ui/gameplay_ui/scenes/shop_item_ui.tscn")
 
+
 func get_entry(index: int) -> ShopEntry:
 	var data_entry := _get_data_entry(index)
 	if data_entry == null:
