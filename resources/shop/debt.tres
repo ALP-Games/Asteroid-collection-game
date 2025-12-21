@@ -1,8 +1,6 @@
-[gd_resource type="Resource" script_class="UpgradeItemRes" load_steps=25 format=3 uid="uid://bk5r6ftxwtw12"]
+[gd_resource type="Resource" script_class="UpgradeItemRes" load_steps=24 format=3 uid="uid://bk5r6ftxwtw12"]
 
 [ext_resource type="Script" uid="uid://b5op7b0h3gjhc" path="res://scripts/shop/upgrade_entry.gd" id="1_k4gkn"]
-[ext_resource type="PackedScene" uid="uid://cu0l4x28nikl" path="res://ui/gameplay_ui/scenes/shop_item_ui.tscn" id="2_1yha8"]
-[ext_resource type="Texture2D" uid="uid://cbl1v5w182410" path="res://Assets/Icons/MoneyIcon.png" id="2_4r7l7"]
 [ext_resource type="Script" uid="uid://bmqv1a5xg7e18" path="res://scripts/shop/shop_entry.gd" id="2_o2f73"]
 [ext_resource type="Script" uid="uid://dwthg2qund1h2" path="res://scripts/shop/upgrade_item_res.gd" id="3_4r7l7"]
 [ext_resource type="Script" uid="uid://dsas21ddk7hci" path="res://scripts/shop/upgrade_variables/multiplier_variables.gd" id="3_o2f73"]
@@ -107,10 +105,12 @@ shop_entry = SubResource("Resource_hof7h")
 values = SubResource("Resource_yeonj")
 metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
+[sub_resource type="Resource" id="Resource_1yha8"]
+metadata/__load_path__ = "res://Assets/Icons/MoneyIcon.png"
+
 [resource]
 script = ExtResource("3_4r7l7")
-icon = ExtResource("2_4r7l7")
-item_type = 4
+icon = SubResource("Resource_1yha8")
 data = Array[ExtResource("1_k4gkn")]([SubResource("Resource_ntt0x"), SubResource("Resource_dsaoc"), SubResource("Resource_x0bsj"), SubResource("Resource_o8saq"), SubResource("Resource_iiqjt"), SubResource("Resource_hdcny")])
 buy_text = &"Pay"
 metadata/_custom_type_script = "uid://dwthg2qund1h2"

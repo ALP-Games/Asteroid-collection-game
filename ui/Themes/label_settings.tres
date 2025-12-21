@@ -1,7 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://da0v0q3k618re"]
-
-[ext_resource type="FontFile" uid="uid://b35oh5m6k8148" path="res://ui/Themes/fragile-bombers.regular.otf" id="1_mt00h"]
-
-[resource]
-font = ExtResource("1_mt00h")
-font_size = 18

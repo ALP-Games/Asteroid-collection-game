@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://jrnmkvtwmrda"]
-
-[ext_resource type="Shader" uid="uid://ctl41tjsf5rua" path="res://shaders/inverted-hull-stencil-read-1.gdshader" id="1_a58eo"]
-
-[resource]
-render_priority = -2
-shader = ExtResource("1_a58eo")
-shader_parameter/outline_size = 0.055
-shader_parameter/outline_color = Color(0.89, 0.89, 0.3827, 1)

@@ -3,7 +3,7 @@ class_name UpgradeItemRes extends ShopItemResDefaultsAbstract
 @export var icon: Texture2D
 @export var item_type: ShopManager.ItemType
 @export var data: Array[UpgradeEntry] # IUpgradeVariables
-@export var item_scene: PackedScene = preload("res://ui/gameplay_ui/scenes/shop_item_ui.tscn")
+#@export var item_scene: PackedScene = preload("res://ui/gameplay_ui/scenes/shop_item_ui.tscn")
 
 
 func get_entry(index: int) -> ShopEntry:
@@ -24,7 +24,7 @@ func get_item_type() -> ShopManager.ItemType:
 
 
 func get_item_scene() -> PackedScene:
-	return item_scene
+	return null
 
 
 func get_variables(index: int) -> IUpgradeVariables:
