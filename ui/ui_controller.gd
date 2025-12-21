@@ -51,6 +51,7 @@ func _physics_process(_delta: float) -> void:
 		if not get_tree().paused:
 			pause_menu.visible = true
 			get_tree().paused = true
+			GameManager._save_manager.sync_save()
 		else:
 			pause_menu.visible = false
 			get_tree().paused = false

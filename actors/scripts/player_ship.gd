@@ -84,6 +84,12 @@ func _ready() -> void:
 	var gizmo_manager := get_tree().get_first_node_in_group("gizmo_manager") as GizmoManager
 	_right_hold_gizmo = gizmo_manager.get_right_hold_gizmo()
 	_right_hold_progress = ProgressBarComponent.core().get_from(_right_hold_gizmo)
+	
+	var save_data := GameManager.save_data
+	if save_data.fresh_load:
+		save_data.player_position = global_position
+	else:
+		global_position = save_data.player_position
 
 
 #func _get_gizmos() -> void:
@@ -215,6 +221,8 @@ var current_scale: Vector3 = Vector3.ZERO
 func _process(_delta: float) -> void:
 	var turn_ratio := angular_velocity.y / max_turn_speed
 	graphics.rotation.z = deg_to_rad(max_graphics_tilt) * turn_ratio
+	
+	GameManager.save_data.player_position = global_position
 	
 	#var velocity_ration := linear_velocity.length() / MAX_JET_VELOCITY
 	

@@ -1,5 +1,7 @@
 class_name WarningBox extends VBoxContainer
 
+#TODO: this mess just caused a bug
+# Static - very bad, add a manager that resets on scene load
 static var shown_warinings: Array[WarningBox]
 
 @export var warning_priority: int = 0

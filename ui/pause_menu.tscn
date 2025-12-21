@@ -68,7 +68,7 @@ text = "Resume"
 
 [node name="ButtonRestart" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Restart"
+text = "Reload"
 
 [node name="ButtonQuit" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2

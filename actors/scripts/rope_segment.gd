@@ -80,6 +80,8 @@ func _play_sound(track_position: bool = false, force: bool = false,\
 static func _setup_sound(audio_stream: AudioStreamPlayer3D, stream: AudioStream, sound_pos: Vector3,\
 						pitch_scale: float = 1.0, volume: float = 0.0) -> void:
 	GameManager.call_deferred_callable((func():
+		if not audio_stream or not audio_stream.is_inside_tree():
+			return
 		audio_stream.global_position = sound_pos
 		audio_stream.stream = stream
 		audio_stream.pitch_scale = pitch_scale

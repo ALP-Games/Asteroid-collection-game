@@ -23,23 +23,27 @@ const SHOP_ITEMS: Array[IShopItemRes] = [
 #uid://bcptprw7k0gud
 var shop_items: Array[IShopItemRes] = []
 
-# we will have data here for now
 var _items_bought: PackedInt32Array
 var _upgrade_levels: PackedInt32Array
 
 func _init() -> void:
 	shop_items.resize(ItemType.ITEM_COUNT)
-	_items_bought.resize(ItemType.ITEM_COUNT)
-	_upgrade_levels.resize(ItemType.ITEM_COUNT)
+	var save_data := GameManager.save_data
+	_items_bought = save_data.items_bought
+	_upgrade_levels = save_data.upgrade_levels
+	
+	if _items_bought.size() < ItemType.ITEM_COUNT:
+		_items_bought.resize(ItemType.ITEM_COUNT)
+	if _upgrade_levels.size() < ItemType.ITEM_COUNT:
+		_upgrade_levels.resize(ItemType.ITEM_COUNT)
 	
 	for item in SHOP_ITEMS:
 		assert(shop_items[item.get_item_type()] == null, "Item with the same ID already added!")
 		shop_items[item.get_item_type()] = item
 	shop_items.make_read_only()
-	call_deferred("_emit_items_bought")
-	# read from directory
 
-func _emit_items_bought() -> void:
+
+func emit_items_bought() -> void:
 	for index in ItemType.ITEM_COUNT:
 		item_bought.emit(index, _upgrade_levels[index])
 

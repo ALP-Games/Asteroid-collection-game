@@ -17,10 +17,27 @@ var shop: ShopManager = null
 
 var _multiplier: float = 1.0
 
+@onready var _save_manager := SaveManager.new()
+@onready var IS_RELEASE := OS.has_feature("release")
+
+var save_data: SaveData
+
 var credist_amount: int = 0:
 	set(value):
 		credist_amount = value
+		if save_data:
+			save_data.credist_amount = value
 		credits_amount_changed.emit(credist_amount)
+
+
+func _enter_tree() -> void:
+	get_tree().root.child_entered_tree.connect(func(node: Node):
+		if node.name == "World":
+			node.ready.connect(func():
+				shop.emit_items_bought()
+				save_data.fresh_load = false
+				, CONNECT_ONE_SHOT)
+		)
 
 
 func call_deferred_callable(callable: Callable) -> void:
@@ -32,27 +49,24 @@ func _run_callable(callable: Callable) -> void:
 
 
 func _ready() -> void:
-	_initialize()
-	#upgrade_data.upgrade_incremented.connect(_check_victory)
+	save_data = _save_manager.load_save()
+	first_start = save_data.fresh_load
+	credist_amount = save_data.credist_amount
+	shop = ShopManager.new()
+	shop.item_bought.connect(_on_upgrade)
 	call_deferred("_reset_first_start")
+
 
 func _reset_first_start() -> void:
 	#credist_amount = 1000000
 	first_start = false
 
 
-func _initialize() -> void:
-	credist_amount = 0
-	shop = ShopManager.new()
-	shop.item_bought.connect(_on_upgrade)
-	current_asteroid_count = 0
-
-
 func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
 	if item_type != ShopManager.ItemType.DEBT:
 		return
 	# MultiplierVariables
-	var multiplier_variables := GameManager.shop.\
+	var multiplier_variables = GameManager.shop.\
 		get_upgrade_variables(item_type)
 	_multiplier = multiplier_variables.get_data()
 	if _count == 5:
@@ -62,7 +76,6 @@ func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
 
 func reload() -> void:
 	get_tree().paused = false
-	_initialize()
 	get_tree().reload_current_scene()
 
 
