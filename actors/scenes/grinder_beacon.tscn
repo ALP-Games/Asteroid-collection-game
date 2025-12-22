@@ -49,7 +49,7 @@ stencil_flags = 6
 stencil_compare = 6
 stencil_reference = 2
 
-[node name="GrinderBeacon" type="RigidBody3D"]
+[node name="GrinderBeacon" type="RigidBody3D" groups=["collector"]]
 collision_mask = 21
 axis_lock_linear_y = true
 mass = 500.0

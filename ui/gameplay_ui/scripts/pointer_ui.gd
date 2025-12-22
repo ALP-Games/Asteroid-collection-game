@@ -134,10 +134,12 @@ func _get_distance(node: Node3D, entry: Dictionary) -> float:
 func _get_pointer_data_from_dict(node: Node3D, new_pointer_func: Callable) -> Dictionary:
 	var node_entry := _pointers.get(node, {}) as Dictionary
 	if node_entry.is_empty():
+		var pointer_gizmo: PointerGizmo = new_pointer_func.call()
 		node_entry = {
 			KEY_POS_DELTA_CACHE: Vector3.ZERO,
 			KEY_POS_DELTA_CALCED: false,
-			KEY_POINTER_INSTANCE: new_pointer_func.call()
+			KEY_POINTER_INSTANCE: pointer_gizmo
 		}
+		node.tree_exiting.connect(func():pointer_gizmo.queue_free(), CONNECT_ONE_SHOT)
 		_pointers[node] = node_entry
 	return node_entry
