@@ -57,12 +57,10 @@ func _check_interaction() -> void:
 		_interactor_in_range.add_interaction(_deploy_interaction)
 		if not _hold_e_gizmo:
 			_hold_e_gizmo = (get_tree().get_first_node_in_group("gizmo_manager") as GizmoManager).get_hold_e_gizmo_proxy(self)
-		_hold_e_gizmo.enable()
 	elif _interaction_added and _interactor_in_range and  _buildings_in_range > 0:
 		_interaction_added = false
 		_interactor_in_range.remove_interaction(_deploy_interaction)
 		_hold_e_gizmo.disable()
-		pass
 
 
 func _add_interactor(interaction_component: InteractorComponent) -> void:
