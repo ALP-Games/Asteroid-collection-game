@@ -3,6 +3,7 @@ extends Node
 signal credits_amount_changed(new_amount: int)
 
 const VICTORY_LEVEL = preload("res://levels/game_end.tscn")
+const CLICK_SOUND_PLAYER = preload("res://ui/click_sound_player.tscn")
 
 const MAX_PLAYING_ROPE_SOUNDS := 5
 
@@ -52,6 +53,7 @@ func _ready() -> void:
 	save_data = _save_manager.load_save()
 	_initialize()
 	call_deferred("_reset_first_start")
+	set_process(not IS_RELEASE)
 
 
 func _reset_first_start() -> void:
@@ -93,6 +95,14 @@ func get_multiplier() -> float:
 	return _multiplier
 
 
+func play_click_sound() -> void:
+	var click_sound_instance = CLICK_SOUND_PLAYER.instantiate() as AudioStreamPlayer
+	get_tree().root.add_child(click_sound_instance)
+	click_sound_instance.play()
+	click_sound_instance.finished.connect(func():click_sound_instance.queue_free(), CONNECT_ONE_SHOT)
+
+
+# Debug only
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
 		var gizmo_manager := get_tree().get_first_node_in_group("gizmo_manager") as GizmoManager

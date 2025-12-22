@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc00ousclgdey"]
+[gd_scene load_steps=6 format=3 uid="uid://dc00ousclgdey"]
 
 [ext_resource type="Texture2D" uid="uid://bnc4qabwqsxjh" path="res://Assets/Icons/Controls.png" id="1_50142"]
 [ext_resource type="Script" uid="uid://bsv1uph4gl381" path="res://ui/pause_menu.gd" id="1_ejwgg"]
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="2_fob5h"]
+[ext_resource type="PackedScene" uid="uid://7etikmyhrdvx" path="res://ui/confirmation_window.tscn" id="4_avurv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ejwgg"]
 font_size = 40
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("confirmation_window")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ejwgg")
+confirmation_window = NodePath("ConfirmationWindow")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -110,15 +112,19 @@ offset_left = -40.0
 offset_top = -23.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Made with Godot 2025
-Game by: Andrej Lapin and Paulius Pilelis"
+text = "Game by: Andrej Lapin and Paulius Pilelis
+Made with Godot 2025"
 horizontal_alignment = 2
 
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_play_click_sound"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonReload" to="." method="_on_button_reload_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonReload" to="." method="_play_click_sound"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResetSave" to="." method="_on_button_reset_save_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResetSave" to="." method="_play_click_sound"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_play_click_sound"]
+[node name="ConfirmationWindow" parent="." instance=ExtResource("4_avurv")]
+visible = false
+layout_mode = 1
+
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_play_click_sound"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonReload" to="." method="_play_click_sound"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonReload" to="." method="_on_button_reload_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResetSave" to="." method="_play_click_sound"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResetSave" to="." method="_on_button_reset_save_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_play_click_sound"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
