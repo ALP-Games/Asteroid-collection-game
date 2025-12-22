@@ -18,7 +18,7 @@ func _on_button_resume_pressed() -> void:
 	get_tree().paused = false
 
 
-func _on_button_restart_pressed() -> void:
+func _on_button_reload_pressed() -> void:
 	GameManager.reload()
 
 
@@ -26,13 +26,7 @@ func _on_button_quit_pressed() -> void:
 	get_tree().quit()
 
 
-func _on_button_resume_button_down() -> void:
-	_play_click_sound()
-
-
-func _on_button_restart_button_down() -> void:
-	_play_click_sound()
-
-
-func _on_button_quit_button_down() -> void:
-	_play_click_sound()
+func _on_button_reset_save_pressed() -> void:
+	#TODO: should invoke confirmation menu
+	GameManager.reset_save()
+	GameManager.reload()

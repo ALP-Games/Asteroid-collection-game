@@ -50,10 +50,7 @@ func _run_callable(callable: Callable) -> void:
 
 func _ready() -> void:
 	save_data = _save_manager.load_save()
-	first_start = save_data.fresh_load
-	credist_amount = save_data.credist_amount
-	shop = ShopManager.new()
-	shop.item_bought.connect(_on_upgrade)
+	_initialize()
 	call_deferred("_reset_first_start")
 
 
@@ -74,9 +71,22 @@ func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
 		shop_screen.add_end_game_prompt()
 
 
+func _initialize() -> void:
+	first_start = save_data.fresh_load
+	credist_amount = save_data.credist_amount
+	shop = ShopManager.new()
+	shop.item_bought.connect(_on_upgrade)
+
+
 func reload() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func reset_save() -> void:
+	# delete save
+	save_data = _save_manager.reset_save_data()
+	_initialize()
 
 
 func get_multiplier() -> float:

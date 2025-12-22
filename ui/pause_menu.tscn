@@ -66,13 +66,17 @@ label_settings = SubResource("LabelSettings_ejwgg")
 layout_mode = 2
 text = "Resume"
 
-[node name="ButtonRestart" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="ButtonReload" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Reload"
 
+[node name="ButtonResetSave" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reset Save"
+
 [node name="ButtonQuit" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit"
+text = "Save & Quit"
 
 [node name="ExpandMiddle" type="Control" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -110,9 +114,11 @@ text = "Made with Godot 2025
 Game by: Andrej Lapin and Paulius Pilelis"
 horizontal_alignment = 2
 
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_button_down"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonRestart" to="." method="_on_button_restart_button_down"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonRestart" to="." method="_on_button_restart_pressed"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_button_down"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_play_click_sound"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonReload" to="." method="_on_button_reload_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonReload" to="." method="_play_click_sound"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResetSave" to="." method="_on_button_reset_save_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResetSave" to="." method="_play_click_sound"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_play_click_sound"]

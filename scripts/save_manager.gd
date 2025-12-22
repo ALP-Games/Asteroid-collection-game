@@ -16,6 +16,11 @@ func _init() -> void:
 	_save_path = save_root + SAVE_FILE_NAME
 
 
+func reset_save_data() -> SaveData:
+	_save_data = SaveData.new()
+	return _save_data
+
+
 func load_save() -> SaveData:
 	if not FileAccess.file_exists(_save_path):
 		# maybe we should always try to read it?
