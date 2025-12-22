@@ -37,6 +37,8 @@ func _enter_tree() -> void:
 			node.ready.connect(func():
 				shop.emit_items_bought()
 				save_data.fresh_load = false
+				save_data.instantiate_saved_objects()
+				# TODO: asteroid generation should happen here
 				, CONNECT_ONE_SHOT)
 		)
 

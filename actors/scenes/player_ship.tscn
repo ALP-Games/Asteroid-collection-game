@@ -78,4 +78,5 @@ metadata/_custom_type_script = "uid://cbc1gb4d64p31"
 
 [node name="PositionSaveState" type="Node" parent="."]
 script = ExtResource("11_vd3da")
+_id = 0
 metadata/_custom_type_script = "uid://cmawflefsblmh"
