@@ -9,9 +9,23 @@ var buy_button: Button
 var upgrade_price: int = 0
 var item_id: ShopManager.ItemType
 
-# what is an upgrade?
-# upgrades can have levels?
-# how are these levels defined?
+
+func _refresh_item() -> void:
+	var shop := GameManager.shop
+	var shop_data := shop.get_shop_data(item_id)
+	item_name.text = shop_data.item_name
+	if shop_data == null:
+		queue_free()
+		return
+	if shop_data.price <= 0:
+		buy_button.visible = false
+		item_price.visible = false
+	else:
+		buy_button.text = shop_data.buy_text
+		upgrade_price = shop_data.price
+		item_price.text = str(upgrade_price)
+	_check_has_enough()
+
 
 # upgrade is some kind of data that can be looked up and we can change some kind of player related number
 func _ready() -> void:
@@ -29,7 +43,7 @@ func _set_layout_items() -> void:
 
 
 func initialize() -> void:
-	_check_has_enough()
+	_refresh_item()
 
 
 func _exit_tree() -> void:
@@ -47,19 +61,7 @@ func _try_buy_item() -> void:
 		if not is_inside_tree():
 			return
 		
-		var shop_data := shop.get_shop_data(item_id)
-		if shop_data == null:
-			queue_free()
-			return
-		if shop_data.price <= 0:
-			buy_button.visible = false
-			item_price.visible = false
-		else:
-			buy_button.text = shop_data.buy_text
-			upgrade_price = shop_data.price
-			item_price.text = str(upgrade_price)
-		item_name.text = shop_data.item_name
-		_check_has_enough()
+		_refresh_item()
 
 
 func _check_has_enough() -> void:
