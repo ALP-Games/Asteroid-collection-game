@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bb87h4iblio7e"]
+[gd_scene load_steps=20 format=3 uid="uid://bb87h4iblio7e"]
 
 [ext_resource type="Script" uid="uid://ku12f32d4f3k" path="res://actors/scripts/shop_zone.gd" id="1_tlytx"]
 [ext_resource type="ArrayMesh" uid="uid://dvaiti0k2yo4a" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://banct1fm1y4u0" path="res://scripts/components/decelerator_component.gd" id="6_viby6"]
 [ext_resource type="PackedScene" uid="uid://7k7ri26qwqvt" path="res://effects/rcs_thruster_effect.tscn" id="7_5o1uo"]
 [ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="8_dcf32"]
+[ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="9_umddc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uden6"]
 size = Vector3(7.93945, 1, 7.88184)
@@ -202,6 +203,12 @@ volume_db = -7.0
 unit_size = 7.0
 max_db = -2.0
 pitch_scale = 0.65
+
+[node name="RadiusNode3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4260066, 0, -1.0858314)
+script = ExtResource("9_umddc")
+radius = 10.0
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

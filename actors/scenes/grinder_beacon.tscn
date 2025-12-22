@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ylpkw2lvllxq"]
+[gd_scene load_steps=18 format=3 uid="uid://ylpkw2lvllxq"]
 
 [ext_resource type="Script" uid="uid://csfqyurb2ywfh" path="res://actors/scripts/grinder_beacon.gd" id="1_pg7tx"]
 [ext_resource type="ArrayMesh" uid="uid://d0k40pyircjhn" path="res://Assets/meshes/beacon/Becon_Roundcube.res" id="2_ft08n"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://7k7ri26qwqvt" path="res://effects/rcs_thruster_effect.tscn" id="7_v4nea"]
 [ext_resource type="Script" uid="uid://banct1fm1y4u0" path="res://scripts/components/decelerator_component.gd" id="7_v27bq"]
 [ext_resource type="Script" uid="uid://dgw0kj7aardgm" path="res://scripts/components/instantiated_object_save.gd" id="10_wy3rk"]
+[ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_yl572"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mobjs"]
 radius = 7.0
@@ -119,6 +120,11 @@ lifetime = 0.1
 script = ExtResource("10_wy3rk")
 save_position_component = true
 metadata/_custom_type_script = "uid://dgw0kj7aardgm"
+
+[node name="RadiusNode3D" type="Node3D" parent="."]
+script = ExtResource("11_yl572")
+radius = 3.0
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

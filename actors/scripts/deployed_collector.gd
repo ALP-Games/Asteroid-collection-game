@@ -14,5 +14,11 @@ func _ready() -> void:
 func _on_collector_deployed(anim_name: StringName) -> void:
 	if anim_name != &"mobilecollector_active":
 		return
+	activate_grinding()
+
+
+func activate_grinding() -> void:
+	animation_tree.set("parameters/conditions/grinding", true)
 	collection_sound.playing = true
 	collection_area.monitoring = true
+	#var meta_dict := InstantiatedObjectSave.core().get_from(self)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bwntxfo0nt44n"]
+[gd_scene load_steps=15 format=3 uid="uid://bwntxfo0nt44n"]
 
 [ext_resource type="PackedScene" uid="uid://c22qexi157sbg" path="res://Assets/BillBoard.glb" id="2_r66o1"]
 [ext_resource type="Texture2D" uid="uid://bnc4qabwqsxjh" path="res://Assets/Icons/Controls.png" id="3_j56jp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://7k7ri26qwqvt" path="res://effects/rcs_thruster_effect.tscn" id="5_d12rs"]
 [ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="6_ped7b"]
 [ext_resource type="PackedScene" uid="uid://d1rags3ln5ga8" path="res://actors/mechanisms/handle.tscn" id="7_88f0i"]
+[ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="8_r66o1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c357i"]
 transparency = 1
@@ -137,3 +138,8 @@ target_angle = -2.076941809873252
 rotation_animation_duration = 1.5
 duration_randomization = 0.3
 tween_transition = 9
+
+[node name="RadiusNode3D" type="Node3D" parent="."]
+script = ExtResource("8_r66o1")
+radius = 8.0
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"

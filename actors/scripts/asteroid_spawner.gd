@@ -15,7 +15,6 @@ enum AsteroidType {
 # asteroid scale is actually a diameter
 @export var asteroid_scale_max: float = 5.0
 @export var asteroid_scale_min: float = 0.75
-@export var exclusion_zones: Array[RadiusNode3D]
 @export_group("Asteroid Crystal")
 @export var crystal_minimum_distance: float = 75.0
 @export_group("Asteroid Gold")
@@ -87,6 +86,8 @@ func _generate_non_overlapping_positions() -> Dictionary:
 			asteroid_type = randi_range(AsteroidType.NORMAL, AsteroidType.GOLD)
 		elif distance_from_center >= crystal_minimum_distance:
 			asteroid_type = randi_range(AsteroidType.NORMAL, AsteroidType.CRYSTAL)
+		
+		var exclusion_zones := get_tree().get_nodes_in_group("exclusion_zones")
 	
 		var valid := true
 		for exclusion_zone in exclusion_zones:
@@ -162,7 +163,7 @@ func _generate_non_overlaping_background(generator: RandomNumberGenerator) -> Di
 	return return_dict
 
 
-func _generate_gameplay_asteroids() -> void:
+func generate_gameplay_asteroids() -> void:
 	var instantiated_root := get_tree().get_first_node_in_group("instantiated_root")
 	var return_dict := _generate_non_overlapping_positions()
 	var positions := return_dict["positions"] as PackedVector3Array
@@ -216,5 +217,5 @@ func _generate_background_asteroids() -> void:
 
 
 func _ready() -> void:
-	_generate_gameplay_asteroids()
+	#generate_gameplay_asteroids()
 	_generate_background_asteroids()

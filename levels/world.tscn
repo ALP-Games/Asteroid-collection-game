@@ -17,13 +17,12 @@ points = PackedVector3Array(-4.227457, 0.2957511, -0.44432375, -4.227457, 0.2957
 
 [node name="World" type="Node3D"]
 
-[node name="AsteroidSpawner" parent="." node_paths=PackedStringArray("exclusion_zones") instance=ExtResource("1_vons5")]
+[node name="AsteroidSpawner" parent="." instance=ExtResource("1_vons5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.8035)
 spawn_radius = 350.0
 min_distance_between_asteroids = 5.0
 asteroid_scale_max = 9.0
 asteroid_scale_min = 1.5
-exclusion_zones = [NodePath("../GrinderExclusion"), NodePath("../ShopExclusion"), NodePath("../SignExclusion"), NodePath("../PlayerExclusion")]
 crystal_minimum_distance = 100.0
 gold_minimum_distance = 225.0
 offset = Vector3(0, -80, 0)
@@ -162,24 +161,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, -13.19)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111833, -1.90735e-06, 15.9561)
 script = ExtResource("11_wqmfy")
 radius = 8.88
-metadata/_custom_type_script = "uid://ceo3kiibjuffa"
-
-[node name="ShopExclusion" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0405, -1.90735e-06, 16.9652)
-script = ExtResource("11_wqmfy")
-radius = 8.4
-metadata/_custom_type_script = "uid://ceo3kiibjuffa"
-
-[node name="SignExclusion" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.67739, -1.90735e-06, -7.55879)
-script = ExtResource("11_wqmfy")
-radius = 5.57
-metadata/_custom_type_script = "uid://ceo3kiibjuffa"
-
-[node name="PlayerExclusion" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0330651, -1.90735e-06, 0.0914071)
-script = ExtResource("11_wqmfy")
-radius = 2.61
 metadata/_custom_type_script = "uid://ceo3kiibjuffa"
 
 [connection signal="unlatched" from="ShopLatch" to="ShopZone" method="enable_handles"]

@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=9 format=3 uid="uid://b7on5ka3gr86r"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=10 format=3 uid="uid://b7on5ka3gr86r"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_e32wt"]
 filter_enabled = true
@@ -11,7 +11,7 @@ animation = &"Shreder"
 animation = &"mobilecollector_idle"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_vrecf"]
-graph_offset = Vector2(-646.3185, -38.055847)
+graph_offset = Vector2(-799.3497, -66.84648)
 nodes/Grinding/node = SubResource("AnimationNodeAnimation_6333c")
 nodes/Grinding/position = Vector2(-300, 140)
 nodes/Open/node = SubResource("AnimationNodeAnimation_x6krn")
@@ -34,10 +34,15 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y5liu"]
+advance_mode = 2
+advance_condition = &"grinding"
+
 [resource]
+states/Start/position = Vector2(513, 276)
 states/grind_loop/node = SubResource("AnimationNodeBlendTree_vrecf")
 states/grind_loop/position = Vector2(663, 100)
 states/mobilecollector_active/node = SubResource("AnimationNodeAnimation_12wyg")
-states/mobilecollector_active/position = Vector2(401, 100)
-transitions = ["Start", "mobilecollector_active", SubResource("AnimationNodeStateMachineTransition_14fel"), "mobilecollector_active", "grind_loop", SubResource("AnimationNodeStateMachineTransition_idnpu"), "grind_loop", "End", SubResource("AnimationNodeStateMachineTransition_m3yyw")]
-graph_offset = Vector2(-131, -100)
+states/mobilecollector_active/position = Vector2(400.5, 99.625)
+transitions = ["Start", "mobilecollector_active", SubResource("AnimationNodeStateMachineTransition_14fel"), "mobilecollector_active", "grind_loop", SubResource("AnimationNodeStateMachineTransition_idnpu"), "grind_loop", "End", SubResource("AnimationNodeStateMachineTransition_m3yyw"), "Start", "grind_loop", SubResource("AnimationNodeStateMachineTransition_y5liu")]
+graph_offset = Vector2(-101, 0)

@@ -17,6 +17,7 @@ var first_start: bool = true # I guess this has to come from save file or whatev
 var shop: ShopManager = null
 
 var _multiplier: float = 1.0
+var _global_deinit: bool = false
 
 @onready var _save_manager := SaveManager.new()
 @onready var IS_RELEASE := OS.has_feature("release")
@@ -35,10 +36,12 @@ func _enter_tree() -> void:
 	get_tree().root.child_entered_tree.connect(func(node: Node):
 		if node.name == "World":
 			node.ready.connect(func():
+				_global_deinit = false
 				shop.emit_items_bought()
 				save_data.fresh_load = false
 				save_data.instantiate_saved_objects()
-				# TODO: asteroid generation should happen here
+				var asteroid_spawner := node.get_child(0) as AsteroidSpawner
+				asteroid_spawner.generate_gameplay_asteroids()
 				, CONNECT_ONE_SHOT)
 		)
 
@@ -83,6 +86,7 @@ func _initialize() -> void:
 
 
 func reload() -> void:
+	_global_deinit = true
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
@@ -93,8 +97,17 @@ func reset_save() -> void:
 	_initialize()
 
 
+func quit_game() -> void:
+	_global_deinit = true
+	get_tree().quit()
+
+
 func get_multiplier() -> float:
 	return _multiplier
+
+
+func is_global_deinit() -> bool:
+	return _global_deinit
 
 
 func play_click_sound() -> void:

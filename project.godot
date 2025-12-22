@@ -61,6 +61,7 @@ rope_sound=""
 credits_counter_label=""
 gizmo_manager=""
 shop=""
+exclusion_zones=""
 
 [input]
 

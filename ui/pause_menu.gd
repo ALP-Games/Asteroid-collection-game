@@ -35,4 +35,4 @@ func _on_button_reset_save_pressed() -> void:
 
 
 func _on_button_quit_pressed() -> void:
-	get_tree().quit()
+	GameManager.quit_game()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://blsav2p68v61h"]
+[gd_scene load_steps=16 format=3 uid="uid://blsav2p68v61h"]
 
 [ext_resource type="Script" uid="uid://b1oqxo40ce40s" path="res://actors/scripts/player_ship.gd" id="1_ljv35"]
 [ext_resource type="AudioStream" uid="uid://dg780oghxkwf1" path="res://sounds/thud_02.ogg" id="3_ehe0o"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="9_4lo07"]
 [ext_resource type="Script" uid="uid://cbc1gb4d64p31" path="res://scripts/components/interactor_component.gd" id="10_aapv7"]
 [ext_resource type="Script" uid="uid://cmawflefsblmh" path="res://scripts/components/position_state_save.gd" id="11_vd3da"]
+[ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="12_k0rtl"]
 
 [sub_resource type="Curve" id="Curve_5wmuu"]
 _limits = [0.2, 1.0, 1.0, 6.0]
@@ -80,3 +81,8 @@ metadata/_custom_type_script = "uid://cbc1gb4d64p31"
 script = ExtResource("11_vd3da")
 _id = 0
 metadata/_custom_type_script = "uid://cmawflefsblmh"
+
+[node name="RadiusNode3D" type="Node3D" parent="."]
+script = ExtResource("12_k0rtl")
+radius = 3.0
+metadata/_custom_type_script = "uid://ceo3kiibjuffa"

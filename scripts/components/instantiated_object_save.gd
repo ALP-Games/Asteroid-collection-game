@@ -3,6 +3,7 @@ class_name InstantiatedObjectSave extends Component
 @export var save_position_component: bool = false
 
 var _id: int
+var meta_data: Dictionary
 
 var _parent: Node
 
@@ -36,23 +37,33 @@ func _load_object() -> void:
 		# TODO: use loader
 		var save_data := GameManager.save_data
 		_id = _parent.get_meta(SaveData.INSTANCE_ID_META)
-		#save_data.
+		meta_data = save_data.get_instantiated_meta(_id)
 		if save_position_component:
 			var new_pos_state = PositionSaveState.new()
 			new_pos_state._id = save_data.get_pos_id(_id)
 			_parent.add_child(new_pos_state)
+		InstanceLoader.core().invoke_on_component(_parent,
+		func(loader: InstanceLoader)->void:
+			loader.load_instance(meta_data)
+			)
 	else:
 		# also need to remove older instantiated objects
 		var save_data := GameManager.save_data
 		_id = save_data.register_new_instantiated()
 		save_data.set_instantiated_scene(_id, _parent.scene_file_path)
+		meta_data = save_data.get_instantiated_meta(_id)
 		if save_position_component:
 			var new_pos_state = PositionSaveState.new()
 			new_pos_state.ready.connect(func():
 				save_data.set_pos_id(_id, new_pos_state.get_id())
 				, CONNECT_ONE_SHOT)
 			_parent.add_child(new_pos_state)
+		InstanceLoader.core().invoke_on_component(_parent,
+		func(loader: InstanceLoader)->void:
+			loader.init_instance(meta_data)
+			)
 
 
 func _removing_instantiated() -> void:
-	pass
+	if not GameManager.is_global_deinit():
+		GameManager.save_data.free_instantiated(_id)

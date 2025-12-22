@@ -59,13 +59,13 @@ class InstKeys extends Object:
 
 
 @export var instantiated_objects: Array[Dictionary]
-@export var freed_instantiated_ids: Array[int]
+@export var _freed_instantiated_ids: Array[int]
 
 
 func register_new_instantiated() -> int:
 	var fresh_id: int
-	if freed_instantiated_ids.size() > 0:
-		fresh_id = freed_instantiated_ids.pop_back()
+	if _freed_instantiated_ids.size() > 0:
+		fresh_id = _freed_instantiated_ids.pop_back()
 	else:
 		fresh_id = instantiated_objects.size()
 		instantiated_objects.resize(fresh_id + 1)
@@ -75,7 +75,7 @@ func register_new_instantiated() -> int:
 
 func free_instantiated(id: int) -> void:
 	instantiated_objects[id][InstKeys.FREED] = true
-	freed_instantiated_ids.append(id)
+	_freed_instantiated_ids.append(id)
 
 
 func get_instantiated_scene(id: int) -> String:
