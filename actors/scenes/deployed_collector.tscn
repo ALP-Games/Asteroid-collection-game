@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://d3y0gwfhn8my0"]
+[gd_scene load_steps=26 format=4 uid="uid://d3y0gwfhn8my0"]
 
 [ext_resource type="Script" uid="uid://di736q7b2mqdw" path="res://actors/scripts/deployed_collector.gd" id="1_labbg"]
 [ext_resource type="Texture2D" uid="uid://xu1h3tvrna1y" path="res://Assets/rocket_base_a_Ucupaint Base Color.png" id="2_e32wt"]
@@ -577,6 +577,13 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_2t4m7"]
 size = Vector3(5.4782715, 1, 3.571289)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ialu1"]
+height = 18.567139
+radius = 6.6064453
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ialu1"]
+size = Vector3(11.115204, 1.2869873, 9.443115)
+
 [node name="DeployedCollector" type="Node3D" groups=["collector"]]
 script = ExtResource("1_labbg")
 
@@ -602,14 +609,14 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1, 0, 0, 0, 0.123077504, -0.992397, 0, 0.992397, 0.123077504, 0, -1.2725358, -1.2507577)
 bones/1/enabled = true
 bones/1/position = Vector3(0, -1.2725358, -1.2507577)
-bones/1/rotation = Quaternion(0.54823524, -9.55026e-18, -4.445979e-18, 0.8363242)
+bones/1/rotation = Quaternion(0.04711306, -4.1827734e-17, -1.9472268e-17, 0.9988896)
 bones/1/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/2/name = "Shreder2"
 bones/2/parent = 0
 bones/2/rest = Transform3D(1, 0, 0, 0, 0.123077504, -0.992397, 0, 0.992397, 0.123077504, 0, -1.2747273, 1.0453506)
 bones/2/enabled = true
 bones/2/position = Vector3(0, -1.2747273, 1.0453506)
-bones/2/rotation = Quaternion(0.76249033, 1.8729232e-17, 3.3772964e-17, 0.6469997)
+bones/2/rotation = Quaternion(0.9854965, 8.202933e-17, 1.479171e-16, 0.16969578)
 bones/2/scale = Vector3(1, 0.99999994, 0.99999994)
 bones/3/name = "Bone.001"
 bones/3/parent = 0
@@ -721,5 +728,29 @@ metadata/_custom_type_script = "uid://dgw0kj7aardgm"
 
 [node name="DeployedCollectorLoader" type="Node" parent="."]
 script = ExtResource("11_ialu1")
+
+[node name="BuildingCollision" type="StaticBody3D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="Body" type="CollisionShape3D" parent="BuildingCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.152037, 0)
+shape = SubResource("CylinderShape3D_ialu1")
+
+[node name="Leaf" type="CollisionShape3D" parent="BuildingCollision"]
+transform = Transform3D(0.6169287, -0.45054874, -0.6452943, 0.6640337, 0.73809075, 0.11950475, 0.42244297, -0.50222313, 0.7545288, -10.925436, -6.206404, -3.4638608)
+shape = SubResource("BoxShape3D_ialu1")
+
+[node name="Leaf2" type="CollisionShape3D" parent="BuildingCollision"]
+transform = Transform3D(-0.45386124, 0.5249077, -0.7200567, 0.6640337, 0.73809075, 0.11950474, 0.59419596, -0.42390344, -0.68354714, 3.5261288, -6.206404, -10.805162)
+shape = SubResource("BoxShape3D_ialu1")
+
+[node name="Leaf3" type="CollisionShape3D" parent="BuildingCollision"]
+transform = Transform3D(-0.6117217, 0.44437957, 0.6544643, 0.6640338, 0.7380908, 0.11950474, -0.42994842, 0.5076899, -0.74658895, 10.904791, -6.206404, 3.401205)
+shape = SubResource("BoxShape3D_ialu1")
+
+[node name="Leaf4" type="CollisionShape3D" parent="BuildingCollision"]
+transform = Transform3D(0.42393845, -0.5033147, 0.7529611, 0.6640337, 0.73809075, 0.11950474, -0.615902, 0.44932896, 0.64712286, -3.497126, -6.206404, 10.792388)
+shape = SubResource("BoxShape3D_ialu1")
 
 [connection signal="area_entered" from="CollectionArea" to="." method="_on_area_3d_area_entered"]

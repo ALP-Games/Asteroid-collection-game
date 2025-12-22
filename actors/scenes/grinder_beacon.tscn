@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ylpkw2lvllxq"]
+[gd_scene load_steps=19 format=3 uid="uid://ylpkw2lvllxq"]
 
 [ext_resource type="Script" uid="uid://csfqyurb2ywfh" path="res://actors/scripts/grinder_beacon.gd" id="1_pg7tx"]
 [ext_resource type="ArrayMesh" uid="uid://d0k40pyircjhn" path="res://Assets/meshes/beacon/Becon_Roundcube.res" id="2_ft08n"]
@@ -14,6 +14,9 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mobjs"]
 radius = 7.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nuq0d"]
+radius = 15.563593
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_68v8x"]
 radius = 1.4
@@ -61,6 +64,15 @@ collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
 shape = SubResource("SphereShape3D_mobjs")
+
+[node name="BuildingDetection" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 64
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BuildingDetection"]
+shape = SubResource("SphereShape3D_nuq0d")
+debug_color = Color(0.9999998, 0.0014258735, 0.098160945, 0.41960785)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_68v8x")
@@ -128,3 +140,5 @@ metadata/_custom_type_script = "uid://ceo3kiibjuffa"
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="body_entered" from="BuildingDetection" to="." method="_on_building_detection_body_entered"]
+[connection signal="body_exited" from="BuildingDetection" to="." method="_on_building_detection_body_exited"]
