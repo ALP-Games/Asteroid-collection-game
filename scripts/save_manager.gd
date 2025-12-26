@@ -9,7 +9,7 @@ var _save_path: String
 
 func _init() -> void:
 	var save_root: String
-	if OS.has_feature("release"):
+	if GameManager.IS_RELEASE:
 		save_root = OS.get_executable_path().get_base_dir() + "/"
 	else:
 		save_root = "res://"

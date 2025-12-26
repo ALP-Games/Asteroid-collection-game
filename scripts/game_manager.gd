@@ -10,10 +10,6 @@ const MAX_PLAYING_ROPE_SOUNDS := 5
 #const UPPER_ASTEROID_COUNT := 100
 var current_asteroid_count := 0
 
-var first_start: bool = true # I guess this has to come from save file or whatever
-# Save file has to be loaded at the same time everything else in the game is loading up
-# Then the variables can be pulled from it
-
 var shop: ShopManager = null
 
 var _multiplier: float = 1.0
@@ -57,13 +53,7 @@ func _run_callable(callable: Callable) -> void:
 func _ready() -> void:
 	save_data = _save_manager.load_save()
 	_initialize()
-	call_deferred("_reset_first_start")
 	set_process(not IS_RELEASE)
-
-
-func _reset_first_start() -> void:
-	#credist_amount = 1000000
-	first_start = false
 
 
 func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
@@ -79,7 +69,6 @@ func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
 
 
 func _initialize() -> void:
-	first_start = save_data.fresh_load
 	credist_amount = save_data.credist_amount
 	shop = ShopManager.new()
 	shop.item_bought.connect(_on_upgrade)

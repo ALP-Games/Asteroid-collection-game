@@ -15,7 +15,7 @@ var process_functions: Array[Callable]
 func _ready() -> void:
 	pause_menu.visible = false
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	if GameManager.first_start:
+	if GameManager.save_data.fresh_load:
 		assert(title_card_position_node != null)
 		title_card.visible = true
 		process_functions.append(_process_title_card_position)

@@ -34,7 +34,7 @@ func _ready() -> void:
 	if target:
 		physics_process_funcs.append(seek_target)
 		#physics_process_funcs.append(lerp_camera_offset)
-	if GameManager.first_start:
+	if GameManager.save_data.fresh_load:
 		camera_3d.position.z = -default_height
 		current_y_offset = default_height
 		physics_process_funcs.append(linear_camera_pan)
