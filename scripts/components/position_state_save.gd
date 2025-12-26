@@ -28,6 +28,13 @@ func _ready() -> void:
 	else:
 		_parent.global_position = save_data.get_pos_state(_id)
 		_parent.global_rotation = save_data.get_rot_state(_id)
+	
+	
+	if _parent is RigidBody3D:
+		#set_physics_process(false)
+		set_physics_process(not _parent.sleeping)
+		_parent.sleeping_state_changed.connect(func()->void:
+			set_physics_process(not _parent.sleeping))
 
 
 # this could be done on a timer or something
