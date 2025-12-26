@@ -34,11 +34,13 @@ func _enter_tree() -> void:
 			node.ready.connect(func():
 				_global_deinit = false
 				shop.emit_items_bought()
+				var instantiate_asteroids := save_data.fresh_load
 				save_data.fresh_load = false
 				save_data.instantiate_saved_objects()
-				var asteroid_spawner := node.get_child(0) as AsteroidSpawner
-				asteroid_spawner.generate_gameplay_asteroids()
-				, CONNECT_ONE_SHOT)
+				if instantiate_asteroids:
+					var asteroid_spawner := node.get_child(0) as AsteroidSpawner
+					asteroid_spawner.generate_gameplay_asteroids()
+					, CONNECT_ONE_SHOT)
 		)
 
 

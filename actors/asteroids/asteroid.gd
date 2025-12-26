@@ -1,5 +1,7 @@
 class_name Asteroid extends RigidBody3D
 
+signal scale_changed(new_scale: float)
+
 const ROCK_EXPLOSION = preload("res://actors/effects/rock_explosion.tscn")
 const ASTEROID_CRUNCH_SOUND = preload("res://actors/effects/asteroid_crunch_sound.tscn")
 
@@ -34,6 +36,7 @@ func set_mass_with_scale(new_scale: float) -> void:
 		init_on_ready = true
 	asteroid_scale *= change
 	mass = default_density * pow(new_scale, 3)
+	scale_changed.emit(asteroid_scale)
 
 
 func get_asteroid_value() -> int:

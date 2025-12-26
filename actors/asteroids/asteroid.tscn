@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgogh6ayhlim7"]
+[gd_scene load_steps=11 format=3 uid="uid://cgogh6ayhlim7"]
 
 [ext_resource type="Script" uid="uid://cyd1rw5uji4q4" path="res://actors/asteroids/asteroid.gd" id="1_adigb"]
 [ext_resource type="ArrayMesh" uid="uid://b1vi133l2ps3t" path="res://Assets/Icosphere_Icosphere_001.res" id="1_xfbri"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_mmsgs"]
 [ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_rsexs"]
 [ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_0d66c"]
+[ext_resource type="Script" uid="uid://dgw0kj7aardgm" path="res://scripts/components/instantiated_object_save.gd" id="7_ojjj8"]
+[ext_resource type="Script" uid="uid://cui8llprenvdm" path="res://actors/asteroids/asteroid_loader.gd" id="8_at31i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xfbri"]
 
@@ -48,3 +50,11 @@ metadata/_custom_type_script = "uid://dtpuy1iftshns"
 [node name="MouseOverComponent" type="Node" parent="."]
 script = ExtResource("6_0d66c")
 metadata/_custom_type_script = "uid://b6pqa311a7k0c"
+
+[node name="InstantiatedObjectSave" type="Node" parent="."]
+script = ExtResource("7_ojjj8")
+save_position_component = true
+metadata/_custom_type_script = "uid://dgw0kj7aardgm"
+
+[node name="AsteroidLoader" type="Node" parent="."]
+script = ExtResource("8_at31i")
