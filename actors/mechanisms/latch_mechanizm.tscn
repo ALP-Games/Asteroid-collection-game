@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://bo10hq38evinq" path="res://actors/mechanisms/latch_mechanism.gd" id="1_k2u0o"]
 [ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_t0rci"]
 [ext_resource type="Script" uid="uid://dtpuy1iftshns" path="res://scripts/meterial_overlayer.gd" id="4_gbovt"]
-[ext_resource type="ArrayMesh" uid="uid://cf6vj6nj6dlgh" path="res://Assets/canister_Cylinder_004.res" id="4_y5f50"]
-[ext_resource type="ArrayMesh" uid="uid://bg1xfn3geniap" path="res://Assets/canister_Cylinder_005.res" id="5_0nbqj"]
+[ext_resource type="ArrayMesh" uid="uid://dhhvf7lyhrsai" path="res://Assets/canister_Cylinder_004.res" id="4_y5f50"]
+[ext_resource type="ArrayMesh" uid="uid://usenrcj225in" path="res://Assets/canister_Cylinder_005.res" id="5_0nbqj"]
 [ext_resource type="Material" uid="uid://ypg1md42sf1m" path="res://shaders/materials/yellow_outline.tres" id="5_goe2f"]
 [ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_uh6p8"]
 [ext_resource type="PackedScene" uid="uid://wwkbjrq1iad4" path="res://effects/gas_emission_effect.tscn" id="7_gbovt"]
@@ -61,7 +61,7 @@ mesh = ExtResource("4_y5f50")
 skeleton = NodePath("../..")
 
 [node name="HousingAttachment" type="Generic6DOFJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4136789)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.414)
 node_a = NodePath("..")
 
 [node name="Latch" type="RigidBody3D" parent="."]

@@ -9,12 +9,15 @@ var fresh_load: bool = true
 @export var items_bought: PackedInt32Array # these need to come from the save
 @export var upgrade_levels: PackedInt32Array
 
+@export var save_meta_data: Dictionary
+
 enum POS_ELEM {
 	POS_OFFSET,
 	ROT_OFFSET,
 	TOTAL
 }
 @export var position_states: PackedVector3Array
+@export var _freed_position_ids: PackedInt32Array
 
 func register_existing_pos_id(id: int) -> void:
 	var last_elem := id * POS_ELEM.TOTAL + POS_ELEM.TOTAL
@@ -23,9 +26,22 @@ func register_existing_pos_id(id: int) -> void:
 
 
 func register_new_pos_id() -> int:
-	var new_element_count := position_states.size() + POS_ELEM.TOTAL
-	position_states.resize(new_element_count)
-	return (new_element_count - POS_ELEM.TOTAL) / POS_ELEM.TOTAL
+	var fresh_id: int
+	if _freed_position_ids.size() > 0:
+		fresh_id = _freed_position_ids[_freed_position_ids.size() - 1]
+		_freed_position_ids.resize(_freed_position_ids.size() - 1)
+	else:
+		var new_element_count := position_states.size() + POS_ELEM.TOTAL
+		position_states.resize(new_element_count)
+		fresh_id = (new_element_count - POS_ELEM.TOTAL) / POS_ELEM.TOTAL
+	return fresh_id
+
+func free_pos_id(id: int) -> void:
+	_freed_position_ids.append(id)
+
+#func free_instantiated(id: int) -> void:
+	#instantiated_objects[id][InstKeys.FREED] = true
+	#_freed_instantiated_ids.append(id)
 
 
 func get_pos_state(id: int) -> Vector3:
@@ -59,13 +75,14 @@ class InstKeys extends Object:
 
 
 @export var instantiated_objects: Array[Dictionary]
-@export var _freed_instantiated_ids: Array[int]
+@export var _freed_instantiated_ids: PackedInt32Array
 
 
 func register_new_instantiated() -> int:
 	var fresh_id: int
 	if _freed_instantiated_ids.size() > 0:
-		fresh_id = _freed_instantiated_ids.pop_back()
+		fresh_id = _freed_instantiated_ids[_freed_instantiated_ids.size() - 1]
+		_freed_instantiated_ids.resize(_freed_instantiated_ids.size() - 1)
 	else:
 		fresh_id = instantiated_objects.size()
 		instantiated_objects.resize(fresh_id + 1)
@@ -74,7 +91,10 @@ func register_new_instantiated() -> int:
 	return fresh_id
 
 func free_instantiated(id: int) -> void:
-	instantiated_objects[id][InstKeys.FREED] = true
+	var entry := instantiated_objects[id]
+	entry[InstKeys.FREED] = true
+	if entry.has(InstKeys.POS):
+		free_pos_id(entry[InstKeys.POS])
 	_freed_instantiated_ids.append(id)
 
 

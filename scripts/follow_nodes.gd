@@ -5,7 +5,11 @@ class_name FollowNodes extends Node
 @export var following_nodes: Array[Node3D]
 #@export var update_follow_nodes: bool = true
 
-var update_follow_nodes: bool = false
+var update_follow_nodes: bool = false:
+	set(value):
+		update_follow_nodes = value
+		if not Engine.is_editor_hint():
+			set_process(update_follow_nodes)
 
 var update_follow_nodes_func: Callable
 
@@ -15,6 +19,7 @@ func _ready() -> void:
 		update_follow_nodes_func = _editor_update_follow_nodes
 	else:
 		update_follow_nodes_func = _runtime_update_follow_nodes
+		set_process(update_follow_nodes)
 
 
 func _process(_delta: float) -> void:

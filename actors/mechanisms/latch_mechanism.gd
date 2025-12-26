@@ -24,7 +24,7 @@ const MIN_PROTRUSION_DISTANCE: float = 0.1
 @export var sound_min_pitch: float = 0.9
 
 @onready var slider_joint_3d: SliderJoint3D = $SliderJoint3D
-@onready var housing_attachment: Generic6DOFJoint3D = $HousingAttachment
+@onready var housing_attachments: Array[Generic6DOFJoint3D] = [$HousingAttachment]
 @onready var latch: RigidBody3D = $Latch
 @onready var gas_emission_effects_side: Array[GPUParticles3D] = [$GasEmissionEffectLeft, $GasEmissionEffectRight]
 @onready var gas_emission_effect_front: GPUParticles3D = $GasEmissionEffectFront
@@ -55,7 +55,8 @@ func _ready() -> void:
 				dependant_latch.dependant_latches.append(self)
 	
 	if attachment_node:
-		housing_attachment.node_b = attachment_node.get_path()
+		for attachment in housing_attachments:
+			attachment.node_b = attachment_node.get_path()
 
 func _physics_process(_delta: float) -> void:
 	# we can't use global z, we need to normalize it or something
@@ -101,7 +102,8 @@ func _process_latch() -> void:
 func _do_unlatch() -> void:
 	latched = false
 	slider_joint_3d.queue_free()
-	housing_attachment.queue_free()
+	for attachment in housing_attachments:
+		attachment.queue_free()
 	var instantiated_root := get_tree().get_first_node_in_group("instantiated_root")
 	var latch_global_transform := latch.global_transform
 	var housing_global_transform := global_transform

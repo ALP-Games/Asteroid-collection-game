@@ -11,6 +11,7 @@ const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 var hooked_places_count: int = 0
 
 var _total_mass: float = 0
+var _handles_enabled: bool = false
 
 
 var shop_interaction := Interaction.new() # Maybe interactions should be a resource?, then PriorityQueueItem has to be a resource
@@ -31,6 +32,13 @@ func _ready() -> void:
 	var handle_array: Array = get_meta(Handle.HANDLE_META, [])
 	for handle: RigidBody3D in handle_array:
 		_total_mass += handle.mass
+	
+	var instance_loader: InstanceLoader = InstanceLoader.core().get_from(self)
+	var save_data := GameManager.save_data
+	if save_data.fresh_load:
+		#save_data
+		pass
+		#instance_loader.
 
 
 func get_total_mass() -> float:
@@ -84,9 +92,17 @@ func _enable_shop_screen() -> void:
 
 
 func enable_handles() -> void:
-	handles.all(func(handle):
+	handles.all(func(handle: Handle):
 		handle.start_enablement_animation()
 		return true)
+	_handles_enabled = true
+
+
+func enable_handles_skip_animation() -> void:
+	handles.all(func(handle: Handle):
+		handle.enable_skip_animation()
+		return true)
+	_handles_enabled = true
 
 
 func _item_bought(item_type: ShopManager.ItemType, _count: int) -> void:

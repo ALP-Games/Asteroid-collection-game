@@ -34,6 +34,12 @@ func get_total_mass() -> float:
 
 
 func enable_handles() -> void:
-	_handles.all(func(handle):
+	_handles.all(func(handle: Handle):
 		handle.start_enablement_animation()
+		return true)
+
+
+func enable_handles_skip_animation() -> void:
+	_handles.all(func(handle: Handle):
+		handle.enable_skip_animation()
 		return true)

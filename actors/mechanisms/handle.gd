@@ -61,6 +61,7 @@ func _ready():
 	if not Engine.is_editor_hint():
 		_disabe_collisions(true)
 
+
 func _process(_delta):
 	if not Engine.is_editor_hint():
 		return
@@ -89,6 +90,12 @@ func start_enablement_animation(do_at_end: Callable = _do_nothing) -> void:
 			graphics.update_follow_nodes = false)
 	if do_at_end != _do_nothing:
 		enablement_tween.tween_callback(do_at_end)
+
+
+func enable_skip_animation() -> void:
+	_show_target_instead_of_starting = true
+	_disabe_collisions(false)
+	graphics.refresh()
 
 
 func _do_nothing() -> void:
