@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://flpa4on2t8e3"]
+[gd_scene load_steps=15 format=3 uid="uid://flpa4on2t8e3"]
 
 [ext_resource type="Script" uid="uid://bo10hq38evinq" path="res://actors/mechanisms/latch_mechanism.gd" id="1_k2u0o"]
 [ext_resource type="Script" uid="uid://bi2ox86m0yg1y" path="res://scripts/components/hookable_component.gd" id="3_t0rci"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" uid="uid://b6pqa311a7k0c" path="res://scripts/components/mouse_over_component.gd" id="6_uh6p8"]
 [ext_resource type="PackedScene" uid="uid://wwkbjrq1iad4" path="res://effects/gas_emission_effect.tscn" id="7_gbovt"]
 [ext_resource type="AudioStream" uid="uid://cjkmlgrt2f54u" path="res://sounds/rcs-thrusters/rcs-thruster-loop-non-muffled.ogg" id="7_goe2f"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_y5f50"]
+bounce = 0.1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_k2u0o"]
 height = 2.4174805
@@ -26,6 +29,7 @@ size = Vector3(1.9365234, 1, 3.0361328)
 [node name="LatchMechanizm" type="RigidBody3D"]
 collision_mask = 21
 mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_y5f50")
 script = ExtResource("1_k2u0o")
 retraction_acceleration = 40.0
 strength_exponent = 1.0
