@@ -24,6 +24,7 @@ run/default_gravity=0.0
 [autoload]
 
 GameManager="*res://scripts/game_manager.gd"
+GlobalUi="*res://ui/global_ui.tscn"
 
 [display]
 

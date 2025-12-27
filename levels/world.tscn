@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/scenes/asteroid_spawner.tscn" id="1_vons5"]
 [ext_resource type="PackedScene" uid="uid://be5mn1fxx1nf7" path="res://actors/scenes/camera_3d.tscn" id="2_vons5"]
 [ext_resource type="PackedScene" uid="uid://cpnachpt8s3bi" path="res://actors/scenes/collection_zone.tscn" id="3_712nc"]
-[ext_resource type="PackedScene" uid="uid://f071xxnfd48x" path="res://ui/ui_controller.tscn" id="6_687qm"]
 [ext_resource type="PackedScene" uid="uid://btphdgvvmu41w" path="res://levels/world_environment.tscn" id="6_lmpr0"]
+[ext_resource type="PackedScene" uid="uid://b1kfy0mbnfej" path="res://ui/gameplay_ui/scenes/gameplay_ui.tscn" id="7_re8x6"]
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/scenes/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
 [ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_re8x6"]
@@ -49,8 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.00829, 0, 19.318)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UIController" parent="CanvasLayer" node_paths=PackedStringArray("title_card_position_node") instance=ExtResource("6_687qm")]
-title_card_position_node = NodePath("../../TitlePosition")
+[node name="GameplayUI" parent="CanvasLayer" instance=ExtResource("7_re8x6")]
 
 [node name="BillBoard" parent="." instance=ExtResource("9_re8x6")]
 transform = Transform3D(0.7477981, 0, -0.66392624, 0, 1, 0, 0.66392624, 0, 0.7477981, 7.6673, 0, -7.42499)

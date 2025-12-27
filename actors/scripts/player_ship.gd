@@ -177,16 +177,16 @@ func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
 	# this match could be type based
 	match item_type:
 		ShopManager.ItemType.ENGINE_POWER:
-			var thruster_variables: ThrusterUpgradeVariables = GameManager.shop.\
-				get_upgrade_variables(item_type)
-			var data := thruster_variables.get_data(starting_mass)
+			var thruster_variables = GameManager.shop.\
+				get_upgrade_variables(item_type) # as ThrusterUpgradeVariables # broken because of GDScript bug
+			var data = thruster_variables.get_data(starting_mass)
 			thrust_force = data.thrust_force
 			stop_linear_amount = data.stop_linear_amount
 			reverse_force = data.reverse_force
 		ShopManager.ItemType.WEIGHT:
-			var mass_variables: MassUpgradeVariables = GameManager.shop.\
-				get_upgrade_variables(item_type)
-			var data := mass_variables.get_data()
+			var mass_variables = GameManager.shop.\
+				get_upgrade_variables(item_type) # as MassUpgradeVariables # broken because of GDScript bug
+			var data = mass_variables.get_data()
 			mass = starting_mass + data.mass
 			min_collision_force_for_stun = starting_min_collision_force_for_stun * (mass / starting_mass)
 

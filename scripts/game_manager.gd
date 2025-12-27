@@ -1,9 +1,12 @@
 extends Node
 
 signal credits_amount_changed(new_amount: int)
+signal game_state_changed()
 
-const VICTORY_LEVEL = preload("res://levels/game_end.tscn")
 const CLICK_SOUND_PLAYER = preload("res://ui/click_sound_player.tscn")
+
+const WORLD_SCENE = preload("uid://pg35x7vyq772")
+const VICTORY_SCENE = preload("res://levels/game_end.tscn")
 
 const MAX_PLAYING_ROPE_SOUNDS := 5
 
@@ -12,6 +15,10 @@ var current_asteroid_count := 0
 
 var shop: ShopManager = null
 
+var _state: Game.State:
+	set(value):
+		_state = value
+		game_state_changed.emit()
 var _multiplier: float = 1.0
 var _global_deinit: bool = false
 
@@ -53,6 +60,7 @@ func _run_callable(callable: Callable) -> void:
 
 
 func _ready() -> void:
+	_state = Game.State.GAMEPLAY
 	save_data = _save_manager.load_save()
 	_initialize()
 	set_process(not IS_RELEASE)
@@ -93,6 +101,19 @@ func quit_game() -> void:
 	get_tree().quit()
 
 
+func load_gameplay() -> void:
+	_global_deinit = true
+	_state = Game.State.GAMEPLAY
+	get_tree().change_scene_to_packed(WORLD_SCENE)
+
+
+func load_victory_level() -> void:
+	_save_manager.sync_save()
+	_global_deinit = true
+	_state = Game.State.VICTORY_SCREEN
+	get_tree().change_scene_to_packed(VICTORY_SCENE)
+
+
 func get_multiplier() -> float:
 	return _multiplier
 
@@ -106,6 +127,10 @@ func play_click_sound() -> void:
 	get_tree().root.add_child(click_sound_instance)
 	click_sound_instance.play()
 	click_sound_instance.finished.connect(func():click_sound_instance.queue_free(), CONNECT_ONE_SHOT)
+
+
+func get_state() -> Game.State:
+	return _state
 
 
 # Debug only

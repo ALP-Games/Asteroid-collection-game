@@ -17,4 +17,4 @@ func _finish_game() -> void:
 	var timer_instance := Timer.new()
 	instantiated_root.add_child(timer_instance)
 	timer_instance.start(0.5)
-	timer_instance.timeout.connect(func():get_tree().change_scene_to_packed(VICTORY_LEVEL))
+	timer_instance.timeout.connect(GameManager.load_victory_level)

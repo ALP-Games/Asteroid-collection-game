@@ -5,7 +5,6 @@ class_name GameplayUI extends Control
 @export var delay_before_input_read: float = 2.0
 @export var fade_out_time: float = 1.0
 
-@onready var gameplay_ui: MainUI = $GameplayUI
 @onready var pause_menu: Control = $PauseMenu
 @onready var title_card: TextureRect = $TitleCard
 
@@ -51,7 +50,8 @@ func _physics_process(_delta: float) -> void:
 		if not get_tree().paused:
 			pause_menu.visible = true
 			get_tree().paused = true
-			GameManager._save_manager.sync_save()
+			if GameManager.get_state() == Game.State.GAMEPLAY:
+				GameManager._save_manager.sync_save()
 		else:
 			pause_menu.visible = false
 			get_tree().paused = false
