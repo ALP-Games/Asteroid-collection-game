@@ -1,22 +1,23 @@
 class_name WarningBox extends VBoxContainer
 
-#TODO: this mess just caused a bug
-# Static - very bad, add a manager that resets on scene load
-static var shown_warinings: Array[WarningBox]
-
 @export var warning_priority: int = 0
 
 # TODO: make sure 2 WarningBoxes are not active at the same time
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var warning_manager: WarningManager = null
+
 
 func _ready() -> void:
 	visible = false
+	# Weird and crutchy, but don't care
+	warning_manager = get_parent()
 
 
 func show_warning() -> void:
 	# this looks like there is too much code
+	var shown_warinings = warning_manager.shown_warinings
 	if shown_warinings.size() > 0:
 		if shown_warinings[0] == self:
 			_show()
@@ -38,7 +39,7 @@ func show_warning() -> void:
 
 
 func is_shown() -> bool:
-	return shown_warinings.find(self) != -1
+	return warning_manager.shown_warinings.find(self) != -1
 
 
 func _show() -> void:
@@ -47,6 +48,7 @@ func _show() -> void:
 
 
 func hide_warning() -> void:
+	var shown_warinings = warning_manager.shown_warinings
 	if shown_warinings.size() > 0 and shown_warinings[0] == self:
 		shown_warinings.remove_at(0)
 		if shown_warinings.size() > 0:
