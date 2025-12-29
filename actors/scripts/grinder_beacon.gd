@@ -78,12 +78,11 @@ func _refresh_gizmo_color() -> void:
 		var actual_gizmo := _hold_e_gizmo.get_gizmo()
 		if actual_gizmo:
 			gizmo_icon_control = GizmoIconControl.core().get_from(actual_gizmo)
-		
-	if gizmo_inactive:
-		if gizmo_icon_control:
+	
+	if gizmo_icon_control:
+		if gizmo_inactive:
 			gizmo_icon_control.set_color(inactive_gizmo_color)
-	else:
-		if gizmo_icon_control:
+		else:
 			gizmo_icon_control.set_color(Color.WHITE)
 
 
