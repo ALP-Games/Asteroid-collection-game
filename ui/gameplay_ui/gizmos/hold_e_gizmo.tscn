@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtlenb301o4r3"]
+[gd_scene load_steps=6 format=3 uid="uid://dtlenb301o4r3"]
 
 [ext_resource type="Script" uid="uid://dkxb5cj4nfi1r" path="res://ui/gameplay_ui/gizmos/gizmo_over_node3d.gd" id="1_fafyg"]
 [ext_resource type="Texture2D" uid="uid://bqgp4mys5etv8" path="res://Assets/Icons/Eicon.png" id="2_fafyg"]
 [ext_resource type="Texture2D" uid="uid://4skbtdm3ko0x" path="res://Assets/Icons/circle_icon.png" id="3_1m17l"]
 [ext_resource type="Script" uid="uid://diaejpvwtdugb" path="res://ui/gameplay_ui/gizmos/progress_bar_component.gd" id="4_fafyg"]
+[ext_resource type="Script" uid="uid://v5ixmxixd1w" path="res://scripts/components/gizmo_icon_control.gd" id="5_1m17l"]
 
 [node name="HoldEGizmo" type="Control"]
 layout_mode = 3
@@ -57,3 +58,8 @@ texture_progress = ExtResource("3_1m17l")
 [node name="ProgressBarComponent" type="Node" parent="." node_paths=PackedStringArray("progress_bar")]
 script = ExtResource("4_fafyg")
 progress_bar = NodePath("../TextureProgressBar")
+
+[node name="GizmoIconControl" type="Node" parent="." node_paths=PackedStringArray("_gizmo_icon")]
+script = ExtResource("5_1m17l")
+_gizmo_icon = NodePath("../KeyPrompt")
+metadata/_custom_type_script = "uid://v5ixmxixd1w"

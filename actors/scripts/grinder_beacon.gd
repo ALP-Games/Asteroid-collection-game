@@ -9,6 +9,8 @@ var _interactor_in_range: InteractorComponent = null
 var _interaction_added: bool = false
 var _buildings_in_range: int = 0
 
+@export var inactive_gizmo_color := Color("b0b0b0ff") 
+
 @onready var _hookable_component: HookableComponent = $HookableComponent
 @onready var _decelerator_component: DeceleratorComponent = $DeceleratorComponent
 
@@ -51,16 +53,38 @@ func _on_building_detection_body_exited(_body: Node3D) -> void:
 
 
 func _check_interaction() -> void:
-	assert(_buildings_in_range >= 0)
-	if not _interaction_added and _interactor_in_range and _buildings_in_range == 0:
+	if not _interaction_added and _interactor_in_range:
 		_interaction_added = true
 		_interactor_in_range.add_interaction(_deploy_interaction)
 		if not _hold_e_gizmo:
 			_hold_e_gizmo = (get_tree().get_first_node_in_group("gizmo_manager") as GizmoManager).get_hold_e_gizmo_proxy(self)
-	elif _interaction_added and _interactor_in_range and  _buildings_in_range > 0:
-		_interaction_added = false
-		_interactor_in_range.remove_interaction(_deploy_interaction)
-		_hold_e_gizmo.disable()
+	
+	var gizmo_inactive := _buildings_in_range > 0
+	_deploy_interaction.block_interaction = gizmo_inactive
+	
+	if _hold_e_gizmo:
+		if not _hold_e_gizmo.get_gizmo():
+			_hold_e_gizmo.gizmo_instantiated_and_ready.connect(_refresh_gizmo_color)
+		else:
+			if _hold_e_gizmo.gizmo_instantiated_and_ready.is_connected(_refresh_gizmo_color):
+				_hold_e_gizmo.gizmo_instantiated_and_ready.disconnect(_refresh_gizmo_color)
+			_refresh_gizmo_color()
+
+
+func _refresh_gizmo_color() -> void:
+	var gizmo_inactive := _buildings_in_range > 0
+	var gizmo_icon_control: GizmoIconControl
+	if _hold_e_gizmo:
+		var actual_gizmo := _hold_e_gizmo.get_gizmo()
+		if actual_gizmo:
+			gizmo_icon_control = GizmoIconControl.core().get_from(actual_gizmo)
+		
+	if gizmo_inactive:
+		if gizmo_icon_control:
+			gizmo_icon_control.set_color(inactive_gizmo_color)
+	else:
+		if gizmo_icon_control:
+			gizmo_icon_control.set_color(Color.WHITE)
 
 
 func _add_interactor(interaction_component: InteractorComponent) -> void:

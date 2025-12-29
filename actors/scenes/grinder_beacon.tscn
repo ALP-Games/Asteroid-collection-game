@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_yl572"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mobjs"]
-radius = 7.0
+radius = 10.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nuq0d"]
 radius = 15.563593

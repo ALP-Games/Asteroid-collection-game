@@ -6,9 +6,13 @@ var _timer: SceneTreeTimer = null
 
 var _interaction_hit: bool = false
 
+var block_interaction: bool = false
 
-## UNDESTED CODE, ESPECIALLY is_zero_approx(timer.time_left)
+
 func interact(is_just_pressed: bool, is_pressed: bool) -> void:
+	if block_interaction:
+		_timer = null
+		return
 	if is_just_pressed:
 		_interaction_hit = false
 		_timer = GameManager.get_tree().create_timer(hold_time, false, false, false)

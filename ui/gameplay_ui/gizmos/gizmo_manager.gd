@@ -32,7 +32,11 @@ const RIGHT_HOLD_GIZMO = preload("uid://3qwfbs7tmgw0")
 		#return null
 
 
+# I think the sharade with this GizmoProxy is pointless
+# We should've just been able to request a specific gizmo to be instantiated
 class GizmoProxy extends RefCounted:
+	
+	signal gizmo_instantiated_and_ready
 	
 	enum State
 	{
@@ -55,6 +59,7 @@ class GizmoProxy extends RefCounted:
 	func enable() -> void:
 		if not _gizmo_instance:
 			_gizmo_instance = _gizmo_instantiation_func.call()
+			_gizmo_instance.ready.connect(func():gizmo_instantiated_and_ready.emit(), CONNECT_ONE_SHOT)
 			_manager.add_child(_gizmo_instance)
 		if _state == State.ENABLED:
 			return
