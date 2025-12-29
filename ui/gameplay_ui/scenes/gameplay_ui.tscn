@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1kfy0mbnfej"]
+[gd_scene load_steps=12 format=3 uid="uid://b1kfy0mbnfej"]
 
 [ext_resource type="Script" uid="uid://bxdxj6711e52i" path="res://ui/gameplay_ui/scripts/gameplay_ui.gd" id="1_v5qxn"]
 [ext_resource type="PackedScene" uid="uid://cs1vmfcrtxu06" path="res://ui/gameplay_ui/scenes/shop_screen.tscn" id="2_3lvfr"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://p4er7021k4wn" path="res://ui/gameplay_ui/scripts/warning_manager.gd" id="5_3xegi"]
 [ext_resource type="PackedScene" uid="uid://c8f8d033685gb" path="res://ui/gameplay_ui/scenes/hook_ui.tscn" id="6_wapsp"]
 [ext_resource type="Texture2D" uid="uid://2sx7e81fofnl" path="res://Assets/Icons/ui_logo.png" id="10_srexv"]
+[ext_resource type="Script" uid="uid://c0dckycyl3li2" path="res://ui/gameplay_ui/messages/message_container.gd" id="11_1j2xw"]
 
 [node name="GameplayUI" type="Control"]
 layout_mode = 3
@@ -110,3 +111,18 @@ size_flags_stretch_ratio = 0.04
 
 [node name="HookUI" parent="." instance=ExtResource("6_wapsp")]
 layout_mode = 1
+
+[node name="MessageContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_1j2xw")
+fade_in_time = 0.3
+fade_out_time = 0.3
+travel_time = 0.5
+center_offset = 0.4
+metadata/_custom_type_script = "uid://c0dckycyl3li2"

@@ -73,6 +73,9 @@ func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
 	var multiplier_variables = GameManager.shop.\
 		get_upgrade_variables(item_type)
 	_multiplier = multiplier_variables.get_data()
+	if _count > 0:
+		var message_container: MessageContainer = get_tree().get_first_node_in_group(MessageContainer.GROUP)
+		message_container.add_message("Cash multiplier increased to " + str(_multiplier) + "x")
 	if _count == 5:
 		var shop_screen: ShopScreen = get_tree().get_first_node_in_group("shop_screen")
 		shop_screen.add_end_game_prompt()
