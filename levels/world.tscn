@@ -49,7 +49,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.00829, 0, 19.318)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="GameplayUI" parent="CanvasLayer" instance=ExtResource("7_re8x6")]
+[node name="GameplayUI" parent="CanvasLayer" node_paths=PackedStringArray("title_card_position_node") instance=ExtResource("7_re8x6")]
+title_card_position_node = NodePath("../../TitlePosition")
 
 [node name="BillBoard" parent="." instance=ExtResource("9_re8x6")]
 transform = Transform3D(0.7477981, 0, -0.66392624, 0, 1, 0, 0.66392624, 0, 0.7477981, 7.6673, 0, -7.42499)

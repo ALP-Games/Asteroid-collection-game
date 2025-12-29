@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1kfy0mbnfej"]
+[gd_scene load_steps=11 format=3 uid="uid://b1kfy0mbnfej"]
 
 [ext_resource type="Script" uid="uid://bxdxj6711e52i" path="res://ui/gameplay_ui/scripts/gameplay_ui.gd" id="1_v5qxn"]
 [ext_resource type="PackedScene" uid="uid://cs1vmfcrtxu06" path="res://ui/gameplay_ui/scenes/shop_screen.tscn" id="2_3lvfr"]
@@ -9,6 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://da0v0q3k618re" path="res://ui/Themes/label_settings.tres" id="4_vasx0"]
 [ext_resource type="Script" uid="uid://p4er7021k4wn" path="res://ui/gameplay_ui/scripts/warning_manager.gd" id="5_3xegi"]
 [ext_resource type="PackedScene" uid="uid://c8f8d033685gb" path="res://ui/gameplay_ui/scenes/hook_ui.tscn" id="6_wapsp"]
+[ext_resource type="Texture2D" uid="uid://2sx7e81fofnl" path="res://Assets/Icons/ui_logo.png" id="10_srexv"]
 
 [node name="GameplayUI" type="Control"]
 layout_mode = 3
@@ -19,6 +20,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_v5qxn")
+
+[node name="TitleCard" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 45.335
+offset_right = 256.0
+offset_bottom = 188.33499
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("10_srexv")
 
 [node name="PointerUI" parent="." instance=ExtResource("2_3xegi")]
 layout_mode = 1

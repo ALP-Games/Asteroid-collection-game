@@ -151,7 +151,7 @@ func _should_retract_last() -> bool:
 
 
 func _accelerate_last_segment_retraction() -> void:
-	if not last_segment:
+	if not last_segment and is_inside_tree():
 		return
 	var desired_direction := (global_position - last_segment.rope_end.global_position).normalized()
 	var negative_force:= -(last_segment.linear_velocity.normalized() - desired_direction) * retraction_force
