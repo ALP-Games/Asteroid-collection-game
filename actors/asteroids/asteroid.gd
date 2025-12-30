@@ -2,8 +2,14 @@ class_name Asteroid extends RigidBody3D
 
 signal scale_changed(new_scale: float)
 
+const ASTEROID_COLLISION_EFFECT = preload("uid://btw85yqdumem8")
 const ROCK_EXPLOSION = preload("res://actors/effects/rock_explosion.tscn")
 const ASTEROID_CRUNCH_SOUND = preload("res://actors/effects/asteroid_crunch_sound.tscn")
+
+const MIN_COLLISION_LENGTH = 5.0
+const SPEED_SCALE_MULTIPLIER = 0.25
+const MIN_SPEED_SCALE = 0.5
+const PARTICLES_MULTIPLIER = 0.5
 
 const DEFAULT_SCALE: float = 1.0
 
@@ -25,6 +31,41 @@ func _ready() -> void:
 	var change := asteroid_scale / DEFAULT_SCALE
 	mesh_instance_3d.scale *= change
 	collision_shape_3d.scale *= change
+
+
+func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
+	var contact_count := state.get_contact_count()
+	for contact_id in contact_count:
+		var collider := state.get_contact_collider_object(contact_id)
+		if collider is RopeSegment and not collider is Hook:
+			continue 
+		var collider_velocity := state.get_contact_collider_velocity_at_position(contact_id)
+		var local_velocity := state.get_contact_local_velocity_at_position(contact_id)
+		var normal := state.get_contact_local_normal(contact_id)
+		var relative_velocity := collider_velocity - local_velocity
+		var velocity_length: float = abs(relative_velocity.dot(normal))
+		print("Collision velocity length - ", velocity_length)
+		if velocity_length < MIN_COLLISION_LENGTH:
+			continue
+		var contact_position := state.get_contact_local_position(contact_id)
+		var collision_direction := collider_velocity.normalized()
+		_instantiate_asteroid_hit(collision_direction, contact_position, velocity_length / MIN_COLLISION_LENGTH)
+
+
+func _instantiate_asteroid_hit(velocity_direction: Vector3, contact_position: Vector3, strength: float) -> void:
+	var asteroid_hit_effect := ASTEROID_COLLISION_EFFECT.instantiate() as Node3D
+	add_child(asteroid_hit_effect)
+	#asteroid_hit_effect.scale *= asteroid_scale
+	#get_tree().get_first_node_in_group("instantiated_root").add_child(asteroid_hit_effect)
+	asteroid_hit_effect.global_position = contact_position
+	asteroid_hit_effect.look_at(contact_position - velocity_direction)
+	var particles := asteroid_hit_effect.get_child(0) as GPUParticles3D
+	particles.amount *= PARTICLES_MULTIPLIER * strength
+	particles.speed_scale *= SPEED_SCALE_MULTIPLIER * strength
+	particles.speed_scale = max(particles.speed_scale, MIN_SPEED_SCALE)
+	particles.emitting = true
+	particles.finished.connect(func():asteroid_hit_effect.queue_free())
+
 
 # this scale is a diameter
 func set_mass_with_scale(new_scale: float) -> void:

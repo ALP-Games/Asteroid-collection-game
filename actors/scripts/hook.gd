@@ -26,9 +26,9 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 			parent_emitter.stop_emit()
 			continue
 		hookable.hook(self)
-		if colliding_object is Asteroid:
-			var velocity_direction := state.get_contact_local_velocity_at_position(index).normalized()
-			_instantiate_asteroid_hit(velocity_direction, contact_position)
+		#if colliding_object is Asteroid:
+			#var velocity_direction := state.get_contact_local_velocity_at_position(index).normalized()
+			#_instantiate_asteroid_hit(velocity_direction, contact_position)
 		hooked = true
 		attach_at_point(colliding_object, contact_position)
 		target_reached.emit(colliding_object, hook_joint)

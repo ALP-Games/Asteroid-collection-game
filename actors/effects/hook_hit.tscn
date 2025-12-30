@@ -27,8 +27,9 @@ turbulence_influence_max = 0.046
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
 amount = 30
+lifetime = 4.0
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.95
 randomness = 1.0
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gbqnl")
