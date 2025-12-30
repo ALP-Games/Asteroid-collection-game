@@ -56,4 +56,5 @@ func destroy_asteroid() -> void:
 	destroy_sound.global_position = global_position
 	destroy_sound.finished.connect(func():destroy_sound.queue_free())
 	(get_tree().get_first_node_in_group("gizmo_manager") as GizmoManager).get_count_up_gizmo(self, get_asteroid_value()).enable()
+	GameManager.save_data.asteroids_ground += 1
 	queue_free()
