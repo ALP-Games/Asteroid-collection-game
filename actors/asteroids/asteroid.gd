@@ -48,6 +48,7 @@ func destroy_asteroid() -> void:
 	get_tree().get_first_node_in_group("instantiated_root").add_child(destroy_effect)
 	destroy_effect.global_position = global_position
 	var particles := destroy_effect.get_child(0) as GPUParticles3D
+	particles.amount *= asteroid_scale
 	particles.emitting = true
 	particles.finished.connect(func():destroy_effect.queue_free())
 	
