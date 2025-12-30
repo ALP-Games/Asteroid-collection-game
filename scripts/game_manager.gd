@@ -10,7 +10,6 @@ const VICTORY_SCENE = preload("res://levels/game_end.tscn")
 
 const MAX_PLAYING_ROPE_SOUNDS := 5
 
-#const UPPER_ASTEROID_COUNT := 100
 var current_asteroid_count := 0
 
 var shop: ShopManager = null
@@ -21,6 +20,7 @@ var _state: Game.State:
 		game_state_changed.emit()
 var _multiplier: float = 1.0
 var _global_deinit: bool = false
+var _scene_loading: bool = false
 
 @onready var _save_manager := SaveManager.new()
 @onready var IS_RELEASE := OS.has_feature("release")
@@ -39,11 +39,13 @@ func _enter_tree() -> void:
 	get_tree().root.child_entered_tree.connect(func(node: Node):
 		if node.name == "World":
 			node.ready.connect(func():
+				_scene_loading = true
 				_global_deinit = false
 				shop.emit_items_bought()
 				var instantiate_asteroids := save_data.fresh_load
 				save_data.fresh_load = false
 				save_data.instantiate_saved_objects()
+				_scene_loading = false
 				if instantiate_asteroids:
 					var asteroid_spawner := node.get_child(0) as AsteroidSpawner
 					asteroid_spawner.generate_gameplay_asteroids()
@@ -73,7 +75,7 @@ func _on_upgrade(item_type: ShopManager.ItemType, _count: int) -> void:
 	var multiplier_variables = GameManager.shop.\
 		get_upgrade_variables(item_type)
 	_multiplier = multiplier_variables.get_data()
-	if _count > 0:
+	if _count > 0 and not _scene_loading:
 		var message_container: MessageContainer = get_tree().get_first_node_in_group(MessageContainer.GROUP)
 		message_container.add_message("Cash multiplier increased to " + str(_multiplier) + "x")
 	if _count == 5:
