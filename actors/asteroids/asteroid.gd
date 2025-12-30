@@ -6,7 +6,7 @@ const ASTEROID_COLLISION_EFFECT = preload("uid://btw85yqdumem8")
 const ROCK_EXPLOSION = preload("res://actors/effects/rock_explosion.tscn")
 const ASTEROID_CRUNCH_SOUND = preload("res://actors/effects/asteroid_crunch_sound.tscn")
 
-const MIN_COLLISION_LENGTH = 5.0
+const MIN_COLLISION_LENGTH = 7.0
 const SPEED_SCALE_MULTIPLIER = 0.25
 const MIN_SPEED_SCALE = 0.5
 const PARTICLES_MULTIPLIER = 0.5
@@ -44,11 +44,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var normal := state.get_contact_local_normal(contact_id)
 		var relative_velocity := collider_velocity - local_velocity
 		var velocity_length: float = abs(relative_velocity.dot(normal))
-		print("Collision velocity length - ", velocity_length)
+		#print("Collision velocity length - ", velocity_length)
 		if velocity_length < MIN_COLLISION_LENGTH:
 			continue
 		var contact_position := state.get_contact_local_position(contact_id)
-		var collision_direction := collider_velocity.normalized()
+		var collision_direction := relative_velocity.normalized()
 		_instantiate_asteroid_hit(collision_direction, contact_position, velocity_length / MIN_COLLISION_LENGTH)
 
 
@@ -58,6 +58,8 @@ func _instantiate_asteroid_hit(velocity_direction: Vector3, contact_position: Ve
 	#asteroid_hit_effect.scale *= asteroid_scale
 	#get_tree().get_first_node_in_group("instantiated_root").add_child(asteroid_hit_effect)
 	asteroid_hit_effect.global_position = contact_position
+	if velocity_direction == Vector3.ZERO:
+		pass
 	asteroid_hit_effect.look_at(contact_position - velocity_direction)
 	var particles := asteroid_hit_effect.get_child(0) as GPUParticles3D
 	particles.amount *= PARTICLES_MULTIPLIER * strength
