@@ -3,11 +3,12 @@ class_name MessageContainer extends Control
 
 const GROUP = &"MessageContainerGroup"
 
-const LABEL_SETTINGS = preload("uid://da0v0q3k618re")
-
 const KEY_TRAVEL_PROGRESS = &"KeyTraveProgress"
 const KEY_TRAVEL_AWAY_ACTIVE = &"KeyTavelAwayActive"
 
+@export var label_scene: PackedScene
+@export_tool_button("Add Message", "Callable") var _add_message_action = _tool_add_message
+@export_group("Message behaviour")
 @export_custom(PROPERTY_HINT_NONE, "suffix:seconds") var default_message_life_time: float = 3.0
 @export_custom(PROPERTY_HINT_NONE, "suffix:seconds") var fade_in_time: float = 0.5
 @export_custom(PROPERTY_HINT_NONE, "suffix:seconds") var fade_out_time: float = 0.5
@@ -15,8 +16,6 @@ const KEY_TRAVEL_AWAY_ACTIVE = &"KeyTavelAwayActive"
 @export_custom(PROPERTY_HINT_NONE, "suffix:seconds") var travel_away_time: float = 0.25
 
 @export_range(0.0, 1.0, 0.001, "suffix:%") var center_offset: float = 0.5
-
-@export_tool_button("Add Message", "Callable") var _add_message_action = _tool_add_message
 
 var _message_queue: Array[Label]
 var _message_targets: Dictionary
@@ -29,16 +28,10 @@ func _tool_add_message() -> void:
 
 
 func add_message(messsage: String, life_time := default_message_life_time) -> void:
-	var new_message := Label.new()
+	var new_message: Label = label_scene.instantiate()
 	_message_queue.push_front(new_message)
 	add_child(new_message)
 	new_message.text = messsage
-	new_message.label_settings = LABEL_SETTINGS
-	new_message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	new_message.anchor_top = 0.5
-	new_message.anchor_bottom = 0.5
-	new_message.anchor_left = 0.5
-	new_message.anchor_right = 0.5
 	
 	new_message.modulate.a = 0.0
 	
@@ -48,6 +41,7 @@ func add_message(messsage: String, life_time := default_message_life_time) -> vo
 	}
 	
 	new_message.minimum_size_changed.connect(func():
+		new_message.size.x *= 2
 		new_message.pivot_offset = new_message.size / 2
 		new_message.position.x = size.x / 2 - new_message.size.x / 2
 		new_message.position.y = _get_start_hgt()

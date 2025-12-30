@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1kfy0mbnfej"]
+[gd_scene load_steps=15 format=3 uid="uid://b1kfy0mbnfej"]
 
 [ext_resource type="Script" uid="uid://bxdxj6711e52i" path="res://ui/gameplay_ui/scripts/gameplay_ui.gd" id="1_v5qxn"]
 [ext_resource type="PackedScene" uid="uid://cs1vmfcrtxu06" path="res://ui/gameplay_ui/scenes/shop_screen.tscn" id="2_3lvfr"]
@@ -11,6 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://c8f8d033685gb" path="res://ui/gameplay_ui/scenes/hook_ui.tscn" id="6_wapsp"]
 [ext_resource type="Texture2D" uid="uid://2sx7e81fofnl" path="res://Assets/Icons/ui_logo.png" id="10_srexv"]
 [ext_resource type="Script" uid="uid://c0dckycyl3li2" path="res://ui/gameplay_ui/messages/message_container.gd" id="11_1j2xw"]
+[ext_resource type="PackedScene" uid="uid://ju3yo6wgj63q" path="res://ui/gameplay_ui/messages/message.tscn" id="12_7hlpw"]
+[ext_resource type="FontFile" uid="uid://b35oh5m6k8148" path="res://ui/Themes/fragile-bombers.regular.otf" id="12_ms7dq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7hlpw"]
+font = ExtResource("12_ms7dq")
+font_size = 24
 
 [node name="GameplayUI" type="Control"]
 layout_mode = 3
@@ -121,8 +127,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("11_1j2xw")
+label_scene = ExtResource("12_7hlpw")
+label_settings = SubResource("LabelSettings_7hlpw")
 fade_in_time = 0.3
 fade_out_time = 0.3
-travel_time = 0.5
+travel_time = 0.25
+travel_away_time = 0.15
 center_offset = 0.4
 metadata/_custom_type_script = "uid://c0dckycyl3li2"

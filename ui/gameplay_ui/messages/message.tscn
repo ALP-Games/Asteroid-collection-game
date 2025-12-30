@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://ju3yo6wgj63q"]
+
+[ext_resource type="FontFile" uid="uid://b35oh5m6k8148" path="res://ui/Themes/fragile-bombers.regular.otf" id="1_mcrxb"]
+
+[sub_resource type="Gradient" id="Gradient_exrku"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b6n0f"]
+gradient = SubResource("Gradient_exrku")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kq87i"]
+texture = SubResource("GradientTexture2D_b6n0f")
+
+[sub_resource type="LabelSettings" id="LabelSettings_exrku"]
+font = ExtResource("1_mcrxb")
+font_size = 24
+
+[node name="TestMessage" type="Label"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -15.0
+offset_right = 60.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 15)
+theme_override_styles/normal = SubResource("StyleBoxTexture_kq87i")
+text = "Test Message"
+label_settings = SubResource("LabelSettings_exrku")
+horizontal_alignment = 1
+vertical_alignment = 1

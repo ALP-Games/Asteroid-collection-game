@@ -2,6 +2,8 @@ class_name SaveData extends RefCounted
 
 var fresh_load: bool = true
 
+@export var asteroids_ground: int = 0
+
 @export var credist_amount: int = 0
 
 @export var player_position: Vector3
