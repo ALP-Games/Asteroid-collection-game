@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cui8llprenvdm" path="res://actors/asteroids/asteroid_loader.gd" id="8_at31i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xfbri"]
+radius = 0.45
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_adigb"]
 radius = 0.1
