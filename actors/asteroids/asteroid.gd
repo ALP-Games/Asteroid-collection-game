@@ -6,7 +6,7 @@ const ASTEROID_COLLISION_EFFECT = preload("uid://btw85yqdumem8")
 const ROCK_EXPLOSION = preload("res://actors/effects/rock_explosion.tscn")
 const ASTEROID_CRUNCH_SOUND = preload("res://actors/effects/asteroid_crunch_sound.tscn")
 
-const MIN_COLLISION_LENGTH = 7.0
+const MIN_COLLISION_LENGTH = 5.5
 const SPEED_SCALE_MULTIPLIER = 0.25
 const MIN_SPEED_SCALE = 0.5
 const PARTICLES_MULTIPLIER = 0.5
