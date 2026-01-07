@@ -104,7 +104,7 @@ func enable() -> void:
 			if state == State.ENABLING:
 				finished_enabling.emit()
 				state = State.ENABLED
-				GameManager.credist_amount += counter_value
+				GameManager.credist_amount += (counter_value * multiplier)
 				queue_free()
 				# update money only here
 			)).set_delay(delay_before_travel)

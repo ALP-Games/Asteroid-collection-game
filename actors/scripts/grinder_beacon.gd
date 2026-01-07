@@ -64,7 +64,7 @@ func _check_interaction() -> void:
 	_deploy_interaction.block_interaction = gizmo_inactive
 	
 	if _hold_e_gizmo:
-		if not _hold_e_gizmo.get_gizmo():
+		if not _hold_e_gizmo.get_gizmo() and not _hold_e_gizmo.gizmo_instantiated_and_ready.is_connected(_refresh_gizmo_color):
 			_hold_e_gizmo.gizmo_instantiated_and_ready.connect(_refresh_gizmo_color)
 		else:
 			if _hold_e_gizmo.gizmo_instantiated_and_ready.is_connected(_refresh_gizmo_color):
