@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://mchn2r1k3y8q"]
+
+[ext_resource type="AudioStream" uid="uid://u3cgb8lv5g60" path="res://sounds/ui/clicks/click_002.ogg" id="1_uorvp"]
+
+[node name="FocusSoundPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_uorvp")
+volume_db = -1.0
+pitch_scale = 0.5

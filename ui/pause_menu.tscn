@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc00ousclgdey"]
+[gd_scene load_steps=7 format=3 uid="uid://dc00ousclgdey"]
 
 [ext_resource type="Texture2D" uid="uid://bnc4qabwqsxjh" path="res://Assets/Icons/Controls.png" id="1_50142"]
 [ext_resource type="Script" uid="uid://bsv1uph4gl381" path="res://ui/pause_menu.gd" id="1_ejwgg"]
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="2_fob5h"]
+[ext_resource type="Script" uid="uid://c3dfp0wsms6cl" path="res://ui/button_with_sounds.gd" id="3_npydk"]
 [ext_resource type="PackedScene" uid="uid://7etikmyhrdvx" path="res://ui/confirmation_window.tscn" id="4_avurv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ejwgg"]
@@ -67,22 +68,32 @@ label_settings = SubResource("LabelSettings_ejwgg")
 [node name="ButtonResume" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Resume"
+script = ExtResource("3_npydk")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ButtonReload" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Reload"
+script = ExtResource("3_npydk")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ButtonResetSave" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Reset Save"
+script = ExtResource("3_npydk")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ButtonBackToGameplay" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Back To The Game"
+script = ExtResource("3_npydk")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ButtonQuit" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Save & Quit"
+script = ExtResource("3_npydk")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ExpandMiddle" type="Control" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -124,13 +135,8 @@ horizontal_alignment = 2
 visible = false
 layout_mode = 1
 
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_play_click_sound"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResume" to="." method="_on_button_resume_pressed"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonReload" to="." method="_play_click_sound"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonReload" to="." method="_on_button_reload_pressed"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonResetSave" to="." method="_play_click_sound"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonResetSave" to="." method="_on_button_reset_save_pressed"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonBackToGameplay" to="." method="_play_click_sound"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonBackToGameplay" to="." method="_on_button_back_to_gameplay_pressed"]
-[connection signal="button_down" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_play_click_sound"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]

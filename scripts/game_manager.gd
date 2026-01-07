@@ -3,8 +3,6 @@ extends Node
 signal credits_amount_changed(new_amount: int)
 signal game_state_changed()
 
-const CLICK_SOUND_PLAYER = preload("res://ui/click_sound_player.tscn")
-
 const WORLD_SCENE = preload("uid://pg35x7vyq772")
 const VICTORY_SCENE = preload("res://levels/game_end.tscn")
 
@@ -125,13 +123,6 @@ func get_multiplier() -> float:
 
 func is_global_deinit() -> bool:
 	return _global_deinit
-
-
-func play_click_sound() -> void:
-	var click_sound_instance = CLICK_SOUND_PLAYER.instantiate() as AudioStreamPlayer
-	get_tree().root.add_child(click_sound_instance)
-	click_sound_instance.play()
-	click_sound_instance.finished.connect(func():click_sound_instance.queue_free(), CONNECT_ONE_SHOT)
 
 
 func get_state() -> Game.State:

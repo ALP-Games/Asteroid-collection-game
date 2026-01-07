@@ -24,7 +24,3 @@ func _on_cancel_pressed() -> void:
 
 func _do_nothing() -> void:
 	pass
-
-
-func _on_button_down() -> void:
-	GameManager.play_click_sound()
