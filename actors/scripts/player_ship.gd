@@ -221,8 +221,10 @@ func _process(_delta: float) -> void:
 	#var jet_scale := remap(linear_velocity.length(), 0, MAX_JET_VELOCITY, JET_MIN_SCALE, JET_MAX_SCALE)
 	# print(sin(Time.get_ticks_msec() / 100.0))
 	var offset := 10.0
-	var jet_scale := (offset + sin(Time.get_ticks_msec() / 25.0)) / (1.0 + offset)
-	var scale_vector := Vector3(jet_scale, jet_scale, jet_scale)
+	var jet_scale := 0.0
+	if not player_stunned:
+		jet_scale = (offset + sin(Time.get_ticks_msec() / 25.0)) / (1.0 + offset)
+	var scale_vector := Vector3.ONE * jet_scale
 	
 	var weight: float = (Input.is_action_pressed("thrust") as float)
 	var target_scale: Vector3 = lerp(Vector3.ZERO, scale_vector, weight + 0.0001)
