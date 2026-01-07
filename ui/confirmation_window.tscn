@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://7etikmyhrdvx"]
+[gd_scene load_steps=7 format=3 uid="uid://7etikmyhrdvx"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_3o1cy"]
 [ext_resource type="Script" uid="uid://dyou6bxxtyrwn" path="res://ui/confirmation_window.gd" id="1_ttc13"]
 [ext_resource type="FontFile" uid="uid://b35oh5m6k8148" path="res://ui/Themes/fragile-bombers.regular.otf" id="2_ttc13"]
+[ext_resource type="Script" uid="uid://c3dfp0wsms6cl" path="res://ui/button_with_sounds.gd" id="4_rdop6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttc13"]
 bg_color = Color(0, 0, 0, 0.9411765)
@@ -65,11 +66,15 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Yes"
+script = ExtResource("4_rdop6")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ButtonCancel" type="Button" parent="HBoxPivotContainer/ConfirmationContent/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "No"
+script = ExtResource("4_rdop6")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ControlBottom" type="Control" parent="HBoxPivotContainer/ConfirmationContent"]
 layout_mode = 2
@@ -79,7 +84,5 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="button_down" from="HBoxPivotContainer/ConfirmationContent/HBoxContainer/ButtonConfirm" to="." method="_on_button_down"]
 [connection signal="pressed" from="HBoxPivotContainer/ConfirmationContent/HBoxContainer/ButtonConfirm" to="." method="_on_confirm_pressed"]
-[connection signal="button_down" from="HBoxPivotContainer/ConfirmationContent/HBoxContainer/ButtonCancel" to="." method="_on_button_down"]
 [connection signal="pressed" from="HBoxPivotContainer/ConfirmationContent/HBoxContainer/ButtonCancel" to="." method="_on_cancel_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bb87h4iblio7e"]
+[gd_scene load_steps=27 format=3 uid="uid://bb87h4iblio7e"]
 
 [ext_resource type="Script" uid="uid://ku12f32d4f3k" path="res://actors/scripts/shop_zone.gd" id="1_tlytx"]
 [ext_resource type="ArrayMesh" uid="uid://dvaiti0k2yo4a" path="res://Assets/Shop_Cube_006.res" id="2_toxax"]
@@ -12,6 +12,10 @@
 [ext_resource type="Script" uid="uid://loc2srbr0at1" path="res://actors/scripts/shop_zone_loader.gd" id="10_qvpob"]
 [ext_resource type="Script" uid="uid://cmawflefsblmh" path="res://scripts/components/position_state_save.gd" id="11_uqliy"]
 [ext_resource type="PackedScene" uid="uid://flpa4on2t8e3" path="res://actors/mechanisms/latch_mechanizm.tscn" id="12_uqliy"]
+[ext_resource type="Script" uid="uid://bpy4ebcbhhl3g" path="res://scripts/components/collision_sound_component.gd" id="13_3qgqf"]
+[ext_resource type="AudioStream" uid="uid://b1wleoycyalhi" path="res://sounds/metal_impacts/clank metal screetching.ogg" id="14_ald8u"]
+[ext_resource type="AudioStream" uid="uid://dg780oghxkwf1" path="res://sounds/metal_impacts/thud_02.ogg" id="15_sf4fy"]
+[ext_resource type="AudioStream" uid="uid://cmc5t70kbtyto" path="res://sounds/metal_impacts/thud_03.ogg" id="16_lufyh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uden6"]
 size = Vector3(7.93945, 1, 7.88184)
@@ -67,6 +71,8 @@ axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 25000.0
+contact_monitor = true
+max_contacts_reported = 4
 script = ExtResource("1_tlytx")
 item_dispenser = NodePath("ItemDispenser")
 
@@ -245,6 +251,11 @@ attachment_node = NodePath("..")
 [node name="ShopLatch3" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_uqliy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6243877, 0, -7.394809)
 attachment_node = NodePath("..")
+
+[node name="CollisionSoundComponent" type="Node" parent="."]
+script = ExtResource("13_3qgqf")
+sounds = Array[AudioStream]([ExtResource("14_ald8u"), ExtResource("15_sf4fy"), ExtResource("16_lufyh")])
+metadata/_custom_type_script = "uid://bpy4ebcbhhl3g"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

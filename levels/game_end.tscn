@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dexkatl0n2bph" path="res://Assets/Casino_Ucupaint Base.png" id="10_lwrc1"]
 [ext_resource type="Texture2D" uid="uid://c8yypxccqcvh4" path="res://Assets/Casino_Ucupaint Base_2.png" id="11_qii06"]
 [ext_resource type="Animation" uid="uid://cmpkhdshks73y" path="res://animations/endscene/Casino.res" id="12_c6rm5"]
-[ext_resource type="AudioStream" uid="uid://b1wleoycyalhi" path="res://sounds/clank metal screetching.ogg" id="12_ccloq"]
+[ext_resource type="AudioStream" uid="uid://b1wleoycyalhi" path="res://sounds/metal_impacts/clank metal screetching.ogg" id="12_ccloq"]
 [ext_resource type="Animation" uid="uid://dt3w5khnnr0o0" path="res://animations/endscene/camera.res" id="13_dyy4y"]
 [ext_resource type="AudioStream" uid="uid://bys2rmekoxvji" path="res://sounds/metal screetching.ogg" id="13_pjm3b"]
 

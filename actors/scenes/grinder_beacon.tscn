@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ylpkw2lvllxq"]
+[gd_scene load_steps=23 format=3 uid="uid://ylpkw2lvllxq"]
 
 [ext_resource type="Script" uid="uid://csfqyurb2ywfh" path="res://actors/scripts/grinder_beacon.gd" id="1_pg7tx"]
 [ext_resource type="ArrayMesh" uid="uid://d0k40pyircjhn" path="res://Assets/meshes/beacon/Becon_Roundcube.res" id="2_ft08n"]
@@ -11,6 +11,10 @@
 [ext_resource type="Script" uid="uid://banct1fm1y4u0" path="res://scripts/components/decelerator_component.gd" id="7_v27bq"]
 [ext_resource type="Script" uid="uid://dgw0kj7aardgm" path="res://scripts/components/instantiated_object_save.gd" id="10_wy3rk"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_yl572"]
+[ext_resource type="Script" uid="uid://bpy4ebcbhhl3g" path="res://scripts/components/collision_sound_component.gd" id="12_grqqj"]
+[ext_resource type="AudioStream" uid="uid://dwk62sf5egm8r" path="res://sounds/metal_impacts/Heavy-metal-impact-muffled.wav" id="13_gf1ly"]
+[ext_resource type="AudioStream" uid="uid://ilvgycx5g7xp" path="res://sounds/metal_impacts/metal-canister-impact-hard-muffled-1.wav" id="14_uiymc"]
+[ext_resource type="AudioStream" uid="uid://dwg6l1q4duxds" path="res://sounds/metal_impacts/metal-canister-impact-hard-muffled-2.wav" id="15_qrqo8"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mobjs"]
 radius = 10.0
@@ -56,6 +60,8 @@ stencil_reference = 2
 collision_mask = 21
 axis_lock_linear_y = true
 mass = 500.0
+contact_monitor = true
+max_contacts_reported = 4
 script = ExtResource("1_pg7tx")
 
 [node name="InteractionArea" type="Area3D" parent="."]
@@ -137,6 +143,11 @@ metadata/_custom_type_script = "uid://dgw0kj7aardgm"
 script = ExtResource("11_yl572")
 radius = 3.0
 metadata/_custom_type_script = "uid://ceo3kiibjuffa"
+
+[node name="CollisionSoundComponent" type="Node" parent="."]
+script = ExtResource("12_grqqj")
+sounds = Array[AudioStream]([ExtResource("13_gf1ly"), ExtResource("14_uiymc"), ExtResource("15_qrqo8")])
+metadata/_custom_type_script = "uid://bpy4ebcbhhl3g"
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

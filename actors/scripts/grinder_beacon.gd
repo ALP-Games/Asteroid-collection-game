@@ -1,4 +1,4 @@
-class_name GrinderBeacon extends RigidBody3D
+class_name GrinderBeacon extends ExtendedRigidBody3D
 
 const DEPLOYED_COLLECTOR = preload("uid://d3y0gwfhn8my0")
 
@@ -16,6 +16,7 @@ var _buildings_in_range: int = 0
 
 
 func _ready() -> void:
+	super()
 	_deploy_interaction.hold_time = 0.5
 	_deploy_interaction.interaction_callable = _deploy_collector
 	

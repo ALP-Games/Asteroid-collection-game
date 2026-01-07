@@ -1,7 +1,5 @@
 class_name PauseMenu extends Control
 
-const CLICK_SOUND_PLAYER = preload("res://ui/click_sound_player.tscn")
-
 @onready var gameplay_elements := [$HBoxContainer/VBoxContainer/ButtonReload, 
 						$HBoxContainer/VBoxContainer/ButtonResetSave,
 						$HBoxContainer/VBoxContainer/TextureRect]
@@ -30,10 +28,6 @@ func _refresh_state() -> void:
 func _enable_elements(elements: Array, enable: bool) -> void:
 	for element: Control in elements:
 		element.visible = enable
-
-
-func _play_click_sound() -> void:
-	GameManager.play_click_sound()
 
 
 func _on_button_resume_pressed() -> void:

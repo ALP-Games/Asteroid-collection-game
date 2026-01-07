@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends ExtendedRigidBody3D
 
 @onready var _handles: Array[Handle] = [$Handle, $Handle2]
 @onready var _decelerator_component: DeceleratorComponent = $DeceleratorComponent
@@ -8,6 +8,7 @@ var _total_mass: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	for handle in _handles:
 		HookableComponent.core().invoke_on_component(handle, func(hookable: HookableComponent)->void:
 			hookable.object_hooked.connect(_process_hooked_places_count.bind(true))

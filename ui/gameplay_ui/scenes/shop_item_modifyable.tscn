@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp2w0mhwpqoq7"]
+[gd_scene load_steps=6 format=3 uid="uid://bp2w0mhwpqoq7"]
 
 [ext_resource type="Theme" uid="uid://7qtjarwklgd2" path="res://ui/Themes/ui_theme.tres" id="1_0uyxq"]
 [ext_resource type="Script" uid="uid://bcaacmka808e2" path="res://ui/gameplay_ui/scripts/shop_item_modifyable.gd" id="1_7vfys"]
 [ext_resource type="Texture2D" uid="uid://df3vmvvomkt0j" path="res://Assets/Icons/HookIcon.png" id="2_0uyxq"]
-[ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/click_sound_player.tscn" id="3_8m76c"]
+[ext_resource type="PackedScene" uid="uid://b2wuithykkaes" path="res://ui/sound_players/click_sound_player.tscn" id="3_8m76c"]
+[ext_resource type="Script" uid="uid://c3dfp0wsms6cl" path="res://ui/button_with_sounds.gd" id="4_cqbgh"]
 
 [node name="ShopItemModifyable" type="VBoxContainer"]
 offset_right = 401.0
@@ -56,6 +57,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 disabled = true
 text = "Buy"
+script = ExtResource("4_cqbgh")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="PanelAdjustable" type="VBoxContainer" parent="ContentContainer/ContentEstate"]
 layout_mode = 2
@@ -78,10 +81,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "+"
+script = ExtResource("4_cqbgh")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ButtonRemove" type="Button" parent="ContentContainer/ContentEstate/PanelAdjustable/ButtonsBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "-"
+script = ExtResource("4_cqbgh")
+metadata/_custom_type_script = "uid://c3dfp0wsms6cl"
 
 [node name="ClickSoundPlayer" parent="." instance=ExtResource("3_8m76c")]
