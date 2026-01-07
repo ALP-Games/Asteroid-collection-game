@@ -1,4 +1,4 @@
-class_name ShopZone extends RigidBody3D
+class_name ShopZone extends ExtendedRigidBody3D
 
 const FOLDED_GRINDER = preload("uid://ylpkw2lvllxq")
 
@@ -23,6 +23,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	super()
 	add_to_group("shop")
 	for handle in handles:
 		HookableComponent.core().invoke_on_component(handle, func(hookable: HookableComponent)->void:
