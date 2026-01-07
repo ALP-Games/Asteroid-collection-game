@@ -59,8 +59,11 @@ func add_message(messsage: String, life_time := default_message_life_time) -> vo
 			_message_targets[new_message][KEY_TRAVEL_AWAY_ACTIVE] = true
 			travel_away_tween.tween_property(new_message, "position:y", final_height, travel_away_time)
 			)
-		var life_timer := get_tree().create_timer(life_time)
+		var life_timer := Timer.new()
+		add_child(life_timer)
+		life_timer.one_shot = true
 		life_timer.timeout.connect(func():new_message.queue_free())
+		life_timer.start(life_time)
 		, CONNECT_ONE_SHOT)
 	new_message.tree_exiting.connect(func():
 		_message_queue.erase(new_message)
