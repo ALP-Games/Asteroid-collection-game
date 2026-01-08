@@ -2,6 +2,7 @@ class_name GizmoCountUp extends GizmoOverNode3D
 
 @onready var counter_label: Label = $Counter
 @onready var suffix: Label = $Suffix
+@onready var count_up_sound: AudioStreamPlayer2D = $CountUpSound
 
 @export var count_up_time := 1.0
 @export var delay_after_coutup := 0.5
@@ -57,6 +58,8 @@ func enable() -> void:
 	var multiplier := GameManager.get_multiplier()
 	var enable_multiplier_effects := multiplier != 1.0
 	
+	count_up_sound.play()
+	count_up_sound.pitch_scale += randf_range(-0.05, 0.05)
 	var grow_tween := create_tween()
 	grow_tween.tween_property(self, "scale", Vector2(scale_pulse, scale_pulse),
 		count_up_time * (1.0 - burst_time))\
@@ -97,6 +100,7 @@ func enable() -> void:
 	
 	var count_up := create_tween()
 	count_up.tween_property(self, "_current_counter_value", counter_value, count_up_time)
+	count_up.tween_callback(func():count_up_sound.stop())
 	count_up.tween_callback(func():
 		var float_up_tween := create_tween()
 		float_up_tween.tween_property(self, "_travel_amount", 1.0, travel_time)
