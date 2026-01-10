@@ -1,5 +1,7 @@
 class_name GameplayUI extends Control
 
+const MONEY_SOUND_PLAYER = preload("uid://t52u73lvsdf1")
+
 @onready var credits_amount: Label = $LayoutsContainer/HBoxContainer/CreditsAmountControl/Amount
 @onready var _original_modulate := credits_amount.modulate
 @onready var title_card: TextureRect = $TitleCard
@@ -59,6 +61,9 @@ func on_credit_amount_changed(new_amount: int) -> void:
 		var pop_tween := create_tween()
 		pop_tween.tween_property(credits_amount, "scale", Vector2.ONE * credits_pop_scale, credits_pop_time / 2)
 		pop_tween.tween_property(credits_amount, "scale", Vector2.ONE, credits_pop_time / 2)
+		var sound_player: AudioStreamPlayer = MONEY_SOUND_PLAYER.instantiate()
+		credits_amount.add_child(sound_player)
+		sound_player.play()
 	elif _previous_credits_amount > new_amount:
 		var subtract_tween := create_tween()
 		subtract_tween.tween_property(credits_amount, "modulate", subtraction_flash, subtraction_effect_time / 2)

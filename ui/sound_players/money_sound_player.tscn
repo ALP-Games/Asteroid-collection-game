@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://t52u73lvsdf1"]
+
+[ext_resource type="AudioStream" uid="uid://bi1qyrl7jpuj5" path="res://sounds/cash-register-purchase-simple5.ogg" id="1_4ooit"]
+
+[node name="MoneySoundPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_4ooit")
+volume_db = -10.0
