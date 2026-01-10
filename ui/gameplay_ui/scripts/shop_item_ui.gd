@@ -1,5 +1,7 @@
 class_name ShopItemUI extends Control
 
+const ITEM_PURCHASED = preload("uid://lvk3pw5ic5oj")
+
 var icon: TextureRect
 var item_name: Label
 var item_price: Label
@@ -58,6 +60,9 @@ func _on_credits_amount_changed(_new_amount: int) -> void:
 func _try_buy_item() -> void:
 	var shop := GameManager.shop
 	if shop.buy_item(item_id):
+		var audio_player: AudioStreamPlayer = ITEM_PURCHASED.instantiate()
+		add_child(audio_player)
+		audio_player.play()
 		if not is_inside_tree():
 			return
 		
