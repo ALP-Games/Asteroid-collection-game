@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/scenes/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/scenes/asteroid_spawner.tscn" id="1_vons5"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/scenes/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
 [ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_re8x6"]
+[ext_resource type="PackedScene" uid="uid://cgpu552ldh4is" path="res://ui/sound_players/ambience_sound_player.tscn" id="11_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_re8x6"]
@@ -137,3 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.111833, -1.90735e-06, 15.95
 script = ExtResource("11_wqmfy")
 radius = 8.88
 metadata/_custom_type_script = "uid://ceo3kiibjuffa"
+
+[node name="AmbienceSoundPlayer" parent="." instance=ExtResource("11_re8x6")]
+volume_db = -15.0
+autoplay = true

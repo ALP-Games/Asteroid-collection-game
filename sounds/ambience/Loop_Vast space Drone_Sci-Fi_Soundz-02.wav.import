@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cp5u1qclvi8m3"
+path="res://.godot/imported/Loop_Vast space Drone_Sci-Fi_Soundz-02.wav-3205a9caa7a8ea30285ceacd3fe07eff.sample"
+
+[deps]
+
+source_file="res://sounds/ambience/Loop_Vast space Drone_Sci-Fi_Soundz-02.wav"
+dest_files=["res://.godot/imported/Loop_Vast space Drone_Sci-Fi_Soundz-02.wav-3205a9caa7a8ea30285ceacd3fe07eff.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

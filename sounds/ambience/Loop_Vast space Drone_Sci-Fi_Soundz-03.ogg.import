@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crytle5kempi6"
+path="res://.godot/imported/Loop_Vast space Drone_Sci-Fi_Soundz-03.ogg-cf26f1de7293700a30c56c509b18762b.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/ambience/Loop_Vast space Drone_Sci-Fi_Soundz-03.ogg"
+dest_files=["res://.godot/imported/Loop_Vast space Drone_Sci-Fi_Soundz-03.ogg-cf26f1de7293700a30c56c509b18762b.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
