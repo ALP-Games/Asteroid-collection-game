@@ -3,6 +3,7 @@ class_name GizmoCountUp extends GizmoOverNode3D
 @onready var counter_label: Label = $Counter
 @onready var suffix: Label = $Suffix
 @onready var count_up_sound: AudioStreamPlayer2D = $CountUpSound
+@onready var multiplier_apply_player: AudioStreamPlayer2D = $MultiplierApplyPlayer
 
 @export var count_up_time := 1.0
 @export var delay_after_coutup := 0.5
@@ -85,6 +86,7 @@ func enable() -> void:
 				.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)\
 				.set_delay(delay_before_multiplier_add)
 			suffix_tween.tween_callback(func():
+				multiplier_apply_player.play()
 				# this multiplier should also guarantee at least +1
 				_current_counter_value = ceili(_current_counter_value * multiplier)
 				suffix.text = ""
@@ -108,7 +110,7 @@ func enable() -> void:
 			if state == State.ENABLING:
 				finished_enabling.emit()
 				state = State.ENABLED
-				GameManager.credist_amount += (counter_value * multiplier)
+				GameManager.credist_amount += ceili(counter_value * multiplier)
 				queue_free()
 				# update money only here
 			)).set_delay(delay_before_travel)

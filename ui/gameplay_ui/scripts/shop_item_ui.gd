@@ -35,6 +35,7 @@ func _ready() -> void:
 	GameManager.credits_amount_changed.connect(_on_credits_amount_changed)
 	buy_button.button_down.connect(func():click_sound_player.play())
 	buy_button.pressed.connect(_try_buy_item)
+	(buy_button as ButtonWithSounds).click_sound_scene = ITEM_PURCHASED
 
 
 func _set_layout_items() -> void:
@@ -60,9 +61,9 @@ func _on_credits_amount_changed(_new_amount: int) -> void:
 func _try_buy_item() -> void:
 	var shop := GameManager.shop
 	if shop.buy_item(item_id):
-		var audio_player: AudioStreamPlayer = ITEM_PURCHASED.instantiate()
-		add_child(audio_player)
-		audio_player.play()
+		#var audio_player: AudioStreamPlayer = ITEM_PURCHASED.instantiate()
+		#add_child(audio_player)
+		#audio_player.play()
 		if not is_inside_tree():
 			return
 		
