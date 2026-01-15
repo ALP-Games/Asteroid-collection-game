@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cs8vkvyb2g078"]
+[gd_scene load_steps=49 format=4 uid="uid://cs8vkvyb2g078"]
 
 [ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="2_iapks"]
 [ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://actors/effects/JetBeam.tscn" id="3_ccloq"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://b1wleoycyalhi" path="res://sounds/metal_impacts/clank metal screetching.ogg" id="12_ccloq"]
 [ext_resource type="Animation" uid="uid://dt3w5khnnr0o0" path="res://animations/endscene/camera.res" id="13_dyy4y"]
 [ext_resource type="AudioStream" uid="uid://bys2rmekoxvji" path="res://sounds/metal screetching.ogg" id="13_pjm3b"]
+[ext_resource type="AudioStream" uid="uid://xxfwvi3l0n08" path="res://sounds/ambience/casino_ambience.ogg" id="15_ccloq"]
 
 [sub_resource type="Gradient" id="Gradient_7s642"]
 offsets = PackedFloat32Array(0, 0.30194804, 0.6201299, 0.964744)
@@ -120,6 +121,30 @@ tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(7.471042, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("JetPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("JetPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-5.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sbrhh"]
@@ -387,6 +412,54 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Casino/Skeleton3D/SpaceCasinoLogo/Cube:mesh:surface_0/material:emission_energy_multiplier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Casino/Skeleton3D/SpaceCasinoLogo/Cube:mesh:surface_1/material:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Casino/Skeleton3D/SpaceCasinoLogo/Cube:mesh:surface_2/material:emission_energy_multiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Casino/Skeleton3D/SpaceCasinoLogo/Cube:mesh:surface_3/material:emission_energy_multiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mv1cj"]
 _data = {
@@ -474,6 +547,30 @@ tracks/6/keys = {
 "points": PackedFloat32Array(0.022170154, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../AudioStreamPlayer3D:volume_db")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../AudioStreamPlayer3D:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ria83"]
 _data = {
@@ -486,7 +583,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/Label:modulate:r")
+tracks/0/path = NodePath("CanvasLayer/Control/TheEnd:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -497,7 +594,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/Label:modulate:g")
+tracks/1/path = NodePath("CanvasLayer/Control/TheEnd:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -508,7 +605,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Control/Label:modulate:b")
+tracks/2/path = NodePath("CanvasLayer/Control/TheEnd:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -519,7 +616,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Control/Label:modulate:a")
+tracks/3/path = NodePath("CanvasLayer/Control/TheEnd:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -527,10 +624,22 @@ tracks/3/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control/Thanks:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ccloq"]
 resource_name = "scene"
-length = 9.0
+length = 10.0
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -554,46 +663,58 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Control/Label:modulate:r")
+tracks/2/path = NodePath("CanvasLayer/Control/TheEnd:modulate:r")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(2, 2),
+"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.8333334, 0, 0, 0),
-"times": PackedFloat32Array(0, 5)
+"times": PackedFloat32Array(6.5, 9)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Control/Label:modulate:g")
+tracks/3/path = NodePath("CanvasLayer/Control/TheEnd:modulate:g")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(2, 2),
+"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.8333334, 0, 0, 0),
-"times": PackedFloat32Array(0, 5)
+"times": PackedFloat32Array(6.5, 9)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/Label:modulate:b")
+tracks/4/path = NodePath("CanvasLayer/Control/TheEnd:modulate:b")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(2, 2),
+"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.8333334, 0, 0, 0),
-"times": PackedFloat32Array(0, 5)
+"times": PackedFloat32Array(6.5, 9)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Control/Label:modulate:a")
+tracks/5/path = NodePath("CanvasLayer/Control/TheEnd:modulate:a")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(2, 2),
+"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.8333334, -0.16666667, 0, 0),
-"times": PackedFloat32Array(0, 5)
+"times": PackedFloat32Array(6.5, 9)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/Control/Thanks:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.75, 9.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lm26h"]
@@ -753,7 +874,7 @@ libraries = {
 autoplay = "Casino"
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.4573898, -0.3758831, 0.8059196, 0.019994078, 0.90169865, 0.4319022, -0.88904154, 0.21366125, -0.40491235, -33.844948, 10.143025, -2.369955)
+transform = Transform3D(-0.4573898, -0.3758831, 0.8059196, 0.019994078, 0.9016986, 0.4319022, -0.88904154, 0.21366124, -0.40491235, -33.844948, 10.143025, -2.369955)
 fov = 26.4
 
 [node name="camera" type="AnimationPlayer" parent="Camera3D"]
@@ -777,7 +898,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
+[node name="TheEnd" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -789,3 +910,22 @@ offset_bottom = 132.0
 grow_horizontal = 2
 text = "THE END"
 label_settings = SubResource("LabelSettings_ccloq")
+
+[node name="Thanks" type="Label" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 129.0
+offset_top = 133.0
+offset_right = 485.0
+offset_bottom = 188.0
+grow_horizontal = 2
+text = "Thanks for playing"
+label_settings = SubResource("LabelSettings_ccloq")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2753, 1.9073486e-06, 0.96181583)
+stream = ExtResource("15_ccloq")
+volume_db = -80.0
