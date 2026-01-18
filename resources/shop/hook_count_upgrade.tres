@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_v5nn4"]
 script = ExtResource("2_sbfbm")
 item_name = &"More hooks 1/5"
-price = 1000
+price = 700
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_h6ynd"]
@@ -31,7 +31,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_7cmsm"]
 script = ExtResource("2_sbfbm")
 item_name = &"More hooks 2/5"
-price = 5000
+price = 3000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_pv6tr"]
@@ -42,7 +42,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_ndhy3"]
 script = ExtResource("2_sbfbm")
 item_name = &"More hooks 3/5"
-price = 10000
+price = 7000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_d6wm2"]

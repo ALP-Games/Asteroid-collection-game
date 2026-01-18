@@ -35,7 +35,6 @@ asteroid_scale_max = 9.0
 asteroid_scale_min = 1.5
 distance_max_scale_curve = SubResource("Curve_re8x6")
 distance_min_scale_curve = SubResource("Curve_wqmfy")
-crystal_minimum_distance = 100.0
 gold_minimum_distance = 225.0
 offset = Vector3(0, -80, 0)
 background_asteroid_count = 500

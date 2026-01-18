@@ -28,7 +28,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_jhcic"]
 script = ExtResource("2_88lsc")
 item_name = &"More Engine power 1/5"
-price = 1000
+price = 500
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_wcc1d"]
@@ -46,7 +46,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 [sub_resource type="Resource" id="Resource_qexso"]
 script = ExtResource("2_88lsc")
 item_name = &"Most Engine power 2/5"
-price = 3000
+price = 2000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_ah1i0"]

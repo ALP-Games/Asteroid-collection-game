@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_b6juv"]
 script = ExtResource("2_abpqx")
-price = 500
+price = 300
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_6cpkt"]
@@ -25,7 +25,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_8tyje"]
 script = ExtResource("2_abpqx")
-price = 1000
+price = 500
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_bnnen"]
@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_pwtqo"]
 script = ExtResource("2_abpqx")
-price = 2000
+price = 700
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_lyfnl"]
@@ -56,7 +56,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_41abb"]
 script = ExtResource("2_abpqx")
-price = 4000
+price = 1000
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_6icf5"]
@@ -72,7 +72,7 @@ metadata/_custom_type_script = "uid://b5op7b0h3gjhc"
 
 [sub_resource type="Resource" id="Resource_y1jeo"]
 script = ExtResource("2_abpqx")
-price = 8000
+price = 1500
 metadata/_custom_type_script = "uid://bmqv1a5xg7e18"
 
 [sub_resource type="Resource" id="Resource_b4o38"]

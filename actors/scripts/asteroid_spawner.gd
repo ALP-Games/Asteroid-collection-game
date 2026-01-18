@@ -57,7 +57,7 @@ var background_multi_mesh_instance: MultiMeshInstance3D
 var thread := Thread.new()
 
 func _rand_log_range(min_val: float, max_val: float,
-					exponent: float = 0.60,
+					exponent: float = 0.65,
 					rand_func: Callable = randf) -> float:
 	var t := pow(rand_func.call(), exponent)
 	return lerp(min_val, max_val, t)
