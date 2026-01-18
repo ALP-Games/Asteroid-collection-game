@@ -904,7 +904,7 @@ libraries = {
 autoplay = "Casino"
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.4573898, -0.37588307, 0.8059196, 0.019994078, 0.9016985, 0.4319022, -0.88904154, 0.21366124, -0.40491235, -33.844948, 10.143025, -2.369955)
+transform = Transform3D(-0.4573898, -0.37588304, 0.8059196, 0.019994078, 0.90169847, 0.4319022, -0.88904154, 0.21366122, -0.40491235, -33.844948, 10.143025, -2.369955)
 fov = 26.4
 
 [node name="camera" type="AnimationPlayer" parent="Camera3D"]
@@ -952,7 +952,7 @@ size_flags_horizontal = 8
 text = "Game By:
 Andrej Lapin
 &
-Paulius Pilelis"
+Ryvex"
 label_settings = SubResource("LabelSettings_pjm3b")
 horizontal_alignment = 2
 
