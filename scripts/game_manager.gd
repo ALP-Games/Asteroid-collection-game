@@ -39,8 +39,6 @@ func _enter_tree() -> void:
 			node.ready.connect(func():
 				_scene_loading = true
 				_global_deinit = false
-				var message_container: MessageContainer = get_tree().get_first_node_in_group(MessageContainer.GROUP)
-				message_container.add_message(_save_manager._save_path, 10)
 				shop.emit_items_bought()
 				var instantiate_asteroids := save_data.fresh_load
 				save_data.fresh_load = false
