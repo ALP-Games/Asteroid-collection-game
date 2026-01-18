@@ -1,6 +1,6 @@
 class_name ShopItemUI extends Control
 
-const ITEM_PURCHASED = preload("uid://lvk3pw5ic5oj")
+const ITEM_PURCHASED = preload("uid://ypw53e1qg1p6")
 
 var icon: TextureRect
 var item_name: Label

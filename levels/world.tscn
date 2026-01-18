@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bb87h4iblio7e" path="res://actors/scenes/shop_zone.tscn" id="8_legw5"]
 [ext_resource type="ArrayMesh" uid="uid://c7n8dlacqdr6" path="res://Assets/LightPad_Cube_004.res" id="9_687qm"]
 [ext_resource type="PackedScene" uid="uid://bwntxfo0nt44n" path="res://actors/scenes/bill_board.tscn" id="9_re8x6"]
-[ext_resource type="PackedScene" uid="uid://cgpu552ldh4is" path="res://ui/sound_players/ambience_sound_player.tscn" id="11_re8x6"]
+[ext_resource type="PackedScene" uid="uid://br5dgefqof1v1" path="res://ui/sound_players/ambience_sound_player.tscn" id="11_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_re8x6"]

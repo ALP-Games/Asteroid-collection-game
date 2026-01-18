@@ -1,6 +1,6 @@
 class_name GameplayUI extends Control
 
-const MONEY_SOUND_PLAYER = preload("uid://t52u73lvsdf1")
+const MONEY_SOUND_PLAYER = preload("uid://voc1siu8p88f")
 
 @onready var credits_amount: Label = $LayoutsContainer/HBoxContainer/CreditsAmountControl/Amount
 @onready var _original_modulate := credits_amount.modulate
