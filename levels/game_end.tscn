@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://cs8vkvyb2g078"]
+[gd_scene load_steps=51 format=4 uid="uid://cs8vkvyb2g078"]
 
 [ext_resource type="ArrayMesh" uid="uid://cpgyees8v2655" path="res://Assets/Ship_Cube.res" id="2_iapks"]
 [ext_resource type="PackedScene" uid="uid://7idjvmr2jclb" path="res://actors/effects/JetBeam.tscn" id="3_ccloq"]
@@ -583,7 +583,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/TheEnd:modulate:r")
+tracks/0/path = NodePath("CanvasLayer/Control/VBoxContainer/TheEnd:modulate:r")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -594,7 +594,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/TheEnd:modulate:g")
+tracks/1/path = NodePath("CanvasLayer/Control/VBoxContainer/TheEnd:modulate:g")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -605,7 +605,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Control/TheEnd:modulate:b")
+tracks/2/path = NodePath("CanvasLayer/Control/VBoxContainer/TheEnd:modulate:b")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -616,7 +616,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Control/TheEnd:modulate:a")
+tracks/3/path = NodePath("CanvasLayer/Control/VBoxContainer/TheEnd:modulate:a")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -627,7 +627,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/Thanks:modulate")
+tracks/4/path = NodePath("CanvasLayer/Control/VBoxContainer/GameBy:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -636,10 +636,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/Thanks:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ccloq"]
 resource_name = "scene"
-length = 10.0
+length = 12.0
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -663,7 +675,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/Control/TheEnd:modulate:r")
+tracks/2/path = NodePath("CanvasLayer/Control/VBoxContainer/TheEnd:modulate:r")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -674,7 +686,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/Control/TheEnd:modulate:g")
+tracks/3/path = NodePath("CanvasLayer/Control/VBoxContainer/TheEnd:modulate:g")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -685,7 +697,7 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/TheEnd:modulate:b")
+tracks/4/path = NodePath("CanvasLayer/Control/VBoxContainer/TheEnd:modulate:b")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -696,7 +708,7 @@ tracks/4/keys = {
 tracks/5/type = "bezier"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Control/TheEnd:modulate:a")
+tracks/5/path = NodePath("CanvasLayer/Control/VBoxContainer/TheEnd:modulate:a")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -707,11 +719,23 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CanvasLayer/Control/Thanks:modulate")
+tracks/6/path = NodePath("CanvasLayer/Control/VBoxContainer/GameBy:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(7.75, 9.5),
+"times": PackedFloat32Array(8.5, 10.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CanvasLayer/Control/VBoxContainer/Thanks:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(10, 12),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -724,6 +748,12 @@ _data = {
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_ccloq"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_pjm3b"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_lm26h"]
 font_size = 40
 
 [node name="Node3D" type="Node3D"]
@@ -874,7 +904,7 @@ libraries = {
 autoplay = "Casino"
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.4573898, -0.3758831, 0.8059196, 0.019994078, 0.9016986, 0.4319022, -0.88904154, 0.21366124, -0.40491235, -33.844948, 10.143025, -2.369955)
+transform = Transform3D(-0.4573898, -0.37588307, 0.8059196, 0.019994078, 0.9016985, 0.4319022, -0.88904154, 0.21366124, -0.40491235, -33.844948, 10.143025, -2.369955)
 fov = 26.4
 
 [node name="camera" type="AnimationPlayer" parent="Camera3D"]
@@ -898,32 +928,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TheEnd" type="Label" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 311.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -626.87
 offset_top = 77.0
-offset_right = 495.0
-offset_bottom = 132.0
-grow_horizontal = 2
+offset_right = -70.86865
+offset_bottom = 178.0
+grow_horizontal = 0
+
+[node name="TheEnd" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 text = "THE END"
 label_settings = SubResource("LabelSettings_ccloq")
 
-[node name="Thanks" type="Label" parent="CanvasLayer/Control"]
+[node name="GameBy" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 129.0
-offset_top = 133.0
-offset_right = 485.0
-offset_bottom = 188.0
-grow_horizontal = 2
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Game By:
+Andrej Lapin
+&
+Paulius Pilelis"
+label_settings = SubResource("LabelSettings_pjm3b")
+horizontal_alignment = 2
+
+[node name="Thanks" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 8
 text = "Thanks for playing"
-label_settings = SubResource("LabelSettings_ccloq")
+label_settings = SubResource("LabelSettings_lm26h")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.2753, 1.9073486e-06, 0.96181583)
