@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://br6ablbx6eiq3"]
+[gd_scene load_steps=2 format=3 uid="uid://pg01qctf8ib5"]
 
-[ext_resource type="AudioStream" uid="uid://bcg4rk5n3xquj" path="res://sounds/switch_004.ogg" id="1_7poiv"]
+[ext_resource type="AudioStream" uid="uid://d1hx751qu5d6w" path="res://sounds/Combo Complete C.wav" id="1_7poiv"]
 
 [node name="MultiplierApplyPlayer" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_7poiv")

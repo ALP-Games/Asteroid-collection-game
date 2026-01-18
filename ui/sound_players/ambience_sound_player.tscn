@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgpu552ldh4is"]
+[gd_scene load_steps=2 format=3 uid="uid://br5dgefqof1v1"]
 
-[ext_resource type="AudioStream" uid="uid://bm4ducsr5u4b2" path="res://sounds/ambience/White_Noise_Loop.ogg" id="1_md2qa"]
+[ext_resource type="AudioStream" path="res://sounds/ambience/White_Noise_Loop.ogg" id="1_md2qa"]
 
 [node name="AmbienceSoundPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_md2qa")

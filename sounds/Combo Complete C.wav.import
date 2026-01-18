@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1hx751qu5d6w"
+path="res://.godot/imported/Combo Complete C.wav-6189519c92a61c08f7efb483e78bf758.sample"
+
+[deps]
+
+source_file="res://sounds/Combo Complete C.wav"
+dest_files=["res://.godot/imported/Combo Complete C.wav-6189519c92a61c08f7efb483e78bf758.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

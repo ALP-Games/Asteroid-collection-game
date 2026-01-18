@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cd0a7ao7fq3cx" path="res://ui/gameplay_ui/gizmos/gizmo_count_up.gd" id="1_5hnmh"]
 [ext_resource type="LabelSettings" uid="uid://da0v0q3k618re" path="res://ui/Themes/label_settings.tres" id="2_lmkko"]
 [ext_resource type="AudioStream" uid="uid://8ucd6nqoyws" path="res://sounds/ui/count_up/chain_sound_boosted.wav" id="3_lmkko"]
-[ext_resource type="PackedScene" uid="uid://br6ablbx6eiq3" path="res://ui/sound_players/multiplier_apply_player.tscn" id="4_7djh0"]
-[ext_resource type="AudioStream" uid="uid://boarc02hv5spw" path="res://sounds/money-up-dirtier.ogg" id="5_8fmpb"]
+[ext_resource type="PackedScene" uid="uid://pg01qctf8ib5" path="res://ui/sound_players/multiplier_apply_player.tscn" id="4_7djh0"]
+[ext_resource type="AudioStream" uid="uid://cxammpnnjvpng" path="res://sounds/ComboBitCrushedShortTail.ogg" id="5_8fmpb"]
 
 [node name="GizmoCountUp" type="Control"]
 layout_mode = 3
@@ -66,4 +66,3 @@ volume_db = -20.0
 [node name="MultiplierApplyPlayer" parent="." instance=ExtResource("4_7djh0")]
 stream = ExtResource("5_8fmpb")
 volume_db = -15.0
-pitch_scale = 1.1

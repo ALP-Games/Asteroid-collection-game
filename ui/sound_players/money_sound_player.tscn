@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://t52u73lvsdf1"]
+[gd_scene load_steps=2 format=3 uid="uid://voc1siu8p88f"]
 
-[ext_resource type="AudioStream" uid="uid://boarc02hv5spw" path="res://sounds/money-up-dirtier.ogg" id="1_4ooit"]
+[ext_resource type="AudioStream" uid="uid://53rruxte4ab4" path="res://sounds/cash-register-shortest-purchase.ogg" id="1_4ooit"]
 
 [node name="MoneySoundPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_4ooit")

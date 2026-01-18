@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://lvk3pw5ic5oj"]
+[gd_scene load_steps=2 format=3 uid="uid://ypw53e1qg1p6"]
 
-[ext_resource type="AudioStream" uid="uid://dmaamg0oadvk3" path="res://sounds/cash-register-purchase-fast-boosted.ogg" id="1_jnuqj"]
+[ext_resource type="AudioStream" path="res://sounds/cash-register-purchase-fast-boosted.ogg" id="1_jnuqj"]
 
 [node name="ItemPurchased" type="AudioStreamPlayer"]
 stream = ExtResource("1_jnuqj")
