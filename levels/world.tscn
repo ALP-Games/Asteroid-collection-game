@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://pg35x7vyq772"]
+[gd_scene load_steps=15 format=3 uid="uid://pg35x7vyq772"]
 
 [ext_resource type="PackedScene" uid="uid://blsav2p68v61h" path="res://actors/scenes/player_ship.tscn" id="1_2mgkc"]
 [ext_resource type="PackedScene" uid="uid://jskutcpnqknq" path="res://actors/scenes/asteroid_spawner.tscn" id="1_vons5"]
@@ -12,6 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://br5dgefqof1v1" path="res://ui/sound_players/ambience_sound_player.tscn" id="11_re8x6"]
 [ext_resource type="Script" uid="uid://ceo3kiibjuffa" path="res://addons/meteor_collector/radius_node_3d.gd" id="11_wqmfy"]
 
+[sub_resource type="Curve" id="Curve_re8x6"]
+_limits = [0.0, 1.0, 0.0, 270.0]
+_data = [Vector2(0, 0.5), 0.0, 0.0019999999, 0, 1, Vector2(250, 1), 0.0023281218, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_wqmfy"]
+_limits = [0.0, 1.0, 0.0, 270.0]
+_data = [Vector2(50, 1), 0.0, -0.0041812113, 0, 1, Vector2(134.5946, 0.6462921), -0.0041812113, -0.0012676364, 1, 1, Vector2(250, 0.5), -0.0012676364, 0.0, 1, 0]
+point_count = 3
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_re8x6"]
 points = PackedVector3Array(-4.227457, 0.2957511, -0.44432375, -4.227457, 0.2957511, 0.4443229, -4.227457, 0.5628582, -0.44432375, -2.114556, -0.12122314, -0.44432375, -4.227457, 0.5628582, 0.4443229, -2.114556, -0.12122314, 0.4443229, -3.7126806, 0.73125005, -0.07680884, 4.227457, 0.5628582, -0.44432375, 2.1137285, -0.12122314, -0.44432375, -3.7126806, 0.73125005, 0.07672104, 4.227457, 0.5628582, 0.4443229, 2.1137285, -0.12122314, 0.4443229, 3.7110252, 0.73125005, -0.07680884, 4.227457, 0.2957511, -0.44432375, 3.7110252, 0.73125005, 0.07672104, 4.227457, 0.2957511, 0.4443229)
 
@@ -23,6 +33,8 @@ spawn_radius = 350.0
 min_distance_between_asteroids = 5.0
 asteroid_scale_max = 9.0
 asteroid_scale_min = 1.5
+distance_max_scale_curve = SubResource("Curve_re8x6")
+distance_min_scale_curve = SubResource("Curve_wqmfy")
 crystal_minimum_distance = 100.0
 gold_minimum_distance = 225.0
 offset = Vector3(0, -80, 0)

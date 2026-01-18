@@ -15,6 +15,10 @@ enum AsteroidType {
 # asteroid scale is actually a diameter
 @export var asteroid_scale_max: float = 5.0
 @export var asteroid_scale_min: float = 0.75
+
+@export var distance_max_scale_curve: Curve
+@export var distance_min_scale_curve: Curve
+
 @export_group("Asteroid Crystal")
 @export var crystal_minimum_distance: float = 75.0
 @export_group("Asteroid Gold")
@@ -53,17 +57,18 @@ var background_multi_mesh_instance: MultiMeshInstance3D
 var thread := Thread.new()
 
 func _rand_log_range(min_val: float, max_val: float,
-					exponent: float = 0.55,
+					exponent: float = 0.60,
 					rand_func: Callable = randf) -> float:
 	var t := pow(rand_func.call(), exponent)
 	return lerp(min_val, max_val, t)
 
 func _generate_non_overlapping_positions() -> Dictionary:
-	# could do packed arrays for speed if needed
 	var spawn_count: int = 0
 	var positions: PackedVector3Array
 	var radii: PackedFloat32Array
 	var asteroid_types: PackedInt32Array
+	
+	var scale_variance := asteroid_scale_max - asteroid_scale_min
 	
 	positions.resize(asteroid_count)
 	radii.resize(asteroid_count)
@@ -76,16 +81,21 @@ func _generate_non_overlapping_positions() -> Dictionary:
 	}
 	var max_attempts := 1000
 	while spawn_count < asteroid_count and max_attempts > 0:
-		var radius := randf_range(asteroid_scale_min, asteroid_scale_max) / 2
 		var log_range_val := _rand_log_range(0, spawn_radius)
 		var pos := Vector3(randf_range(-1.0, 1.0), 0.0, randf_range(-1.0, 1.0)).normalized() * log_range_val
+		
+		var curr_max_scale := distance_max_scale_curve.sample(log_range_val) * scale_variance + asteroid_scale_min
+		var curr_min_scale := asteroid_scale_max - (distance_min_scale_curve.sample(log_range_val) * scale_variance)
+		
+		var radius := randf_range(curr_min_scale, curr_max_scale) / 2
+		
 		var asteroid_type := AsteroidType.NORMAL
 		
 		var distance_from_center := pos.distance_to(global_position)
 		if distance_from_center >= gold_minimum_distance:
-			asteroid_type = randi_range(AsteroidType.NORMAL, AsteroidType.GOLD)
+			asteroid_type = randi_range(AsteroidType.NORMAL, AsteroidType.GOLD) as AsteroidType
 		elif distance_from_center >= crystal_minimum_distance:
-			asteroid_type = randi_range(AsteroidType.NORMAL, AsteroidType.CRYSTAL)
+			asteroid_type = randi_range(AsteroidType.NORMAL, AsteroidType.CRYSTAL) as AsteroidType
 		
 		var exclusion_zones := get_tree().get_nodes_in_group("exclusion_zones")
 	
@@ -181,6 +191,8 @@ func generate_gameplay_asteroids() -> void:
 				asteroid_instance = ASTEROID_GOLD_SCENE.instantiate()
 		instantiated_root.add_child(asteroid_instance)
 		asteroid_instance.global_position = positions[index]
+		asteroid_instance.rotate(Vector3.UP, randf() * TAU)
+		asteroid_instance.rotate(Vector3.LEFT, randf() * TAU)
 		asteroid_instance.set_mass_with_scale(radii[index] * 2.0)
 
 
