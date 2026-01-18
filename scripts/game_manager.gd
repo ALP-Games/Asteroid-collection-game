@@ -20,8 +20,8 @@ var _multiplier: float = 1.0
 var _global_deinit: bool = false
 var _scene_loading: bool = false
 
-@onready var _save_manager := SaveManager.new()
 @onready var IS_RELEASE := OS.has_feature("release")
+@onready var _save_manager := SaveManager.new()
 
 var save_data: SaveData
 
@@ -39,6 +39,8 @@ func _enter_tree() -> void:
 			node.ready.connect(func():
 				_scene_loading = true
 				_global_deinit = false
+				var message_container: MessageContainer = get_tree().get_first_node_in_group(MessageContainer.GROUP)
+				message_container.add_message(_save_manager._save_path, 10)
 				shop.emit_items_bought()
 				var instantiate_asteroids := save_data.fresh_load
 				save_data.fresh_load = false

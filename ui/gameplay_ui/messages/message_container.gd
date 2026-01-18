@@ -1,4 +1,4 @@
-@tool
+#@tool
 class_name MessageContainer extends Control
 
 const GROUP = &"MessageContainerGroup"
@@ -7,7 +7,7 @@ const KEY_TRAVEL_PROGRESS = &"KeyTraveProgress"
 const KEY_TRAVEL_AWAY_ACTIVE = &"KeyTavelAwayActive"
 
 @export var label_scene: PackedScene
-@export_tool_button("Add Message", "Callable") var _add_message_action = _tool_add_message
+#@export_tool_button("Add Message", "Callable") var _add_message_action = _tool_add_message
 @export_group("Message behaviour")
 @export_custom(PROPERTY_HINT_NONE, "suffix:seconds") var default_message_life_time: float = 3.0
 @export_custom(PROPERTY_HINT_NONE, "suffix:seconds") var fade_in_time: float = 0.5
@@ -21,10 +21,10 @@ var _message_queue: Array[Label]
 var _message_targets: Dictionary
 
 
-func _tool_add_message() -> void:
-	var root := EditorInterface.get_edited_scene_root()
-	add_message("Test message " + str(_message_queue.size() + 1))
-	_message_queue[0].owner = root
+#func _tool_add_message() -> void:
+	#var root := EditorInterface.get_edited_scene_root()
+	#add_message("Test message " + str(_message_queue.size() + 1))
+	#_message_queue[0].owner = root
 
 
 func add_message(messsage: String, life_time := default_message_life_time) -> void:

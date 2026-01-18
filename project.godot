@@ -15,7 +15,7 @@ config_version=5
 
 [application]
 
-config/name="Asteroid Collection Game"
+config/name="ConsmicFreelancer"
 run/main_scene="uid://pg35x7vyq772"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://d3uf35tkkjssk"
