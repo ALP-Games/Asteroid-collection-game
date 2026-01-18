@@ -84,5 +84,5 @@ metadata/_custom_type_script = "uid://cmawflefsblmh"
 
 [node name="RadiusNode3D" type="Node3D" parent="."]
 script = ExtResource("12_k0rtl")
-radius = 3.0
+radius = 7.0
 metadata/_custom_type_script = "uid://ceo3kiibjuffa"

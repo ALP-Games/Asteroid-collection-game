@@ -3,7 +3,7 @@ extends InstanceLoader
 const KEY_UNLATCHED = &"KeyShopUnlatched"
 
 @onready var shop_latch: LatchMechanism = $"../ShopLatch"
-@onready var unlatch_parts: Array[Node3D] = [$"../DeadLock", $"../DeadLock2", $"../ShopLatch", $"../ShopLatch2", $"../ShopLatch3"]
+@onready var unlatch_parts: Array[Node3D] = [$"../DeadLock", $"../DeadLock2", $"../ShopLatch", $"../ShopLatch2"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

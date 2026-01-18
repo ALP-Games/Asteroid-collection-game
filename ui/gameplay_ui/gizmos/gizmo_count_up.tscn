@@ -65,4 +65,4 @@ volume_db = -20.0
 
 [node name="MultiplierApplyPlayer" parent="." instance=ExtResource("4_7djh0")]
 stream = ExtResource("5_8fmpb")
-volume_db = -15.0
+volume_db = -10.0

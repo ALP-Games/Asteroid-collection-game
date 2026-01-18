@@ -240,17 +240,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5478325, 0, -0.6040745)
 node_a = NodePath("..")
 
 [node name="ShopLatch" parent="." node_paths=PackedStringArray("attachment_node", "dependant_latches") instance=ExtResource("12_uqliy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36131096, 0, -7.394809)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5565485, 0, -7.394809)
 attachment_node = NodePath("..")
-dependant_latches = [NodePath("../ShopLatch2"), NodePath("../ShopLatch3")]
+dependant_latches = [NodePath("../ShopLatch2")]
 
 [node name="ShopLatch2" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_uqliy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6295338, 0, -7.394809)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4116553, 0, -7.394809)
 attachment_node = NodePath("..")
-
-[node name="ShopLatch3" parent="." node_paths=PackedStringArray("attachment_node") instance=ExtResource("12_uqliy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6243877, 0, -7.394809)
-attachment_node = NodePath("..")
+share_dependence = false
 
 [node name="CollisionSoundComponent" type="Node" parent="."]
 script = ExtResource("13_3qgqf")
@@ -263,4 +260,3 @@ metadata/_custom_type_script = "uid://bpy4ebcbhhl3g"
 [connection signal="unlatched" from="ShopLatch" to="DeadLock" method="queue_free"]
 [connection signal="unlatched" from="ShopLatch" to="DeadLock2" method="queue_free"]
 [connection signal="unlatched" from="ShopLatch2" to="DeadLock" method="queue_free"]
-[connection signal="unlatched" from="ShopLatch3" to="DeadLock" method="queue_free"]
